@@ -47,7 +47,7 @@ En `datos.json`, la parte `variantes` define el diseño:
 
 Sumadas a los colores (`colores`) y los textos, dan cientos de combinaciones. Al generar, avisa si dos muestras quedaron con el mismo diseño y el mismo color.
 
-Las 15 muestras que ya existen quedaron con el diseño original (`completa` / `mosaico` / `bricolage-host`), así se ven igual que las que ya se mandaron.
+Cada una de las 15 muestras tiene una combinación distinta, elegida según su rubro (por ejemplo: tipografía redondeada para cumples infantiles y serif elegante para bodas y estética).
 
 ## Cuando un cliente compra
 

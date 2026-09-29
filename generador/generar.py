@@ -159,6 +159,8 @@ def variantes(datos: dict) -> dict:
 
 def css_variantes(v: dict) -> str:
     css = PORTADAS[v["portada"]][1] + GALERIAS[v["galeria"]][1]
+    if v["portada"] != "dividida":  # texto sobre la foto: sombra suave para que se lea en fotos claras
+        css += "\n.hero h1,.hero .lead{text-shadow:0 2px 28px rgba(0,0,0,.45),0 1px 3px rgba(0,0,0,.3)}.hero .stars{background:rgba(0,0,0,.3)}"
     if v["fuentes"] != "bricolage-host":
         f = FUENTES[v["fuentes"]]
         tit, txt = f["titulos"], f["texto"]

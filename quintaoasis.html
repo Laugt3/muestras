@@ -70,7 +70,9 @@ h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:750;font-size:clamp(
 .form label{display:grid;gap:7px;font-size:13.5px;font-weight:600;color:var(--mute)}
 .form select,.form input{height:52px;border-radius:14px;border:1.5px solid var(--line);background:var(--bg);padding:0 14px;font-size:16px;color:var(--ink);width:100%}
 .form select:focus,.form input:focus{outline:none;border-color:var(--accent-ink)}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.row2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.form select,.form input{min-width:0}
+@media(max-width:480px){.row2{grid-template-columns:1fr}}
 .form .btn{width:100%;height:54px;margin-top:4px}
 .note{font-size:13px;color:var(--mute);text-align:center}
 .steps{display:grid;gap:22px;margin-top:30px}
@@ -80,6 +82,7 @@ h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:750;font-size:clamp(
 .steps strong{display:block;color:var(--ink)}
 .loc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}
 .loc .card{background:var(--card);border-radius:24px;padding:36px;display:flex;flex-direction:column;gap:14px;justify-content:space-between;min-height:260px}
+.loc .card{min-width:0;overflow-wrap:anywhere}
 .loc h3{font-family:"Bricolage Grotesque",sans-serif;font-size:28px;letter-spacing:-.02em;line-height:1.1}
 .loc p{color:var(--mute)}
 footer{padding:40px 0 110px;border-top:1px solid var(--line);font-size:13.5px;color:var(--mute)}
@@ -121,6 +124,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
  .quote{padding:28px}
  .fab span.t{display:none}.fab{padding:0 8px}
 }
+.hero{align-items:center;text-align:center}
+.hero:after{background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.35) 45%,rgba(0,0,0,.7))}
+.hero .wrap{padding:120px 0 80px;display:flex;flex-direction:column;align-items:center}
+.hero h1{margin-inline:auto;max-width:16ch}
+.hero .lead{margin-inline:auto}
+.hero .ctas{justify-content:center}
+.gal{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;padding-bottom:10px;scrollbar-width:thin}
+.gal figure:nth-child(n){flex:0 0 min(78%,520px);height:clamp(300px,42vw,520px);scroll-snap-align:start}
+.hero h1,.hero .lead{text-shadow:0 2px 28px rgba(0,0,0,.45),0 1px 3px rgba(0,0,0,.3)}.hero .stars{background:rgba(0,0,0,.3)}
 </style>
 </head>
 <body>

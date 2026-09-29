@@ -8,13 +8,13 @@
   "publicada": false,
   "variantes": {
     "portada": "completa",
-    "galeria": "mosaico",
-    "fuentes": "bricolage-host",
+    "galeria": "columnas",
+    "fuentes": "fraunces-dmsans",
     "orden": [
       "espacio",
       "incluye",
-      "fecha",
-      "donde"
+      "donde",
+      "fecha"
     ]
   },
   "colores": {

@@ -7,13 +7,13 @@
   },
   "publicada": false,
   "variantes": {
-    "portada": "completa",
-    "galeria": "mosaico",
-    "fuentes": "bricolage-host",
+    "portada": "enmarcada",
+    "galeria": "columnas",
+    "fuentes": "cormorant-manrope",
     "orden": [
       "espacio",
-      "incluye",
       "fecha",
+      "incluye",
       "donde"
     ]
   },

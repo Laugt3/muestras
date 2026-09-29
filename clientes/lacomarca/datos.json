@@ -7,9 +7,9 @@
   },
   "publicada": false,
   "variantes": {
-    "portada": "completa",
+    "portada": "centrada",
     "galeria": "mosaico",
-    "fuentes": "bricolage-host",
+    "fuentes": "syne-outfit",
     "orden": [
       "espacio",
       "incluye",

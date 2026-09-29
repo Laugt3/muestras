@@ -8,8 +8,8 @@
   "publicada": false,
   "variantes": {
     "portada": "completa",
-    "galeria": "mosaico",
-    "fuentes": "bricolage-host",
+    "galeria": "carrusel",
+    "fuentes": "fraunces-dmsans",
     "orden": [
       "espacio",
       "incluye",

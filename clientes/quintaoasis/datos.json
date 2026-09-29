@@ -7,8 +7,8 @@
   },
   "publicada": false,
   "variantes": {
-    "portada": "completa",
-    "galeria": "mosaico",
+    "portada": "centrada",
+    "galeria": "carrusel",
     "fuentes": "bricolage-host",
     "orden": [
       "espacio",

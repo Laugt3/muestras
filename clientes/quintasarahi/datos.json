@@ -7,9 +7,9 @@
   },
   "publicada": false,
   "variantes": {
-    "portada": "completa",
+    "portada": "enmarcada",
     "galeria": "mosaico",
-    "fuentes": "bricolage-host",
+    "fuentes": "fraunces-dmsans",
     "orden": [
       "espacio",
       "incluye",

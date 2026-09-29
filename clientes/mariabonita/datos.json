@@ -7,9 +7,9 @@
   },
   "publicada": false,
   "variantes": {
-    "portada": "completa",
-    "galeria": "mosaico",
-    "fuentes": "bricolage-host",
+    "portada": "dividida",
+    "galeria": "carrusel",
+    "fuentes": "playfair-inter",
     "orden": [
       "espacio",
       "incluye",

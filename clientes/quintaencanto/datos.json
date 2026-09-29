@@ -8,8 +8,8 @@
   "publicada": false,
   "variantes": {
     "portada": "completa",
-    "galeria": "mosaico",
-    "fuentes": "bricolage-host",
+    "galeria": "grilla",
+    "fuentes": "playfair-inter",
     "orden": [
       "espacio",
       "incluye",
