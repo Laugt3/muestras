@@ -1,0 +1,140 @@
+{
+  "portafolio": {
+    "categoria": "Eventos",
+    "rubro": "Salón de fiestas",
+    "ciudad": "Montevideo",
+    "pais": "Uruguay"
+  },
+  "publicada": false,
+  "variantes": {
+    "portada": "completa",
+    "galeria": "mosaico",
+    "fuentes": "bricolage-host",
+    "orden": [
+      "espacio",
+      "incluye",
+      "fecha",
+      "donde"
+    ]
+  },
+  "colores": {
+    "bg": "#f7f4fb",
+    "ink": "#1a1633",
+    "mute": "#6a6582",
+    "line": "#e3ddee",
+    "card": "#ece6f5",
+    "accent": "#4b3bd1",
+    "on-accent": "#fff",
+    "accent-ink": "#4b3bd1",
+    "accent-hero": "#c9c2ff"
+  },
+  "textos": {
+    "titulo": "Le Soleil · Fiestas y eventos en Montevideo",
+    "descripcion": "XV, bodas y cumpleaños en Montevideo. Consultá tu fecha.",
+    "nombre_muestra": "Le Soleil",
+    "marca": "Le Soleil",
+    "nav_espacio": "El lugar",
+    "nav_incluye": "Qué incluye",
+    "nav_donde": "Dónde estamos",
+    "nav_cta": "Consultá tu fecha",
+    "resenas": "4,6 · 212 reseñas en Google",
+    "titular": "Donde tus momentos <em>se hacen recuerdos.</em>",
+    "bajada": "Salón de fiestas en Montevideo para XV, bodas, cumpleaños y eventos, con pista, luces y ambientación a tu medida.",
+    "cta_portada": "Consultá tu fecha",
+    "boton_asistente": "Preguntale al asistente",
+    "espacio_etiqueta": "El lugar",
+    "espacio_titulo": "Una noche que brilla de principio a fin",
+    "incluye_etiqueta": "Servicio integral",
+    "incluye_titulo": "Todo listo para que solo disfrutes",
+    "incluye_texto": "Pista, ambientación y mesa dulce en un mismo lugar.",
+    "fecha_etiqueta": "Consultá tu fecha",
+    "fecha_titulo": "Contanos qué querés festejar",
+    "paso1_titulo": "Elegí el evento y la fecha",
+    "paso1_texto": "Aunque sea aproximada, así vemos disponibilidad.",
+    "paso2_titulo": "Mandalo por WhatsApp",
+    "paso2_texto": "Te llega armado, no tenés que explicar nada.",
+    "paso3_titulo": "Te pasamos el presupuesto",
+    "paso3_texto": "Con todo lo que incluye, para tu cantidad de invitados.",
+    "campo_tipo": "Tipo de evento",
+    "campo_fecha": "Fecha",
+    "campo_invitados": "Invitados",
+    "boton_formulario": "Consultar por WhatsApp",
+    "nota_formulario": "Te contestamos en el día.",
+    "donde_etiqueta": "Dónde estamos",
+    "direccion": "Montevideo",
+    "direccion_detalle": "Consultanos la dirección",
+    "mapa_url": "https://www.google.com/maps/search/?api=1&query=Le+Soleil+salon+de+eventos+Montevideo",
+    "mapa_boton": "Cómo llegar",
+    "contacto_etiqueta": "Contacto",
+    "contacto": "096 225 906",
+    "contacto_detalle": "@lesoleil_mvdeo",
+    "copyright": "Le Soleil",
+    "burbuja": "¿Tenés la fecha libre?",
+    "nombre_chat": "Le Soleil"
+  },
+  "asistente": {
+    "demo": [
+      "15 años",
+      "80 a 120 invitados"
+    ],
+    "tags": [
+      "XV",
+      "Bodas",
+      "Cumpleaños",
+      "Eventos",
+      "Pista con luces",
+      "Mesa dulce"
+    ],
+    "inc": [
+      "Salón con pista, luces y sonido",
+      "Ambientación a elección",
+      "Torta y mesa dulce",
+      "Recepción y servicio de mozos",
+      "Visita para conocer el salón"
+    ],
+    "tipos": [
+      "Boda",
+      "15 años",
+      "Cumpleaños",
+      "Evento",
+      "Otro"
+    ],
+    "inv": [
+      "Hasta 50 invitados",
+      "50 a 80 invitados",
+      "80 a 120 invitados",
+      "Más de 120 invitados"
+    ],
+    "wa": "59896225906",
+    "faq": {
+      "precio": "Depende del tipo de fiesta, el día y la cantidad de invitados. Con esos datos te armamos el presupuesto con todo lo que incluye.",
+      "capacidad": "El salón se adapta a fiestas chicas y grandes. Decinos cuántos son y te confirmamos.",
+      "visita": "¡Claro! Coordinamos una visita para que conozcas el salón antes de reservar.",
+      "donde": "Estamos en Montevideo. Escribinos y te pasamos la dirección y cómo llegar."
+    },
+    "t": {
+      "soy": "Soy",
+      "sinFecha": "fecha a definir",
+      "listo": "Listo",
+      "noSe": "Todavía no sé",
+      "tag": "Asistente automático · responde al instante",
+      "hola": "¡Hola! 👋 Soy el asistente de Le Soleil.",
+      "hola2": "¿En qué te puedo ayudar?",
+      "qFecha": "Consultar una fecha",
+      "qPrecio": "¿Cuánto sale?",
+      "qCap": "¿Para cuántas personas?",
+      "qVisita": "Quiero conocer el lugar",
+      "qDonde": "¿Dónde quedan?",
+      "qArmar": "Armar mi consulta",
+      "qOtra": "Otra pregunta",
+      "qAgendar": "Agendar visita por WhatsApp",
+      "qSeguir": "Enviar consulta por WhatsApp",
+      "bTipo": "¡Buenísimo! ¿Qué vas a festejar?",
+      "bInv": "¿Más o menos cuántos invitados?",
+      "bFecha": "¿Tenés una fecha pensada?",
+      "bFin": "Perfecto: {tipo}, {inv}, {fecha}.\nTe paso con el equipo para confirmar la fecha y mandarte el presupuesto. Tocá abajo y te llega todo armado 👇",
+      "msgForm": "Hola! {nom}Quiero consultar por un evento: {tipo}, {inv}, para el {fecha}. ¿Tienen la fecha libre?",
+      "msgVisita": "Hola! Me gustaría coordinar una visita para conocer el lugar."
+    }
+  }
+}

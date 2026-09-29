@@ -1,0 +1,140 @@
+{
+  "portafolio": {
+    "categoria": "Eventos",
+    "rubro": "Quinta para eventos",
+    "ciudad": "Monterrey",
+    "pais": "México"
+  },
+  "publicada": false,
+  "variantes": {
+    "portada": "completa",
+    "galeria": "mosaico",
+    "fuentes": "bricolage-host",
+    "orden": [
+      "espacio",
+      "incluye",
+      "fecha",
+      "donde"
+    ]
+  },
+  "colores": {
+    "bg": "#f7f5f0",
+    "ink": "#1d1a12",
+    "mute": "#6d675a",
+    "line": "#e5dfd2",
+    "card": "#eee8dc",
+    "accent": "#b08a2e",
+    "on-accent": "#fff",
+    "accent-ink": "#9c7a27",
+    "accent-hero": "#f5dc9c"
+  },
+  "textos": {
+    "titulo": "Quinta Sarahí · Eventos en Monterrey",
+    "descripcion": "Salón con alberca en Monterrey. Cotiza tu fecha.",
+    "nombre_muestra": "Quinta Sarahí",
+    "marca": "Quinta Sarahí",
+    "nav_espacio": "El lugar",
+    "nav_incluye": "Qué incluye",
+    "nav_donde": "Dónde estamos",
+    "nav_cta": "Consulta tu fecha",
+    "resenas": "4,7 · 263 reseñas en Google",
+    "titular": "Celebra en grande, <em>sin pasar calor.</em>",
+    "bajada": "Salón amplio con alberca en la colonia Mirasol, Monterrey, para bodas, XV años y eventos sociales.",
+    "cta_portada": "Consulta tu fecha",
+    "boton_asistente": "Pregúntale al asistente",
+    "espacio_etiqueta": "El lugar",
+    "espacio_titulo": "Un salón grande para celebrar en grande",
+    "incluye_etiqueta": "Todo en un lugar",
+    "incluye_titulo": "Tú invitas, nosotros lo demás",
+    "incluye_texto": "Salón, alberca y pista para que tu evento salga perfecto.",
+    "fecha_etiqueta": "Consulta tu fecha",
+    "fecha_titulo": "Cuéntanos qué quieres celebrar",
+    "paso1_titulo": "Elige el evento y la fecha",
+    "paso1_texto": "Aunque sea aproximada, así vemos disponibilidad.",
+    "paso2_titulo": "Envíalo por WhatsApp",
+    "paso2_texto": "Te llega armado, no tienes que explicar nada.",
+    "paso3_titulo": "Te enviamos la cotización",
+    "paso3_texto": "Con todo lo que incluye, para tu cantidad de invitados.",
+    "campo_tipo": "Tipo de evento",
+    "campo_fecha": "Fecha",
+    "campo_invitados": "Invitados",
+    "boton_formulario": "Consultar por WhatsApp",
+    "nota_formulario": "Te respondemos el mismo día.",
+    "donde_etiqueta": "Dónde estamos",
+    "direccion": "Capulín 1705",
+    "direccion_detalle": "Col. Mirasol · Monterrey",
+    "mapa_url": "https://www.google.com/maps/search/?api=1&query=Quinta+Sarah%C3%AD+Capul%C3%ADn+1705+Monterrey",
+    "mapa_boton": "Cómo llegar",
+    "contacto_etiqueta": "Contacto",
+    "contacto": "81 8082 4052",
+    "contacto_detalle": "@quintasarahi",
+    "copyright": "Quinta Sarahí",
+    "burbuja": "¿Tienes la fecha libre?",
+    "nombre_chat": "Quinta Sarahí"
+  },
+  "asistente": {
+    "demo": [
+      "Boda",
+      "150 a 250 invitados"
+    ],
+    "tags": [
+      "Bodas",
+      "XV años",
+      "Graduaciones",
+      "Posadas",
+      "Cumpleaños",
+      "Alberca"
+    ],
+    "inc": [
+      "Salón amplio para eventos grandes",
+      "Alberca con cascada",
+      "Pista de baile",
+      "Mobiliario y montaje",
+      "Cita para conocer la quinta"
+    ],
+    "tipos": [
+      "Boda",
+      "XV años",
+      "Graduación",
+      "Posada",
+      "Otro"
+    ],
+    "inv": [
+      "Hasta 100 invitados",
+      "100 a 150 invitados",
+      "150 a 250 invitados",
+      "Más de 250 invitados"
+    ],
+    "wa": "528180824052",
+    "faq": {
+      "precio": "Depende del tipo de evento, el día y el número de invitados. Con esos datos te enviamos la cotización con todo lo que incluye.",
+      "visita": "¡Claro! Agenda una cita y te mostramos el lugar con calma.",
+      "donde": "Estamos en Capulín 1705, col. Mirasol, Monterrey.",
+      "capacidad": "El salón recibe desde eventos medianos hasta fiestas grandes. Dinos cuántos serán y te confirmamos."
+    },
+    "t": {
+      "soy": "Soy",
+      "sinFecha": "fecha a definir",
+      "listo": "Listo",
+      "noSe": "Aún no sé",
+      "tag": "Asistente automático · responde al instante",
+      "hola": "¡Hola! 👋 Soy el asistente de Quinta Sarahí.",
+      "hola2": "¿En qué te ayudo?",
+      "qFecha": "Consultar una fecha",
+      "qPrecio": "¿Cuánto cuesta?",
+      "qCap": "¿Para cuántas personas?",
+      "qVisita": "Quiero conocer el lugar",
+      "qDonde": "¿Dónde están?",
+      "qArmar": "Armar mi cotización",
+      "qOtra": "Otra pregunta",
+      "qAgendar": "Agendar visita por WhatsApp",
+      "qSeguir": "Enviar consulta por WhatsApp",
+      "bTipo": "¡Qué padre! ¿Qué vas a celebrar?",
+      "bInv": "¿Más o menos cuántos invitados?",
+      "bFecha": "¿Ya tienes una fecha en mente?",
+      "bFin": "Perfecto: {tipo}, {inv}, {fecha}.\nTe paso con el equipo para confirmar la fecha y enviarte la cotización. Toca abajo y te llega todo armado 👇",
+      "msgForm": "¡Hola! {nom}Quiero cotizar un evento: {tipo}, {inv}, para el {fecha}. ¿Tienen la fecha disponible?",
+      "msgVisita": "¡Hola! Me gustaría agendar una visita para conocer el lugar."
+    }
+  }
+}

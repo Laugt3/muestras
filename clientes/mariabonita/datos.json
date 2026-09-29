@@ -1,0 +1,140 @@
+{
+  "portafolio": {
+    "categoria": "Eventos",
+    "rubro": "Terraza para eventos",
+    "ciudad": "Guadalajara",
+    "pais": "México"
+  },
+  "publicada": false,
+  "variantes": {
+    "portada": "completa",
+    "galeria": "mosaico",
+    "fuentes": "bricolage-host",
+    "orden": [
+      "espacio",
+      "incluye",
+      "fecha",
+      "donde"
+    ]
+  },
+  "colores": {
+    "bg": "#fdf6f3",
+    "ink": "#2a1a1f",
+    "mute": "#7a6268",
+    "line": "#f0dfd9",
+    "card": "#f8e9e4",
+    "accent": "#c2416b",
+    "on-accent": "#fff",
+    "accent-ink": "#b23a61",
+    "accent-hero": "#ffd0dc"
+  },
+  "textos": {
+    "titulo": "Terraza María Bonita · Eventos en Guadalajara",
+    "descripcion": "Terraza para eventos hasta 100 personas en Guadalajara.",
+    "nombre_muestra": "Terraza María Bonita",
+    "marca": "Terraza María Bonita",
+    "nav_espacio": "El lugar",
+    "nav_incluye": "Qué incluye",
+    "nav_donde": "Dónde estamos",
+    "nav_cta": "Consulta tu fecha",
+    "resenas": "4,5 · 652 reseñas en Google",
+    "titular": "La terraza más <em>bonita</em> para tu evento.",
+    "bajada": "Terraza para eventos familiares en Guadalajara, Jalisco, con capacidad para hasta 100 personas.",
+    "cta_portada": "Consulta tu fecha",
+    "boton_asistente": "Pregúntale al asistente",
+    "espacio_etiqueta": "El lugar",
+    "espacio_titulo": "Cada evento, decorado a tu gusto",
+    "incluye_etiqueta": "Todo incluido",
+    "incluye_titulo": "Tú eliges la fecha, nosotros el resto",
+    "incluye_texto": "Terraza, mobiliario y decoración en un solo lugar.",
+    "fecha_etiqueta": "Consulta tu fecha",
+    "fecha_titulo": "Cuéntanos qué quieres celebrar",
+    "paso1_titulo": "Elige el evento y la fecha",
+    "paso1_texto": "Aunque sea aproximada, así vemos disponibilidad.",
+    "paso2_titulo": "Envíalo por WhatsApp",
+    "paso2_texto": "Te llega armado, no tienes que explicar nada.",
+    "paso3_titulo": "Te enviamos la cotización",
+    "paso3_texto": "Con todo lo que incluye, para tu cantidad de invitados.",
+    "campo_tipo": "Tipo de evento",
+    "campo_fecha": "Fecha",
+    "campo_invitados": "Invitados",
+    "boton_formulario": "Consultar por WhatsApp",
+    "nota_formulario": "Te respondemos el mismo día.",
+    "donde_etiqueta": "Dónde estamos",
+    "direccion": "Guadalajara, Jalisco",
+    "direccion_detalle": "Citas e informes con Ana Pastrano",
+    "mapa_url": "https://www.google.com/maps/search/?api=1&query=Terraza+Mar%C3%ADa+Bonita+Guadalajara",
+    "mapa_boton": "Cómo llegar",
+    "contacto_etiqueta": "Contacto",
+    "contacto": "33 1142 9184",
+    "contacto_detalle": "@terrazamariabonita",
+    "copyright": "Terraza María Bonita",
+    "burbuja": "¿Tienes la fecha libre?",
+    "nombre_chat": "Terraza María Bonita"
+  },
+  "asistente": {
+    "demo": [
+      "XV años",
+      "50 a 80 invitados"
+    ],
+    "tags": [
+      "XV años",
+      "Bodas",
+      "Bautizos",
+      "Cumpleaños",
+      "Baby shower",
+      "Hasta 100 personas"
+    ],
+    "inc": [
+      "Terraza con jardín y fuente",
+      "Salón para hasta 100 personas",
+      "Mesas y sillas Tiffany con mantelería",
+      "Decoración temática a elección",
+      "Cita para conocer la terraza"
+    ],
+    "tipos": [
+      "XV años",
+      "Boda",
+      "Bautizo",
+      "Cumpleaños",
+      "Otro"
+    ],
+    "inv": [
+      "Hasta 30 invitados",
+      "30 a 50 invitados",
+      "50 a 80 invitados",
+      "80 a 100 invitados"
+    ],
+    "wa": "523311429184",
+    "faq": {
+      "precio": "Depende del tipo de evento, el día y el número de invitados. Con esos datos te enviamos la cotización con todo lo que incluye.",
+      "visita": "¡Claro! Agenda una cita y te mostramos el lugar con calma.",
+      "donde": "Estamos en Guadalajara, Jalisco. Escríbenos y te compartimos la ubicación.",
+      "capacidad": "Tenemos capacidad para hasta 100 personas, ideal para eventos familiares."
+    },
+    "t": {
+      "soy": "Soy",
+      "sinFecha": "fecha a definir",
+      "listo": "Listo",
+      "noSe": "Aún no sé",
+      "tag": "Asistente automático · responde al instante",
+      "hola": "¡Hola! 👋 Soy el asistente de Terraza María Bonita.",
+      "hola2": "¿En qué te ayudo?",
+      "qFecha": "Consultar una fecha",
+      "qPrecio": "¿Cuánto cuesta?",
+      "qCap": "¿Para cuántas personas?",
+      "qVisita": "Quiero conocer el lugar",
+      "qDonde": "¿Dónde están?",
+      "qArmar": "Armar mi cotización",
+      "qOtra": "Otra pregunta",
+      "qAgendar": "Agendar visita por WhatsApp",
+      "qSeguir": "Enviar consulta por WhatsApp",
+      "bTipo": "¡Qué padre! ¿Qué vas a celebrar?",
+      "bInv": "¿Más o menos cuántos invitados?",
+      "bFecha": "¿Ya tienes una fecha en mente?",
+      "bFin": "Perfecto: {tipo}, {inv}, {fecha}.\nTe paso con el equipo para confirmar la fecha y enviarte la cotización. Toca abajo y te llega todo armado 👇",
+      "msgForm": "¡Hola! {nom}Quiero cotizar un evento: {tipo}, {inv}, para el {fecha}. ¿Tienen la fecha disponible?",
+      "msgVisita": "¡Hola! Me gustaría agendar una visita para conocer el lugar."
+    }
+  }
+}

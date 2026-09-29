@@ -205,8 +205,8 @@ function fin(){const msg=D.t.msgForm.replace("{nom}","").replace("{tipo}",S.tipo
 function openChat(){$("#chat").classList.add("on");if(!started){started=true;const d=document.createElement("div");d.className="ctag";d.textContent=D.t.tag;$("#cb").appendChild(d);bot(D.t.hola,()=>bot(D.t.hola2,menu))}}
 function closeChat(){$("#chat").classList.remove("on")}
 if(location.hash==="#demo"){started=true;$("#chat").classList.add("on");const d=document.createElement("div");d.className="ctag";d.textContent=D.t.tag;$("#cb").appendChild(d);
- const t=(D.demo||[])[0]||D.tipos[1],i=(D.demo||[])[1]||D.inv[2];bubble(D.t.hola,"in");bubble(D.t.qFecha,"out");bubble(D.t.bTipo,"in");bubble(t,"out");bubble(D.t.bInv,"in");bubble(i,"out");bubble(D.t.bFecha,"in");bubble("14/03/2027","out");
- bubble(D.t.bFin.replace("{tipo}",t).replace("{inv}",i).replace("{fecha}","14/03/2027"),"in");opts([{l:D.t.qSeguir,href:"#"},{l:D.t.qOtra,f:menu}]);
+ const t=(D.demo||[])[0]||D.tipos[1],i=(D.demo||[])[1]||D.inv[2];bubble(D.t.hola,"in");bubble(D.t.qFecha,"out");bubble(D.t.bTipo,"in");bubble(t,"out");bubble(D.t.bInv,"in");bubble(i,"out");bubble(D.t.bFecha,"in");const dd=(D.demo||[])[2]||"14/03/2027";bubble(dd,"out");
+ bubble(D.t.bFin.replace("{tipo}",t).replace("{inv}",i).replace("{fecha}",dd),"in");opts([{l:D.t.qSeguir,href:"#"},{l:D.t.qOtra,f:menu}]);
  document.querySelectorAll(".m time").forEach((e,k)=>e.textContent="21:"+String(14+Math.floor(k/2)).padStart(2,"0"));$("#cb").scrollTop=1e6}
 else setTimeout(()=>{if(!started&&innerWidth>860)openChat()},6000);
 </script>

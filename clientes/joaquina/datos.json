@@ -1,0 +1,135 @@
+{
+  "portafolio": {
+    "categoria": "Eventos",
+    "rubro": "Chacra para eventos",
+    "ciudad": "Montevideo",
+    "pais": "Uruguay"
+  },
+  "publicada": false,
+  "variantes": {
+    "portada": "completa",
+    "galeria": "mosaico",
+    "fuentes": "bricolage-host",
+    "orden": [
+      "espacio",
+      "incluye",
+      "fecha",
+      "donde"
+    ]
+  },
+  "colores": {
+    "bg": "#12100e",
+    "ink": "#f3ede4",
+    "mute": "#a89e91",
+    "line": "#2d2822",
+    "card": "#1c1916",
+    "accent": "#c9a46a",
+    "on-accent": "#15120e",
+    "accent-ink": "#d9b87e",
+    "accent-hero": "#ecd3a3"
+  },
+  "textos": {
+    "titulo": "Joaquina Chacra · Bodas, XV y celebraciones en Montevideo",
+    "descripcion": "Bodas, XV y celebraciones premium. Consultá tu fecha.",
+    "nombre_muestra": "Joaquina Chacra",
+    "marca": "Joaquina Chacra",
+    "nav_espacio": "El lugar",
+    "nav_incluye": "Qué incluye",
+    "nav_donde": "Dónde estamos",
+    "nav_cta": "Consultá tu fecha",
+    "resenas": "4,7 · 518 reseñas en Google",
+    "titular": "Noches que <em>brillan.</em>",
+    "bajada": "Producción de eventos únicos en Montevideo: bodas, XV y celebraciones premium, a 15 minutos del centro por Ruta 5.",
+    "cta_portada": "Consultá tu fecha",
+    "boton_asistente": "Preguntale al asistente",
+    "espacio_etiqueta": "El lugar",
+    "espacio_titulo": "Un salón hecho para las grandes noches",
+    "incluye_etiqueta": "Producción integral",
+    "incluye_titulo": "Nos ocupamos de cada detalle",
+    "incluye_texto": "De la ambientación a la pista, todo en un mismo lugar y con un solo equipo.",
+    "fecha_etiqueta": "Consultá tu fecha",
+    "fecha_titulo": "Contanos qué querés festejar",
+    "paso1_titulo": "Elegí el evento y la fecha",
+    "paso1_texto": "Aunque sea aproximada, así vemos disponibilidad.",
+    "paso2_titulo": "Mandalo por WhatsApp",
+    "paso2_texto": "Te llega armado, no tenés que explicar nada.",
+    "paso3_titulo": "Te pasamos el presupuesto",
+    "paso3_texto": "Con todo lo que incluye, para tu cantidad de invitados.",
+    "campo_tipo": "Tipo de evento",
+    "campo_fecha": "Fecha",
+    "campo_invitados": "Invitados",
+    "boton_formulario": "Consultar por WhatsApp",
+    "nota_formulario": "Te contestamos en el día.",
+    "donde_etiqueta": "Dónde estamos",
+    "direccion": "Camino La Redención 7005",
+    "direccion_detalle": "Km 13.500, Ruta 5 · Montevideo",
+    "mapa_url": "https://www.google.com/maps/search/?api=1&query=Chacra+la+Joaquina+Montevideo",
+    "mapa_boton": "Cómo llegar",
+    "contacto_etiqueta": "Contacto",
+    "contacto": "094 573 812",
+    "contacto_detalle": "@joaquinachacraeventos",
+    "copyright": "Joaquina Chacra",
+    "burbuja": "¿Tenés la fecha libre?",
+    "nombre_chat": "Joaquina Chacra"
+  },
+  "asistente": {
+    "tags": [
+      "Bodas",
+      "XV",
+      "Celebraciones premium",
+      "Cumpleaños",
+      "Eventos de empresa"
+    ],
+    "inc": [
+      "Salón con arañas de cristal y pista de baile",
+      "Iluminación y sonido para la fiesta",
+      "Producción completa del evento",
+      "Ambientación y mesas a medida",
+      "Visita para conocer la chacra"
+    ],
+    "tipos": [
+      "Boda",
+      "XV",
+      "Cumpleaños",
+      "Evento de empresa",
+      "Otro"
+    ],
+    "inv": [
+      "Hasta 80 invitados",
+      "80 a 150 invitados",
+      "150 a 250 invitados",
+      "Más de 250 invitados"
+    ],
+    "wa": "59894573812",
+    "faq": {
+      "precio": "Depende del tipo de evento, la fecha y la cantidad de invitados. Con esos datos te armamos la propuesta con todo lo que incluye.",
+      "capacidad": "El salón se adapta desde celebraciones íntimas hasta fiestas grandes. Decinos cuántos son y te confirmamos.",
+      "visita": "¡Claro! Coordinamos una visita para que conozcas la chacra y el salón con tiempo.",
+      "donde": "Estamos en Camino La Redención 7005, km 13.500 de Ruta 5, Montevideo. En la web tenés el botón para llegar con Google Maps."
+    },
+    "t": {
+      "soy": "Soy",
+      "sinFecha": "fecha a definir",
+      "listo": "Listo",
+      "noSe": "Todavía no sé",
+      "tag": "Asistente automático · responde al instante",
+      "hola": "¡Hola! 👋 Soy el asistente de Joaquina Chacra.",
+      "hola2": "¿En qué te puedo ayudar?",
+      "qFecha": "Consultar una fecha",
+      "qPrecio": "¿Cuánto sale?",
+      "qCap": "¿Para cuántas personas?",
+      "qVisita": "Quiero conocer el lugar",
+      "qDonde": "¿Dónde quedan?",
+      "qArmar": "Armar mi consulta",
+      "qOtra": "Otra pregunta",
+      "qAgendar": "Agendar visita por WhatsApp",
+      "qSeguir": "Enviar consulta por WhatsApp",
+      "bTipo": "¡Buenísimo! ¿Qué vas a festejar?",
+      "bInv": "¿Más o menos cuántos invitados?",
+      "bFecha": "¿Tenés una fecha pensada?",
+      "bFin": "Perfecto: {tipo}, {inv}, {fecha}.\nTe paso con el equipo para confirmar la fecha y mandarte el presupuesto. Tocá abajo y te llega todo armado 👇",
+      "msgForm": "Hola! {nom}Quiero consultar por un evento: {tipo}, {inv}, para el {fecha}. ¿Tienen la fecha libre?",
+      "msgVisita": "Hola! Me gustaría coordinar una visita para conocer el lugar."
+    }
+  }
+}

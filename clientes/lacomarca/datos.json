@@ -1,0 +1,140 @@
+{
+  "portafolio": {
+    "categoria": "Eventos",
+    "rubro": "Salón de fiestas",
+    "ciudad": "Montevideo",
+    "pais": "Uruguay"
+  },
+  "publicada": false,
+  "variantes": {
+    "portada": "completa",
+    "galeria": "mosaico",
+    "fuentes": "bricolage-host",
+    "orden": [
+      "espacio",
+      "incluye",
+      "fecha",
+      "donde"
+    ]
+  },
+  "colores": {
+    "bg": "#fbf7f2",
+    "ink": "#1f1612",
+    "mute": "#6f6259",
+    "line": "#eadfd3",
+    "card": "#f3e9dd",
+    "accent": "#e2571c",
+    "on-accent": "#fff",
+    "accent-ink": "#d24d14",
+    "accent-hero": "#ffcf9e"
+  },
+  "textos": {
+    "titulo": "La Comarca · Fiestas y eventos en Centro y Tres Cruces",
+    "descripcion": "Dos salones en Montevideo con discoteca y catering. Consultá tu fecha.",
+    "nombre_muestra": "La Comarca",
+    "marca": "La Comarca",
+    "nav_espacio": "El lugar",
+    "nav_incluye": "Qué incluye",
+    "nav_donde": "Dónde estamos",
+    "nav_cta": "Consultá tu fecha",
+    "resenas": "4,8 · 226 reseñas en Google",
+    "titular": "Tu fiesta, <em>de principio a fin.</em>",
+    "bajada": "Dos salones en Montevideo, Centro y Tres Cruces, con discoteca, karaoke, menú y personal incluido.",
+    "cta_portada": "Consultá tu fecha",
+    "boton_asistente": "Preguntale al asistente",
+    "espacio_etiqueta": "El lugar",
+    "espacio_titulo": "Pista, luces y todo listo para festejar",
+    "incluye_etiqueta": "Propuesta integral",
+    "incluye_titulo": "Vos traés a los invitados",
+    "incluye_texto": "Música, comida y personal en un solo precio por persona.",
+    "fecha_etiqueta": "Consultá tu fecha",
+    "fecha_titulo": "Contanos qué querés festejar",
+    "paso1_titulo": "Elegí el evento y la fecha",
+    "paso1_texto": "Aunque sea aproximada, así vemos disponibilidad.",
+    "paso2_titulo": "Mandalo por WhatsApp",
+    "paso2_texto": "Te llega armado, no tenés que explicar nada.",
+    "paso3_titulo": "Te pasamos el presupuesto",
+    "paso3_texto": "Con todo lo que incluye, para tu cantidad de invitados.",
+    "campo_tipo": "Tipo de evento",
+    "campo_fecha": "Fecha",
+    "campo_invitados": "Invitados",
+    "boton_formulario": "Consultar por WhatsApp",
+    "nota_formulario": "Te contestamos en el día.",
+    "donde_etiqueta": "Dónde estamos",
+    "direccion": "Colonia 1219 · Duvimioso Terra 1971",
+    "direccion_detalle": "Centro y Tres Cruces · Montevideo",
+    "mapa_url": "https://www.google.com/maps/search/?api=1&query=La+Comarca+Fiestas+y+Eventos+Montevideo",
+    "mapa_boton": "Cómo llegar",
+    "contacto_etiqueta": "Contacto",
+    "contacto": "097 421 425",
+    "contacto_detalle": "@lacomarcafiestasyeventos",
+    "copyright": "La Comarca",
+    "burbuja": "¿Tenés la fecha libre?",
+    "nombre_chat": "La Comarca"
+  },
+  "asistente": {
+    "demo": [
+      "Cumpleaños",
+      "30 a 50 personas"
+    ],
+    "tags": [
+      "Dos salones: Centro y Tres Cruces",
+      "Cumpleaños",
+      "15 años",
+      "Bodas",
+      "Empresariales",
+      "Discoteca y karaoke"
+    ],
+    "inc": [
+      "Dos salones: Colonia 1219 (Centro) y Duvimioso Terra 1971 (Tres Cruces)",
+      "Discoteca completa con DJ y karaoke",
+      "Menú para adultos y jóvenes, con canilla libre",
+      "Personal, mozos y encargado incluidos",
+      "Hasta 6 horas de fiesta"
+    ],
+    "tipos": [
+      "Cumpleaños",
+      "15 años",
+      "Boda",
+      "Empresarial",
+      "Otro"
+    ],
+    "inv": [
+      "Hasta 30 personas",
+      "30 a 50 personas",
+      "50 a 80 personas",
+      "Más de 80 personas"
+    ],
+    "wa": "59897421425",
+    "faq": {
+      "precio": "Trabajamos con precio por persona, según el menú y el salón. Pasanos la fecha y cuántos son y te mandamos el presupuesto con todo lo que incluye.",
+      "capacidad": "Tenemos dos salones, Centro y Tres Cruces. Según cuántos sean te recomendamos el mejor.",
+      "visita": "¡Claro! Coordinamos para que conozcas el salón que te quede más cómodo.",
+      "donde": "Salón Centro: Colonia 1219. Salón Tres Cruces: Duvimioso Terra 1971. Los dos en Montevideo."
+    },
+    "t": {
+      "soy": "Soy",
+      "sinFecha": "fecha a definir",
+      "listo": "Listo",
+      "noSe": "Todavía no sé",
+      "tag": "Asistente automático · responde al instante",
+      "hola": "¡Hola! 👋 Soy el asistente de La Comarca.",
+      "hola2": "¿En qué te puedo ayudar?",
+      "qFecha": "Consultar una fecha",
+      "qPrecio": "¿Cuánto sale?",
+      "qCap": "¿Para cuántas personas?",
+      "qVisita": "Quiero conocer el lugar",
+      "qDonde": "¿Dónde quedan?",
+      "qArmar": "Armar mi consulta",
+      "qOtra": "Otra pregunta",
+      "qAgendar": "Agendar visita por WhatsApp",
+      "qSeguir": "Enviar consulta por WhatsApp",
+      "bTipo": "¡Buenísimo! ¿Qué vas a festejar?",
+      "bInv": "¿Más o menos cuántos invitados?",
+      "bFecha": "¿Tenés una fecha pensada?",
+      "bFin": "Perfecto: {tipo}, {inv}, {fecha}.\nTe paso con el equipo para confirmar la fecha y mandarte el presupuesto. Tocá abajo y te llega todo armado 👇",
+      "msgForm": "Hola! {nom}Quiero consultar por un evento: {tipo}, {inv}, para el {fecha}. ¿Tienen la fecha libre?",
+      "msgVisita": "Hola! Me gustaría coordinar una visita para conocer el lugar."
+    }
+  }
+}

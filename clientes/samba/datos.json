@@ -1,0 +1,136 @@
+{
+  "portafolio": {
+    "categoria": "Eventos",
+    "rubro": "Salón de fiestas",
+    "ciudad": "Montevideo",
+    "pais": "Uruguay"
+  },
+  "publicada": false,
+  "variantes": {
+    "portada": "completa",
+    "galeria": "mosaico",
+    "fuentes": "bricolage-host",
+    "orden": [
+      "espacio",
+      "incluye",
+      "fecha",
+      "donde"
+    ]
+  },
+  "colores": {
+    "bg": "#fbf7f3",
+    "ink": "#1c1530",
+    "mute": "#6c6478",
+    "line": "#e7dfe6",
+    "card": "#f3eaf0",
+    "accent": "#d3246c",
+    "on-accent": "#fff",
+    "accent-ink": "#c01f62",
+    "accent-hero": "#ffc4de"
+  },
+  "textos": {
+    "titulo": "Samba Fiestas & Eventos · Salones de fiestas en Montevideo",
+    "descripcion": "Cumples, 15 y fiestas en Montevideo. Consultá tu fecha.",
+    "nombre_muestra": "Samba Fiestas & Eventos",
+    "marca": "Samba Fiestas & Eventos",
+    "nav_espacio": "El lugar",
+    "nav_incluye": "Qué incluye",
+    "nav_donde": "Dónde estamos",
+    "nav_cta": "Consultá tu fecha",
+    "resenas": "4,6 · 554 reseñas en Google",
+    "titular": "Fiestas que <em>se recuerdan.</em>",
+    "bajada": "Dos salones en Montevideo con servicio integral: ambientación, entretenimiento y tortas para que vos solo disfrutes.",
+    "cta_portada": "Consultá tu fecha",
+    "boton_asistente": "Preguntale al asistente",
+    "espacio_etiqueta": "El lugar",
+    "espacio_titulo": "Cada fiesta, con su propia temática",
+    "incluye_etiqueta": "Servicio integral",
+    "incluye_titulo": "Vos elegís la fecha, nosotros el resto",
+    "incluye_texto": "Decoración, animación y mesa dulce en un solo lugar, sin coordinar con diez proveedores.",
+    "fecha_etiqueta": "Consultá tu fecha",
+    "fecha_titulo": "Contanos qué querés festejar",
+    "paso1_titulo": "Elegí el evento y la fecha",
+    "paso1_texto": "Aunque sea aproximada, así vemos disponibilidad.",
+    "paso2_titulo": "Mandalo por WhatsApp",
+    "paso2_texto": "Te llega armado, no tenés que explicar nada.",
+    "paso3_titulo": "Te pasamos el presupuesto",
+    "paso3_texto": "Con todo lo que incluye, para tu cantidad de invitados.",
+    "campo_tipo": "Tipo de evento",
+    "campo_fecha": "Fecha",
+    "campo_invitados": "Invitados",
+    "boton_formulario": "Consultar por WhatsApp",
+    "nota_formulario": "Te contestamos en el día.",
+    "donde_etiqueta": "Dónde estamos",
+    "direccion": "Edil Hugo Prato 2333",
+    "direccion_detalle": "Samba 2 · Montevideo",
+    "mapa_url": "https://www.google.com/maps/search/?api=1&query=SAMBA+2+Fiestas%26Eventos+Edil+Hugo+Prato+2333+Montevideo",
+    "mapa_boton": "Cómo llegar",
+    "contacto_etiqueta": "Contacto",
+    "contacto": "094 835 811",
+    "contacto_detalle": "@sambafiestasyeventos · @samba2fiestasyeventos",
+    "copyright": "Samba Fiestas & Eventos",
+    "burbuja": "¿Tenés la fecha libre?",
+    "nombre_chat": "Samba Fiestas & Eventos"
+  },
+  "asistente": {
+    "tags": [
+      "Cumples infantiles",
+      "Cumples de 15",
+      "Cumples adultos",
+      "Casamientos",
+      "Aire libre",
+      "Fiestas temáticas"
+    ],
+    "inc": [
+      "Dos salones: Samba 1 y Samba 2",
+      "Ambientación temática a elección",
+      "Entretenimiento y animación",
+      "Tortas y mesa dulce",
+      "Espacio al aire libre"
+    ],
+    "tipos": [
+      "Cumple infantil",
+      "Cumple de 15",
+      "Cumple adulto",
+      "Casamiento",
+      "Otro"
+    ],
+    "inv": [
+      "Hasta 30 invitados",
+      "30 a 60 invitados",
+      "60 a 100 invitados",
+      "Más de 100 invitados"
+    ],
+    "wa": "59894835811",
+    "faq": {
+      "precio": "Depende del tipo de fiesta, el día y la cantidad de invitados. Con esos datos te armamos el presupuesto con todo lo que incluye.",
+      "capacidad": "Tenemos dos salones, Samba 1 y Samba 2, así que hay opción para fiestas chicas y grandes. Decinos cuántos son y te recomendamos el ideal.",
+      "visita": "¡Claro! Podés venir a conocer los salones antes de reservar. Coordinamos día y hora.",
+      "donde": "Samba 2 está en Edil Hugo Prato 2333, Montevideo. En la web tenés el botón para llegar con Google Maps."
+    },
+    "t": {
+      "soy": "Soy",
+      "sinFecha": "fecha a definir",
+      "listo": "Listo",
+      "noSe": "Todavía no sé",
+      "tag": "Asistente automático · responde al instante",
+      "hola": "¡Hola! 👋 Soy el asistente de Samba Fiestas & Eventos.",
+      "hola2": "¿En qué te puedo ayudar?",
+      "qFecha": "Consultar una fecha",
+      "qPrecio": "¿Cuánto sale?",
+      "qCap": "¿Para cuántas personas?",
+      "qVisita": "Quiero conocer el lugar",
+      "qDonde": "¿Dónde quedan?",
+      "qArmar": "Armar mi consulta",
+      "qOtra": "Otra pregunta",
+      "qAgendar": "Agendar visita por WhatsApp",
+      "qSeguir": "Enviar consulta por WhatsApp",
+      "bTipo": "¡Buenísimo! ¿Qué vas a festejar?",
+      "bInv": "¿Más o menos cuántos invitados?",
+      "bFecha": "¿Tenés una fecha pensada?",
+      "bFin": "Perfecto: {tipo}, {inv}, {fecha}.\nTe paso con el equipo para confirmar la fecha y mandarte el presupuesto. Tocá abajo y te llega todo armado 👇",
+      "msgForm": "Hola! {nom}Quiero consultar por un evento: {tipo}, {inv}, para el {fecha}. ¿Tienen la fecha libre?",
+      "msgVisita": "Hola! Me gustaría coordinar una visita para conocer el lugar."
+    }
+  }
+}

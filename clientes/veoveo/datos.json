@@ -1,0 +1,139 @@
+{
+  "portafolio": {
+    "categoria": "Eventos",
+    "rubro": "Salón de cumpleaños",
+    "ciudad": "Montevideo",
+    "pais": "Uruguay"
+  },
+  "publicada": false,
+  "variantes": {
+    "portada": "completa",
+    "galeria": "mosaico",
+    "fuentes": "bricolage-host",
+    "orden": [
+      "espacio",
+      "incluye",
+      "fecha",
+      "donde"
+    ]
+  },
+  "colores": {
+    "bg": "#fffaf2",
+    "ink": "#22203a",
+    "mute": "#6b6880",
+    "line": "#efe6d6",
+    "card": "#fff0dc",
+    "accent": "#f0503f",
+    "on-accent": "#fff",
+    "accent-ink": "#e0402f",
+    "accent-hero": "#ffd766"
+  },
+  "textos": {
+    "titulo": "Veo Veo Fiestas y Eventos · Cumpleaños en Montevideo",
+    "descripcion": "Cumples infantiles y de adultos en Montevideo. Consultá tu fecha.",
+    "nombre_muestra": "Veo Veo Fiestas",
+    "marca": "Veo Veo Fiestas",
+    "nav_espacio": "El lugar",
+    "nav_incluye": "Qué incluye",
+    "nav_donde": "Dónde estamos",
+    "nav_cta": "Consultá tu fecha",
+    "resenas": "4,5 · 445 reseñas en Google",
+    "titular": "La diversión <em>no tiene edad.</em>",
+    "bajada": "Cumpleaños infantiles y de adultos en Daniel Muñoz 2226: pelotero, karaoke, animadores y mesas temáticas, con todo incluido.",
+    "cta_portada": "Consultá tu fecha",
+    "boton_asistente": "Preguntale al asistente",
+    "espacio_etiqueta": "El lugar",
+    "espacio_titulo": "Cada cumple, con su propia temática",
+    "incluye_etiqueta": "Todo incluido",
+    "incluye_titulo": "Vos traés a los invitados, nosotros el resto",
+    "incluye_texto": "Juegos, animación y mozo para que la fiesta se disfrute de principio a fin.",
+    "fecha_etiqueta": "Consultá tu fecha",
+    "fecha_titulo": "Contanos qué querés festejar",
+    "paso1_titulo": "Elegí el evento y la fecha",
+    "paso1_texto": "Aunque sea aproximada, así vemos disponibilidad.",
+    "paso2_titulo": "Mandalo por WhatsApp",
+    "paso2_texto": "Te llega armado, no tenés que explicar nada.",
+    "paso3_titulo": "Te pasamos el presupuesto",
+    "paso3_texto": "Con todo lo que incluye, para tu cantidad de invitados.",
+    "campo_tipo": "Tipo de evento",
+    "campo_fecha": "Fecha",
+    "campo_invitados": "Invitados",
+    "boton_formulario": "Consultar por WhatsApp",
+    "nota_formulario": "Te contestamos en el día.",
+    "donde_etiqueta": "Dónde estamos",
+    "direccion": "Daniel Muñoz 2226",
+    "direccion_detalle": "Montevideo",
+    "mapa_url": "https://www.google.com/maps/search/?api=1&query=Veo+Veo+Fiestas+Daniel+Mu%C3%B1oz+2226+Montevideo",
+    "mapa_boton": "Cómo llegar",
+    "contacto_etiqueta": "Contacto",
+    "contacto": "099 393 913",
+    "contacto_detalle": "@veoveofiestas",
+    "copyright": "Veo Veo Fiestas",
+    "burbuja": "¿Tenés la fecha libre?",
+    "nombre_chat": "Veo Veo Fiestas"
+  },
+  "asistente": {
+    "demo": [
+      "Cumple infantil",
+      "20 a 40 chicos"
+    ],
+    "tags": [
+      "Cumples infantiles",
+      "Cumples de adultos",
+      "Graduaciones",
+      "Pelotero",
+      "Karaoke",
+      "Mesas temáticas"
+    ],
+    "inc": [
+      "Pelotero con laberinto y tobogán, y pared de escalar",
+      "Audio, luces, karaoke y coreos",
+      "Dos pantallas gigantes, títeres, maquillaje y disfraces",
+      "Animación dirigida: 1 mozo y 2 animadores",
+      "3 horas de fiesta en un área protegida, con café con la torta"
+    ],
+    "tipos": [
+      "Cumple infantil",
+      "Cumple de adulto",
+      "Graduación",
+      "Otro"
+    ],
+    "inv": [
+      "Hasta 20 chicos",
+      "20 a 40 chicos",
+      "40 a 60 chicos",
+      "Más de 60"
+    ],
+    "wa": "59899393913",
+    "faq": {
+      "precio": "Depende del día, la cantidad de invitados y lo que quieras sumar. Con esos datos te pasamos el presupuesto con todo lo que incluye.",
+      "capacidad": "El salón tiene lugar para fiestas chicas y grandes, con planta alta y área de juegos. Decinos cuántos son y te confirmamos.",
+      "visita": "¡Claro! Agendate para venir a conocer las instalaciones antes de reservar.",
+      "donde": "Estamos en Daniel Muñoz 2226, Montevideo. En la web tenés el botón para llegar con Google Maps."
+    },
+    "t": {
+      "soy": "Soy",
+      "sinFecha": "fecha a definir",
+      "listo": "Listo",
+      "noSe": "Todavía no sé",
+      "tag": "Asistente automático · responde al instante",
+      "hola": "¡Hola! 👋 Soy el asistente de Veo Veo Fiestas.",
+      "hola2": "¿En qué te puedo ayudar?",
+      "qFecha": "Consultar una fecha",
+      "qPrecio": "¿Cuánto sale?",
+      "qCap": "¿Para cuántas personas?",
+      "qVisita": "Quiero conocer el lugar",
+      "qDonde": "¿Dónde quedan?",
+      "qArmar": "Armar mi consulta",
+      "qOtra": "Otra pregunta",
+      "qAgendar": "Agendar visita por WhatsApp",
+      "qSeguir": "Enviar consulta por WhatsApp",
+      "bTipo": "¡Buenísimo! ¿Qué vas a festejar?",
+      "bInv": "¿Más o menos cuántos invitados?",
+      "bFecha": "¿Tenés una fecha pensada?",
+      "bFin": "Perfecto: {tipo}, {inv}, {fecha}.\nTe paso con el equipo para confirmar la fecha y mandarte el presupuesto. Tocá abajo y te llega todo armado 👇",
+      "msgForm": "Hola! {nom}Quiero consultar por un evento: {tipo}, {inv}, para el {fecha}. ¿Tienen la fecha libre?",
+      "msgVisita": "Hola! Me gustaría coordinar una visita para conocer el lugar."
+    }
+  }
+}

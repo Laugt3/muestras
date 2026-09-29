@@ -1,0 +1,135 @@
+{
+  "portafolio": {
+    "categoria": "Eventos",
+    "rubro": "Chacra para eventos",
+    "ciudad": "Montevideo",
+    "pais": "Uruguay"
+  },
+  "publicada": false,
+  "variantes": {
+    "portada": "completa",
+    "galeria": "mosaico",
+    "fuentes": "bricolage-host",
+    "orden": [
+      "espacio",
+      "incluye",
+      "fecha",
+      "donde"
+    ]
+  },
+  "colores": {
+    "bg": "#f4f1ea",
+    "ink": "#17231b",
+    "mute": "#5f6a61",
+    "line": "#dcd8cc",
+    "card": "#e9e5da",
+    "accent": "#2e5b45",
+    "on-accent": "#fff",
+    "accent-ink": "#2e5b45",
+    "accent-hero": "#d5e8cc"
+  },
+  "textos": {
+    "titulo": "Chacra Los Álamos · Fiestas y eventos en Montevideo",
+    "descripcion": "Casamientos, 15 y eventos corporativos. Consultá tu fecha.",
+    "nombre_muestra": "Chacra Los Álamos",
+    "marca": "Chacra Los Álamos",
+    "nav_espacio": "El lugar",
+    "nav_incluye": "Qué incluye",
+    "nav_donde": "Dónde estamos",
+    "nav_cta": "Consultá tu fecha",
+    "resenas": "4,7 · 420 reseñas en Google",
+    "titular": "Celebrá en <em>Los Álamos.</em>",
+    "bajada": "Salón vidriado, parque y piscina en las afueras de Montevideo, para casamientos, 15, cumpleaños y eventos corporativos.",
+    "cta_portada": "Consultá tu fecha",
+    "boton_asistente": "Preguntale al asistente",
+    "espacio_etiqueta": "El lugar",
+    "espacio_titulo": "Tu evento merece un lugar a la altura",
+    "incluye_etiqueta": "Todo en un lugar",
+    "incluye_titulo": "Del cóctel en el parque a la fiesta en el salón",
+    "incluye_texto": "Un solo lugar, un solo equipo y beneficios si tu fecha es de domingo a jueves.",
+    "fecha_etiqueta": "Consultá tu fecha",
+    "fecha_titulo": "Contanos qué querés festejar",
+    "paso1_titulo": "Elegí el evento y la fecha",
+    "paso1_texto": "Aunque sea aproximada, así vemos disponibilidad.",
+    "paso2_titulo": "Mandalo por WhatsApp",
+    "paso2_texto": "Te llega armado, no tenés que explicar nada.",
+    "paso3_titulo": "Te pasamos el presupuesto",
+    "paso3_texto": "Con todo lo que incluye, para tu cantidad de invitados.",
+    "campo_tipo": "Tipo de evento",
+    "campo_fecha": "Fecha",
+    "campo_invitados": "Invitados",
+    "boton_formulario": "Consultar por WhatsApp",
+    "nota_formulario": "Te contestamos en el día.",
+    "donde_etiqueta": "Dónde estamos",
+    "direccion": "Camino Manuel Flores 9097",
+    "direccion_detalle": "Montevideo",
+    "mapa_url": "https://www.google.com/maps/search/?api=1&query=Chacra+Los+Alamos+Camino+Manuel+Flores+9097+Montevideo",
+    "mapa_boton": "Cómo llegar",
+    "contacto_etiqueta": "Contacto",
+    "contacto": "091 205 642",
+    "contacto_detalle": "@chacralosalamos.uy",
+    "copyright": "Chacra Los Álamos",
+    "burbuja": "¿Tenés la fecha libre?",
+    "nombre_chat": "Chacra Los Álamos"
+  },
+  "asistente": {
+    "tags": [
+      "Casamientos",
+      "15 años",
+      "Cumpleaños",
+      "Eventos corporativos",
+      "Beneficios de domingo a jueves"
+    ],
+    "inc": [
+      "Salón vidriado con vista al parque",
+      "Piscina y pérgola iluminadas",
+      "Catering y mesas ambientadas",
+      "Beneficios especiales de domingo a jueves",
+      "Open day para conocer la chacra"
+    ],
+    "tipos": [
+      "Casamiento",
+      "15 años",
+      "Cumpleaños",
+      "Evento corporativo",
+      "Otro"
+    ],
+    "inv": [
+      "Hasta 60 invitados",
+      "60 a 120 invitados",
+      "120 a 200 invitados",
+      "Más de 200 invitados"
+    ],
+    "wa": "59891205642",
+    "faq": {
+      "precio": "Depende del tipo de evento, el día y la cantidad de invitados. Si es de domingo a jueves hay beneficios especiales. Con esos datos te armamos el presupuesto.",
+      "capacidad": "El salón vidriado y el parque se adaptan a eventos chicos y grandes. Decinos cuántos son y te confirmamos.",
+      "visita": "¡Claro! Coordinamos una visita o te avisamos del próximo open day para que recorras la chacra.",
+      "donde": "Estamos en Camino Manuel Flores 9097, Montevideo. En la web tenés el botón para llegar con Google Maps."
+    },
+    "t": {
+      "soy": "Soy",
+      "sinFecha": "fecha a definir",
+      "listo": "Listo",
+      "noSe": "Todavía no sé",
+      "tag": "Asistente automático · responde al instante",
+      "hola": "¡Hola! 👋 Soy el asistente de Chacra Los Álamos.",
+      "hola2": "¿En qué te puedo ayudar?",
+      "qFecha": "Consultar una fecha",
+      "qPrecio": "¿Cuánto sale?",
+      "qCap": "¿Para cuántas personas?",
+      "qVisita": "Quiero conocer el lugar",
+      "qDonde": "¿Dónde quedan?",
+      "qArmar": "Armar mi consulta",
+      "qOtra": "Otra pregunta",
+      "qAgendar": "Agendar visita por WhatsApp",
+      "qSeguir": "Enviar consulta por WhatsApp",
+      "bTipo": "¡Buenísimo! ¿Qué vas a festejar?",
+      "bInv": "¿Más o menos cuántos invitados?",
+      "bFecha": "¿Tenés una fecha pensada?",
+      "bFin": "Perfecto: {tipo}, {inv}, {fecha}.\nTe paso con el equipo para confirmar la fecha y mandarte el presupuesto. Tocá abajo y te llega todo armado 👇",
+      "msgForm": "Hola! {nom}Quiero consultar por un evento: {tipo}, {inv}, para el {fecha}. ¿Tienen la fecha libre?",
+      "msgVisita": "Hola! Me gustaría coordinar una visita para conocer el lugar."
+    }
+  }
+}

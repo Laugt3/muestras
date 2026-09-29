@@ -1,0 +1,136 @@
+{
+  "portafolio": {
+    "categoria": "Eventos",
+    "rubro": "Chacra para eventos",
+    "ciudad": "Canelones",
+    "pais": "Uruguay"
+  },
+  "publicada": false,
+  "variantes": {
+    "portada": "completa",
+    "galeria": "mosaico",
+    "fuentes": "bricolage-host",
+    "orden": [
+      "espacio",
+      "incluye",
+      "fecha",
+      "donde"
+    ]
+  },
+  "colores": {
+    "bg": "#f5f0e6",
+    "ink": "#1f1a14",
+    "mute": "#6f6558",
+    "line": "#ddd3c3",
+    "card": "#ece4d5",
+    "accent": "#5e1f2b",
+    "on-accent": "#fff",
+    "accent-ink": "#7a2a38",
+    "accent-hero": "#f0d3a6"
+  },
+  "textos": {
+    "titulo": "Entre Viñedos · Chacra para eventos en Canelones",
+    "descripcion": "Casamientos, 15 y eventos entre viñedos. Consultá tu fecha.",
+    "nombre_muestra": "Entre Viñedos",
+    "marca": "Entre Viñedos",
+    "nav_espacio": "El lugar",
+    "nav_incluye": "Qué incluye",
+    "nav_donde": "Dónde estamos",
+    "nav_cta": "Consultá tu fecha",
+    "resenas": "4,8 · 356 reseñas en Google",
+    "titular": "Tu fiesta, <em>entre viñedos.</em>",
+    "bajada": "Chacra para eventos en Las Violetas, Canelones. Salón, parque y piscina para casamientos, 15 y celebraciones, con servicio integral.",
+    "cta_portada": "Consultá tu fecha",
+    "boton_asistente": "Preguntale al asistente",
+    "espacio_etiqueta": "El lugar",
+    "espacio_titulo": "El entorno como escenario de cada celebración",
+    "incluye_etiqueta": "Servicio integral",
+    "incluye_titulo": "Todo en un mismo lugar",
+    "incluye_texto": "De la ceremonia en el parque a la fiesta en el salón, sin moverse de la chacra.",
+    "fecha_etiqueta": "Consultá tu fecha",
+    "fecha_titulo": "Contanos qué querés festejar",
+    "paso1_titulo": "Elegí el evento y la fecha",
+    "paso1_texto": "Aunque sea aproximada, así vemos disponibilidad.",
+    "paso2_titulo": "Mandalo por WhatsApp",
+    "paso2_texto": "Te llega armado, no tenés que explicar nada.",
+    "paso3_titulo": "Te pasamos el presupuesto",
+    "paso3_texto": "Con todo lo que incluye, para tu cantidad de invitados.",
+    "campo_tipo": "Tipo de evento",
+    "campo_fecha": "Fecha",
+    "campo_invitados": "Invitados",
+    "boton_formulario": "Consultar por WhatsApp",
+    "nota_formulario": "Te contestamos en el día.",
+    "donde_etiqueta": "Dónde estamos",
+    "direccion": "Camino Las Violetas",
+    "direccion_detalle": "Canelones · a menos de una hora de Montevideo",
+    "mapa_url": "https://www.google.com/maps/search/?api=1&query=Entre+Vi%C3%B1edos+Chacra+para+eventos+Canelones",
+    "mapa_boton": "Cómo llegar",
+    "contacto_etiqueta": "Contacto",
+    "contacto": "094 600 606",
+    "contacto_detalle": "@entrevinedos.chacra · chacrayeventos@entrevinedos.com",
+    "copyright": "Entre Viñedos",
+    "burbuja": "¿Tenés la fecha libre?",
+    "nombre_chat": "Entre Viñedos"
+  },
+  "asistente": {
+    "tags": [
+      "Casamientos",
+      "15 años",
+      "Cumpleaños",
+      "Eventos de empresa",
+      "Aniversarios",
+      "Fiestas al aire libre"
+    ],
+    "inc": [
+      "Salón cerrado con pista y ambientación",
+      "Parque entre viñedos para la ceremonia y el cóctel",
+      "Piscina iluminada para la noche",
+      "Servicio integral: te despreocupás de todo",
+      "Visita guiada antes de reservar"
+    ],
+    "tipos": [
+      "Casamiento",
+      "15 años",
+      "Cumpleaños",
+      "Evento de empresa",
+      "Otro"
+    ],
+    "inv": [
+      "Hasta 50 invitados",
+      "50 a 100 invitados",
+      "100 a 200 invitados",
+      "Más de 200 invitados"
+    ],
+    "wa": "59894600606",
+    "faq": {
+      "precio": "Depende del tipo de evento, el día y la cantidad de invitados. Con esos tres datos te armamos el presupuesto exacto, con todo lo que incluye.",
+      "capacidad": "Tenemos salón cerrado y parque, así que se adapta desde reuniones chicas hasta fiestas grandes. Decinos cuántos son y te confirmamos.",
+      "visita": "¡Claro! Coordinamos una visita para que recorras la chacra con tiempo y veas el salón y el parque.",
+      "donde": "Estamos en Camino Las Violetas, Canelones, a menos de una hora de Montevideo. En la web tenés el botón para llegar con Google Maps."
+    },
+    "t": {
+      "soy": "Soy",
+      "sinFecha": "fecha a definir",
+      "listo": "Listo",
+      "noSe": "Todavía no sé",
+      "tag": "Asistente automático · responde al instante",
+      "hola": "¡Hola! 👋 Soy el asistente de Entre Viñedos.",
+      "hola2": "¿En qué te puedo ayudar?",
+      "qFecha": "Consultar una fecha",
+      "qPrecio": "¿Cuánto sale?",
+      "qCap": "¿Para cuántas personas?",
+      "qVisita": "Quiero conocer el lugar",
+      "qDonde": "¿Dónde quedan?",
+      "qArmar": "Armar mi consulta",
+      "qOtra": "Otra pregunta",
+      "qAgendar": "Agendar visita por WhatsApp",
+      "qSeguir": "Enviar consulta por WhatsApp",
+      "bTipo": "¡Buenísimo! ¿Qué vas a festejar?",
+      "bInv": "¿Más o menos cuántos invitados?",
+      "bFecha": "¿Tenés una fecha pensada?",
+      "bFin": "Perfecto: {tipo}, {inv}, {fecha}.\nTe paso con el equipo para confirmar la fecha y mandarte el presupuesto. Tocá abajo y te llega todo armado 👇",
+      "msgForm": "Hola! {nom}Quiero consultar por un evento: {tipo}, {inv}, para el {fecha}. ¿Tienen la fecha libre?",
+      "msgVisita": "Hola! Me gustaría coordinar una visita para conocer el lugar."
+    }
+  }
+}
