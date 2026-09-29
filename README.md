@@ -34,6 +34,8 @@ python3 generador/generar.py --nueva lagranja --desde samba   # crea un cliente 
 3. Poner las fotos en `clientes/lagranja/fotos/`: `portada.jpg`, `avatar.jpg` y `galeria-1.jpg` … `galeria-6.jpg` (también sirven `.png` o `.webp`). Conviene que pesen menos de 300 KB cada una.
 4. `python3 generador/generar.py lagranja` genera `lagranja.html` y actualiza el portafolio.
 
+Una muestra sin fotos, o con algún dato marcado `[completar]` en `datos.json`, queda **pendiente**: el generador no la arma ni la muestra en el portafolio, y avisa qué le falta.
+
 ## Que cada web sea única
 
 En `datos.json`, la parte `variantes` define el diseño:

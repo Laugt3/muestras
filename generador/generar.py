@@ -273,6 +273,20 @@ def todos_los_clientes() -> list:
     return sorted(p.name for p in CLIENTES.iterdir() if (p / "datos.json").exists())
 
 
+def faltantes(slug: str) -> list:
+    """Lo que le falta a un cliente para poder generarse (vacío = está listo)."""
+    fotos = CLIENTES / slug / "fotos"
+    tiene = lambda n: fotos.is_dir() and any((fotos / f"{n}{e}").exists() for e in MIME)
+    falta = [f"fotos/{n}.jpg" for n in ("portada", "avatar") if not tiene(n)]
+    galeria = fotos.is_dir() and any(re.fullmatch(r"galeria-\d+\.(jpe?g|png|webp)", p.name) for p in fotos.iterdir())
+    if not galeria:
+        falta.append("fotos/galeria-1.jpg … galeria-6.jpg")
+    datos = (CLIENTES / slug / "datos.json").read_text(encoding="utf-8")
+    if "[completar" in datos:
+        falta.append("datos marcados [completar] en datos.json")
+    return falta
+
+
 def clave_diseno(d: dict) -> tuple:
     v = variantes(d)
     return (v["portada"], v["galeria"], v["fuentes"], tuple(v["orden"]))
@@ -340,14 +354,20 @@ def main() -> None:
     if a.variantes:
         return listar_variantes()
     todos = todos_los_clientes()
-    for s in a.clientes or todos:
+    pendientes = {s: faltantes(s) for s in todos if faltantes(s)}
+    listos = [s for s in todos if s not in pendientes]
+    for s in a.clientes or listos:
         if s not in todos:
             sys.exit(f"No existe clientes/{s}/datos.json")
+        if s in pendientes:
+            sys.exit(f"{s} todavía no se puede generar, falta: {', '.join(pendientes[s])}")
         r = generar(s)
         print(f"  {r.name:22} {r.stat().st_size / 1e6:.1f} MB")
-    portafolio(todos)
+    portafolio(listos)
     print("  index.html (portafolio)")
-    avisar_repetidos(todos)
+    for s, falta in pendientes.items():
+        print(f"  - {s}: pendiente, falta {', '.join(falta)}")
+    avisar_repetidos(listos)
 
 
 if __name__ == "__main__":

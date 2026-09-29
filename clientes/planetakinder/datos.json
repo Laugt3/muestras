@@ -1,0 +1,140 @@
+{
+  "portafolio": {
+    "categoria": "Eventos",
+    "rubro": "Salón de cumpleaños",
+    "ciudad": "Montevideo",
+    "pais": "Uruguay"
+  },
+  "publicada": false,
+  "variantes": {
+    "portada": "centrada",
+    "galeria": "columnas",
+    "fuentes": "baloo-nunito",
+    "orden": [
+      "espacio",
+      "incluye",
+      "fecha",
+      "donde"
+    ]
+  },
+  "colores": {
+    "bg": "#fbf9ff",
+    "ink": "#1d1640",
+    "mute": "#645e84",
+    "line": "#e6e0f5",
+    "card": "#f0eaff",
+    "accent": "#6a3cf0",
+    "on-accent": "#fff",
+    "accent-ink": "#5a2fd6",
+    "accent-hero": "#ffd84d"
+  },
+  "textos": {
+    "titulo": "Planeta Kinder · Cumpleaños infantiles en Buceo, Montevideo",
+    "descripcion": "Cumples infantiles con animadores en Buceo. Consultá tu fecha.",
+    "nombre_muestra": "Planeta Kinder",
+    "marca": "Planeta Kinder",
+    "nav_espacio": "El lugar",
+    "nav_incluye": "Qué incluye",
+    "nav_donde": "Dónde estamos",
+    "nav_cta": "Consultá tu fecha",
+    "resenas": "[completar] · reseñas en Google",
+    "titular": "Un cumple <em>de otro planeta.</em>",
+    "bajada": "Cumpleaños infantiles en Solferino 3861, Buceo: animadores, juegos, karaoke y búsqueda del tesoro en un salón cerrado, llueva o haga sol.",
+    "cta_portada": "Consultá tu fecha",
+    "boton_asistente": "Preguntale al asistente",
+    "espacio_etiqueta": "El lugar",
+    "espacio_titulo": "Un salón pensado para los chicos",
+    "incluye_etiqueta": "Todo incluido",
+    "incluye_titulo": "Vos traés a los invitados, nosotros la diversión",
+    "incluye_texto": "Animadores que se encargan de todo, para que vos también disfrutes el cumple.",
+    "fecha_etiqueta": "Consultá tu fecha",
+    "fecha_titulo": "Contanos qué querés festejar",
+    "paso1_titulo": "Elegí el evento y la fecha",
+    "paso1_texto": "Aunque sea aproximada, así vemos disponibilidad.",
+    "paso2_titulo": "Mandalo por WhatsApp",
+    "paso2_texto": "Te llega armado, no tenés que explicar nada.",
+    "paso3_titulo": "Te pasamos el presupuesto",
+    "paso3_texto": "Con todo lo que incluye, para tu cantidad de invitados.",
+    "campo_tipo": "Tipo de evento",
+    "campo_fecha": "Fecha",
+    "campo_invitados": "Invitados",
+    "boton_formulario": "Consultar por WhatsApp",
+    "nota_formulario": "Te contestamos en el día.",
+    "donde_etiqueta": "Dónde estamos",
+    "direccion": "Solferino 3861",
+    "direccion_detalle": "Buceo · Montevideo",
+    "mapa_url": "https://www.google.com/maps/search/?api=1&query=Planeta+Kinder+Solferino+3861+Montevideo",
+    "mapa_boton": "Cómo llegar",
+    "contacto_etiqueta": "Contacto",
+    "contacto": "2509 4847",
+    "contacto_detalle": "@planetakindermontevideo",
+    "copyright": "Planeta Kinder",
+    "burbuja": "¿Tenés la fecha libre?",
+    "nombre_chat": "Planeta Kinder"
+  },
+  "asistente": {
+    "demo": [
+      "Cumple infantil",
+      "20 a 40 chicos"
+    ],
+    "tags": [
+      "Cumples infantiles",
+      "Matinés",
+      "Baby showers",
+      "Despedidas",
+      "Animadores",
+      "Karaoke"
+    ],
+    "inc": [
+      "Animadores que organizan juegos para todas las edades",
+      "Karaoke y búsqueda del tesoro",
+      "Pantalla de 50\" para pasar fotos y videos del cumpleañero",
+      "Salón cerrado: la fiesta se hace igual aunque llueva",
+      "Más de 10 años haciendo cumples en Buceo"
+    ],
+    "tipos": [
+      "Cumple infantil",
+      "Matiné",
+      "Baby shower",
+      "Despedida",
+      "Otro"
+    ],
+    "inv": [
+      "Hasta 20 chicos",
+      "20 a 40 chicos",
+      "40 a 60 chicos",
+      "Más de 60"
+    ],
+    "wa": "59894912574",
+    "faq": {
+      "precio": "Depende del día, la cantidad de chicos y lo que quieras sumar. Con esos datos te pasamos el presupuesto con todo lo que incluye.",
+      "capacidad": "Hacemos cumples chicos y grandes. Decinos cuántos chicos van y te confirmamos.",
+      "visita": "¡Claro! Coordinamos para que vengas a conocer el salón antes de reservar.",
+      "donde": "Estamos en Solferino 3861, en Buceo. En la web tenés el botón para llegar con Google Maps."
+    },
+    "t": {
+      "soy": "Soy",
+      "sinFecha": "fecha a definir",
+      "listo": "Listo",
+      "noSe": "Todavía no sé",
+      "tag": "Asistente automático · responde al instante",
+      "hola": "¡Hola! 👋 Soy el asistente de Planeta Kinder.",
+      "hola2": "¿En qué te puedo ayudar?",
+      "qFecha": "Consultar una fecha",
+      "qPrecio": "¿Cuánto sale?",
+      "qCap": "¿Para cuántas personas?",
+      "qVisita": "Quiero conocer el lugar",
+      "qDonde": "¿Dónde quedan?",
+      "qArmar": "Armar mi consulta",
+      "qOtra": "Otra pregunta",
+      "qAgendar": "Agendar visita por WhatsApp",
+      "qSeguir": "Enviar consulta por WhatsApp",
+      "bTipo": "¡Buenísimo! ¿Qué vas a festejar?",
+      "bInv": "¿Más o menos cuántos invitados?",
+      "bFecha": "¿Tenés una fecha pensada?",
+      "bFin": "Perfecto: {tipo}, {inv}, {fecha}.\nTe paso con el equipo para confirmar la fecha y mandarte el presupuesto. Tocá abajo y te llega todo armado 👇",
+      "msgForm": "Hola! {nom}Quiero consultar por un evento: {tipo}, {inv}, para el {fecha}. ¿Tienen la fecha libre?",
+      "msgVisita": "Hola! Me gustaría coordinar una visita para conocer el lugar."
+    }
+  }
+}

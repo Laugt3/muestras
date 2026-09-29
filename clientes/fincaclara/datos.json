@@ -1,0 +1,139 @@
+{
+  "portafolio": {
+    "categoria": "Eventos",
+    "rubro": "Chacra para eventos",
+    "ciudad": "Barros Blancos, Canelones",
+    "pais": "Uruguay"
+  },
+  "publicada": false,
+  "variantes": {
+    "portada": "completa",
+    "galeria": "grilla",
+    "fuentes": "cormorant-manrope",
+    "orden": [
+      "espacio",
+      "incluye",
+      "fecha",
+      "donde"
+    ]
+  },
+  "colores": {
+    "bg": "#f6f5ef",
+    "ink": "#1c2419",
+    "mute": "#62695c",
+    "line": "#dfe0d4",
+    "card": "#eceee3",
+    "accent": "#3f5a36",
+    "on-accent": "#fff",
+    "accent-ink": "#3f5a36",
+    "accent-hero": "#ecdfb3"
+  },
+  "textos": {
+    "titulo": "Finca Clara · Chacra para casamientos, 15 y eventos en Canelones",
+    "descripcion": "Casamientos, 15 y eventos rodeados de jardines, a minutos de Carrasco. Consultá tu fecha.",
+    "nombre_muestra": "Finca Clara",
+    "marca": "Finca Clara",
+    "nav_espacio": "El lugar",
+    "nav_incluye": "Qué incluye",
+    "nav_donde": "Dónde estamos",
+    "nav_cta": "Consultá tu fecha",
+    "resenas": "[completar] · reseñas en Google",
+    "titular": "Tu fiesta, <em>entre jardines.</em>",
+    "bajada": "Casamientos, 15 y eventos en más de 3.000 m² de jardines, sobre Ruta 101 y a minutos del aeropuerto de Carrasco.",
+    "cta_portada": "Consultá tu fecha",
+    "boton_asistente": "Preguntale al asistente",
+    "espacio_etiqueta": "El lugar",
+    "espacio_titulo": "Jardines, salón y pista en un mismo lugar",
+    "incluye_etiqueta": "Organización integral",
+    "incluye_titulo": "Más de 12 años cuidando cada detalle",
+    "incluye_texto": "Te acompañamos en la organización y la decoración, de la primera visita al último baile.",
+    "fecha_etiqueta": "Consultá tu fecha",
+    "fecha_titulo": "Contanos qué querés festejar",
+    "paso1_titulo": "Elegí el evento y la fecha",
+    "paso1_texto": "Aunque sea aproximada, así vemos disponibilidad.",
+    "paso2_titulo": "Mandalo por WhatsApp",
+    "paso2_texto": "Te llega armado, no tenés que explicar nada.",
+    "paso3_titulo": "Te pasamos el presupuesto",
+    "paso3_texto": "Con todo lo que incluye, para tu cantidad de invitados.",
+    "campo_tipo": "Tipo de evento",
+    "campo_fecha": "Fecha",
+    "campo_invitados": "Invitados",
+    "boton_formulario": "Consultar por WhatsApp",
+    "nota_formulario": "Te contestamos en el día.",
+    "donde_etiqueta": "Dónde estamos",
+    "direccion": "Camino San Juan 5072",
+    "direccion_detalle": "Ruta 101 km 24.500 · Barros Blancos, Canelones",
+    "mapa_url": "https://www.google.com/maps/search/?api=1&query=Finca+Clara+Camino+San+Juan+5072+Barros+Blancos",
+    "mapa_boton": "Cómo llegar",
+    "contacto_etiqueta": "Contacto",
+    "contacto": "092 377 992",
+    "contacto_detalle": "[completar: Instagram]",
+    "copyright": "Finca Clara",
+    "burbuja": "¿Tenés la fecha libre?",
+    "nombre_chat": "Finca Clara"
+  },
+  "asistente": {
+    "demo": [
+      "Casamiento",
+      "80 a 150 invitados"
+    ],
+    "tags": [
+      "Casamientos",
+      "Cumpleaños de 15",
+      "Eventos empresariales",
+      "Celebraciones",
+      "Jardines",
+      "Pista LED"
+    ],
+    "inc": [
+      "Más de 3.000 m² de jardines, con espacios al aire libre y cubiertos",
+      "Salón con pista de baile y zonas de living",
+      "Pista LED, luces robóticas, humo y DJ para los 15",
+      "Parrillero techado y cocina equipada",
+      "Estacionamiento iluminado con valet"
+    ],
+    "tipos": [
+      "Casamiento",
+      "Cumpleaños de 15",
+      "Evento empresarial",
+      "Otro"
+    ],
+    "inv": [
+      "Hasta 80 invitados",
+      "80 a 150 invitados",
+      "150 a 200 invitados",
+      "Más de 200 invitados"
+    ],
+    "wa": "59892377992",
+    "faq": {
+      "precio": "Depende del tipo de evento, la fecha y la cantidad de invitados. Con esos datos te armamos el presupuesto con todo lo que incluye.",
+      "capacidad": "Tenemos salón y jardines, así que se adapta a distintos tamaños de fiesta. Decinos cuántos son y te confirmamos.",
+      "visita": "¡Claro! Coordinamos una visita para que recorras los jardines y el salón con tiempo.",
+      "donde": "Estamos en Camino San Juan 5072, Ruta 101 km 24.500, Barros Blancos, a minutos del aeropuerto de Carrasco. En la web tenés el botón para llegar con Google Maps."
+    },
+    "t": {
+      "soy": "Soy",
+      "sinFecha": "fecha a definir",
+      "listo": "Listo",
+      "noSe": "Todavía no sé",
+      "tag": "Asistente automático · responde al instante",
+      "hola": "¡Hola! 👋 Soy el asistente de Finca Clara.",
+      "hola2": "¿En qué te puedo ayudar?",
+      "qFecha": "Consultar una fecha",
+      "qPrecio": "¿Cuánto sale?",
+      "qCap": "¿Para cuántas personas?",
+      "qVisita": "Quiero conocer el lugar",
+      "qDonde": "¿Dónde quedan?",
+      "qArmar": "Armar mi consulta",
+      "qOtra": "Otra pregunta",
+      "qAgendar": "Agendar visita por WhatsApp",
+      "qSeguir": "Enviar consulta por WhatsApp",
+      "bTipo": "¡Buenísimo! ¿Qué vas a festejar?",
+      "bInv": "¿Más o menos cuántos invitados?",
+      "bFecha": "¿Tenés una fecha pensada?",
+      "bFin": "Perfecto: {tipo}, {inv}, {fecha}.\nTe paso con el equipo para confirmar la fecha y mandarte el presupuesto. Tocá abajo y te llega todo armado 👇",
+      "msgForm": "Hola! {nom}Quiero consultar por un evento: {tipo}, {inv}, para el {fecha}. ¿Tienen la fecha libre?",
+      "msgVisita": "Hola! Me gustaría coordinar una visita para conocer el lugar."
+    }
+  }
+}

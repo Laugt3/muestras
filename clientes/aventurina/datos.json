@@ -1,0 +1,140 @@
+{
+  "portafolio": {
+    "categoria": "Eventos",
+    "rubro": "Salón infantil y de eventos",
+    "ciudad": "Montevideo",
+    "pais": "Uruguay"
+  },
+  "publicada": false,
+  "variantes": {
+    "portada": "enmarcada",
+    "galeria": "carrusel",
+    "fuentes": "fraunces-dmsans",
+    "orden": [
+      "espacio",
+      "incluye",
+      "fecha",
+      "donde"
+    ]
+  },
+  "colores": {
+    "bg": "#f5f9fb",
+    "ink": "#15263a",
+    "mute": "#5b6b7c",
+    "line": "#d9e5ee",
+    "card": "#e5f0f7",
+    "accent": "#2a86b0",
+    "on-accent": "#fff",
+    "accent-ink": "#1d6a8f",
+    "accent-hero": "#bfe6f7"
+  },
+  "textos": {
+    "titulo": "Aventurina · Salón de fiestas y eventos en Prado, Montevideo",
+    "descripcion": "Cumples infantiles y eventos en una casona del Prado. Consultá tu fecha.",
+    "nombre_muestra": "Aventurina",
+    "marca": "Aventurina",
+    "nav_espacio": "El lugar",
+    "nav_incluye": "Qué incluye",
+    "nav_donde": "Dónde estamos",
+    "nav_cta": "Consultá tu fecha",
+    "resenas": "[completar] · reseñas en Google",
+    "titular": "Una casona del Prado <em>para tu fiesta.</em>",
+    "bajada": "Cumpleaños infantiles y eventos en Av. Millán 3724: salón climatizado, animación, cancha de fútbol y gastronomía casera, todo en un mismo lugar.",
+    "cta_portada": "Consultá tu fecha",
+    "boton_asistente": "Preguntale al asistente",
+    "espacio_etiqueta": "El lugar",
+    "espacio_titulo": "El encanto de una casona, con todo lo moderno",
+    "incluye_etiqueta": "Servicio integral",
+    "incluye_titulo": "Vos disfrutás, nosotros organizamos",
+    "incluye_texto": "Animación, comida y decoración en un solo lugar, para chicos y grandes.",
+    "fecha_etiqueta": "Consultá tu fecha",
+    "fecha_titulo": "Contanos qué querés festejar",
+    "paso1_titulo": "Elegí el evento y la fecha",
+    "paso1_texto": "Aunque sea aproximada, así vemos disponibilidad.",
+    "paso2_titulo": "Mandalo por WhatsApp",
+    "paso2_texto": "Te llega armado, no tenés que explicar nada.",
+    "paso3_titulo": "Te pasamos el presupuesto",
+    "paso3_texto": "Con todo lo que incluye, para tu cantidad de invitados.",
+    "campo_tipo": "Tipo de evento",
+    "campo_fecha": "Fecha",
+    "campo_invitados": "Invitados",
+    "boton_formulario": "Consultar por WhatsApp",
+    "nota_formulario": "Te contestamos en el día.",
+    "donde_etiqueta": "Dónde estamos",
+    "direccion": "Av. Millán 3724",
+    "direccion_detalle": "Prado · Montevideo",
+    "mapa_url": "https://www.google.com/maps/search/?api=1&query=Aventurina+Av.+Mill%C3%A1n+3724+Montevideo",
+    "mapa_boton": "Cómo llegar",
+    "contacto_etiqueta": "Contacto",
+    "contacto": "094 542 401",
+    "contacto_detalle": "@aventurinasalon_",
+    "copyright": "Aventurina",
+    "burbuja": "¿Tenés la fecha libre?",
+    "nombre_chat": "Aventurina"
+  },
+  "asistente": {
+    "demo": [
+      "Cumple infantil",
+      "30 a 50 chicos"
+    ],
+    "tags": [
+      "Cumples infantiles",
+      "Cumples de adultos",
+      "Brindis de casamiento",
+      "Eventos empresariales",
+      "Animación",
+      "Menú celíaco y vegano"
+    ],
+    "inc": [
+      "Salón climatizado para hasta 90 personas",
+      "Animación: juegos, títeres, disfraces, maquillaje, karaoke y coreos",
+      "Cancha de fútbol y rincón para los más chicos",
+      "Tablas, pizzas gourmet y chivitos, con opciones celíacas, veganas y vegetarianas",
+      "Parrillero techado, zona de living y sector para fumadores"
+    ],
+    "tipos": [
+      "Cumple infantil",
+      "Cumple de adulto",
+      "Brindis o aniversario",
+      "Evento empresarial",
+      "Otro"
+    ],
+    "inv": [
+      "Hasta 30 chicos",
+      "30 a 50 chicos",
+      "50 a 70 chicos",
+      "Evento de adultos (hasta 90)"
+    ],
+    "wa": "59894542401",
+    "faq": {
+      "precio": "Depende del tipo de fiesta, el día y la cantidad de invitados. Con esos datos te pasamos el presupuesto con todo lo que incluye.",
+      "capacidad": "En cumples entran cómodos hasta 70 chicos y 65 adultos; en eventos de adultos, hasta 90 personas.",
+      "visita": "¡Claro! Coordinamos para que vengas a conocer la casona antes de reservar.",
+      "donde": "Estamos en Av. Millán 3724, en el Prado. En la web tenés el botón para llegar con Google Maps."
+    },
+    "t": {
+      "soy": "Soy",
+      "sinFecha": "fecha a definir",
+      "listo": "Listo",
+      "noSe": "Todavía no sé",
+      "tag": "Asistente automático · responde al instante",
+      "hola": "¡Hola! 👋 Soy el asistente de Aventurina.",
+      "hola2": "¿En qué te puedo ayudar?",
+      "qFecha": "Consultar una fecha",
+      "qPrecio": "¿Cuánto sale?",
+      "qCap": "¿Para cuántas personas?",
+      "qVisita": "Quiero conocer el lugar",
+      "qDonde": "¿Dónde quedan?",
+      "qArmar": "Armar mi consulta",
+      "qOtra": "Otra pregunta",
+      "qAgendar": "Agendar visita por WhatsApp",
+      "qSeguir": "Enviar consulta por WhatsApp",
+      "bTipo": "¡Buenísimo! ¿Qué vas a festejar?",
+      "bInv": "¿Más o menos cuántos invitados?",
+      "bFecha": "¿Tenés una fecha pensada?",
+      "bFin": "Perfecto: {tipo}, {inv}, {fecha}.\nTe paso con el equipo para confirmar la fecha y mandarte el presupuesto. Tocá abajo y te llega todo armado 👇",
+      "msgForm": "Hola! {nom}Quiero consultar por un evento: {tipo}, {inv}, para el {fecha}. ¿Tienen la fecha libre?",
+      "msgVisita": "Hola! Me gustaría coordinar una visita para conocer el lugar."
+    }
+  }
+}
