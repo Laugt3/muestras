@@ -78,7 +78,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 @media(max-width:860px){
  .grid{grid-template-columns:1fr}
  .pasos{grid-template-columns:1fr}
- .hd .btn span{display:none}.hd .btn{padding:0 14px}
+ .hd .btn.wa span{display:none}.hd .btn.wa{padding:0 14px}.hd .btn{height:42px;font-size:14px}
 }
 </style>
 </head>
@@ -121,10 +121,13 @@ const paises=cuenta("pais"),cats=cuenta("categoria");
 $("#stats").innerHTML=[[M.length,M.length===1?"muestra":"muestras"],[Object.keys(paises).length,"países"],[new Set(M.map(m=>m.rubro)).size,"rubros"]].map(([n,t])=>`<span><b>${n}</b>${t}</span>`).join("");
 // contacto
 const waUrl=C.whatsapp?"https://wa.me/"+C.whatsapp.replace(/\D/g,"")+"?text="+encodeURIComponent(C.mensaje_whatsapp||""):"";
-if(waUrl)$("#waTop").href=waUrl;else $("#waTop").remove();
+const igUser=(C.instagram||"").replace(/^@/,""),igUrl=igUser?"https://instagram.com/"+igUser:"";
+if(waUrl)$("#waTop").href=waUrl;
+else if(igUrl){const t=$("#waTop");t.href=igUrl;t.classList.remove("wa");t.querySelector("svg").remove();t.querySelector("span").textContent="Escribinos por Instagram"}
+else $("#waTop").remove();
 const bts=[];
 if(waUrl)bts.push(`<a class="btn wa" target="_blank" rel="noopener" href="${esc(waUrl)}">Escribinos por WhatsApp</a>`);
-if(C.instagram)bts.push(`<a class="btn ghost" target="_blank" rel="noopener" href="https://instagram.com/${esc(C.instagram.replace(/^@/,""))}">@${esc(C.instagram.replace(/^@/,""))}</a>`);
+if(igUrl)bts.push(`<a class="btn${waUrl?" ghost":""}" target="_blank" rel="noopener" href="${esc(igUrl)}">${waUrl?"@"+esc(igUser):"Escribinos por Instagram"}</a>`);
 if(C.email)bts.push(`<a class="btn ghost" href="mailto:${esc(C.email)}">${esc(C.email)}</a>`);
 if(bts.length)$("#ctaBt").innerHTML=bts.join("");else $("#cta").remove();
 // filtros
