@@ -1,0 +1,140 @@
+{
+  "portafolio": {
+    "categoria": "Estética",
+    "rubro": "Centro estético",
+    "ciudad": "Colonia del Sacramento",
+    "pais": "Uruguay"
+  },
+  "publicada": false,
+  "variantes": {
+    "portada": "dividida",
+    "galeria": "mosaico",
+    "fuentes": "cormorant-manrope",
+    "orden": [
+      "espacio",
+      "incluye",
+      "fecha",
+      "donde"
+    ]
+  },
+  "colores": {
+    "bg": "#f8f5f8",
+    "ink": "#241a2c",
+    "mute": "#6b6173",
+    "line": "#e7dfe9",
+    "card": "#efe7f1",
+    "accent": "#6b3d9e",
+    "on-accent": "#fff",
+    "accent-ink": "#6b3d9e",
+    "accent-hero": "#e6d3fa"
+  },
+  "textos": {
+    "titulo": "Amatista Centro Estético · Colonia del Sacramento",
+    "descripcion": "Estética, spa y experiencias para regalar en Colonia. Reservá tu turno.",
+    "nombre_muestra": "Amatista Centro Estético",
+    "marca": "Amatista Centro Estético",
+    "nav_espacio": "El centro",
+    "nav_incluye": "Servicios",
+    "nav_donde": "Dónde estamos",
+    "nav_cta": "Reservá tu turno",
+    "resenas": "4,9 · 474 reseñas en Google",
+    "titular": "Belleza <em>es salud.</em>",
+    "bajada": "Centro de estética integral en Colonia del Sacramento: tratamientos faciales y corporales, masajes, depilación láser y rituales de spa.",
+    "cta_portada": "Reservá tu turno",
+    "boton_asistente": "Preguntale al asistente",
+    "espacio_etiqueta": "El centro",
+    "espacio_titulo": "No brindamos servicios, regalamos experiencias",
+    "incluye_etiqueta": "Servicios",
+    "incluye_titulo": "Todo para sentirte bien, en un solo lugar",
+    "incluye_texto": "Tratamientos personalizados con protocolo verde y productos de la más alta calidad.",
+    "fecha_etiqueta": "Reservá tu turno",
+    "fecha_titulo": "Elegí tu momento",
+    "paso1_titulo": "Elegí el tratamiento",
+    "paso1_texto": "Facial, corporal, masajes o un ritual para dos.",
+    "paso2_titulo": "Mandalo por WhatsApp",
+    "paso2_texto": "Te llega armado, no tenés que explicar nada.",
+    "paso3_titulo": "Te confirmamos el horario",
+    "paso3_texto": "Y te esperamos en el centro.",
+    "campo_tipo": "Tratamiento",
+    "campo_fecha": "Día",
+    "campo_invitados": "Para quién",
+    "boton_formulario": "Reservar por WhatsApp",
+    "nota_formulario": "Te confirmamos en el día.",
+    "donde_etiqueta": "Dónde estamos",
+    "direccion": "Colonia del Sacramento",
+    "direccion_detalle": "Centro de estética integral",
+    "mapa_url": "https://www.google.com/maps/search/?api=1&query=Amatista+Centro+de+Bienestar+y+Est%C3%A9tica+Integral+Colonia",
+    "mapa_boton": "Cómo llegar",
+    "contacto_etiqueta": "Contacto",
+    "contacto": "093 550 510",
+    "contacto_detalle": "amatistacentroestetico@gmail.com",
+    "copyright": "Amatista Centro Estético",
+    "burbuja": "¿Reservamos?",
+    "nombre_chat": "Amatista Centro Estético"
+  },
+  "asistente": {
+    "demo": [
+      "Ritual de spa en pareja",
+      "Para dos personas",
+      "11/10/2026"
+    ],
+    "tags": [
+      "Estética facial",
+      "Estética corporal",
+      "Masajes y relax",
+      "Depilación láser",
+      "Rituales de spa dobles",
+      "Experiencias para regalar"
+    ],
+    "inc": [
+      "Estética facial: limpiezas, anti-age, rosácea y acné",
+      "Estética corporal y depilación láser o con cera",
+      "Manicura y pedicura spa",
+      "Área de relax y sala para rituales de spa dobles",
+      "Experiencias para regalar"
+    ],
+    "tipos": [
+      "Masaje y relax",
+      "Estética facial",
+      "Depilación láser",
+      "Ritual de spa en pareja",
+      "Otro"
+    ],
+    "inv": [
+      "Para mí",
+      "Para dos personas",
+      "Es para regalar"
+    ],
+    "wa": "59893550510",
+    "faq": {
+      "precio": "Depende del tratamiento y de la duración. Contame qué te interesa y te paso los precios y los horarios libres.",
+      "capacidad": "Hacemos estética facial y corporal, masajes, depilación láser, manicura y pedicura spa, y rituales de spa para dos.",
+      "visita": "¡Qué lindo regalo! Tenemos experiencias para regalar. Contanos para quién es y te armamos la propuesta.",
+      "donde": "Estamos en Colonia del Sacramento. Te pasamos la dirección exacta al confirmar el turno."
+    },
+    "t": {
+      "soy": "Soy",
+      "sinFecha": "fecha a definir",
+      "listo": "Listo",
+      "noSe": "Todavía no sé",
+      "tag": "Asistente automático · responde al instante",
+      "hola": "¡Hola! 👋 Soy el asistente de Amatista Centro Estético.",
+      "hola2": "¿En qué te puedo ayudar?",
+      "qFecha": "Reservar un turno",
+      "qPrecio": "¿Cuánto sale?",
+      "qCap": "¿Qué servicios tienen?",
+      "qVisita": "Quiero regalar una experiencia",
+      "qDonde": "¿Dónde están?",
+      "qArmar": "Reservar un turno",
+      "qOtra": "Otra pregunta",
+      "qAgendar": "Consultar por WhatsApp",
+      "qSeguir": "Enviar reserva por WhatsApp",
+      "bTipo": "¡Buenísimo! ¿Qué te gustaría hacerte?",
+      "bInv": "¿Es para vos, para dos o para regalar?",
+      "bFecha": "¿Qué día te queda bien?",
+      "bFin": "Perfecto: {tipo}, {inv}, para el {fecha}.\nTe paso con recepción para confirmar el horario. Tocá abajo y te llega todo armado 👇",
+      "msgForm": "Hola! {nom}Quiero reservar: {tipo}, {inv}, para el {fecha}. ¿Qué horarios tienen?",
+      "msgVisita": "Hola! Quiero regalar una experiencia en Amatista."
+    }
+  }
+}

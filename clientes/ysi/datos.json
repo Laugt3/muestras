@@ -1,0 +1,140 @@
+{
+  "portafolio": {
+    "categoria": "Eventos",
+    "rubro": "Salón de fiestas",
+    "ciudad": "Montevideo",
+    "pais": "Uruguay"
+  },
+  "publicada": false,
+  "variantes": {
+    "portada": "centrada",
+    "galeria": "grilla",
+    "fuentes": "bricolage-host",
+    "orden": [
+      "espacio",
+      "incluye",
+      "fecha",
+      "donde"
+    ]
+  },
+  "colores": {
+    "bg": "#faf6f1",
+    "ink": "#2a2119",
+    "mute": "#76695c",
+    "line": "#e8ded2",
+    "card": "#f1e8dc",
+    "accent": "#a4633a",
+    "on-accent": "#fff",
+    "accent-ink": "#9a5a32",
+    "accent-hero": "#f4d7b8"
+  },
+  "textos": {
+    "titulo": "Ysi Salón · Fiestas con catering artesanal",
+    "descripcion": "Salón de fiestas con catering artesanal. Pedí tu presupuesto.",
+    "nombre_muestra": "Ysi Salón",
+    "marca": "Ysi Salón",
+    "nav_espacio": "El lugar",
+    "nav_incluye": "Qué incluye",
+    "nav_donde": "Dónde estamos",
+    "nav_cta": "Consultá tu fecha",
+    "resenas": "4,4 · 206 reseñas en Google",
+    "titular": "¿Y si hacemos <em>una fiesta?</em>",
+    "bajada": "Salón de fiestas y eventos con servicio integral y catering artesanal. Pedí tu presupuesto y agendá tu visita.",
+    "cta_portada": "Consultá tu fecha",
+    "boton_asistente": "Preguntale al asistente",
+    "espacio_etiqueta": "El lugar",
+    "espacio_titulo": "Un salón cálido para festejar con los tuyos",
+    "incluye_etiqueta": "Servicio integral",
+    "incluye_titulo": "La comida y el salón, en un solo lugar",
+    "incluye_texto": "Catering hecho por nosotros y el salón listo para que solo llegues a festejar.",
+    "fecha_etiqueta": "Consultá tu fecha",
+    "fecha_titulo": "Contanos qué querés festejar",
+    "paso1_titulo": "Elegí el evento y la fecha",
+    "paso1_texto": "Aunque sea aproximada, así vemos disponibilidad.",
+    "paso2_titulo": "Mandalo por WhatsApp",
+    "paso2_texto": "Te llega armado, no tenés que explicar nada.",
+    "paso3_titulo": "Te pasamos el presupuesto",
+    "paso3_texto": "Con todo lo que incluye, para tu cantidad de invitados.",
+    "campo_tipo": "Tipo de evento",
+    "campo_fecha": "Fecha",
+    "campo_invitados": "Invitados",
+    "boton_formulario": "Consultar por WhatsApp",
+    "nota_formulario": "Te contestamos en el día.",
+    "donde_etiqueta": "Dónde estamos",
+    "direccion": "Montevideo",
+    "direccion_detalle": "Consultanos la dirección",
+    "mapa_url": "https://www.google.com/maps/search/?api=1&query=Ysihacemosunafiesta+Sal%C3%B3n+Montevideo",
+    "mapa_boton": "Cómo llegar",
+    "contacto_etiqueta": "Contacto",
+    "contacto": "092 151 728",
+    "contacto_detalle": "@ysihacemosunafiestasalon",
+    "copyright": "Ysi Salón",
+    "burbuja": "¿Tenés la fecha libre?",
+    "nombre_chat": "Ysi Salón"
+  },
+  "asistente": {
+    "demo": [
+      "Cumpleaños",
+      "30 a 40 personas"
+    ],
+    "tags": [
+      "Cumpleaños",
+      "Bautismos",
+      "Aniversarios",
+      "Despedidas",
+      "Catering artesanal",
+      "Oferta de lunes a jueves"
+    ],
+    "inc": [
+      "Salón ambientado con mesas y mantelería",
+      "Catering artesanal: pizzas, picadas y mesa dulce",
+      "Servicio integral durante toda la fiesta",
+      "Oferta de lunes a jueves: 40 personas con pizzas y refrescos",
+      "Visita para conocer el salón"
+    ],
+    "tipos": [
+      "Cumpleaños",
+      "Bautismo",
+      "Aniversario",
+      "Evento de empresa",
+      "Otro"
+    ],
+    "inv": [
+      "Hasta 30 personas",
+      "30 a 40 personas",
+      "40 a 60 personas",
+      "Más de 60 personas"
+    ],
+    "wa": "59892151728",
+    "faq": {
+      "precio": "Depende del día y la cantidad de personas. De lunes a jueves tenemos una oferta para 40 personas con pizzas y refrescos incluidos. Pasanos la fecha y te armamos el presupuesto.",
+      "capacidad": "Hacemos desde reuniones chicas hasta fiestas de más de 60 personas. Decinos cuántos son y te confirmamos.",
+      "visita": "¡Claro! Agendá tu visita y te mostramos el salón.",
+      "donde": "Estamos en Montevideo. Escribinos y te pasamos la dirección."
+    },
+    "t": {
+      "soy": "Soy",
+      "sinFecha": "fecha a definir",
+      "listo": "Listo",
+      "noSe": "Todavía no sé",
+      "tag": "Asistente automático · responde al instante",
+      "hola": "¡Hola! 👋 Soy el asistente de Ysi Salón.",
+      "hola2": "¿En qué te puedo ayudar?",
+      "qFecha": "Consultar una fecha",
+      "qPrecio": "¿Cuánto sale?",
+      "qCap": "¿Para cuántas personas?",
+      "qVisita": "Quiero conocer el lugar",
+      "qDonde": "¿Dónde quedan?",
+      "qArmar": "Armar mi consulta",
+      "qOtra": "Otra pregunta",
+      "qAgendar": "Agendar visita por WhatsApp",
+      "qSeguir": "Enviar consulta por WhatsApp",
+      "bTipo": "¡Buenísimo! ¿Qué vas a festejar?",
+      "bInv": "¿Más o menos cuántos invitados?",
+      "bFecha": "¿Tenés una fecha pensada?",
+      "bFin": "Perfecto: {tipo}, {inv}, {fecha}.\nTe paso con el equipo para confirmar la fecha y mandarte el presupuesto. Tocá abajo y te llega todo armado 👇",
+      "msgForm": "Hola! {nom}Quiero consultar por un evento: {tipo}, {inv}, para el {fecha}. ¿Tienen la fecha libre?",
+      "msgVisita": "Hola! Me gustaría coordinar una visita para conocer el lugar."
+    }
+  }
+}

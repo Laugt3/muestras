@@ -1,0 +1,139 @@
+{
+  "portafolio": {
+    "categoria": "Estética",
+    "rubro": "Clínica estética",
+    "ciudad": "Sevilla",
+    "pais": "España"
+  },
+  "publicada": false,
+  "variantes": {
+    "portada": "enmarcada",
+    "galeria": "columnas",
+    "fuentes": "cormorant-manrope",
+    "orden": [
+      "espacio",
+      "fecha",
+      "incluye",
+      "donde"
+    ]
+  },
+  "colores": {
+    "bg": "#faf7f2",
+    "ink": "#221d17",
+    "mute": "#6f675c",
+    "line": "#ebe3d6",
+    "card": "#f2ebdf",
+    "accent": "#b8923f",
+    "on-accent": "#fff",
+    "accent-ink": "#9d7a2f",
+    "accent-hero": "#f3dcaa"
+  },
+  "textos": {
+    "titulo": "Meye Clínica Estética · Los Remedios, Sevilla",
+    "descripcion": "Donde la estética se encuentra con la medicina. Primera valoración gratuita.",
+    "nombre_muestra": "Meye",
+    "marca": "Meye Clínica Estética",
+    "nav_espacio": "La clínica",
+    "nav_incluye": "Tratamientos",
+    "nav_donde": "Dónde estamos",
+    "nav_cta": "Pide tu cita",
+    "resenas": "4,9 · Reseñas de 5 estrellas en Google",
+    "titular": "Donde la estética se encuentra <em>con la medicina.</em>",
+    "bajada": "Clínica estética y centro de belleza en Los Remedios, Sevilla. Primera valoración gratuita con la doctora.",
+    "cta_portada": "Pide tu cita",
+    "boton_asistente": "Pregúntale al asistente",
+    "espacio_etiqueta": "La clínica",
+    "espacio_titulo": "Cuidar la piel es cuidarte a ti",
+    "incluye_etiqueta": "Tratamientos",
+    "incluye_titulo": "Un plan pensado para tu piel",
+    "incluye_texto": "Empezamos con una valoración gratuita y te proponemos solo lo que necesitas.",
+    "fecha_etiqueta": "Pide tu cita",
+    "fecha_titulo": "Cuéntanos qué necesitas",
+    "paso1_titulo": "Elige el tratamiento",
+    "paso1_texto": "O pide directamente la valoración gratuita.",
+    "paso2_titulo": "Envíalo por WhatsApp",
+    "paso2_texto": "Te llega listo, sin tener que explicar nada.",
+    "paso3_titulo": "Te confirmamos la hora",
+    "paso3_texto": "Y te esperamos en la clínica.",
+    "campo_tipo": "Tratamiento",
+    "campo_fecha": "Día",
+    "campo_invitados": "¿Primera vez?",
+    "boton_formulario": "Pedir cita por WhatsApp",
+    "nota_formulario": "Te respondemos el mismo día.",
+    "donde_etiqueta": "Dónde estamos",
+    "direccion": "Los Remedios, Sevilla",
+    "direccion_detalle": "Clínica estética y centro de belleza",
+    "mapa_url": "https://www.google.com/maps/search/?api=1&query=Mey+Estrada+Est%C3%A9tica+Avanzada+Sevilla",
+    "mapa_boton": "Cómo llegar",
+    "contacto_etiqueta": "Contacto",
+    "contacto": "Pide tu cita",
+    "contacto_detalle": "@meye.estetica_sevilla",
+    "copyright": "Meye Clínica Estética",
+    "burbuja": "¿Reservamos tu cita?",
+    "nombre_chat": "Meye Clínica Estética"
+  },
+  "asistente": {
+    "demo": [
+      "Tratamiento facial",
+      "Primera valoración",
+      "14/10/2026"
+    ],
+    "tags": [
+      "Medicina estética",
+      "Tratamientos faciales",
+      "Peeling",
+      "Ácido hialurónico",
+      "Drenaje linfático",
+      "1ª valoración gratuita"
+    ],
+    "inc": [
+      "Primera valoración gratuita con la doctora",
+      "Tratamientos faciales personalizados",
+      "Medicina estética: ácido hialurónico y más",
+      "Peelings y protocolos para piel grasa o acneica",
+      "Centro experto Biologique Recherche"
+    ],
+    "tipos": [
+      "Tratamiento facial",
+      "Medicina estética",
+      "Corporal / drenaje",
+      "Otro"
+    ],
+    "inv": [
+      "Primera valoración",
+      "Ya soy clienta",
+      "Es para regalar"
+    ],
+    "wa": "",
+    "faq": {
+      "precio": "Depende del tratamiento. La primera valoración es gratuita y ahí la doctora te dice exactamente qué necesitas y cuánto cuesta.",
+      "capacidad": "Hacemos tratamientos faciales, medicina estética, peelings y tratamientos corporales como el drenaje linfático.",
+      "visita": "¡Claro! La primera valoración es gratuita. Dime qué día te viene bien y te reservamos.",
+      "donde": "Estamos en Los Remedios, Sevilla. Te pasamos la dirección al confirmar la cita."
+    },
+    "t": {
+      "soy": "Soy",
+      "sinFecha": "fecha a definir",
+      "listo": "Listo",
+      "noSe": "Aún no sé",
+      "tag": "Asistente automático · responde al instante",
+      "hola": "¡Hola! 👋 Soy el asistente de Meye Clínica Estética.",
+      "hola2": "¿En qué te puedo ayudar?",
+      "qFecha": "Pedir cita",
+      "qPrecio": "¿Cuánto cuesta?",
+      "qCap": "¿Qué tratamientos hacéis?",
+      "qVisita": "Quiero la valoración gratis",
+      "qDonde": "¿Dónde estáis?",
+      "qArmar": "Pedir cita",
+      "qOtra": "Otra pregunta",
+      "qAgendar": "Pedir cita por WhatsApp",
+      "qSeguir": "Enviar solicitud por WhatsApp",
+      "bTipo": "¡Genial! ¿Qué te interesa?",
+      "bInv": "¿Es tu primera vez con nosotras?",
+      "bFecha": "¿Qué día te vendría bien?",
+      "bFin": "Perfecto: {tipo}, {inv}, para el {fecha}.\nTe paso con recepción para confirmar la hora. Toca abajo y te llega todo listo 👇",
+      "msgForm": "¡Hola! {nom}Quiero pedir cita: {tipo}, {inv}, para el {fecha}. ¿Qué horas tenéis?",
+      "msgVisita": "¡Hola! Quiero pedir la primera valoración gratuita."
+    }
+  }
+}

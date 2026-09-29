@@ -1,0 +1,140 @@
+{
+  "portafolio": {
+    "categoria": "Eventos",
+    "rubro": "Quinta para eventos",
+    "ciudad": "Monterrey",
+    "pais": "México"
+  },
+  "publicada": false,
+  "variantes": {
+    "portada": "completa",
+    "galeria": "grilla",
+    "fuentes": "playfair-inter",
+    "orden": [
+      "espacio",
+      "incluye",
+      "fecha",
+      "donde"
+    ]
+  },
+  "colores": {
+    "bg": "#f5f7f2",
+    "ink": "#1a2216",
+    "mute": "#62705c",
+    "line": "#dde5d6",
+    "card": "#e8eee1",
+    "accent": "#4d7a2f",
+    "on-accent": "#fff",
+    "accent-ink": "#467028",
+    "accent-hero": "#d8f0c0"
+  },
+  "textos": {
+    "titulo": "Quinta Encanto Monterrey · Eventos",
+    "descripcion": "El lugar ideal para tu evento soñado. Cotiza tu fecha.",
+    "nombre_muestra": "Quinta Encanto",
+    "marca": "Quinta Encanto",
+    "nav_espacio": "El lugar",
+    "nav_incluye": "Qué incluye",
+    "nav_donde": "Dónde estamos",
+    "nav_cta": "Consulta tu fecha",
+    "resenas": "4,5 · 309 reseñas en Google",
+    "titular": "El lugar ideal para tu <em>evento soñado.</em>",
+    "bajada": "Jardín y alberca en Monterrey para bodas, XV años y celebraciones al aire libre.",
+    "cta_portada": "Consulta tu fecha",
+    "boton_asistente": "Pregúntale al asistente",
+    "espacio_etiqueta": "El lugar",
+    "espacio_titulo": "Un jardín para celebrar al aire libre",
+    "incluye_etiqueta": "Todo en un lugar",
+    "incluye_titulo": "Ceremonia, recepción y fiesta",
+    "incluye_texto": "Jardín, alberca y pista en una sola quinta.",
+    "fecha_etiqueta": "Consulta tu fecha",
+    "fecha_titulo": "Cuéntanos qué quieres celebrar",
+    "paso1_titulo": "Elige el evento y la fecha",
+    "paso1_texto": "Aunque sea aproximada, así vemos disponibilidad.",
+    "paso2_titulo": "Envíalo por WhatsApp",
+    "paso2_texto": "Te llega armado, no tienes que explicar nada.",
+    "paso3_titulo": "Te enviamos la cotización",
+    "paso3_texto": "Con todo lo que incluye, para tu cantidad de invitados.",
+    "campo_tipo": "Tipo de evento",
+    "campo_fecha": "Fecha",
+    "campo_invitados": "Invitados",
+    "boton_formulario": "Consultar por WhatsApp",
+    "nota_formulario": "Te respondemos el mismo día.",
+    "donde_etiqueta": "Dónde estamos",
+    "direccion": "Monterrey, Nuevo León",
+    "direccion_detalle": "Cotiza por WhatsApp",
+    "mapa_url": "https://www.google.com/maps/search/?api=1&query=Quinta+Encanto+Monterrey",
+    "mapa_boton": "Cómo llegar",
+    "contacto_etiqueta": "Contacto",
+    "contacto": "Cotiza por WhatsApp",
+    "contacto_detalle": "@quinta_encanto",
+    "copyright": "Quinta Encanto",
+    "burbuja": "¿Tienes la fecha libre?",
+    "nombre_chat": "Quinta Encanto"
+  },
+  "asistente": {
+    "demo": [
+      "Boda",
+      "80 a 120 invitados"
+    ],
+    "tags": [
+      "Bodas",
+      "XV años",
+      "Cumpleaños",
+      "Posadas",
+      "Jardín",
+      "Alberca"
+    ],
+    "inc": [
+      "Jardín para ceremonia y recepción",
+      "Alberca y áreas verdes",
+      "Mobiliario y decoración",
+      "Pista y sonido",
+      "Cita para conocer la quinta"
+    ],
+    "tipos": [
+      "Boda",
+      "XV años",
+      "Cumpleaños",
+      "Posada",
+      "Otro"
+    ],
+    "inv": [
+      "Hasta 50 invitados",
+      "50 a 80 invitados",
+      "80 a 120 invitados",
+      "Más de 120 invitados"
+    ],
+    "wa": "",
+    "faq": {
+      "precio": "Depende del tipo de evento, el día y el número de invitados. Con esos datos te enviamos la cotización con todo lo que incluye.",
+      "visita": "¡Claro! Agenda una cita y te mostramos el lugar con calma.",
+      "donde": "Estamos en Monterrey, Nuevo León. Escríbenos y te compartimos la ubicación.",
+      "capacidad": "El jardín se adapta a eventos íntimos y grandes. Dinos cuántos serán y te confirmamos."
+    },
+    "t": {
+      "soy": "Soy",
+      "sinFecha": "fecha a definir",
+      "listo": "Listo",
+      "noSe": "Aún no sé",
+      "tag": "Asistente automático · responde al instante",
+      "hola": "¡Hola! 👋 Soy el asistente de Quinta Encanto.",
+      "hola2": "¿En qué te ayudo?",
+      "qFecha": "Consultar una fecha",
+      "qPrecio": "¿Cuánto cuesta?",
+      "qCap": "¿Para cuántas personas?",
+      "qVisita": "Quiero conocer el lugar",
+      "qDonde": "¿Dónde están?",
+      "qArmar": "Armar mi cotización",
+      "qOtra": "Otra pregunta",
+      "qAgendar": "Agendar visita por WhatsApp",
+      "qSeguir": "Enviar consulta por WhatsApp",
+      "bTipo": "¡Qué padre! ¿Qué vas a celebrar?",
+      "bInv": "¿Más o menos cuántos invitados?",
+      "bFecha": "¿Ya tienes una fecha en mente?",
+      "bFin": "Perfecto: {tipo}, {inv}, {fecha}.\nTe paso con el equipo para confirmar la fecha y enviarte la cotización. Toca abajo y te llega todo armado 👇",
+      "msgForm": "¡Hola! {nom}Quiero cotizar un evento: {tipo}, {inv}, para el {fecha}. ¿Tienen la fecha disponible?",
+      "msgVisita": "¡Hola! Me gustaría agendar una visita para conocer el lugar."
+    }
+  }
+}

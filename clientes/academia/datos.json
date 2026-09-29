@@ -1,0 +1,140 @@
+{
+  "portafolio": {
+    "categoria": "Otros rubros",
+    "rubro": "Academia de manejo",
+    "ciudad": "Montevideo",
+    "pais": "Uruguay"
+  },
+  "publicada": false,
+  "variantes": {
+    "portada": "dividida",
+    "galeria": "grilla",
+    "fuentes": "syne-outfit",
+    "orden": [
+      "incluye",
+      "espacio",
+      "fecha",
+      "donde"
+    ]
+  },
+  "colores": {
+    "bg": "#f6f7f4",
+    "ink": "#12201a",
+    "mute": "#5d6b63",
+    "line": "#dde3dc",
+    "card": "#e8eee6",
+    "accent": "#f2a516",
+    "on-accent": "#1b1305",
+    "accent-ink": "#1d6b45",
+    "accent-hero": "#ffc94d"
+  },
+  "textos": {
+    "titulo": "Academia de Choferes del Parque · Clases de manejo en Montevideo",
+    "descripcion": "Clases individuales en autos 0 km. Arrancá a manejar.",
+    "nombre_muestra": "Academia del Parque",
+    "marca": "Academia del Parque",
+    "nav_espacio": "La flota",
+    "nav_incluye": "Por qué elegirnos",
+    "nav_donde": "Dónde estamos",
+    "nav_cta": "Quiero empezar",
+    "resenas": "4,9 · 522 reseñas en Google",
+    "titular": "Arrancá a manejar <em>este verano.</em>",
+    "bajada": "Clases individuales en autos 0 km, de lunes a viernes de 8 a 21. Sin matrícula y con los trámites de la Intendencia incluidos.",
+    "cta_portada": "Quiero empezar",
+    "boton_asistente": "Preguntale al asistente",
+    "espacio_etiqueta": "Nuestra flota",
+    "espacio_titulo": "Aprendé con los que más saben",
+    "incluye_etiqueta": "Por qué elegirnos",
+    "incluye_titulo": "Clases a tu ritmo, sin vueltas",
+    "incluye_texto": "Vos elegís los días y la frecuencia, nosotros nos encargamos del resto.",
+    "fecha_etiqueta": "Empezá hoy",
+    "fecha_titulo": "Contanos qué necesitás",
+    "paso1_titulo": "Elegí qué querés hacer",
+    "paso1_texto": "Sacar la libreta, perfeccionarte o preparar el examen.",
+    "paso2_titulo": "Mandalo por WhatsApp",
+    "paso2_texto": "Te llega armado, no tenés que explicar nada.",
+    "paso3_titulo": "Coordinamos tu primera clase",
+    "paso3_texto": "Con el horario que te quede cómodo.",
+    "campo_tipo": "Qué necesitás",
+    "campo_fecha": "Desde cuándo",
+    "campo_invitados": "Frecuencia",
+    "boton_formulario": "Consultar por WhatsApp",
+    "nota_formulario": "Te contestamos en el día.",
+    "donde_etiqueta": "Dónde estamos",
+    "direccion": "Montevideo",
+    "direccion_detalle": "Lunes a viernes de 8 a 21 h",
+    "mapa_url": "https://www.google.com/maps/search/?api=1&query=Academia+de+Choferes+del+Parque+Montevideo",
+    "mapa_boton": "Cómo llegar",
+    "contacto_etiqueta": "Contacto",
+    "contacto": "095 979 419",
+    "contacto_detalle": "info@academiadechoferesdelparque.com.uy",
+    "copyright": "Academia del Parque",
+    "burbuja": "¿Arrancamos?",
+    "nombre_chat": "Academia del Parque"
+  },
+  "asistente": {
+    "demo": [
+      "Sacar la libreta",
+      "2 clases por semana",
+      "05/10/2026"
+    ],
+    "tags": [
+      "Clases individuales",
+      "Autos 0 km con aire",
+      "Lunes a viernes de 8 a 21",
+      "Sin matrícula",
+      "Trámites en la IMM sin costo",
+      "Pago por clase o por paquete"
+    ],
+    "inc": [
+      "Clases individuales de 50 a 55 minutos, solo vos y el instructor",
+      "Autos 0 km con aire acondicionado y dirección hidráulica",
+      "Horarios de lunes a viernes de 8 a 21, a tu conveniencia",
+      "Trámites ante la Intendencia sin costo",
+      "Pagás por clase o por paquete, sin matrícula ni adicionales"
+    ],
+    "tipos": [
+      "Sacar la libreta",
+      "Perfeccionamiento",
+      "Preparar el examen práctico",
+      "Otro"
+    ],
+    "inv": [
+      "1 clase por semana",
+      "2 clases por semana",
+      "3 o más por semana",
+      "Intensivo"
+    ],
+    "wa": "59895979419",
+    "faq": {
+      "precio": "Pagás por clase o por paquete, sin matrícula ni adicionales. Contame cuántas clases querés y te paso el precio exacto.",
+      "capacidad": "Necesitás ser mayor de 18, el examen médico para libreta y una fotocopia de la cédula de los dos lados. Con eso arrancamos.",
+      "visita": "Sí, los trámites ante la Intendencia los hace la academia, sin costo para vos.",
+      "donde": "Estamos en Montevideo. Coordinamos el punto de encuentro de cada clase con vos."
+    },
+    "t": {
+      "soy": "Soy",
+      "sinFecha": "fecha a definir",
+      "listo": "Listo",
+      "noSe": "Todavía no sé",
+      "tag": "Asistente automático · responde al instante",
+      "hola": "¡Hola! 👋 Soy el asistente de Academia del Parque.",
+      "hola2": "¿Qué necesitás?",
+      "qFecha": "Quiero empezar clases",
+      "qPrecio": "¿Cuánto sale?",
+      "qCap": "¿Qué necesito para empezar?",
+      "qVisita": "¿Los trámites los hacen ustedes?",
+      "qDonde": "¿Dónde son las clases?",
+      "qArmar": "Armar mi consulta",
+      "qOtra": "Otra pregunta",
+      "qAgendar": "Consultar por WhatsApp",
+      "qSeguir": "Enviar consulta por WhatsApp",
+      "bTipo": "¡Buenísimo! ¿Qué necesitás?",
+      "bInv": "¿Cuántas clases por semana te gustaría?",
+      "bFecha": "¿Desde qué fecha querés arrancar?",
+      "bFin": "Perfecto: {tipo}, {inv}, arrancando el {fecha}.\nTe paso con la academia para coordinar horarios y pasarte el precio. Tocá abajo y te llega todo armado 👇",
+      "msgForm": "Hola! {nom}Quiero info de clases: {tipo}, {inv}, arrancando el {fecha}. ¿Qué horarios tienen?",
+      "msgVisita": "Hola! Quería saber cómo son los trámites para la libreta."
+    }
+  }
+}
