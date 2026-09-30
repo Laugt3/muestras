@@ -30,17 +30,17 @@
   },
   "textos": {
     "titulo": "La Comarca · Fiestas y eventos en Centro y Tres Cruces",
-    "descripcion": "Dos salones en Montevideo con discoteca y catering. Consultá tu fecha.",
+    "descripcion": "Dos salones en Montevideo con discoteca y catering. Calculá tu presupuesto al instante.",
     "nombre_muestra": "La Comarca",
     "marca": "La Comarca",
     "nav_espacio": "El lugar",
     "nav_incluye": "Qué incluye",
     "nav_donde": "Dónde estamos",
-    "nav_cta": "Consultá tu fecha",
+    "nav_cta": "Calculá tu presupuesto",
     "resenas": "4,8 · 226 reseñas en Google",
     "titular": "Tu fiesta, <em>de principio a fin.</em>",
     "bajada": "Dos salones en Montevideo, Centro y Tres Cruces, con discoteca, karaoke, menú y personal incluido.",
-    "cta_portada": "Consultá tu fecha",
+    "cta_portada": "Calculá tu presupuesto",
     "boton_asistente": "Preguntale al asistente",
     "espacio_etiqueta": "El lugar",
     "espacio_titulo": "Pista, luces y todo listo para festejar",
@@ -134,7 +134,9 @@
       "bFecha": "¿Tenés una fecha pensada?",
       "bFin": "Perfecto: {tipo}, {inv}, {fecha}.\nTe paso con el equipo para confirmar la fecha y mandarte el presupuesto. Tocá abajo y te llega todo armado 👇",
       "msgForm": "Hola! {nom}Quiero consultar por un evento: {tipo}, {inv}, para el {fecha}. ¿Tienen la fecha libre?",
-      "msgVisita": "Hola! Me gustaría coordinar una visita para conocer el lugar."
+      "msgVisita": "Hola! Me gustaría coordinar una visita para conocer el lugar.",
+      "qCalc": "Calcular mi presupuesto",
+      "precioCalc": "Trabajamos con precio por persona, según el menú y el salón. En la web podés armar tu fiesta y ver el total al instante 👇"
     }
   },
   "videos": {
@@ -161,9 +163,10 @@
     "sena": 30,
     "invitados_inicial": 50,
     "textos": {
-      "etiqueta": "Presupuestador · La Comarca",
-      "titular": "Armá tu fiesta y conocé el precio <em>al instante.</em>",
-      "bajada": "Elegí salón, menú y lo que quieras sumar. El total se actualiza solo y, cuando te cierre, reservás la fecha por WhatsApp.",
+      "etiqueta": "Calculá tu presupuesto",
+      "titulo": "Armá tu fiesta y conocé el precio <em>al instante.</em>",
+      "texto": "Elegí salón, menú y lo que quieras sumar. El total se actualiza solo y, cuando te cierre, reservás la fecha por WhatsApp.",
+      "salones": "Los dos con discoteca, luces y personal incluido.",
       "nota": "Presupuesto estimado en pesos uruguayos, válido por 15 días. La fecha queda reservada con la seña."
     },
     "salones": [

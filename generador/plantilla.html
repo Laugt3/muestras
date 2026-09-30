@@ -222,8 +222,7 @@ const $=s=>document.querySelector(s);
 D.tags.forEach(t=>{const e=document.createElement("span");e.className="tag";e.textContent=t;$("#tags").appendChild(e)});
 D.gal.forEach(src=>{const f=document.createElement("figure");f.innerHTML='<img loading="lazy" alt="">';f.firstChild.src=src;$("#gal").appendChild(f)});
 D.inc.forEach((t,i)=>{const d=document.createElement("div");d.innerHTML="<span>"+String(i+1).padStart(2,"0")+"</span>";d.appendChild(document.createTextNode(t));$("#inc").appendChild(d)});
-D.tipos.forEach(t=>$("#ftipo").add(new Option(t,t)));
-D.inv.forEach(t=>$("#finv").add(new Option(t,t)));
+if($("#ftipo")){D.tipos.forEach(t=>$("#ftipo").add(new Option(t,t)));D.inv.forEach(t=>$("#finv").add(new Option(t,t)))}
 const fmt=v=>{if(!v)return D.t.sinFecha;const [y,m,d]=v.split("-");return d+"/"+m+"/"+y};
 const wa=msg=>"https://wa.me/"+D.wa+"?text="+encodeURIComponent(msg);
 function send(e){e.preventDefault();const n=$("#fnom").value.trim();
@@ -259,7 +258,7 @@ function opts(list){const q=$("#qr");q.innerHTML="";list.forEach(o=>{let b;
  b.textContent=o.l;q.appendChild(b)})}
 function dateInput(){const q=$("#qr");q.innerHTML="";const i=document.createElement("input");i.type="date";const b=document.createElement("button");b.textContent=D.t.listo;
  b.onclick=()=>{S.fecha=fmt(i.value);q.innerHTML="";bubble(S.fecha,"out");fin()};const n=document.createElement("button");n.textContent=D.t.noSe;n.onclick=()=>{S.fecha=D.t.sinFecha;q.innerHTML="";bubble(D.t.noSe,"out");fin()};q.append(i,b,n)}
-function menu(){opts([{l:D.t.qFecha,f:askTipo},{l:D.t.qPrecio,f:()=>bot(D.faq.precio,()=>opts([{l:D.t.qArmar,f:askTipo},{l:D.t.qOtra,f:menu}]))},{l:D.t.qCap,f:()=>bot(D.faq.capacidad,menu)},{l:D.t.qVisita,f:()=>bot(D.faq.visita,()=>opts([{l:D.t.qAgendar,href:wa(D.t.msgVisita)},{l:D.t.qOtra,f:menu}]))},{l:D.t.qDonde,f:()=>bot(D.faq.donde,menu)}])}
+function menu(){opts([{l:D.t.qFecha,f:askTipo},{l:D.t.qPrecio,f:()=>bot(D.calc?(D.t.precioCalc||D.faq.precio):D.faq.precio,()=>opts([...(D.calc?[{l:D.t.qCalc||"Calcular mi presupuesto",f:()=>{closeChat();$("#fecha").scrollIntoView({behavior:"smooth"})}}]:[]),{l:D.t.qArmar,f:askTipo},{l:D.t.qOtra,f:menu}]))},{l:D.t.qCap,f:()=>bot(D.faq.capacidad,menu)},{l:D.t.qVisita,f:()=>bot(D.faq.visita,()=>opts([{l:D.t.qAgendar,href:wa(D.t.msgVisita)},{l:D.t.qOtra,f:menu}]))},{l:D.t.qDonde,f:()=>bot(D.faq.donde,menu)}])}
 function askTipo(){bot(D.t.bTipo,()=>opts(D.tipos.map(t=>({l:t,f:()=>{S.tipo=t;askInv()}}))))}
 function askInv(){bot(D.t.bInv,()=>opts(D.inv.map(t=>({l:t,f:()=>{S.inv=t;bot(D.t.bFecha,dateInput)}}))))}
 function fin(){const msg=D.t.msgForm.replace("{nom}","").replace("{tipo}",S.tipo).replace("{inv}",S.inv).replace("{fecha}",S.fecha);
@@ -270,7 +269,7 @@ if(location.hash==="#demo"){started=true;$("#chat").classList.add("on");const d=
  const t=(D.demo||[])[0]||D.tipos[1],i=(D.demo||[])[1]||D.inv[2];bubble(D.t.hola,"in");bubble(D.t.qFecha,"out");bubble(D.t.bTipo,"in");bubble(t,"out");bubble(D.t.bInv,"in");bubble(i,"out");bubble(D.t.bFecha,"in");const dd=(D.demo||[])[2]||"14/03/2027";bubble(dd,"out");
  bubble(D.t.bFin.replace("{tipo}",t).replace("{inv}",i).replace("{fecha}",dd),"in");opts([{l:D.t.qSeguir,href:"#"},{l:D.t.qOtra,f:menu}]);
  document.querySelectorAll(".m time").forEach((e,k)=>e.textContent="21:"+String(14+Math.floor(k/2)).padStart(2,"0"));$("#cb").scrollTop=1e6}
-else setTimeout(()=>{if(!started&&innerWidth>860)openChat()},6000);
+else setTimeout(()=>{if(!started&&innerWidth>860&&scrollY<innerHeight*.8)openChat()},6000);
 </script>
 </body>
 </html>

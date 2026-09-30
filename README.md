@@ -63,8 +63,8 @@ Aparecen debajo de la galería, se reproducen solos (sin sonido) al verlos y se 
 
 Las fotos de la galería también se abren a pantalla completa con flechas.
 
-### Presupuestador privado
-Si `datos.json` tiene `calculadora`, además se genera `<nombre>-presupuesto.html`: una calculadora donde el cliente elige salón, invitados, menú, horas y adicionales y ve el total al instante (con seña, precio por invitado, PDF y envío por WhatsApp). No está enlazada desde la web y tiene `noindex`: solo entra quien recibe el link. Ver `clientes/lacomarca/datos.json` como ejemplo (precios, recargos por día, mínimos y capacidad por salón).
+### Calculadora de presupuesto
+Si `datos.json` tiene `calculadora`, la sección "Consultá tu fecha" se reemplaza por una calculadora dentro de la misma web: el cliente elige tipo de evento y fecha, salón, invitados, menú, horas y adicionales, y ve el total al instante (detalle, precio por invitado y seña). Desde ahí reserva por WhatsApp con todo el presupuesto escrito, lo descarga en PDF o lo comparte (el link abre ese mismo presupuesto). El asistente también ofrece "Calcular mi presupuesto". Ver `clientes/lacomarca/datos.json` como ejemplo (precios, recargos por día, mínimos y capacidad por salón). El diseño está en `generador/calculadora.html`.
 
 ## Cuando un cliente compra
 

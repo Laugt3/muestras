@@ -218,6 +218,8 @@ def generar(slug: str) -> Path:
         if k == "tags":
             asistente["gal"] = galeria
     asistente.setdefault("gal", galeria)
+    if datos.get("calculadora"):
+        asistente["calc"] = calculadora(slug, datos, fotos)
     if datos.get("videos"):
         asistente["vid"] = videos(slug, datos["videos"])
     valores["asistente"] = json.dumps(asistente, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
@@ -227,6 +229,9 @@ def generar(slug: str) -> Path:
                                   f'font-family:"{fuente["titulos"][0]}";src:url({{{{fuente_base_titulos}}}}) format("woff2");font-weight:{fuente["titulos"][2]}')
     plantilla = plantilla.replace('font-family:"Host Grotesk";src:url({{fuente_base_texto}}) format("woff2");font-weight:400 700',
                                   f'font-family:"{fuente["texto"][0]}";src:url({{{{fuente_base_texto}}}}) format("woff2");font-weight:{fuente["texto"][2]}')
+    if datos.get("calculadora"):
+        tit = fuente["titulos"]
+        plantilla = con_calculadora(plantilla, f'"{tit[0]}",{tit[3]}')
     plantilla = ordenar_secciones(plantilla, v["orden"])
 
     faltan = set(re.findall(r"{{(\w+)}}", plantilla)) - set(valores)
@@ -236,8 +241,6 @@ def generar(slug: str) -> Path:
     salida = salida.replace(borrar + "\n", "")
     destino = RAIZ / f"{slug}.html"
     destino.write_text(salida, encoding="utf-8")
-    if datos.get("calculadora"):
-        presupuesto(slug, datos, valores, fuente)
     return destino
 
 
@@ -259,33 +262,35 @@ def videos(slug: str, config: dict) -> dict:
     return {**{k: config.get(k, "") for k in ("etiqueta", "titulo", "texto")}, "lista": lista}
 
 
-# ---------------------------------------------------------------- presupuestador privado
-def presupuesto(slug: str, datos: dict, valores: dict, fuente: dict) -> Path:
-    """Genera <slug>-presupuesto.html: la calculadora que el salón manda por link a sus clientes.
-    No está enlazada desde la web y lleva noindex, así que solo entra quien tiene el link."""
+# ---------------------------------------------------------------- calculadora de presupuesto
+def calculadora(slug: str, datos: dict, fotos: Path) -> dict:
     calc = json.loads(json.dumps(datos["calculadora"]))
-    fotos = CLIENTES / slug / "fotos"
+    galeria = fotos_galeria(fotos)
     for s in calc["salones"]:
-        f = foto(fotos, s.get("foto", "portada"))
-        s["foto"] = data_uri(f, MIME[f.suffix.lower()])
-    calc["wa"] = datos["asistente"]["wa"]
+        nombre = s.get("foto", "portada")
+        f = foto(fotos, nombre)
+        # la portada y las de la galería ya están en la página: se reutilizan en vez de repetirlas
+        if nombre == "portada":
+            s["foto"] = "@portada"
+        elif f in galeria:
+            s["foto"] = f"@gal:{galeria.index(f)}"
+        else:
+            s["foto"] = data_uri(f, MIME[f.suffix.lower()])
     calc["tipos"] = calc.get("tipos") or [t for t in datos["asistente"]["tipos"] if t != "Otro"]
-    vals = {
-        "marca": valores["marca"],
-        "aviso_muestra": valores["aviso_muestra"],
-        "img_portada": valores["img_portada"],
-        "fuente_titulos": valores["fuente_base_titulos"], "peso_titulos": fuente["titulos"][2],
-        "fuente_texto": valores["fuente_base_texto"], "peso_texto": fuente["texto"][2],
-        "calculadora": json.dumps(calc, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/"),
-        **{k: val for k, val in valores.items() if k.startswith("c_")},
-    }
-    plantilla = (GEN / "presupuesto.html").read_text(encoding="utf-8")
-    salida = re.sub(r"{{(\w+)}}", lambda m: vals[m.group(1)], plantilla)
-    salida = salida.replace("\x00borrar\x00\n", "")
-    destino = RAIZ / f"{slug}-presupuesto.html"
-    destino.write_text(salida, encoding="utf-8")
-    print(f"  {destino.name:22} {destino.stat().st_size / 1e6:.1f} MB  (presupuestador privado)")
-    return destino
+    return calc
+
+
+def con_calculadora(plantilla: str, familia_titulos: str) -> str:
+    """Reemplaza la sección "fecha" (formulario de consulta) por la calculadora de presupuesto."""
+    partes = (GEN / "calculadora.html").read_text(encoding="utf-8").replace("{{familia_titulos}}", familia_titulos)
+    css, resto = partes.split("<!--css-->\n")[1].split("<!--html-->\n")
+    html_calc, js = resto.split("<!--js-->\n")
+    inicio = plantilla.index('<section id="fecha"')
+    fin = plantilla.index("<!--seccion-->", inicio)
+    plantilla = plantilla[:inicio] + html_calc.rstrip("\n") + "\n\n" + plantilla[fin:]
+    plantilla = plantilla.replace("{{css_variantes}}</style>", css + "{{css_variantes}}</style>")
+    i = plantilla.rindex("</script>")
+    return plantilla[:i] + js + plantilla[i:]
 
 
 # ---------------------------------------------------------------- portafolio
