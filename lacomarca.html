@@ -277,7 +277,7 @@ footer img{height:40px}
   $("z-salon").replaceChildren(...Object.entries(P.salones).map(([id,s])=>card(s.n,s.d,fmt(s.h)+" <small>por hora</small>",S.sal===id,()=>{S.sal=id;if(id!=="centro")S.ex.delete("pista");S.pers=Math.min(S.pers,P.salones[id].max);R()},0,1)));
   $("z-cnt").replaceChildren(num("Invitados","Capacidad del salón: "+sal.max,S.pers,v=>S.pers=v,1,sal.max,5),num("Horas de fiesta","Hasta "+P.maxH+" horas",S.horas,v=>S.horas=v,1,P.maxH,1));
   $("z-pmenu").style.display=S.modo==="completo"?"":"none";$("z-pcat").style.display=S.modo==="catering"?"":"none";
-  const mm=$("z-menus");mm.replaceChildren();const g=E("div","ch");P.menus.forEach(m=>{const on=m.id in S.menus;g.append(card(m.n,m.d,fmt(m.p)+" <small>por persona</small>",on,()=>{on?delete S.menus[m.id]:S.menus[m.id]=S.pers;R()}))});mm.append(g);
+  const mm=$("z-menus");mm.replaceChildren();const g=E("div","ch");P.menus.forEach(m=>{const on=m.id in S.menus;g.append(card(m.n,m.d,fmt(m.p)+" <small>por persona</small>",on,()=>{on?delete S.menus[m.id]:S.menus[m.id]=10;R()}))});mm.append(g);
   P.menus.forEach(m=>{if(!(m.id in S.menus))return;mm.append(num(m.n,"Cantidad de personas",S.menus[m.id],v=>S.menus[m.id]=v,1,300,5,1));
    if(m.id==="pizzetas"){const x=E("div","ch");x.style.margin="10px 0 0 22px";P.xpiz.forEach(z=>x.append(card("+ "+z.n,null,"+"+fmt(P.xpizP)+" <small>por persona</small>",S.xp.has(z.id),()=>{S.xp.has(z.id)?S.xp.delete(z.id):S.xp.add(z.id);R()})));mm.append(x)}});
   mm.append(num("Postres","Recomendamos "+Math.ceil(S.pers/22)+" para "+S.pers+" personas · "+fmt(P.postre)+" c/u",S.post,v=>S.post=v,0,20,1));
