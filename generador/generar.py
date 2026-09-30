@@ -218,6 +218,8 @@ def generar(slug: str) -> Path:
         if k == "tags":
             asistente["gal"] = galeria
     asistente.setdefault("gal", galeria)
+    if datos.get("videos"):
+        asistente["vid"] = videos(slug, datos["videos"])
     valores["asistente"] = json.dumps(asistente, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
 
     plantilla = (GEN / "plantilla.html").read_text(encoding="utf-8")
@@ -234,6 +236,55 @@ def generar(slug: str) -> Path:
     salida = salida.replace(borrar + "\n", "")
     destino = RAIZ / f"{slug}.html"
     destino.write_text(salida, encoding="utf-8")
+    if datos.get("calculadora"):
+        presupuesto(slug, datos, valores, fuente)
+    return destino
+
+
+# ---------------------------------------------------------------- videos
+def videos(slug: str, config: dict) -> dict:
+    """Los videos no se incrustan (pesarían demasiado): la web los carga desde clientes/<slug>/videos/."""
+    carpeta = CLIENTES / slug / "videos"
+    lista = []
+    for v in config.get("lista", []):
+        archivo = carpeta / v["archivo"]
+        if not archivo.exists():
+            sys.exit(f"{slug}: falta el video {archivo.relative_to(RAIZ)}")
+        item = {"src": archivo.relative_to(RAIZ).as_posix(), "titulo": v.get("titulo", ""),
+                "detalle": v.get("detalle", ""), "vertical": v.get("vertical", False)}
+        poster = archivo.with_suffix(".jpg")
+        if poster.exists():
+            item["poster"] = data_uri(poster, "image/jpeg")
+        lista.append(item)
+    return {**{k: config.get(k, "") for k in ("etiqueta", "titulo", "texto")}, "lista": lista}
+
+
+# ---------------------------------------------------------------- presupuestador privado
+def presupuesto(slug: str, datos: dict, valores: dict, fuente: dict) -> Path:
+    """Genera <slug>-presupuesto.html: la calculadora que el salón manda por link a sus clientes.
+    No está enlazada desde la web y lleva noindex, así que solo entra quien tiene el link."""
+    calc = json.loads(json.dumps(datos["calculadora"]))
+    fotos = CLIENTES / slug / "fotos"
+    for s in calc["salones"]:
+        f = foto(fotos, s.get("foto", "portada"))
+        s["foto"] = data_uri(f, MIME[f.suffix.lower()])
+    calc["wa"] = datos["asistente"]["wa"]
+    calc["tipos"] = calc.get("tipos") or [t for t in datos["asistente"]["tipos"] if t != "Otro"]
+    vals = {
+        "marca": valores["marca"],
+        "aviso_muestra": valores["aviso_muestra"],
+        "img_portada": valores["img_portada"],
+        "fuente_titulos": valores["fuente_base_titulos"], "peso_titulos": fuente["titulos"][2],
+        "fuente_texto": valores["fuente_base_texto"], "peso_texto": fuente["texto"][2],
+        "calculadora": json.dumps(calc, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/"),
+        **{k: val for k, val in valores.items() if k.startswith("c_")},
+    }
+    plantilla = (GEN / "presupuesto.html").read_text(encoding="utf-8")
+    salida = re.sub(r"{{(\w+)}}", lambda m: vals[m.group(1)], plantilla)
+    salida = salida.replace("\x00borrar\x00\n", "")
+    destino = RAIZ / f"{slug}-presupuesto.html"
+    destino.write_text(salida, encoding="utf-8")
+    print(f"  {destino.name:22} {destino.stat().st_size / 1e6:.1f} MB  (presupuestador privado)")
     return destino
 
 

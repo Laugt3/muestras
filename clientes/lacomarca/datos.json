@@ -136,5 +136,140 @@
       "msgForm": "Hola! {nom}Quiero consultar por un evento: {tipo}, {inv}, para el {fecha}. ¿Tienen la fecha libre?",
       "msgVisita": "Hola! Me gustaría coordinar una visita para conocer el lugar."
     }
+  },
+  "videos": {
+    "etiqueta": "En video",
+    "titulo": "Mirá cómo se vive una fiesta acá",
+    "texto": "Recorré los dos salones antes de venir a conocerlos.",
+    "lista": [
+      {
+        "archivo": "video-1.mp4",
+        "titulo": "Salón Tres Cruces",
+        "detalle": "Pista LED y 200 invitados",
+        "vertical": true
+      },
+      {
+        "archivo": "video-2.mp4",
+        "titulo": "Salón Centro",
+        "detalle": "Colonia 1219 · ideal para cumpleaños",
+        "vertical": false
+      }
+    ]
+  },
+  "calculadora": {
+    "moneda": "$",
+    "sena": 30,
+    "invitados_inicial": 50,
+    "textos": {
+      "etiqueta": "Presupuestador · La Comarca",
+      "titular": "Armá tu fiesta y conocé el precio <em>al instante.</em>",
+      "bajada": "Elegí salón, menú y lo que quieras sumar. El total se actualiza solo y, cuando te cierre, reservás la fecha por WhatsApp.",
+      "nota": "Presupuesto estimado en pesos uruguayos, válido por 15 días. La fecha queda reservada con la seña."
+    },
+    "salones": [
+      {
+        "nombre": "Tres Cruces",
+        "detalle": "Duvimioso Terra 1971 · pista LED",
+        "capacidad": 200,
+        "minimo": 40,
+        "precio": 22000,
+        "foto": "galeria-3",
+        "encuadre": "center 68%"
+      },
+      {
+        "nombre": "Centro",
+        "detalle": "Colonia 1219 · íntimo y cálido",
+        "capacidad": 90,
+        "minimo": 20,
+        "precio": 12000,
+        "foto": "portada"
+      }
+    ],
+    "menus": [
+      {
+        "nombre": "Clásico",
+        "precio": 1150,
+        "detalle": [
+          "Recepción con bocaditos",
+          "Plato principal",
+          "Postre",
+          "Refrescos y agua libres"
+        ]
+      },
+      {
+        "nombre": "Fiesta",
+        "precio": 1490,
+        "destacado": true,
+        "detalle": [
+          "Recepción con bocaditos y fingers",
+          "Plato principal a elección",
+          "Postre y torta",
+          "Canilla libre de cerveza y refrescos"
+        ]
+      },
+      {
+        "nombre": "Premium",
+        "precio": 1950,
+        "detalle": [
+          "Recepción de lujo y estación de sushi",
+          "Plato principal gourmet",
+          "Mesa dulce completa",
+          "Barra de tragos libre"
+        ]
+      }
+    ],
+    "infantil": {
+      "nombre": "Niños",
+      "detalle": "Menú infantil, hasta 12 años",
+      "precio": 690
+    },
+    "horas": {
+      "incluidas": 6,
+      "max_extra": 2,
+      "precio_extra": 6500
+    },
+    "recargos": [
+      {
+        "nombre": "Recargo sábado",
+        "dias": [
+          6
+        ],
+        "porcentaje": 10
+      }
+    ],
+    "adicionales": [
+      {
+        "nombre": "Cabina de fotos 360°",
+        "detalle": "Videos en cámara lenta para compartir al instante.",
+        "precio": 7500
+      },
+      {
+        "nombre": "Mesa dulce",
+        "detalle": "Torta temática, cupcakes y golosinas.",
+        "precio": 190,
+        "por_persona": true
+      },
+      {
+        "nombre": "Cotillón luminoso",
+        "detalle": "Anteojos, vinchas y pulseras LED para la pista.",
+        "precio": 95,
+        "por_persona": true
+      },
+      {
+        "nombre": "Fotógrafo",
+        "detalle": "Cobertura completa y fotos editadas.",
+        "precio": 9000
+      },
+      {
+        "nombre": "Animación y show",
+        "detalle": "Animadores, juegos y show en la pista.",
+        "precio": 8000
+      },
+      {
+        "nombre": "Ambientación temática",
+        "detalle": "Centros de mesa, globos y fondo para fotos.",
+        "precio": 6000
+      }
+    ]
   }
 }

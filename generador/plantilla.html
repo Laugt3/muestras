@@ -124,6 +124,39 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
  .quote{padding:28px}
  .fab span.t{display:none}.fab{padding:0 8px}
 }
+/* videos y visor */
+.vh{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-top:88px}
+.vh p{color:var(--mute);max-width:360px;font-size:15.5px}
+.vids{display:flex;gap:14px;margin-top:32px;height:clamp(420px,46vw,600px)}
+.vid{position:relative;flex:1 1 0;min-width:0;border-radius:24px;overflow:hidden;background:#000;color:#fff;text-align:left;isolation:isolate}
+.vid.v{flex:0 0 auto;aspect-ratio:9/16}
+.vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.vid:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,0) 30%,rgba(0,0,0,0) 55%,rgba(0,0,0,.75))}
+.vid:hover video{transform:scale(1.04)}
+.vid .vi{position:absolute;left:0;right:0;bottom:0;padding:22px;display:flex;align-items:center;gap:14px}
+.vid .pl{flex:none;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.18);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.35);transition:all .3s}
+.vid:hover .pl{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.vid .pl svg{width:18px;height:18px;margin-left:3px}
+.vid b{font-weight:600;font-size:16px;line-height:1.25}
+.vid small{display:block;font-size:13px;opacity:.75;font-weight:400}
+.vid .live{position:absolute;top:18px;left:18px;font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:7px;padding:6px 11px;border-radius:999px;background:rgba(0,0,0,.35);backdrop-filter:blur(8px)}
+.vid .live:before{content:"";width:6px;height:6px;border-radius:50%;background:#ff4d4d;animation:bl 1.4s infinite}
+.gal figure{cursor:zoom-in}
+.lb{position:fixed;inset:0;z-index:100;background:rgba(8,6,5,.94);backdrop-filter:blur(14px);display:none;align-items:center;justify-content:center;padding:64px 16px 32px;opacity:0;transition:opacity .3s}
+.lb.on{display:flex}.lb.in{opacity:1}
+.lb img,.lb video{max-width:min(1200px,100%);max-height:100%;border-radius:16px;box-shadow:0 40px 100px -30px #000;transform:scale(.97);transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.lb.in img,.lb.in video{transform:none}
+.lb button{position:absolute;color:#fff;width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);font-size:24px;display:grid;place-items:center;transition:background .2s}
+.lb button:hover{background:rgba(255,255,255,.22)}
+.lb .x{top:16px;right:16px}.lb .pv2{left:20px;top:50%;margin-top:-26px}.lb .nx{right:20px;top:50%;margin-top:-26px}
+.lb .cnt{position:absolute;top:30px;left:50%;transform:translateX(-50%);color:#fff;opacity:.6;font-size:13px;letter-spacing:.12em}
+@media(max-width:860px){
+ .vh{flex-direction:column;align-items:flex-start;gap:10px;margin-top:64px}
+ .vids{overflow-x:auto;scroll-snap-type:x mandatory;height:auto;margin-inline:-16px;padding:0 16px 6px;scrollbar-width:none}
+ .vid,.vid.v{flex:0 0 72%;aspect-ratio:9/16;scroll-snap-align:center}
+ .vid:not(.v){flex-basis:88%;aspect-ratio:4/5}
+ .lb .pv2,.lb .nx{top:auto;bottom:20px;margin:0}.lb .pv2{left:calc(50% - 64px)}.lb .nx{right:calc(50% - 64px)}.lb{padding-bottom:90px}
+}
 {{css_variantes}}</style>
 </head>
 <body>
@@ -144,6 +177,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <p class="kick">{{espacio_etiqueta}}</p>
 <h2>{{espacio_titulo}}</h2>
 <div class="gal" id="gal"></div>
+<div id="vbox" hidden><div class="vh"><div><p class="kick" id="vk"></p><h2 id="vt"></h2></div><p id="vs"></p></div><div class="vids" id="vids"></div></div>
 </div></section>
 
 <!--seccion-->
@@ -179,6 +213,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <footer><div class="wrap"><span>© {{copyright}}</span><span>Web y asistente: NIMBRA</span></div></footer>
 
 <button class="fab" onclick="openChat()"><span class="av"><img src="{{img_avatar}}" alt=""></span><span class="dot"></span><span class="t">{{burbuja}}</span></button>
+<div class="lb" id="lb" role="dialog" aria-modal="true"><span class="cnt" id="lbc"></span><div id="lbm" style="display:contents"></div><button class="x" onclick="lbClose()" aria-label="Cerrar">×</button><button class="pv2" onclick="lbGo(-1)" aria-label="Anterior">‹</button><button class="nx" onclick="lbGo(1)" aria-label="Siguiente">›</button></div>
 <div class="chat" id="chat"><div class="ch"><span class="av"><img src="{{img_avatar}}" alt=""></span><div><b>{{nombre_chat}}</b><small>en línea</small></div><button onclick="closeChat()" aria-label="Cerrar">×</button></div><div class="cb" id="cb"></div><div class="qr" id="qr"></div></div>
 
 <script>
@@ -194,6 +229,25 @@ const wa=msg=>"https://wa.me/"+D.wa+"?text="+encodeURIComponent(msg);
 function send(e){e.preventDefault();const n=$("#fnom").value.trim();
  const msg=D.t.msgForm.replace("{nom}",n?(D.t.soy+" "+n+". "):"").replace("{tipo}",$("#ftipo").value).replace("{inv}",$("#finv").value).replace("{fecha}",fmt($("#ffecha").value));
  window.open(wa(msg),"_blank")}
+// videos y visor de fotos
+if(D.vid&&D.vid.lista.length){$("#vbox").hidden=false;$("#vk").textContent=D.vid.etiqueta||"";$("#vt").textContent=D.vid.titulo||"";$("#vs").textContent=D.vid.texto||"";
+ D.vid.lista.forEach((v,i)=>{const b=document.createElement("button");b.className="vid"+(v.vertical?" v":"");
+  b.innerHTML='<video muted loop playsinline preload="metadata"></video><span class="live">Video</span><span class="vi"><span class="pl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12.5-7.5z"/></svg></span><span><b></b><small></small></span></span>';
+  const vv=b.querySelector("video");vv.src=v.src;if(v.poster)vv.poster=v.poster;b.querySelector("b").textContent=v.titulo||"";b.querySelector("small").textContent=v.detalle||"";
+  b.onclick=()=>lbOpen("v",i);$("#vids").appendChild(b)});
+ const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target.querySelector("video");e.isIntersecting?v.play().catch(()=>{}):v.pause()}),{threshold:.35});
+ document.querySelectorAll(".vid").forEach(b=>io.observe(b))}
+let LB={k:"g",i:0};
+function lbShow(){const m=$("#lbm"),list=LB.k==="g"?D.gal:D.vid.lista;m.innerHTML="";
+ if(LB.k==="g"){const im=document.createElement("img");im.src=list[LB.i];im.alt="";m.appendChild(im)}
+ else{const v=document.createElement("video");v.src=list[LB.i].src;v.controls=true;v.autoplay=true;v.playsInline=true;v.loop=true;m.appendChild(v)}
+ $("#lbc").textContent=(LB.i+1)+" / "+list.length;$("#lb").querySelectorAll(".pv2,.nx").forEach(b=>b.style.display=list.length>1?"":"none")}
+function lbOpen(k,i){LB={k,i};lbShow();const l=$("#lb");l.classList.add("on");requestAnimationFrame(()=>l.classList.add("in"));document.body.style.overflow="hidden"}
+function lbClose(){const l=$("#lb");l.classList.remove("in");setTimeout(()=>{l.classList.remove("on");$("#lbm").innerHTML=""},250);document.body.style.overflow=""}
+function lbGo(d){const n=(LB.k==="g"?D.gal:D.vid.lista).length;LB.i=(LB.i+d+n)%n;lbShow()}
+$("#lb").addEventListener("click",e=>{if(e.target.id==="lb")lbClose()});
+addEventListener("keydown",e=>{if(!$("#lb").classList.contains("on"))return;if(e.key==="Escape")lbClose();if(e.key==="ArrowRight")lbGo(1);if(e.key==="ArrowLeft")lbGo(-1)});
+document.querySelectorAll("#gal figure").forEach((f,i)=>f.onclick=()=>lbOpen("g",i));
 // asistente
 const S={};let started=false;
 const now=()=>new Date().toTimeString().slice(0,5);

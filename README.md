@@ -49,6 +49,23 @@ Sumadas a los colores (`colores`) y los textos, dan cientos de combinaciones. Al
 
 Cada una de las 15 muestras tiene una combinación distinta, elegida según su rubro (por ejemplo: tipografía redondeada para cumples infantiles y serif elegante para bodas y estética).
 
+## Extras opcionales por cliente
+
+### Videos
+Poner los `.mp4` en `clientes/<nombre>/videos/` (con una foto `.jpg` del mismo nombre como portada, opcional) y agregar en `datos.json`:
+
+```json
+"videos": {"etiqueta": "En video", "titulo": "…", "texto": "…",
+  "lista": [{"archivo": "video-1.mp4", "titulo": "Salón Tres Cruces", "detalle": "…", "vertical": true}]}
+```
+
+Aparecen debajo de la galería, se reproducen solos (sin sonido) al verlos y se abren a pantalla completa. Los videos **no** se incrustan en el `.html`: se suben junto con la web. Conviene que pesen menos de 2 MB (720p).
+
+Las fotos de la galería también se abren a pantalla completa con flechas.
+
+### Presupuestador privado
+Si `datos.json` tiene `calculadora`, además se genera `<nombre>-presupuesto.html`: una calculadora donde el cliente elige salón, invitados, menú, horas y adicionales y ve el total al instante (con seña, precio por invitado, PDF y envío por WhatsApp). No está enlazada desde la web y tiene `noindex`: solo entra quien recibe el link. Ver `clientes/lacomarca/datos.json` como ejemplo (precios, recargos por día, mínimos y capacidad por salón).
+
 ## Cuando un cliente compra
 
 - Poner `"publicada": true` en su `datos.json` y regenerar: se quita el aviso "Muestra hecha por NIMBRA" y el bloqueo para Google (`noindex`).
