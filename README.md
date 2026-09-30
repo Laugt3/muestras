@@ -57,3 +57,7 @@ Cada una de las 15 muestras tiene una combinación distinta, elegida según su r
 ## Portafolio
 
 Completar `generador/nimbra.json` con el WhatsApp de NIMBRA (con código de país), Instagram y email, y regenerar: aparecen los botones de contacto. Si están vacíos, esos botones no se muestran.
+
+## Calculadora de presupuesto (La Comarca)
+
+`lacomarca-presupuesto.html` es una página aparte, hecha a mano (no la genera `generar.py`): una calculadora privada que el salón le manda por link a sus clientes. No está enlazada desde la web ni se indexa. Los precios, menús y extras están en el objeto `C` al principio del `<script>`; son de ejemplo.
