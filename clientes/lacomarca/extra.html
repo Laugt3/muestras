@@ -1,0 +1,218 @@
+<!-- Calculadora privada de presupuesto: se abre con #presupuesto o desde "Área de clientes" -->
+<style>
+#calc{position:fixed;inset:0;z-index:70;background:var(--bg);overflow-y:auto;overscroll-behavior:contain;opacity:0;visibility:hidden;transform:translateY(24px);transition:opacity .35s,transform .35s,visibility .35s}
+#calc.on{opacity:1;visibility:visible;transform:none}
+body.kno{overflow:hidden}
+#calc h1,#calc h2,#calc .kb{font-family:"Syne",sans-serif;letter-spacing:-.03em;font-weight:700;line-height:1.05}
+.kw{width:min(1180px,100% - 32px);margin-inline:auto}
+.khero{position:relative;min-height:54vh;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+.khero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.khero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,12,8,.45),rgba(20,12,8,.25) 40%,rgba(20,12,8,.9))}
+.khero .kw{position:relative;z-index:1;padding:110px 0 48px}
+.ktop{position:absolute;top:0;left:0;right:0;z-index:2}
+.ktop .kw{display:flex;justify-content:space-between;align-items:center;height:76px;padding:0}
+.kbrand{font-family:"Syne";font-weight:800;font-size:20px}
+.kx{display:flex;gap:10px;align-items:center}
+.klock{font-size:13px;padding:7px 14px;border:1px solid rgba(255,255,255,.35);border-radius:99px;background:rgba(255,255,255,.08);backdrop-filter:blur(8px)}
+.kclose{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.15);color:#fff;font-size:22px;line-height:1;backdrop-filter:blur(8px)}
+.kkick{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-hero);margin-bottom:14px}
+.khero h1{font-size:clamp(40px,6.6vw,86px);max-width:12ch}
+.khero h1 em{font-style:normal;color:var(--accent-hero)}
+.khero p{margin-top:16px;max-width:52ch;font-size:18px;color:rgba(255,255,255,.85)}
+.kgrid{display:grid;grid-template-columns:1fr 380px;gap:40px;align-items:start;padding:56px 0 100px}
+.kgrid>*,.kopt,.kopts>*{min-width:0}
+.kstep{padding:32px 0;border-bottom:1px solid var(--line)}
+.kstep:first-child{padding-top:0}
+.ksh{display:flex;gap:16px;align-items:baseline;margin-bottom:20px}
+.knum{font-family:"Syne";font-weight:700;font-size:14px;color:var(--accent);min-width:28px}
+.kstep h2{font-size:clamp(24px,3vw,32px)}
+.khint{color:var(--mute);font-size:14px;margin:-10px 0 18px 44px}
+.kopts{display:grid;gap:12px;margin-left:44px}
+.k2{grid-template-columns:repeat(2,1fr)}.k3{grid-template-columns:repeat(3,1fr)}.k5{grid-template-columns:repeat(5,1fr)}
+.kopt{position:relative;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:16px;transition:border-color .2s,transform .2s,box-shadow .2s}
+.kopt:hover{border-color:#d9c6b3;transform:translateY(-2px)}
+.kopt.on{border-color:var(--accent);box-shadow:0 10px 30px -14px rgba(226,87,28,.55)}
+.kopt.on:after{content:"✓";position:absolute;top:12px;right:12px;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;font-size:12px;display:grid;place-items:center}
+.kopt b{display:block;font-weight:600}
+.kopt small{display:block;color:var(--mute);font-size:13px;margin-top:4px;line-height:1.4}
+.kopt .kp{display:block;margin-top:10px;font-weight:600;color:var(--accent-ink);font-size:14px}
+.kopt.kc{padding:12px 14px;text-align:center}
+.kopt.kc.on:after{display:none}
+.kopt.kc.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.kopt.kc.on small{color:rgba(255,255,255,.6)}
+.kmenu .kopt{padding:20px}
+.kmenu ul{list-style:none;margin-top:10px;font-size:13px;color:var(--mute)}
+.kmenu li:before{content:"— ";color:var(--accent)}
+.ktag{display:inline-block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:var(--accent-hero);padding:3px 8px;border-radius:99px;margin-bottom:8px}
+.kcount{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:16px 18px}
+.kcount small{display:block;color:var(--mute);font-size:13px}
+.kctrl{display:flex;align-items:center;gap:6px}
+.kctrl button{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--line);background:var(--bg);font-size:20px;line-height:1}
+.kctrl button:hover{border-color:var(--accent);color:var(--accent)}
+.kctrl input{width:56px;text-align:center;border:0;background:transparent;font:600 20px "Syne"}
+#calc input[type=date]{width:100%;border:1.5px solid var(--line);border-radius:16px;padding:15px 16px;background:#fff}
+.kwarn{margin:10px 0 0 44px;font-size:13px;color:var(--accent-ink);min-height:1em}
+.ksum{position:sticky;top:20px;background:var(--ink);color:#f7efe6;border-radius:24px;padding:28px;box-shadow:0 30px 60px -30px rgba(31,22,18,.6)}
+.ksum h3{font-size:14px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-hero)}
+.klines{list-style:none;margin:18px 0;font-size:14px}
+.klines li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px dashed rgba(255,255,255,.12)}
+.klines li span:first-child{color:rgba(247,239,230,.7)}
+.klines li.neg span:last-child{color:#9ee3a8}
+.ktotal{display:flex;justify-content:space-between;align-items:baseline}
+.ktotal .kb{font-size:clamp(30px,3.6vw,40px)}
+.kpp{text-align:right;font-size:13px;color:rgba(247,239,230,.6);margin-top:4px}
+.ksena{margin-top:18px;padding:14px;border-radius:14px;background:rgba(255,255,255,.06);font-size:14px;display:flex;justify-content:space-between}
+.kbtn{display:flex;justify-content:center;width:100%;margin-top:18px;padding:16px;border-radius:99px;background:var(--accent);color:#fff;font-weight:600;transition:background .2s}
+.kbtn:hover{background:var(--accent-ink)}
+.kbtn.kg{background:transparent;border:1px solid rgba(255,255,255,.25);margin-top:10px;color:#f7efe6}
+.kfine{font-size:12px;color:rgba(247,239,230,.5);margin-top:14px;line-height:1.5}
+.kbar{display:none}
+.nav a.kacc{opacity:1;display:inline-flex;gap:6px;align-items:center}
+@media(max-width:960px){
+ .kgrid{grid-template-columns:1fr;padding-bottom:110px}
+ .k5{grid-template-columns:repeat(3,1fr)}
+ .kbar{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:71;justify-content:space-between;align-items:center;background:var(--ink);color:#fff;border-radius:99px;padding:10px 10px 10px 22px;box-shadow:0 16px 40px -12px rgba(0,0,0,.5)}
+ #calc:not(.on) .kbar{display:none}
+ .kbar .kb{font-size:20px}.kbar small{display:block;font-size:11px;opacity:.6}
+ .kbar a{background:var(--accent);color:#fff;padding:12px 18px;border-radius:99px;font-weight:600;font-size:14px}
+}
+@media(max-width:600px){
+ .kopts,.khint,.kwarn{margin-left:0}
+ .k2,.k3{grid-template-columns:1fr}.k5{grid-template-columns:repeat(2,1fr)}
+ .klock span,.kacc span{display:none}.kgrid{padding-top:36px}
+}
+</style>
+
+<div id="calc" role="dialog" aria-modal="true" aria-label="Calculadora de presupuesto">
+ <div class="khero">
+  <img src="{{img_portada}}" alt="">
+  <div class="ktop"><div class="kw"><span class="kbrand">{{marca}}</span><div class="kx"><span class="klock">🔒 <span>Área privada de clientes</span></span><button class="kclose" id="kClose" aria-label="Cerrar">×</button></div></div></div>
+  <div class="kw">
+   <p class="kkick">Calculadora de eventos</p>
+   <h1>Armá tu fiesta, <em>mirá el total.</em></h1>
+   <p>Elegí salón, menú y extras: el presupuesto se arma al instante. Cuando te cierre, lo mandás por WhatsApp y te reservamos la fecha.</p>
+  </div>
+ </div>
+ <div class="kw kgrid">
+  <div>
+   <section class="kstep"><div class="ksh"><span class="knum">01</span><h2>¿Qué festejás?</h2></div><div class="kopts k5" id="k-tipo"></div></section>
+   <section class="kstep"><div class="ksh"><span class="knum">02</span><h2>Elegí el salón</h2></div><div class="kopts k2" id="k-salon"></div></section>
+   <section class="kstep"><div class="ksh"><span class="knum">03</span><h2>Fecha y duración</h2></div>
+    <p class="khint">Viernes y sábados tienen un recargo; de domingo a jueves, descuento.</p>
+    <div class="kopts k2"><input type="date" id="kFecha" aria-label="Fecha del evento"><div class="kopts k3" id="k-horas" style="margin:0"></div></div>
+    <p class="kwarn" id="kDia"></p></section>
+   <section class="kstep"><div class="ksh"><span class="knum">04</span><h2>Invitados</h2></div>
+    <div class="kopts k2">
+     <div class="kcount"><div><b>Adultos</b><small>Desde 13 años</small></div><div class="kctrl"><button data-k="adultos" data-d="-5" aria-label="Menos adultos">−</button><input id="k-adultos" inputmode="numeric" aria-label="Adultos"><button data-k="adultos" data-d="5" aria-label="Más adultos">+</button></div></div>
+     <div class="kcount"><div><b>Niños</b><small>De 3 a 12 años · menú infantil</small></div><div class="kctrl"><button data-k="ninos" data-d="-5" aria-label="Menos niños">−</button><input id="k-ninos" inputmode="numeric" aria-label="Niños"><button data-k="ninos" data-d="5" aria-label="Más niños">+</button></div></div>
+    </div><p class="kwarn" id="kCap"></p></section>
+   <section class="kstep"><div class="ksh"><span class="knum">05</span><h2>Menú</h2></div>
+    <p class="khint">Precio por adulto. Todos incluyen canilla libre de refrescos, personal y mozos.</p>
+    <div class="kopts k3 kmenu" id="k-menu"></div></section>
+   <section class="kstep"><div class="ksh"><span class="knum">06</span><h2>Sumale extras</h2></div><div class="kopts k2" id="k-extras"></div></section>
+  </div>
+  <aside class="ksum" id="kSum">
+   <h3>Tu presupuesto</h3>
+   <ul class="klines" id="kLines"></ul>
+   <div class="ktotal"><span>Total estimado</span><span class="kb" id="kTotal">$0</span></div>
+   <div class="kpp" id="kPp"></div>
+   <div class="ksena"><span>Seña para reservar (30%)</span><b id="kSena">$0</b></div>
+   <a class="kbtn" id="kWa" target="_blank" rel="noopener">Reservar por WhatsApp</a>
+   <button class="kbtn kg" id="kCopy" type="button">Copiar presupuesto</button>
+   <p class="kfine">Presupuesto estimado en pesos uruguayos, válido por 15 días y sujeto a disponibilidad de fecha. Lo confirmamos por WhatsApp.</p>
+  </aside>
+ </div>
+ <div class="kbar"><div><small>Total estimado</small><span class="kb" id="kBar">$0</span></div><a href="#kSum" id="kBarGo">Ver detalle</a></div>
+</div>
+
+<script>
+(()=>{
+/* ============ PRECIOS DE EJEMPLO: editar acá ============ */
+const C={
+ tipos:[{id:"cumple",n:"Cumpleaños",e:"🎂"},{id:"quince",n:"15 años",e:"✨"},{id:"boda",n:"Boda",e:"💍"},{id:"empresa",n:"Empresarial",e:"🥂"},{id:"otro",n:"Otro",e:"🎉"}],
+ salones:[
+  {id:"centro",n:"Salón Centro",d:"Colonia 1219 · hasta 120 personas",cap:120,base:18000},
+  {id:"tres",n:"Salón Tres Cruces",d:"Duvimioso Terra 1971 · hasta 200 personas",cap:200,base:24000}],
+ horas:[{id:5,p:0},{id:6,p:6000},{id:7,p:12000}],
+ dia:{semana:-0.10,viernes:0.10,sabado:0.15}, // sobre salón + menú + horas
+ ninoFactor:0.55, // el menú infantil cuesta 55% del de adulto
+ menus:[
+  {id:"clasico",n:"Clásico",pp:1350,items:["Recepción de fingers","Plato principal","Postre","Refrescos libres"]},
+  {id:"premium",n:"Premium",pp:1850,tag:"El más elegido",items:["Recepción ampliada","Parrilla o principal a elección","Mesa de postres","Refrescos libres + cerveza"]},
+  {id:"gran",n:"Gran Comarca",pp:2450,items:["Recepción gourmet","Dos pasos principales","Mesa dulce y torta","Barra libre con tragos"]}],
+ extras:[ // porPersona: se multiplica por invitados
+  {id:"dj",n:"DJ, discoteca y karaoke",d:"Incluido en todos los eventos",p:0,fijo:true},
+  {id:"foto",n:"Cabina de fotos",d:"Impresiones ilimitadas + accesorios",p:9500},
+  {id:"led",n:"Pantalla LED y visuales",d:"Proyección de fotos y videos",p:7500},
+  {id:"fx",n:"Humo bajo y chispas frías",d:"Para la entrada o el vals",p:6500},
+  {id:"deco",n:"Decoración temática",d:"Centros de mesa, globos y ambientación",p:11000},
+  {id:"torta",n:"Torta decorada",d:"Por invitado",p:180,porPersona:true},
+  {id:"trasnoche",n:"Trasnoche",d:"Pizzas y panchos al cierre · por invitado",p:220,porPersona:true},
+  {id:"animacion",n:"Animación y show",d:"Animador + batucada o cotillón",p:8500}]
+};
+/* ======================================================== */
+const g=id=>document.getElementById(id),cal=g("calc");
+const E={tipo:"cumple",salon:"centro",horas:"5",menu:"premium",adultos:50,ninos:10,fecha:"",extras:new Set(["dj"])};
+const $$=n=>"$"+Math.round(n).toLocaleString("es-UY");
+const find=(l,id)=>l.find(o=>String(o.id)===String(id));
+
+function pintar(key,list,html,cls=""){
+ g("k-"+key).innerHTML=list.map(o=>`<button type="button" class="kopt ${cls}" data-v="${o.id}">${html(o)}</button>`).join("");
+ g("k-"+key).onclick=e=>{const b=e.target.closest(".kopt");if(!b)return;
+  if(key==="extras"){const x=find(C.extras,b.dataset.v);if(!x.fijo)E.extras.has(x.id)?E.extras.delete(x.id):E.extras.add(x.id)}else E[key]=b.dataset.v;calc()};
+}
+pintar("tipo",C.tipos,o=>`<span style="font-size:22px">${o.e}</span><b>${o.n}</b>`,"kc");
+pintar("salon",C.salones,o=>`<b>${o.n}</b><small>${o.d}</small><span class="kp">Salón desde ${$$(o.base)}</span>`);
+pintar("horas",C.horas,o=>`<b>${o.id} hs</b><small>${o.p?"+"+$$(o.p):"Incluidas"}</small>`,"kc");
+pintar("menu",C.menus,o=>`${o.tag?`<span class="ktag">${o.tag}</span>`:""}<b>${o.n}</b><span class="kp">${$$(o.pp)} por adulto</span><ul>${o.items.map(i=>`<li>${i}</li>`).join("")}</ul>`);
+pintar("extras",C.extras,o=>`<b>${o.n}</b><small>${o.d}</small><span class="kp">${o.fijo?"Incluido":$$(o.p)+(o.porPersona?" c/u":"")}</span>`);
+
+cal.querySelectorAll(".kctrl button").forEach(b=>b.onclick=()=>{E[b.dataset.k]=Math.max(0,E[b.dataset.k]+ +b.dataset.d);calc()});
+["adultos","ninos"].forEach(k=>g("k-"+k).oninput=e=>{E[k]=Math.max(0,parseInt(e.target.value)||0);calc(k)});
+const min=new Date();min.setDate(min.getDate()+7);g("kFecha").min=min.toISOString().slice(0,10);
+g("kFecha").onchange=e=>{E.fecha=e.target.value;calc()};
+
+function dia(){
+ if(!E.fecha)return{f:C.dia.sabado,txt:"Elegí una fecha para ver el precio exacto (tomamos sábado como referencia)."};
+ const d=new Date(E.fecha+"T12:00"),w=d.getDay(),k=w===6?"sabado":w===5?"viernes":"semana",pct=Math.round(C.dia[k]*100);
+ const n=d.toLocaleDateString("es-UY",{weekday:"long",day:"numeric",month:"long"});
+ return{n,f:C.dia[k],txt:`${n[0].toUpperCase()+n.slice(1)} · ${pct>0?"recargo de "+pct:"descuento de "+(-pct)}%`};
+}
+let texto="";
+function calc(editando){
+ cal.querySelectorAll("[data-v]").forEach(b=>{const k=b.parentElement.id.slice(2),v=b.dataset.v;b.classList.toggle("on",k==="extras"?E.extras.has(v):String(E[k])===v)});
+ ["adultos","ninos"].forEach(k=>{if(editando!==k)g("k-"+k).value=E[k]});
+ const salon=find(C.salones,E.salon),menu=find(C.menus,E.menu),hs=find(C.horas,E.horas),tipo=find(C.tipos,E.tipo),inv=E.adultos+E.ninos,d=dia();
+ g("kDia").textContent=d.txt;
+ g("kCap").textContent=inv>salon.cap?`El ${salon.n} recibe hasta ${salon.cap} personas: te recomendamos el Salón Tres Cruces.`:"";
+ const L=[[salon.n,salon.base],[`Menú ${menu.n} · ${E.adultos} adultos`,menu.pp*E.adultos]];
+ if(E.ninos)L.push([`Menú infantil · ${E.ninos} niños`,menu.pp*C.ninoFactor*E.ninos]);
+ if(hs.p)L.push([`Horas extra (${hs.id} hs)`,hs.p]);
+ const base=L.reduce((a,l)=>a+l[1],0);
+ L.push([d.f>0?"Recargo fin de semana":"Descuento entre semana",base*d.f]);
+ C.extras.forEach(x=>{if(E.extras.has(x.id)&&!x.fijo)L.push([x.n,x.porPersona?x.p*inv:x.p])});
+ const total=L.reduce((a,l)=>a+l[1],0);
+ g("kLines").innerHTML=L.map(([n,v])=>`<li class="${v<0?"neg":""}"><span>${n}</span><span>${v<0?"−"+$$(-v):$$(v)}</span></li>`).join("")+"<li><span>DJ, discoteca y karaoke</span><span>Incluido</span></li>";
+ g("kTotal").textContent=g("kBar").textContent=$$(total);
+ g("kPp").textContent=inv?`${$$(total/inv)} por invitado · ${inv} invitados`:"";
+ g("kSena").textContent=$$(total*.3);
+ const ex=[...E.extras].filter(i=>!find(C.extras,i).fijo).map(i=>find(C.extras,i).n).join(", ")||"ninguno";
+ texto=`Hola La Comarca! Armé mi presupuesto en la web:\n\n• Evento: ${tipo.n}\n• Salón: ${salon.n}\n• Fecha: ${d.n||"a definir"}\n• Duración: ${hs.id} hs\n• Invitados: ${E.adultos} adultos + ${E.ninos} niños\n• Menú: ${menu.n}\n• Extras: ${ex}\n\nTotal estimado: ${$$(total)}\n¿Tienen la fecha disponible?`;
+ g("kWa").href="https://wa.me/"+D.wa+"?text="+encodeURIComponent(texto);
+}
+g("kCopy").onclick=()=>navigator.clipboard.writeText(texto).then(()=>{g("kCopy").textContent="¡Copiado!";setTimeout(()=>g("kCopy").textContent="Copiar presupuesto",1800)});
+g("kBarGo").onclick=e=>{e.preventDefault();g("kSum").scrollIntoView({behavior:"smooth"})};
+
+// abrir / cerrar
+const abrir=()=>{cal.classList.add("on");document.body.classList.add("kno");if(typeof closeChat==="function")closeChat()};
+const cerrar=()=>{cal.classList.remove("on");document.body.classList.remove("kno");if(location.hash==="#presupuesto")history.replaceState(null,"",location.pathname+location.search)};
+g("kClose").onclick=cerrar;
+addEventListener("keydown",e=>{if(e.key==="Escape"&&cal.classList.contains("on"))cerrar()});
+addEventListener("hashchange",()=>{if(location.hash==="#presupuesto")abrir()});
+const a=document.createElement("a");a.href="#presupuesto";a.className="kacc";a.innerHTML="🔒<span>Clientes</span>";
+a.onclick=e=>{e.preventDefault();abrir()};
+const nav=document.querySelector(".nav");nav&&nav.insertBefore(a,nav.lastElementChild);
+calc();
+if(location.hash==="#presupuesto")abrir();
+})();
+</script>

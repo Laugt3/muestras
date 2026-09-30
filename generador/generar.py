@@ -226,6 +226,9 @@ def generar(slug: str) -> Path:
     plantilla = plantilla.replace('font-family:"Host Grotesk";src:url({{fuente_base_texto}}) format("woff2");font-weight:400 700',
                                   f'font-family:"{fuente["texto"][0]}";src:url({{{{fuente_base_texto}}}}) format("woff2");font-weight:{fuente["texto"][2]}')
     plantilla = ordenar_secciones(plantilla, v["orden"])
+    extra = carpeta / "extra.html"  # opcional: secciones propias de un cliente (ej. calculadora)
+    if extra.exists():
+        plantilla = plantilla.replace("</body>", extra.read_text(encoding="utf-8") + "</body>", 1)
 
     faltan = set(re.findall(r"{{(\w+)}}", plantilla)) - set(valores)
     if faltan:
