@@ -289,7 +289,7 @@ document.querySelectorAll("[data-g]").forEach((c,k)=>{const im=[...c.querySelect
  if(para&&!/^nombre$/i.test(para)){document.getElementById("cz-t").innerHTML="Hola "+para.replace(/[<>&"]/g,"")+",<br><em>armá tu fiesta.</em>";document.getElementById("z-nom").value=para}
  setTimeout(()=>Z.scrollIntoView({behavior:"smooth"}),500);
  /* === Precios de La Comarca (pesos uruguayos): lo único que se edita === */
- const P={wa:"59897421425",maxH:12,
+ const P={wa:"59897421425",maxH:Infinity,
   salones:{centro:{n:"Salón Centro",d:"Ideal para eventos íntimos · hasta 50 personas",h:3900,max:50},tc:{n:"Salón Tres Cruces",d:"Pista LED incluida · hasta 150 personas",h:6300,max:150},tc1:{n:"Salón 1er Piso Tres Cruces",d:"Hasta 50 personas",h:3900,max:50}},
   menus:[{id:"pizzetas",n:"Pizzetas",d:"Variedad de pizzetas artesanales",p:750},{id:"lunch",n:"Lunch",d:"Bocados fríos y calientes",p:950},{id:"parrilla",n:"Parrilla completa",d:"Con mesa buffet de ensaladas",p:1300},{id:"adolescentes",n:"Menú adolescentes",d:"Snacks, bocados fritos y hamburguesas con fritas",p:550}],
   xpiz:[{id:"tablas",n:"Tablas de fiambres y arrolladitos"},{id:"chivitos",n:"Chivitos"},{id:"chorizos",n:"Picada de chorizos"}],xpizP:180,postre:2700,
