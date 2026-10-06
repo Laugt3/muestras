@@ -90,7 +90,7 @@ body{background:var(--tinta);color:var(--claro);font-family:Inter,system-ui,sans
 <script>
 const Q=new URLSearchParams(location.search);
 const NAME=(Q.get('n')||'').trim()||null;
-const TYPE=Q.get('t')==='boutique'?'boutique':'salon';
+const TYPE=['boutique','rentals'].includes(Q.get('t'))?Q.get('t'):'salon';
 let L=Q.get('l')==='en'?'en':'es';
 const money=n=>'$'+n.toLocaleString('en-US');
 // datos de ejemplo
@@ -100,17 +100,20 @@ const D={
    free:{es:['sábado 14 de noviembre','viernes 20 de noviembre','sábado 5 de diciembre'],en:['Saturday, November 14','Friday, November 20','Saturday, December 5']},
    slots:{es:['jueves 6:00 pm','sábado 11:00 am','domingo 1:00 pm'],en:['Thursday 6:00 pm','Saturday 11:00 am','Sunday 1:00 pm']}},
  boutique:{cat:[{es:'Vestidos de XV',en:'Quinceañera gowns',r:'$650 – $1,800'},{es:'Vestidos de novia',en:'Wedding dresses',r:'$900 – $3,500'},{es:'Prom y damas',en:'Prom & bridesmaids',r:'$180 – $450'}],
-   slots:{es:['jueves 6:00 pm','sábado 11:00 am','sábado 3:00 pm'],en:['Thursday 6:00 pm','Saturday 11:00 am','Saturday 3:00 pm']}}
+   slots:{es:['jueves 6:00 pm','sábado 11:00 am','sábado 3:00 pm'],en:['Thursday 6:00 pm','Saturday 11:00 am','Saturday 3:00 pm']}},
+ rentals:{it:[{es:'Brincolín (inflable) 13x13',en:'Bounce house 13x13',p:150},{es:'Combo con tobogán de agua',en:'Water slide combo',p:275},{es:'6 mesas + 50 sillas',en:'6 tables + 50 chairs',p:135},{es:'Carpa 20x20 instalada',en:'20x20 tent, set up',p:250}],
+   pk:{es:'Paquete Fiesta: brincolín + 6 mesas + 50 sillas + mantelería',en:'Party Pack: bounce house + 6 tables + 50 chairs + linens',p:345,save:20},
+   free:{es:['sábado 17 de octubre','domingo 18 de octubre','sábado 24 de octubre'],en:['Saturday, October 17','Sunday, October 18','Saturday, October 24']}}
 };
 const T={
  es:{h1a:'El asistente de',biz:'tu negocio',sub:'Asistente · responde al instante',ph:'Escribí un mensaje…',send:'Enviar',
-  lead:{salon:'Contesta cada consulta de Instagram, WhatsApp y la web en segundos, cotiza la fiesta y deja la visita agendada. A cualquier hora.',boutique:'Contesta cada consulta de Instagram, WhatsApp y la web en segundos, muestra precios y talles y deja la cita de prueba agendada. A cualquier hora.'},
-  feats:{salon:['Responde fecha, capacidad, paquetes y precio','Arma el presupuesto con invitados y extras','Agenda la visita al salón','Le pasa la conversación a una persona cuando hace falta'],boutique:['Responde precios, talles y disponibilidad','Pregunta fecha del evento y estilo','Agenda la cita de prueba','Le pasa la conversación a una persona cuando hace falta']},
+  lead:{salon:'Contesta cada consulta de Instagram, WhatsApp y la web en segundos, cotiza la fiesta y deja la visita agendada. A cualquier hora.',boutique:'Contesta cada consulta de Instagram, WhatsApp y la web en segundos, muestra precios y talles y deja la cita de prueba agendada. A cualquier hora.',rentals:'Contesta cada consulta de Instagram, WhatsApp y la web en segundos: precio por artículo, disponibilidad para la fecha, envío según la zona y reserva con seña. A cualquier hora.'},
+  feats:{salon:['Responde fecha, capacidad, paquetes y precio','Arma el presupuesto con invitados y extras','Agenda la visita al salón','Le pasa la conversación a una persona cuando hace falta'],boutique:['Responde precios, talles y disponibilidad','Pregunta fecha del evento y estilo','Agenda la cita de prueba','Le pasa la conversación a una persona cuando hace falta'],rentals:['Cotiza inflables, mesas, sillas y carpas al instante','Revisa la disponibilidad para la fecha','Calcula el envío por código postal','Deja la reserva tomada con seña']},
   try:'Probalo: escribí como si fueras un cliente o tocá las opciones.',brand:'· Demo hecha para',note:'Demo con precios y fechas de ejemplo. La versión real usa sus paquetes, su agenda y su forma de hablar.',
   ts:'HOY 11:47 PM'},
  en:{h1a:'The assistant for',biz:'your business',sub:'Assistant · replies instantly',ph:'Message…',send:'Send',
-  lead:{salon:'Answers every Instagram, WhatsApp and website inquiry in seconds, quotes the party and books the venue tour. Any time of day.',boutique:'Answers every Instagram, WhatsApp and website inquiry in seconds, shares prices and sizes and books the fitting. Any time of day.'},
-  feats:{salon:['Answers date, capacity, packages and price','Builds the quote with guests and add-ons','Books the venue tour','Hands the chat to a person when needed'],boutique:['Answers prices, sizes and availability','Asks for the event date and style','Books the fitting appointment','Hands the chat to a person when needed']},
+  lead:{salon:'Answers every Instagram, WhatsApp and website inquiry in seconds, quotes the party and books the venue tour. Any time of day.',boutique:'Answers every Instagram, WhatsApp and website inquiry in seconds, shares prices and sizes and books the fitting. Any time of day.',rentals:'Answers every Instagram, WhatsApp and website inquiry in seconds: item prices, availability for the date, delivery by ZIP code and a booking with deposit. Any time of day.'},
+  feats:{salon:['Answers date, capacity, packages and price','Builds the quote with guests and add-ons','Books the venue tour','Hands the chat to a person when needed'],boutique:['Answers prices, sizes and availability','Asks for the event date and style','Books the fitting appointment','Hands the chat to a person when needed'],rentals:['Quotes bounce houses, tables, chairs and tents instantly','Checks availability for the date','Calculates delivery by ZIP code','Takes the booking with a deposit']},
   try:'Try it: type like a customer or tap the options.',brand:'· Demo built for',note:'Demo with sample prices and dates. The real version uses your packages, your calendar and your voice.',
   ts:'TODAY 11:47 PM'}
 };
@@ -151,13 +154,29 @@ function catB(){const c=st.cat||D.boutique.cat[0];const rows=D.boutique.cat.map(
  say(t(`Estos son los rangos de precio:`,`Here are our price ranges:`)+`<div class="card">${rows}</div>`+(st.when===1?t(`\nComo tu fecha está cerca, te conviene ver los modelos en stock: se pueden llevar en el día.`,`\nSince your date is close, our in-stock gowns are a great fit — you can take them home the same day.`):t(`\nCon tu fecha llegamos bien a pedir el modelo a medida (6 a 10 semanas).`,`\nYour timeline works for a made-to-order gown (6–10 weeks).`)),()=>opts([[t('Talles disponibles','Sizes'),sizesB],[t('Agendar prueba','Book a fitting'),fitB]]))}
 function sizesB(){say(t(`Trabajamos del talle 0 al 26 y hacemos ajustes en el local. Si me decís tu talle aproximado, te separo los modelos para la prueba.`,`We carry sizes 0 to 26 and do alterations in-house. Tell me your approximate size and I'll pull gowns for your fitting.`),()=>opts([['0–6',fitB],['8–14',fitB],['16–26',fitB]]))}
 function fitB(){const S=D.boutique.slots[L];say(t(`La prueba dura 1 hora y podés venir con hasta 4 acompañantes. ¿Qué horario te queda bien?`,`Fittings take one hour and you can bring up to 4 guests. Which time works for you?`),()=>opts(S.map(s=>[s,()=>{st.slot=s;nameAsk()}])))}
+// ---------- flujo alquileres ----------
+function menuR(){opts([[t('Precios','Prices'),itemsR],[t('Paquete fiesta','Party pack'),packR],[t('¿Tienen para mi fecha?','Available on my date?'),dateR],[t('Hablar con una persona','Talk to a person'),human]])}
+function startR(){say(t('¡Hola! 👋 Soy el asistente de <b>'+biz()+'</b>. Te paso precios y disponibilidad al toque. ¿Qué necesitás para tu fiesta?','Hi! 👋 I\'m the assistant for <b>'+biz()+'</b>. I can get you prices and availability right away. What do you need for your party?'),()=>opts([[t('Inflables','Bounce houses'),itemsR],[t('Mesas y sillas','Tables & chairs'),itemsR],[t('Paquete completo','Full party pack'),packR]]))}
+function itemsR(){const I=D.rentals.it;st.sel=st.sel||[];const rows=I.map(x=>'<div class="row"><span>'+t(x.es,x.en)+'</span><span>'+money(x.p)+'</span></div>').join('');
+ say(t('Precios por día (incluyen entrega, instalación y retiro):','Daily prices (delivery, setup and pickup included):')+'<div class="card">'+rows+'</div>'+t('\n¿Qué querés sumar?','\nWhat would you like to add?'),()=>opts([...I.map((x,i)=>['+ '+t(x.es,x.en),()=>{st.pack=false;if(!st.sel.includes(i))st.sel.push(i);addedR()}]),[t('Ver paquete fiesta','See party pack'),packR]]))}
+function addedR(){const I=D.rentals.it;const tot=st.sel.reduce((a,i)=>a+I[i].p,0);say(t('Agregado ✅ Llevás <b>'+money(tot)+'</b>. ¿Algo más?','Added ✅ You\'re at <b>'+money(tot)+'</b>. Anything else?'),()=>opts([...I.map((x,i)=>[i,x]).filter(([i])=>!st.sel.includes(i)).map(([i,x])=>['+ '+t(x.es,x.en),()=>{st.sel.push(i);addedR()}]),[t('Listo, ver fecha','Done, check date'),dateR]]))}
+function packR(){const P=D.rentals.pk;st.pack=true;say(t('El más pedido: <b>'+P.es+'</b> por <b>'+money(P.p)+'</b> el día.','Our most popular: <b>'+P.en+'</b> for <b>'+money(P.p)+'</b> per day.'),()=>opts([[t('Lo quiero','I want it'),dateR],[t('Ver precios sueltos','See individual prices'),itemsR]]))}
+function dateR(){const F=D.rentals.free[L];say(t('Para los próximos fines de semana tenemos libre: <b>'+F.join('</b>, <b>')+'</b>. ¿Cuál es tu fecha?','For the next weekends we\'re open: <b>'+F.join('</b>, <b>')+'</b>. What\'s your date?'),()=>opts([...F.map(f=>[f,()=>{st.date=f;zipR()}]),[t('Otra fecha','Another date'),()=>say(t('Decime la fecha y la reviso.','Tell me the date and I\'ll check it.'),()=>{st.wait='date'})]]))}
+function zipR(){say(t('¡'+st.date+' disponible! 🎉 ¿Cuál es el código postal de la fiesta? Así calculo el envío.',st.date+' is available! 🎉 What\'s the ZIP code for the party? I\'ll calculate delivery.'),()=>{st.wait='zip'})}
+function totalR(zip){const I=D.rentals.it;let rows='';let tot=0;if(st.pack||!(st.sel||[]).length){const P=D.rentals.pk;tot=P.p;rows+='<div class="row"><span>'+t('Paquete Fiesta','Party Pack')+'</span><span>'+money(P.p)+'</span></div>'}else{st.sel.forEach(i=>{tot+=I[i].p;rows+='<div class="row"><span>'+t(I[i].es,I[i].en)+'</span><span>'+money(I[i].p)+'</span></div>'})}
+ const del=(parseInt(String(zip).slice(-1))||0)%2===1?35:0;tot+=del;rows+='<div class="row"><span>'+t('Envío','Delivery')+' ('+esc(String(zip))+')</span><span>'+(del?money(del):t('Gratis','Free'))+'</span></div><div class="row t"><span>Total</span><span>'+money(tot)+'</span></div>';
+ say(t('Tu cotización 👇','Your quote 👇')+'<div class="card">'+rows+'</div>'+t('\nSe reserva con <b>'+money(Math.round(tot*.25))+'</b> (25%) y el resto el día de la entrega.','\nA <b>'+money(Math.round(tot*.25))+'</b> deposit (25%) reserves it; the balance is due on delivery day.'),()=>opts([[t('Reservar','Book it'),()=>say(t('¡Genial! ¿A nombre de quién hago la reserva?','Great! What name should the booking be under?'),()=>{st.wait='name'})],[t('Hablar con una persona','Talk to a person'),human]]))}
 // ---------- común ----------
+const MENU=()=>({salon:menuS,boutique:menuB,rentals:menuR})[TYPE]();
 function nameAsk(){say(t(`¡Listo! ¿A nombre de quién lo agendo?`,`Great! What name should I book it under?`),()=>{st.wait='name'})}
-function confirm(name){const what=TYPE==='salon'?t('visita al salón','venue tour'):t('cita de prueba','fitting');
- say(t(`Agendado ✅ <b>${what}</b> el <b>${st.slot}</b> a nombre de <b>${esc(name)}</b>.`,`Booked ✅ <b>${what}</b> on <b>${st.slot}</b> for <b>${esc(name)}</b>.`)+(st.date?t(`\nY te guardamos el ${st.date}.`,`\nWe're also holding ${st.date} for you.`):'')+t(`\n\nEl equipo de ${biz()} te confirma por acá. ¿Te ayudo con algo más?`,`\n\nThe ${biz()} team will confirm here. Anything else I can help with?`),()=>(TYPE==='salon'?menuS:menuB)())}
-function human(){say(t(`Claro. Le paso tu mensaje al equipo de <b>${biz()}</b> con todo lo que hablamos, así no tenés que repetir nada. Te escriben en horario de atención. 🙌`,`Of course. I'm passing this chat to the <b>${biz()}</b> team with everything we covered, so you won't have to repeat yourself. They'll reply during business hours. 🙌`),()=>(TYPE==='salon'?menuS:menuB)())}
+function confirm(name){if(TYPE==='rentals')return say(t('Reservado ✅ a nombre de <b>'+esc(name)+'</b> para el <b>'+st.date+'</b>. Te mando el link para pagar la seña y la confirmación por acá. El día de la fiesta te avisamos cuando salimos con el pedido 🚚','Booked ✅ under <b>'+esc(name)+'</b> for <b>'+st.date+'</b>. I\'ll send the deposit link and confirmation here. On party day we\'ll text you when we\'re on the way 🚚'),MENU);const what=TYPE==='salon'?t('visita al salón','venue tour'):t('cita de prueba','fitting');
+ say(t(`Agendado ✅ <b>${what}</b> el <b>${st.slot}</b> a nombre de <b>${esc(name)}</b>.`,`Booked ✅ <b>${what}</b> on <b>${st.slot}</b> for <b>${esc(name)}</b>.`)+(st.date?t(`\nY te guardamos el ${st.date}.`,`\nWe're also holding ${st.date} for you.`):'')+t(`\n\nEl equipo de ${biz()} te confirma por acá. ¿Te ayudo con algo más?`,`\n\nThe ${biz()} team will confirm here. Anything else I can help with?`),MENU)}
+function human(){say(t(`Claro. Le paso tu mensaje al equipo de <b>${biz()}</b> con todo lo que hablamos, así no tenés que repetir nada. Te escriben en horario de atención. 🙌`,`Of course. I'm passing this chat to the <b>${biz()}</b> team with everything we covered, so you won't have to repeat yourself. They'll reply during business hours. 🙌`),MENU)}
 function free(txt){const s=txt.toLowerCase();
  if(st.wait==='name'){st.wait=null;return confirm(txt)}
+ if(st.wait==='zip'){st.wait=null;return totalR(txt.replace(/\D/g,'')||txt)}
+ if(TYPE==='rentals'&&st.wait==='date'){st.wait=null;st.date=txt;return zipR()}
+ if(TYPE==='rentals'){if(/paquete|pack|combo/.test(s))return packR();if(/precio|cu[aá]nto|cuesta|sale|price|cost|how much|brincol|inflable|bounce|mesa|silla|table|chair|carpa|tent/.test(s))return itemsR();if(/fecha|libre|disponib|date|available|s[aá]bado|domingo|saturday|sunday/.test(s))return dateR();if(/^\d{5}$/.test(s.trim()))return totalR(s.trim())}
  if(st.wait==='date'){st.wait=null;st.date=txt;return say(t(`Revisé la agenda: el <b>${esc(txt)}</b> está disponible 🎉 Te lo dejo en espera 48 h.`,`I checked the calendar: <b>${esc(txt)}</b> is open 🎉 I'll hold it for 48 hours.`),TYPE==='salon'?tourS:fitB)}
  if(/precio|cu[aá]nto|cuesta|sale|price|cost|how much|paquete|package/.test(s))return TYPE==='salon'?pkgS():catB();
  if(/fecha|libre|disponib|date|available|d[ií]a/.test(s))return TYPE==='salon'?dateS():dateB();
@@ -165,12 +184,12 @@ function free(txt){const s=txt.toLowerCase();
  if(/talle|talla|size/.test(s))return sizesB();
  if(/invitad|personas|capacidad|guests|capacity|people/.test(s))return TYPE==='salon'?(st.g=parseInt(s)||150,pkgS()):fitB();
  if(/persona|humano|due[ñn]o|llamar|human|someone|call|owner/.test(s))return human();
- if(/hola|buenas|hi|hello|hey/.test(s))return say(t('¡Hola! 😊 ¿En qué te ayudo?','Hi there! 😊 How can I help?'),TYPE==='salon'?menuS:menuB);
- say(t('Te ayudo con eso. Elegí una opción así te paso la info exacta 👇','Happy to help. Pick an option so I can give you the exact details 👇'),TYPE==='salon'?menuS:menuB)}
+ if(/hola|buenas|hi|hello|hey/.test(s))return say(t('¡Hola! 😊 ¿En qué te ayudo?','Hi there! 😊 How can I help?'),MENU);
+ say(t('Te ayudo con eso. Elegí una opción así te paso la info exacta 👇','Happy to help. Pick an option so I can give you the exact details 👇'),MENU)}
 document.getElementById('f').onsubmit=e=>{e.preventDefault();const i=document.getElementById('in');const v=i.value.trim();if(!v)return;i.value='';qr.innerHTML='';msg(esc(v),'in');free(v)};
 function restart(){th.innerHTML=`<div class="ts">${T[L].ts}</div>`;qr.innerHTML='';st={};q=Promise.resolve();ui();
- msg(esc(TYPE==='salon'?t('Hola! precio para quince? 🙏','Hi! how much for a quince? 🙏'):t('Hola! tienen vestidos de xv?','Hi! do you have quince dresses?')),'in');
- (TYPE==='salon'?startS:startB)()}
+ msg(esc({salon:t('Hola! precio para quince? 🙏','Hi! how much for a quince? 🙏'),boutique:t('Hola! tienen vestidos de xv?','Hi! do you have quince dresses?'),rentals:t('Hola! cuánto el brincolín para el sábado?','Hi! how much is a bounce house for Saturday?')}[TYPE]),'in');
+ ({salon:startS,boutique:startB,rentals:startR})[TYPE]()}
 document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>{L=b.dataset.l;restart()});
 restart();
 </script>
