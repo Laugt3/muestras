@@ -341,10 +341,10 @@ const dummy=new THREE.Object3D();
 const mob=()=>innerWidth<900;
 const STATES={
   s1:()=>mob()?{x:0,y:1.35,s:.78,ry:0,bg:.6}:{x:2.25,y:-.1,s:1.12,ry:0,bg:1},
-  s2:()=>mob()?{x:1.7,y:2.6,s:.45,ry:2.2,bg:.4}:{x:-3.4,y:-1.7,s:.7,ry:2.6,bg:.6},
+  s2:()=>mob()?{x:0,y:3.5,s:0,ry:2.2,bg:0}:{x:2.3,y:3.2,s:0,ry:2.6,bg:0},
   s3:()=>mob()?{x:1.5,y:2.7,s:.5,ry:0,bg:.5}:{x:2.3,y:0,s:1.12,ry:0,bg:.8},
-  s4:()=>mob()?{x:0,y:-2.8,s:.6,ry:3.6,bg:.5}:{x:0,y:-2.4,s:.75,ry:3.6,bg:1},
-  s5:()=>mob()?{x:2.4,y:3,s:.4,ry:0,bg:.3}:{x:-3.1,y:-.9,s:.78,ry:.3,bg:.5}
+  s4:()=>mob()?{x:0,y:-3.5,s:0,ry:3.6,bg:0}:{x:2.3,y:-3.2,s:0,ry:3.6,bg:0},
+  s5:()=>mob()?{x:0,y:-3.5,s:0,ry:0,bg:0}:{x:2.3,y:-3.2,s:0,ry:.3,bg:0}
 };
 let target=STATES.s1(), cur={...target};
 const secs=[...document.querySelectorAll('main section')];
@@ -373,7 +373,7 @@ function frame(){
   if(spinBoost>0){ spin+=dt*9*spinBoost; spinBoost-=dt*1.4; if(pending!==null && spinBoost<.55){ bodyMat.map=texs[pending]; bodyMat.needsUpdate=true; pending=null; } }
   spin+=dt*(base+Math.min(Math.abs(vel)*.02,2));
   can.position.set(cur.x+mx*.25, cur.y+Math.sin(t*1.1)*.08 - my*.15, 0);
-  can.scale.setScalar(cur.s);
+  can.scale.setScalar(Math.max(cur.s,.0001)); can.visible=cur.s>.01; beans.visible=cur.bg>.01;
   can.rotation.y=spin+cur.ry+mx*.4;
   can.rotation.x=.12+my*.15;
   // granos
