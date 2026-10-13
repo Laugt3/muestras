@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vista previa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--fb),system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--fh),serif;margin:0;line-height:.94;letter-spacing:-.02em;font-weight:var(--hw,700)}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:8px}
+#gl{position:fixed;inset:0;width:100vw;height:100vh;z-index:2;pointer-events:none}
+.grain{position:fixed;inset:0;z-index:5;pointer-events:none;opacity:.07;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+section{position:relative;min-height:100dvh;padding:clamp(90px,12vh,140px) clamp(18px,4.5vw,64px);display:grid;align-items:center;overflow:hidden}
+.ui{position:relative;z-index:3}
+.back{position:absolute;z-index:1;pointer-events:none;user-select:none;font-family:var(--fh),serif;font-weight:900;text-transform:uppercase;line-height:.8;letter-spacing:-.03em;white-space:nowrap}
+.nav{position:fixed;inset:0 0 auto;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:18px clamp(18px,4.5vw,64px);pointer-events:none}
+.nav>*{pointer-events:auto}
+.brand{font:var(--hw,700) 1.35rem var(--fh),serif;letter-spacing:.01em;color:#fff;mix-blend-mode:difference}
+.nav a.cta{display:inline-flex;align-items:center;min-height:42px;padding:0 20px;border-radius:999px;background:var(--acc);color:var(--accInk);font-weight:600;text-decoration:none;font-size:.92rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 30px;border-radius:999px;font:600 1rem/1 var(--fb);text-decoration:none;border:0;cursor:pointer;transition:transform 160ms cubic-bezier(.23,1,.32,1)}
+.btn:active{transform:scale(.97)}
+.btn--acc{background:var(--acc);color:var(--accInk)}
+.btn--ghost{border:1.5px solid currentColor;background:transparent}
+#s1{background:var(--heroBg)}
+#s1 .back{right:-3vw;bottom:-5vh;color:var(--backC);font-size:clamp(7rem,21vw,19rem)}
+#s1 .ui{max-width:600px}
+#s1 small{display:block;font:italic 500 1.25rem var(--fh),serif;color:var(--acc);margin-bottom:14px}
+#s1 h1{font-size:clamp(2.9rem,6.8vw,6.2rem)}
+#s1 h1 em{font-style:italic;font-weight:400;color:var(--acc)}
+#s1 p{max-width:40ch;font-size:clamp(1.05rem,1.4vw,1.2rem);opacity:.8;margin:24px 0 32px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.pill{display:inline-flex;gap:8px;align-items:center;margin-top:26px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.08);font-size:.9rem}
+#s2{background:var(--s2Bg);color:var(--s2Ink)}
+#s2 .back{right:-3vw;bottom:-4vh;color:var(--s2Back);font-size:clamp(6rem,17vw,15rem)}
+#s2 .ui{max-width:560px}
+#s2 h2{font-size:clamp(2.4rem,5.6vw,4.8rem)}
+#s2 p{font-size:1.08rem;margin:16px 0 24px;opacity:.75}
+.vars{display:grid;gap:10px}
+.var{display:grid;grid-template-columns:44px 1fr auto;gap:16px;align-items:center;padding:14px 18px;border-radius:20px;border:1.5px solid rgba(0,0,0,.12);background:rgba(255,255,255,.4);cursor:pointer;text-align:left;font:inherit;color:inherit;transition:border-color 200ms ease,background-color 200ms ease,transform 160ms ease}
+.var:active{transform:scale(.98)}
+.var[aria-pressed=true]{border-color:currentColor;background:#fff}
+.var i{width:44px;height:44px;border-radius:50%;box-shadow:inset 0 0 0 3px rgba(255,255,255,.7),0 0 0 1px rgba(0,0,0,.08)}
+.var b{display:block;font:var(--hw,700) 1.15rem var(--fh),serif}
+.var span{font-size:.88rem;opacity:.65}
+.var em{font-style:normal;font-weight:600}
+.qty{display:flex;align-items:center;gap:4px;background:rgba(0,0,0,.06);border-radius:999px;padding:3px}
+.qty button{width:32px;height:32px;border-radius:50%;border:0;background:transparent;font-size:1.1rem;cursor:pointer;color:inherit}
+.qty b{min-width:18px;text-align:center;font:600 .98rem var(--fb)}
+.order{margin-top:20px;padding:18px;border-radius:22px;background:#fff}
+.order .tot{display:flex;justify-content:space-between;align-items:baseline}
+.order .tot b{font:var(--hw,700) 2rem var(--fh),serif}
+.order .btn{width:100%;margin-top:14px}
+.order small{display:block;text-align:center;opacity:.6;margin-top:8px;font-size:.8rem}
+select{width:100%;margin-top:10px;padding:11px 13px;border-radius:12px;border:1.5px solid rgba(0,0,0,.14);background:#fff;font:500 .98rem var(--fb);color:inherit}
+/* --- diseño centrado y animado --- */
+.L-centro #s1{align-items:start;text-align:center}
+.L-centro #s1 .ui{max-width:900px;margin:0 auto}
+.L-centro #s1 h1{font-size:clamp(3rem,6.4vw,6rem)}
+.L-centro #s1 p{margin:18px auto 26px}
+.L-centro #s1 .ctas{justify-content:center}
+.L-centro #s1 .back{left:50%;right:auto;bottom:-6vh;transform:translateX(-50%)}
+.L-centro #s2{transition:background-color 700ms cubic-bezier(.23,1,.32,1)}
+.swatches .vars{grid-template-columns:repeat(2,1fr)}
+.swatches .var{grid-template-columns:1fr;justify-items:center;text-align:center;padding:16px 10px;gap:8px}
+.swatches .var i{width:64px;height:64px;transition:transform 300ms cubic-bezier(.34,1.56,.64,1)}
+.swatches .var[aria-pressed=true] i{transform:scale(1.15)}
+/* --- diseño sobrio con foto --- */
+.heroimg{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center 60%;filter:blur(1px) saturate(.9) brightness(.72);transform:scale(1.04)}
+.heroimg::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(22,32,17,.92),rgba(22,32,17,.35) 60%,rgba(22,32,17,.55))}
+.cards .vars{grid-template-columns:1fr 1fr;gap:14px}
+.cards .var{grid-template-columns:1fr;padding:22px;gap:10px;align-items:start}
+.cards .var i{display:none}
+.cards .var b{font-size:1.5rem}
+.cards .var span{font-size:.95rem}
+.cards .var::after{content:attr(data-price);font:400 2.2rem var(--fh),serif;order:2}
+footer{position:relative;z-index:3;background:var(--footBg);color:var(--footInk);padding:26px clamp(18px,4.5vw,64px);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.86rem}
+.rv{opacity:0;transform:translateY(30px);transition:opacity 1s cubic-bezier(.23,1,.32,1),transform 1s cubic-bezier(.23,1,.32,1)}
+.rv.in{opacity:1;transform:none}
+.shot .rv{opacity:1;transform:none;transition:none}
+@media (prefers-reduced-motion:reduce){.rv{transform:none;transition:opacity .6s ease}}
+@media (max-width:900px){#s1{align-items:end}#s1 .back{left:-6vw;right:auto;top:14vh;bottom:auto}#s2{align-items:end}#s2 .ui{background:rgba(255,255,255,.88);padding:18px;border-radius:24px}}
+</style>
+</head>
+<body>
+<canvas id="gl" aria-hidden="true"></canvas>
+<div class="grain"></div>
+<header class="nav"><span class="brand" id="brand"></span><a class="cta" href="#s2">Pedir</a></header>
+<main>
+<section id="s1">
+  <div class="back rv" id="back1" aria-hidden="true"></div>
+  <div class="ui">
+    <small class="rv" id="eyebrow"></small>
+    <h1 class="rv" id="h1"></h1>
+    <p class="rv" id="sub"></p>
+    <div class="ctas rv"><a class="btn btn--acc" href="#s2" id="cta1"></a><a class="btn btn--ghost" id="cta2" target="_blank" rel="noopener">Escribinos</a></div>
+    <div class="pill rv" id="pill"></div>
+  </div>
+</section>
+<section id="s2">
+  <div class="back rv" id="back2" aria-hidden="true"></div>
+  <div class="ui">
+    <h2 class="rv" id="h2"></h2>
+    <p class="rv" id="p2"></p>
+    <div class="vars rv" id="vars"></div>
+    <div class="order rv">
+      <select id="dep"></select>
+      <div class="tot" style="margin-top:14px"><span id="totl">Total</span><b id="tot">$ 0</b></div>
+      <a class="btn btn--acc" id="go" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+      <small id="nota"></small>
+    </div>
+  </div>
+</section>
+</main>
+<footer><span id="foot"></span><span>Vista previa hecha por NIMBRA</span></footer>
+
+<script>
+/* ===================== CLIENTES ===================== */
+window.C = {
+  berza:{
+    title:'BerZa · Mermeladas artesanales', brand:'BerZa', shape:'frasco', layout:'centro', bgShift:true, swatches:true, partFactor:1, spinSpeed:.45,
+    fonts:'Young+Serif&family=Figtree:wght@400;500;600;700', fh:'Young Serif', fb:'Figtree', hw:400,
+    vars:{'--bg':'#2a0e17','--heroBg':'radial-gradient(1200px 700px at 70% 40%,#4a1626,#2a0e17 70%)','--ink':'#fbefe8','--acc':'#f2a7b5','--accInk':'#2a0e17','--backC':'#3d1422','--s2Bg':'#fbf1ea','--s2Ink':'#2a0e17','--s2Back':'#f1dcd2','--footBg':'#1d0a10','--footInk':'#d9bfc5'},
+    back1:'BerZa', back2:'Fruta',
+    eyebrow:'Mermeladas artesanales', h1:'Fruta de verdad, <em>en frasco</em>', sub:'Fruta real, sin conservantes y sin gluten. Te la llevamos a tu casa.',
+    cta1:'Elegir sabores', pill:'Sin conservantes · Sin gluten · 440 g',
+    h2:'Elegí tus sabores', p2:'Tocá uno y mirá cómo cambia el frasco.',
+    wa:'', waName:'BerZa', unit:'frasco de 440 g', nota:'Precios de ejemplo. Te confirmamos el envío por WhatsApp.', foot:'BerZa · Mermeladas artesanales · Uruguay',
+    items:[
+      {n:'Mora',d:'Sin conservantes',p:290,fill:'#3a0b1c',dot:'#4a1024',bg:'#f6e7ec'},
+      {n:'Frutilla',d:'Fruta real',p:290,fill:'#8e1424',dot:'#b11c2e',bg:'#fde4e4'},
+      {n:'Naranja',d:'Con cáscara',p:290,fill:'#d07a12',dot:'#e58a18',bg:'#fdeedb'},
+      {n:'Higo',d:'Edición de temporada',p:320,fill:'#7a4a1c',dot:'#8d5a26',bg:'#f3e6da'}
+    ],
+    label:(g,it,W,H)=>{ g.fillStyle='#fbf8f3'; g.fillRect(0,0,W,H); g.fillStyle='#2a1a14'; g.textAlign='center'; g.textBaseline='middle';
+      g.font='300 150px Figtree'; g.fillText('BerZa',W/2,H*.27);
+      g.font='600 40px Figtree'; g.fillText('MERMELADA DE',W/2,H*.47);
+      g.font='800 104px Figtree'; g.fillText(it.n.toUpperCase(),W/2,H*.62);
+      g.font='600 34px Figtree'; g.fillText('SIN CONSERVANTES',W/2,H*.76);
+      g.font='500 40px Figtree'; g.fillText('440 g',W/2,H*.88);
+      g.strokeStyle='#2a1a14'; g.lineWidth=4; g.strokeRect(24,24,W-48,H-48); }
+  },
+  santapaula:{
+    title:'Olivares Santa Paula · Aceite de oliva extra virgen', brand:'Olivares Santa Paula', shape:'bidon', layout:'lateral', heroImg:'santapaula-olivar.jpg', cards:true, partFactor:.35, spinSpeed:.18,
+    fonts:'Gloock&family=Albert+Sans:wght@400;500;600;700', fh:'Gloock', fb:'Albert Sans', hw:400,
+    vars:{'--bg':'#162011','--heroBg':'radial-gradient(1200px 700px at 70% 40%,#2c3d1c,#162011 70%)','--ink':'#f3f0dc','--acc':'#d8c25a','--accInk':'#162011','--backC':'#22301a','--s2Bg':'#eef0dc','--s2Ink':'#162011','--s2Back':'#dde3c2','--footBg':'#0f170c','--footInk':'#c7cdaa'},
+    back1:'Oliva', back2:'Bidón',
+    eyebrow:'Del olivar a tu casa', h1:'Aceite de oliva <em>extra virgen</em>', sub:'Venta directa del productor. Lo envasamos en bidones y te lo llevamos gratis a cualquier parte de Uruguay.',
+    cta1:'Elegir bidón', pill:'Envío gratis a todo Uruguay',
+    h2:'Elegí tu bidón', p2:'Directo del olivar, sin intermediarios.',
+    wa:'59898167450', waName:'Olivares Santa Paula', unit:'bidón', nota:'Envío gratis a todo Uruguay. Te confirmamos por WhatsApp.', foot:'Olivares Santa Paula · Uruguay',
+    items:[
+      {n:'Bidón 3 litros',d:'Extra virgen',p:2100,fill:'#b79a1c',dot:'#c9ad2c',size:.86},
+      {n:'Bidón 5 litros',d:'Extra virgen, rinde más',p:3500,fill:'#a98c12',dot:'#b89c1e',size:1}
+    ],
+    label:(g,it,W,H)=>{ const gr=g.createLinearGradient(0,0,0,H); gr.addColorStop(0,'#1f3a1e'); gr.addColorStop(1,'#14280f'); g.fillStyle=gr; g.fillRect(0,0,W,H);
+      g.strokeStyle='#d8c25a'; g.lineWidth=6; g.strokeRect(22,22,W-44,H-44);
+      g.textAlign='center'; g.textBaseline='middle'; g.fillStyle='#f3f0dc';
+      g.font='400 64px Gloock'; g.fillText('Olivares',W/2,H*.25);
+      g.font='400 112px Gloock'; g.fillText('Santa Paula',W/2,H*.41);
+      g.fillStyle='#d8c25a'; g.font='600 36px "Albert Sans"'; g.fillText('ACEITE DE OLIVA EXTRA VIRGEN',W/2,H*.6);
+      g.fillStyle='#f3f0dc'; g.font='500 44px "Albert Sans"'; g.fillText(it.n.replace('Bidón ',''),W/2,H*.76);
+      g.strokeStyle='#8fae3c'; g.lineWidth=6; g.beginPath(); g.moveTo(W*.3,H*.88); g.quadraticCurveTo(W*.5,H*.8,W*.7,H*.88); g.stroke();
+      g.fillStyle='#8fae3c'; [0.38,0.5,0.62].forEach((x,i)=>{ g.beginPath(); g.ellipse(W*x,H*(i===1?.835:.86),22,10,(i-1)*.5,0,Math.PI*2); g.fill(); }); }
+  }
+};
+(function(){
+  var k=new URLSearchParams(location.search).get('c')||'berza', c=window.C[k]; window.CFG=c;
+  if(location.search.indexOf('shot')>-1) document.documentElement.classList.add('shot');
+  document.title=c.title;
+  var l=document.createElement('link'); l.rel='stylesheet'; l.href='https://fonts.googleapis.com/css2?family='+c.fonts+'&display=block'; document.head.appendChild(l);
+  var r=document.documentElement.style; for(var v in c.vars) r.setProperty(v,c.vars[v]); r.setProperty('--fh','"'+c.fh+'"'); r.setProperty('--fb','"'+c.fb+'"'); r.setProperty('--hw',c.hw);
+  var $=function(s){return document.querySelector(s)};
+  document.body.classList.add('L-'+(c.layout||'lateral')); if(c.cards) document.body.classList.add('cards'); if(c.swatches) document.body.classList.add('swatches');
+  if(c.heroImg){ var hi=document.createElement('div'); hi.className='heroimg'; hi.style.backgroundImage='url('+c.heroImg+')'; document.getElementById('s1').prepend(hi); }
+  $('#brand').textContent=c.brand; $('#back1').textContent=c.back1; $('#back2').textContent=c.back2;
+  $('#eyebrow').textContent=c.eyebrow; $('#h1').innerHTML=c.h1; $('#sub').textContent=c.sub; $('#cta1').textContent=c.cta1; $('#pill').textContent=c.pill;
+  $('#h2').textContent=c.h2; $('#p2').textContent=c.p2; $('#nota').textContent=c.nota; $('#foot').textContent=c.foot;
+  $('#cta2').href='https://wa.me/'+(c.wa||'')+'?text='+encodeURIComponent('Hola '+c.waName+'! Quería hacer una consulta.');
+  var q=c.items.map(function(_,i){return i===0?1:0}), sel=0;
+  c.items.forEach(function(it,i){
+    var b=document.createElement('div'); b.className='var'; b.setAttribute('role','button'); b.tabIndex=0; b.setAttribute('aria-pressed',i===0);
+    b.dataset.price='$ '+it.p.toLocaleString('es-UY'); b.innerHTML='<i style="background:'+it.dot+'"></i><div><b>'+it.n+'</b><span>'+it.d+(c.cards?'':' · $ '+it.p.toLocaleString('es-UY'))+'</span></div><div class="qty"><button type="button" aria-label="Quitar">−</button><b>'+q[i]+'</b><button type="button" aria-label="Agregar">+</button></div>';
+    b.onclick=function(e){ if(e.target.tagName==='BUTTON') return; pick(i); };
+    var bs=b.querySelectorAll('button'); bs[0].onclick=function(){q[i]=Math.max(0,q[i]-1);upd()}; bs[1].onclick=function(){q[i]=Math.min(30,q[i]+1);pick(i);upd()};
+    $('#vars').appendChild(b);
+  });
+  function pick(i){ sel=i; document.querySelectorAll('.var').forEach(function(x,j){x.setAttribute('aria-pressed',j===i)}); window.setVar&&window.setVar(i); if(c.bgShift&&c.items[i].bg) document.getElementById('s2').style.background=c.items[i].bg; }
+  ['Montevideo','Canelones','Maldonado','Colonia','San José','Rocha','Florida','Lavalleja','Durazno','Salto','Paysandú','Rivera','Tacuarembó','Artigas','Cerro Largo','Treinta y Tres','Soriano','Río Negro','Flores'].forEach(function(d){var o=document.createElement('option');o.textContent='Envío a '+d;o.value=d;$('#dep').appendChild(o)});
+  $('#dep').onchange=upd;
+  function upd(){ var t=0, it=[]; c.items.forEach(function(x,i){ document.querySelectorAll('.var .qty b')[i].textContent=q[i]; if(q[i]){t+=q[i]*x.p; it.push('• '+q[i]+' × '+x.n);} });
+    $('#tot').textContent='$ '+t.toLocaleString('es-UY');
+    $('#go').href='https://wa.me/'+(c.wa||'')+'?text='+encodeURIComponent('Hola '+c.waName+'! Quiero hacer un pedido:\n'+it.join('\n')+'\n• Envío a '+$('#dep').value+'\nTotal: $ '+t.toLocaleString('es-UY')); }
+  upd();
+  if('IntersectionObserver' in window && !document.documentElement.classList.contains('shot')){ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15}); document.querySelectorAll('.rv').forEach(function(el){io.observe(el)}); } else document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')});
+})();
+</script>
+
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
+const c=window.CFG, reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const canvas=document.getElementById('gl');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.outputColorSpace=THREE.SRGBColorSpace;
+const scene=new THREE.Scene(); scene.environment=new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(),.04).texture;
+const camera=new THREE.PerspectiveCamera(30,1,.1,100); camera.position.set(0,0,11);
+const key=new THREE.DirectionalLight(0xfff0d6,2.4); key.position.set(4,5,6); scene.add(key);
+const rim=new THREE.DirectionalLight(0xbfe0ff,1.2); rim.position.set(-6,2,-4); scene.add(rim);
+scene.add(new THREE.AmbientLight(0xffffff,.3));
+await document.fonts.load('700 100px "'+c.fh+'"'); await document.fonts.load('italic 600 100px "'+c.fh+'"'); await document.fonts.load('600 40px "'+c.fb+'"');
+
+function labelTex(it,W,H){ const cv=document.createElement('canvas'); cv.width=W; cv.height=H; c.label(cv.getContext('2d'),it,W,H); const t=new THREE.CanvasTexture(cv); t.colorSpace=THREE.SRGBColorSpace; t.anisotropy=8; return t; }
+const prod=new THREE.Group(); scene.add(prod);
+let setFill=()=>{};
+const glass=new THREE.MeshPhysicalMaterial({color:0xffffff,transmission:1,roughness:.04,thickness:.35,ior:1.45,clearcoat:1,transparent:true,opacity:1});
+const gold=new THREE.MeshPhysicalMaterial({color:0xcaa25a,metalness:1,roughness:.25,clearcoat:.6});
+
+if(c.shape==='frasco'){
+  const R=1,H=1.9;
+  const jarGlass=new THREE.MeshPhysicalMaterial({color:0xffffff,transparent:true,opacity:.16,roughness:.04,clearcoat:1,clearcoatRoughness:.05,envMapIntensity:2,depthWrite:false}); const jar=new THREE.Mesh(new THREE.CylinderGeometry(R,R*.98,H,96,1,false),jarGlass); jar.renderOrder=2; prod.add(jar);
+  const fillMat=new THREE.MeshPhysicalMaterial({color:c.items[0].fill,roughness:.18,clearcoat:1,clearcoatRoughness:.1,sheen:.4});
+  const fill=new THREE.Mesh(new THREE.CylinderGeometry(R*.93,R*.91,H*.86,96),fillMat); fill.position.y=-H*.05; prod.add(fill);
+  const lid=new THREE.Mesh(new THREE.CylinderGeometry(R*1.05,R*1.05,.36,96),gold); lid.position.y=H/2+.12; prod.add(lid);
+  for(let i=0;i<3;i++){ const ring=new THREE.Mesh(new THREE.TorusGeometry(R*1.05,.018,8,96),gold); ring.rotation.x=Math.PI/2; ring.position.y=H/2+.0+i*.1; prod.add(ring); }
+  const texs=c.items.map(it=>labelTex(it,1024,1024));
+  const labMat=new THREE.MeshStandardMaterial({map:texs[0],roughness:.6});
+  const lab=new THREE.Mesh(new THREE.CylinderGeometry(R*1.006,R*1.006,H*.62,96,1,true,-1.15,2.3),labMat); lab.position.y=-H*.06; lab.renderOrder=3; prod.add(lab);
+  setFill=i=>{ fillMat.color.set(c.items[i].fill); labMat.map=texs[i]; labMat.needsUpdate=true; };
+  prod.rotation.z=-.06;
+}
+if(c.shape==='bidon'){
+  const W=1.7,H=2.5,D=1.15;
+  const body=new THREE.Mesh(new RoundedBoxGeometry(W,H,D,8,.42),new THREE.MeshPhysicalMaterial({color:0xdfe8c8,transmission:.92,roughness:.12,thickness:.6,ior:1.4,clearcoat:.6,transparent:true})); prod.add(body);
+  const oilMat=new THREE.MeshPhysicalMaterial({color:c.items[0].fill,roughness:.1,transmission:.55,thickness:1.2,ior:1.47,clearcoat:1});
+  const oil=new THREE.Mesh(new RoundedBoxGeometry(W*.9,H*.82,D*.86,6,.36),oilMat); oil.position.y=-H*.06; prod.add(oil);
+  const neck=new THREE.Mesh(new THREE.CylinderGeometry(.28,.34,.36,48),body.material); neck.position.set(-W*.2,H/2+.12,0); prod.add(neck);
+  const cap=new THREE.Mesh(new THREE.CylinderGeometry(.33,.33,.3,48),new THREE.MeshPhysicalMaterial({color:0x2e6a2a,roughness:.35,clearcoat:.6})); cap.position.set(-W*.2,H/2+.42,0); prod.add(cap);
+  const handle=new THREE.Mesh(new THREE.TorusGeometry(.42,.12,16,48,Math.PI),body.material); handle.position.set(W*.18,H/2-.02,0); prod.add(handle);
+  const texs=c.items.map(it=>labelTex(it,1024,1100));
+  const labMat=new THREE.MeshStandardMaterial({map:texs[0],roughness:.55});
+  const lab=new THREE.Mesh(new THREE.PlaneGeometry(W*.78,H*.56),labMat); lab.position.set(0,-H*.05,D/2+.012); prod.add(lab);
+  setFill=i=>{ oilMat.color.set(c.items[i].fill); labMat.map=texs[i]; labMat.needsUpdate=true; prod.userData.size=c.items[i].size||1; };
+  prod.userData.size=c.items[0].size||1;
+}
+/* partículas: frutas/aceitunas según el rubro */
+const pg=c.shape==='bidon'?new THREE.SphereGeometry(.17,20,14).scale(1,1.3,1):new THREE.SphereGeometry(.13,16,12);
+const pm=new THREE.MeshStandardMaterial({color:c.shape==='bidon'?0x5d7a22:0x5a0f22,roughness:.35});
+const N=Math.round((innerWidth<760?12:28)*(c.partFactor||1)), parts=new THREE.InstancedMesh(pg,pm,N); scene.add(parts);
+const P=[...Array(N)].map(()=>({p:new THREE.Vector3((Math.random()-.5)*12,(Math.random()-.5)*8,-1-Math.random()*4),r:new THREE.Euler(Math.random()*6,Math.random()*6,0),s:.6+Math.random()*.9,v:.15+Math.random()*.3}));
+const dm=new THREE.Object3D();
+const mob=()=>innerWidth<900;
+const ST=c.layout==='centro'?{s1:()=>mob()?{x:0,y:-1.7,s:.72,bg:.6}:{x:0,y:-1.75,s:.92,bg:1}, s2:()=>mob()?{x:1.4,y:2.6,s:.5,bg:.15}:{x:2.3,y:.1,s:1.1,bg:.22}}:{s1:()=>mob()?{x:0,y:1.35,s:.8,bg:.6}:{x:2.3,y:-.1,s:1.15,bg:1}, s2:()=>mob()?{x:1.4,y:2.6,s:.5,bg:.3}:{x:2.3,y:0,s:1.1,bg:.7}};
+let target=ST.s1(), cur={...target};
+const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting) target=ST[e.target.id](); }),{threshold:.5});
+document.querySelectorAll('main section').forEach(s=>io.observe(s));
+let boost=0, pending=null; window.setVar=i=>{ pending=i; boost=reduce?0:1; if(reduce){ setFill(i); } };
+let mx=0,my=0; addEventListener('pointermove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5},{passive:true});
+function size(){ renderer.setSize(innerWidth,innerHeight,false); camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix(); }
+addEventListener('resize',()=>{size(); target=ST.s1();}); size();
+const clock=new THREE.Clock(); let spin=0, lastY=scrollY, vel=0;
+(function frame(){
+  const dt=Math.min(clock.getDelta(),.05), t=clock.elapsedTime; vel+=((scrollY-lastY)-vel)*.1; lastY=scrollY;
+  const k=1-Math.pow(.0016,dt); for(const p of ['x','y','s','bg']) cur[p]+=(target[p]-cur[p])*k;
+  if(boost>0){ spin+=dt*9*boost; boost-=dt*1.4; if(pending!==null&&boost<.55){ setFill(pending); pending=null; } }
+  spin+=dt*((reduce?0:(c.spinSpeed||.35))+Math.min(Math.abs(vel)*.02,2));
+  const sz=(prod.userData.size||1);
+  prod.position.set(cur.x+mx*.25,cur.y+Math.sin(t*1.1)*.08-my*.15,0); prod.scale.setScalar(cur.s*sz);
+  prod.rotation.y=(c.shape==='bidon'?Math.sin(spin*.5)*.7:spin)+mx*.4; prod.rotation.x=.1+my*.12;
+  for(let i=0;i<N;i++){ const b=P[i]; if(!reduce){ b.p.y+=b.v*dt*.4; b.r.x+=dt*.3; if(b.p.y>4.5) b.p.y=-4.5; } dm.position.copy(b.p); dm.rotation.copy(b.r); dm.scale.setScalar(b.s*cur.bg); dm.updateMatrix(); parts.setMatrixAt(i,dm.matrix); }
+  parts.instanceMatrix.needsUpdate=true;
+  renderer.render(scene,camera); requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
