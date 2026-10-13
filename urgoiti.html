@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Urgoiti Braids · Trenzas cosidas en el Centro</title>
+<meta name="description" content="Trenzas cosidas en el Centro de Montevideo. Reservá tu turno con seña y te llega confirmado por WhatsApp.">
+<meta name="theme-color" content="#0f1013">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Hanken+Grotesk:wght@400;500;600;700&display=swap">
+<style>
+:root{--bg:#0f1013;--bg2:#16181d;--bg3:#1d2027;--line:rgba(242,244,248,.09);--line2:rgba(242,244,248,.16);--ink:#f2f4f8;--txt:rgba(242,244,248,.76);--mute:#8d94a1;--acc:#4b74ff;--acc2:#7e9bff;--ease:cubic-bezier(.23,1,.32,1);--gut:clamp(16px,4vw,56px)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--txt);font:400 16.5px/1.6 "Hanken Grotesk",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:"Dela Gothic One",sans-serif;font-weight:400;color:var(--ink);margin:0;line-height:1.02;letter-spacing:.005em}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--gut)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;font:600 1rem/1 "Hanken Grotesk",sans-serif;text-decoration:none;border:0;cursor:pointer;transition:transform 160ms var(--ease),background-color 200ms ease,box-shadow 300ms ease}
+.btn:active{transform:scale(.97)}
+.btn--acc{background:var(--acc);color:#fff;box-shadow:0 14px 34px -14px rgba(75,116,255,.8)}
+.btn--ghost{border:1px solid var(--line2);color:var(--ink);background:transparent}
+@media (hover:hover){.btn--acc:hover{background:#5b81ff}.btn--ghost:hover{border-color:rgba(242,244,248,.4)}}
+:focus-visible{outline:2px solid var(--acc2);outline-offset:3px;border-radius:8px}
+
+/* nav */
+.nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:20;display:flex;align-items:center;gap:22px;padding:8px 8px 8px 20px;border-radius:999px;background:rgba(22,24,29,.75);border:1px solid var(--line);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);width:max-content;max-width:calc(100% - 24px)}
+.nav b{font-family:"Dela Gothic One";font-weight:400;color:var(--ink);font-size:.95rem;letter-spacing:.03em;white-space:nowrap}
+.nav nav{display:flex;gap:18px;font-size:.92rem}
+.nav nav a{text-decoration:none;color:var(--txt)}
+.nav .btn{min-height:40px;padding:0 18px;font-size:.92rem}
+@media (max-width:760px){.nav nav{display:none}.nav{left:12px;right:12px;transform:none;width:auto;justify-content:space-between}}
+
+/* hero */
+.hero{min-height:100dvh;display:grid;align-items:center;padding:110px 0 60px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:auto -10% -30% 30%;height:80%;background:radial-gradient(closest-side,rgba(75,116,255,.22),transparent);pointer-events:none}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,70px);align-items:center;position:relative}
+.hero h1{font-size:clamp(2.3rem,5vw,4.5rem);text-transform:uppercase}
+.hero h1 span{display:block;color:transparent;-webkit-text-stroke:1.3px var(--ink)}
+.hero p{font-size:clamp(1.05rem,1.4vw,1.2rem);max-width:40ch;margin:24px 0 32px}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px}
+.fan{position:relative;height:min(68vh,620px)}
+.fan figure{position:absolute;margin:0;width:56%;aspect-ratio:3/4;border-radius:22px;overflow:hidden;box-shadow:0 30px 70px -30px rgba(0,0,0,.9);border:1px solid var(--line2);transition:transform 700ms var(--ease)}
+.fan figure img{width:100%;height:100%;object-fit:cover}
+.fan .f1{left:0;top:12%;transform:rotate(-7deg)}
+.fan .f2{left:22%;top:0;z-index:2;transform:rotate(1deg)}
+.fan .f3{right:0;top:18%;transform:rotate(8deg)}
+@media (hover:hover){.fan:hover .f1{transform:rotate(-10deg) translateX(-10px)}.fan:hover .f3{transform:rotate(11deg) translateX(10px)}}
+
+/* reservar */
+.sec{padding:clamp(80px,10vw,140px) 0 0}
+.sec h2{font-size:clamp(2rem,4.6vw,3.6rem);text-transform:uppercase}
+.sec .lead{max-width:56ch;margin-top:16px;font-size:1.08rem}
+.book>*{min-width:0}
+.book{margin-top:44px;display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(20px,3vw,40px);align-items:start}
+.preview{position:sticky;top:96px;border-radius:26px;overflow:hidden;aspect-ratio:3/4;border:1px solid var(--line2);background:var(--bg2)}
+.preview img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.04);transition:opacity 500ms var(--ease),transform 800ms var(--ease)}
+.preview img.on{opacity:1;transform:none}
+.preview .tag{position:absolute;left:18px;bottom:18px;right:18px;padding:14px 18px;border-radius:16px;background:rgba(15,16,19,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--ink);display:flex;justify-content:space-between;align-items:center;gap:12px}
+.preview .tag b{font-family:"Dela Gothic One";font-weight:400;font-size:1.15rem}
+.preview .tag span{color:var(--mute);font-size:.9rem}
+.panel{background:var(--bg2);border:1px solid var(--line);border-radius:26px;padding:clamp(20px,3vw,34px)}
+.step{padding:22px 0;border-bottom:1px solid var(--line)}
+.step:first-child{padding-top:0}
+.step h3{font-family:"Hanken Grotesk";font-weight:700;font-size:1.02rem;letter-spacing:0;margin-bottom:14px;display:flex;gap:10px;align-items:center}
+.step h3 i{font-style:normal;width:26px;height:26px;border-radius:50%;background:var(--bg3);color:var(--acc2);display:grid;place-items:center;font-size:.82rem}
+.styles{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:10px}
+.style{position:relative;border:1px solid var(--line2);border-radius:16px;overflow:hidden;background:var(--bg3);cursor:pointer;padding:0;text-align:left;color:var(--ink);font:600 .92rem "Hanken Grotesk";transition:border-color 200ms ease,transform 160ms var(--ease)}
+.style img{width:100%;aspect-ratio:1;object-fit:cover;opacity:.85}
+.style span{display:block;padding:9px 11px}
+.style[aria-pressed=true]{border-color:var(--acc);box-shadow:0 0 0 2px var(--acc) inset}
+.style[aria-pressed=true] img{opacity:1}
+.style:active{transform:scale(.97)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line2);background:transparent;color:var(--ink);border-radius:999px;padding:10px 16px;font:500 .94rem "Hanken Grotesk";cursor:pointer;transition:background-color 200ms ease,border-color 200ms ease,transform 160ms var(--ease)}
+.chip[aria-pressed=true]{background:var(--acc);border-color:var(--acc);color:#fff}
+.chip:active{transform:scale(.97)}
+.chip:disabled{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+.days{display:grid;grid-auto-flow:column;grid-auto-columns:68px;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.day{border:1px solid var(--line2);background:transparent;color:var(--ink);border-radius:16px;padding:10px 0;text-align:center;cursor:pointer;font:500 .82rem "Hanken Grotesk";transition:background-color 200ms ease,border-color 200ms ease}
+.day b{display:block;font-family:"Dela Gothic One";font-weight:400;font-size:1.35rem;margin:2px 0}
+.day[aria-pressed=true]{background:var(--acc);border-color:var(--acc);color:#fff}
+.day:disabled{opacity:.28;cursor:not-allowed}
+.times{margin-top:12px}
+.field{display:grid;gap:6px}
+.field label{font-size:.88rem;color:var(--mute)}
+.field input{background:var(--bg3);border:1px solid var(--line2);border-radius:12px;padding:13px 14px;color:var(--ink);font:500 1rem "Hanken Grotesk"}
+.field input:focus{outline:none;border-color:var(--acc)}
+.resumen{margin-top:22px;padding:18px;border-radius:18px;background:var(--bg3);display:grid;gap:8px;font-size:.95rem}
+.resumen div{display:flex;justify-content:space-between;gap:16px}
+.resumen span{color:var(--mute)}
+.resumen b{color:var(--ink);text-align:right;font-weight:600}
+.panel .btn{width:100%;margin-top:18px}
+.note{font-size:.84rem;color:var(--mute);margin-top:10px;text-align:center}
+
+/* galería */
+.gal{margin-top:40px;columns:4 220px;column-gap:12px}
+.gal img{width:100%;margin:0 0 12px;border-radius:18px;break-inside:avoid;border:1px solid var(--line)}
+
+/* curso */
+.curso{margin-top:clamp(80px,10vw,140px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,60px);align-items:center;background:linear-gradient(135deg,#1a2350,#16181d 60%);border:1px solid var(--line2);border-radius:30px;overflow:hidden}
+.curso .txt{padding:clamp(28px,4vw,56px)}
+.curso h2{font-size:clamp(1.9rem,3.8vw,3rem);text-transform:uppercase}
+.curso ul{list-style:none;padding:0;margin:22px 0 28px;display:grid;gap:10px}
+.curso li{display:flex;gap:12px;align-items:flex-start}
+.curso li::before{content:"";width:8px;height:8px;margin-top:9px;border-radius:2px;background:var(--acc2);flex:none;transform:rotate(45deg)}
+.curso .ph{height:100%;min-height:380px}
+.curso .ph img{width:100%;height:100%;object-fit:cover}
+
+/* donde */
+.donde{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;padding:clamp(80px,10vw,130px) 0 40px;border-bottom:1px solid var(--line)}
+.donde p{margin:12px 0 0;font-size:1.05rem}
+footer{padding:26px 0 40px;font-size:.86rem;color:var(--mute);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+/* entrada */
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.hero h1,.hero p,.hero .ctas,.fan{animation:up 900ms var(--ease) both}
+.hero p{animation-delay:120ms}.hero .ctas{animation-delay:200ms}.fan{animation-delay:150ms}
+.rv{opacity:0;transform:translateY(22px);transition:opacity 800ms var(--ease),transform 800ms var(--ease)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{transform:none;transition:opacity 600ms ease}.hero h1,.hero p,.hero .ctas,.fan{animation-name:none}}
+
+@media (max-width:900px){
+  .hero .wrap,.book,.curso{grid-template-columns:1fr}
+  .fan{height:420px;max-width:440px;width:100%;margin:0 auto}
+  .preview{position:relative;top:0;aspect-ratio:4/3}
+  .curso .ph{min-height:300px;order:-1}
+  .donde{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header class="nav"><b>URGOITI BRAIDS</b><nav><a href="#reservar">Turnos</a><a href="#trabajos">Trabajos</a><a href="#curso">Cursos</a></nav><a class="btn btn--acc" href="#reservar">Reservar</a></header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Trenzas cosidas<span>en el Centro</span></h1>
+      <p>Boxeadoras, laterales, vincha, fulani y freestyle. Elegís el peinado, reservás con seña y el turno te llega confirmado por WhatsApp.</p>
+      <div class="ctas"><a class="btn btn--acc" href="#reservar">Reservar turno</a><a class="btn btn--ghost" href="#curso">Quiero aprender</a></div>
+    </div>
+    <div class="fan" aria-hidden="true">
+      <figure class="f1"><img src="urgoiti-laterales.jpg" alt=""></figure>
+      <figure class="f2"><img src="urgoiti-fulani.jpg" alt=""></figure>
+      <figure class="f3"><img src="urgoiti-hombre2.jpg" alt=""></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="reservar">
+  <div class="wrap">
+    <h2 class="rv">Reservá tu turno</h2>
+    <p class="lead rv">En un minuto: elegís el peinado, el largo y el horario libre. Con la seña queda reservado.</p>
+    <div class="book">
+      <div class="preview rv" aria-live="polite">
+        <img data-k="boxeadoras" src="urgoiti-boxeadoras.jpg" alt="Trenzas boxeadoras" class="on">
+        <img data-k="laterales" src="urgoiti-laterales.jpg" alt="Trenzas laterales">
+        <img data-k="vincha" src="urgoiti-vincha.jpg" alt="Trenzas vincha">
+        <img data-k="fulani" src="urgoiti-fulani.jpg" alt="Trenzas fulani">
+        <img data-k="freestyle" src="urgoiti-freestyle.jpg" alt="Trenzas freestyle">
+        <img data-k="hombre" src="urgoiti-hombre1.jpg" alt="Trenzas para hombre">
+        <div class="tag"><b id="tName">Boxeadoras</b><span id="tDur">2 a 3 horas</span></div>
+      </div>
+      <div class="panel rv">
+        <div class="step"><h3><i>1</i>Peinado</h3>
+          <div class="styles" id="styles"></div></div>
+        <div class="step"><h3><i>2</i>Largo de tu pelo</h3>
+          <div class="chips" id="largo"><button class="chip" aria-pressed="false">Corto</button><button class="chip" aria-pressed="true">Medio</button><button class="chip" aria-pressed="false">Largo</button></div></div>
+        <div class="step"><h3><i>3</i>Día y hora</h3>
+          <div class="days" id="days"></div>
+          <div class="chips times" id="times"></div></div>
+        <div class="step"><h3><i>4</i>Tus datos</h3>
+          <div class="field"><label for="nom">Nombre</label><input id="nom" autocomplete="given-name" placeholder="Tu nombre"></div></div>
+        <div class="resumen" id="res"></div>
+        <a class="btn btn--acc" id="go" href="#" target="_blank" rel="noopener">Reservar y pagar la seña</a>
+        <p class="note">Te llega el link de la seña por WhatsApp y el turno queda confirmado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="trabajos">
+  <div class="wrap">
+    <h2 class="rv">Trabajos</h2>
+    <div class="gal">
+      <img class="rv" src="urgoiti-top.jpg" alt="Trenzas vistas desde arriba">
+      <img class="rv" src="urgoiti-ponytail.jpg" alt="Trenzas recogidas en cola">
+      <img class="rv" src="urgoiti-barba.jpg" alt="Trenzas para hombre">
+      <img class="rv" src="urgoiti-lateral2.jpg" alt="Trenzas laterales">
+      <img class="rv" src="urgoiti-espalda.jpg" alt="Trenzas de espalda">
+      <img class="rv" src="urgoiti-recta.jpg" alt="Trenzas rectas">
+      <img class="rv" src="urgoiti-freestyle.jpg" alt="Trenzas freestyle">
+      <img class="rv" src="urgoiti-hombre2.jpg" alt="Trenzas para hombre">
+    </div>
+
+    <div class="curso rv" id="curso">
+      <div class="txt">
+        <h2>Curso completo de trenzas cosidas</h2>
+        <ul>
+          <li>Desde la línea del medio hasta el terminado</li>
+          <li>Boxeadoras, laterales, vincha y fulani</li>
+          <li>Práctica con cabeza de muñeca y con modelo</li>
+          <li>Te armás tu propio emprendimiento de trenzas</li>
+        </ul>
+        <a class="btn btn--acc" id="cur" href="#" target="_blank" rel="noopener">Pedir info del próximo curso</a>
+      </div>
+      <div class="ph"><img src="urgoiti-espalda.jpg" alt="Trenzas cosidas"></div>
+    </div>
+
+    <div class="donde rv">
+      <div><h2>Centro, Montevideo</h2><p>Atiende Cami. Turnos con seña, de martes a sábado.</p></div>
+      <a class="btn btn--ghost" href="https://www.instagram.com/urgoitibraids/" target="_blank" rel="noopener">Ver Instagram</a>
+    </div>
+    <footer><span>Urgoiti Braids</span><span>Vista previa hecha por NIMBRA</span></footer>
+  </div>
+</section>
+</main>
+
+<script>
+(function(){
+  var WA = 'https://wa.me/?text=';
+  var S = [
+    {k:'boxeadoras',n:'Boxeadoras',d:'2 a 3 horas',img:'urgoiti-boxeadoras.jpg'},
+    {k:'laterales',n:'Laterales',d:'2 a 3 horas',img:'urgoiti-laterales.jpg'},
+    {k:'vincha',n:'Vincha',d:'1 a 2 horas',img:'urgoiti-vincha.jpg'},
+    {k:'fulani',n:'Fulani',d:'3 a 4 horas',img:'urgoiti-fulani.jpg'},
+    {k:'freestyle',n:'Freestyle',d:'3 a 4 horas',img:'urgoiti-freestyle.jpg'},
+    {k:'hombre',n:'Hombre',d:'1 a 2 horas',img:'urgoiti-hombre1.jpg'}
+  ];
+  var st = {style:S[0], largo:'Medio', day:null, time:null};
+  var $ = function(s){return document.querySelector(s)};
+  var styles = $('#styles');
+  S.forEach(function(s,i){
+    var b=document.createElement('button'); b.className='style'; b.type='button'; b.setAttribute('aria-pressed', i===0);
+    b.innerHTML='<img src="'+s.img+'" alt=""><span>'+s.n+'</span>';
+    b.onclick=function(){ st.style=s; styles.querySelectorAll('.style').forEach(function(x){x.setAttribute('aria-pressed', x===b)}); document.querySelectorAll('.preview img').forEach(function(im){im.classList.toggle('on', im.dataset.k===s.k)}); $('#tName').textContent=s.n; $('#tDur').textContent=s.d; upd(); };
+    styles.appendChild(b);
+  });
+  $('#largo').querySelectorAll('.chip').forEach(function(c){ c.onclick=function(){ st.largo=c.textContent; $('#largo').querySelectorAll('.chip').forEach(function(x){x.setAttribute('aria-pressed', x===c)}); upd(); }; });
+
+  var dn=['dom','lun','mar','mié','jue','vie','sáb'], mn=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  var days=$('#days'), today=new Date(); today.setHours(0,0,0,0);
+  for(var i=1;i<=14;i++){
+    (function(i){
+      var d=new Date(today); d.setDate(d.getDate()+i);
+      var b=document.createElement('button'); b.className='day'; b.type='button'; b.setAttribute('aria-pressed','false');
+      b.innerHTML=dn[d.getDay()]+'<b>'+d.getDate()+'</b>'+mn[d.getMonth()];
+      if(d.getDay()===0||d.getDay()===1) b.disabled=true;
+      b.onclick=function(){ st.day=d; st.time=null; days.querySelectorAll('.day').forEach(function(x){x.setAttribute('aria-pressed', x===b)}); times(d); upd(); };
+      days.appendChild(b);
+      if(!st.day && !b.disabled){ st.day=d; b.setAttribute('aria-pressed','true'); }
+    })(i);
+  }
+  function times(d){
+    var t=$('#times'); t.innerHTML='';
+    ['10:00','13:00','16:00','18:30'].forEach(function(h,j){
+      var b=document.createElement('button'); b.className='chip'; b.type='button'; b.textContent=h; b.setAttribute('aria-pressed','false');
+      if((d.getDate()+j)%4===0) b.disabled=true;
+      b.onclick=function(){ st.time=h; t.querySelectorAll('.chip').forEach(function(x){x.setAttribute('aria-pressed', x===b)}); upd(); };
+      t.appendChild(b);
+    });
+  }
+  times(st.day);
+  $('#nom').addEventListener('input', upd);
+
+  function fdate(d){ return dn[d.getDay()]+' '+d.getDate()+' de '+mn[d.getMonth()]; }
+  function upd(){
+    var nom=$('#nom').value.trim();
+    $('#res').innerHTML='<div><span>Peinado</span><b>'+st.style.n+', pelo '+st.largo.toLowerCase()+'</b></div><div><span>Turno</span><b>'+(st.day?fdate(st.day):'Elegí un día')+(st.time?', '+st.time:'')+'</b></div><div><span>Duración aprox.</span><b>'+st.style.d+'</b></div>';
+    var msg='Hola Cami! Quiero reservar:\n• Trenzas '+st.style.n.toLowerCase()+'\n• Pelo '+st.largo.toLowerCase()+'\n• '+(st.day?fdate(st.day):'')+(st.time?' a las '+st.time:'')+(nom?'\nSoy '+nom:'')+'\nMe pasás el link para la seña?';
+    $('#go').href=WA+encodeURIComponent(msg);
+  }
+  upd();
+  $('#cur').href=WA+encodeURIComponent('Hola Cami! Quiero info del próximo curso de trenzas cosidas.');
+
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+    document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+  } else document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')});
+})();
+</script>
+</body>
+</html>
