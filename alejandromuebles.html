@@ -1,0 +1,703 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alejandro Muebles · Tienda de muebles de madera a medida</title>
+<meta name="description" content="Muebles de madera hechos a medida en Canelones: aparadores, cristaleros, racks, mesas y dormitorio. Comprá en la tienda o diseñá el tuyo en 3D y pedilo por WhatsApp. Envíos a todo el país.">
+<meta name="theme-color" content="#1b2436">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@300;400&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap">
+<style>
+:root{
+  --marino:#1b2436;--marino2:#24304a;--marino3:#2e3c5a;
+  --blanco:#f2f3f5;--papel:#ffffff;--niebla:#e4e7ec;--tinta:#161c28;--gris:#5c6475;
+  --miel:#d29a52;--miel2:#e2ad66;--hueso:#eef0f4;--hueso2:rgba(238,240,244,.68);
+  --ease:cubic-bezier(.23,1,.32,1);--gut:clamp(16px,4.4vw,64px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--blanco);color:var(--tinta);font:400 17px/1.6 "Hanken Grotesk",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+button,input,select{font:inherit;color:inherit}
+h1,h2{font-family:"Lexend Mega",sans-serif;font-weight:300;text-transform:uppercase;margin:0;line-height:1.12;letter-spacing:-.02em}
+h3{margin:0}
+:focus-visible{outline:2px solid var(--miel);outline-offset:3px;border-radius:6px}
+#gl{position:fixed;inset:0;width:100vw;height:100vh;z-index:2;pointer-events:none}
+.cotas{position:fixed;inset:0;z-index:3;pointer-events:none}
+.cota{position:absolute;left:0;top:0;font:700 13px/1 "Hanken Grotesk";color:var(--tinta);background:#fff;padding:6px 9px;border-radius:999px;white-space:nowrap;box-shadow:0 6px 16px -8px rgba(22,28,40,.45);font-variant-numeric:tabular-nums;opacity:0;transition:opacity .3s ease}
+.fallback{display:none}.no-gl .fallback{display:block}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:14px var(--gut);pointer-events:none;color:var(--tinta);transition:color .4s ease}
+.nav>*{pointer-events:auto}
+body.dark .nav{color:var(--hueso)}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo i{width:42px;height:42px;border-radius:50%;background:var(--marino);display:grid;place-items:center;color:#fff;font:400 15px/1 "Lexend Mega";font-style:normal;letter-spacing:-.04em;box-shadow:inset 0 0 0 2px rgba(255,255,255,.18)}
+body.dark .logo i{background:#fff;color:var(--marino)}
+.logo b{display:block;font:400 13px/1.1 "Lexend Mega";letter-spacing:-.02em}
+.logo span{display:block;font-size:12px;opacity:.7;margin-top:4px}
+.navr{display:flex;align-items:center;gap:6px}
+.navlink{font-weight:600;font-size:.95rem;text-decoration:none;padding:10px 12px;border-radius:999px}
+@media (hover:hover){.navlink:hover{background:rgba(127,127,127,.12)}}
+.cartbtn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;border:0;background:var(--marino);color:#fff;font-weight:700;font-size:.92rem;cursor:pointer;transition:transform 160ms var(--ease)}
+.cartbtn:active{transform:scale(.97)}
+body.dark .cartbtn{background:#fff;color:var(--marino)}
+.cartbtn b{min-width:22px;height:22px;border-radius:999px;background:var(--miel);color:var(--tinta);display:grid;place-items:center;font-size:.8rem;font-variant-numeric:tabular-nums;transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.cartbtn b.bump{transform:scale(1.35)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;font:700 1rem/1 "Hanken Grotesk";text-decoration:none;border:0;cursor:pointer;transition:transform 160ms var(--ease),background-color .2s ease}
+.btn:active{transform:scale(.97)}
+.btn--marino{background:var(--marino);color:#fff}
+@media (hover:hover){.btn--marino:hover{background:var(--marino2)}}
+.btn--miel{background:var(--miel);color:var(--tinta)}
+@media (hover:hover){.btn--miel:hover{background:var(--miel2)}}
+.btn--line{box-shadow:inset 0 0 0 1.5px currentColor;background:transparent}
+.btn svg{width:20px;height:20px;flex:none}
+.wrap{max-width:1360px;margin:0 auto;padding:0 var(--gut)}
+section{position:relative}
+
+/* 1 portada */
+#s1{min-height:100dvh;display:grid;align-items:center;background:radial-gradient(900px 700px at 72% 58%,#ffffff 0%,var(--blanco) 60%,#e8ebf0 100%);overflow:hidden}
+#s1 .wrap{width:100%;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:20px;align-items:center;padding-top:110px;padding-bottom:100px}
+#s1 h1{font-size:clamp(1.55rem,3.3vw,3.1rem)}
+#s1 h1 span{display:block;overflow:hidden}
+#s1 h1 span i{display:block;font-style:normal;transform:translateY(105%);animation:up .95s var(--ease) forwards}
+#s1 h1 span:nth-child(2) i{animation-delay:.08s}
+@keyframes up{to{transform:none}}
+#s1 p{max-width:40ch;color:var(--gris);font-size:clamp(1.02rem,1.3vw,1.15rem);margin:24px 0 32px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.anchor{height:min(68vh,620px)}
+.facts{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:30px;font-size:.92rem;color:var(--gris)}
+.facts span{display:flex;align-items:center;gap:8px}
+.facts span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--miel)}
+
+/* 2 por dentro */
+#s2{height:300vh;background:var(--marino);color:var(--hueso)}
+#s2 .sticky{position:sticky;top:0;height:100dvh;overflow:hidden}
+#s2 .wrap{height:100%;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;gap:20px}
+.steps{position:relative;min-height:280px}
+.step{position:absolute;inset:0 0 auto 0;opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .6s var(--ease)}
+.step.on{opacity:1;transform:none}
+.step small{display:block;font-size:.95rem;color:var(--miel);font-weight:700;margin-bottom:14px}
+.step h2{font-size:clamp(1.4rem,2.6vw,2.4rem)}
+.step p{color:var(--hueso2);max-width:38ch;margin:18px 0 0;font-size:1.08rem}
+.track{position:absolute;left:var(--gut);bottom:34px;display:flex;gap:8px}
+.track i{width:46px;height:3px;border-radius:2px;background:rgba(238,240,244,.18);overflow:hidden;position:relative}
+.track i b{position:absolute;inset:0;background:var(--miel);transform-origin:left;transform:scaleX(0)}
+
+/* 3 tienda */
+#tienda{padding:clamp(96px,13vh,140px) 0 clamp(80px,10vh,120px);background:var(--blanco)}
+.head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:26px}
+.head h2{font-size:clamp(1.3rem,2.6vw,2.3rem)}
+.head p{color:var(--gris);max-width:42ch;margin:12px 0 0}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 calc(var(--gut)*-1) 24px;padding:2px var(--gut)}
+.chips::-webkit-scrollbar{display:none}
+.chips button{flex:none;border:0;border-radius:999px;padding:11px 18px;font-weight:600;font-size:.94rem;background:var(--niebla);cursor:pointer;transition:background-color .2s ease,color .2s ease,transform 160ms var(--ease)}
+.chips button:active{transform:scale(.97)}
+.chips button[aria-pressed=true]{background:var(--marino);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.prod{background:var(--papel);border-radius:22px;overflow:hidden;display:flex;flex-direction:column}
+.prod[hidden]{display:none}
+.prod .ph{aspect-ratio:1/1;background:linear-gradient(180deg,#f7f8fa,#e9ecf1);position:relative}
+.prod .ph img{width:100%;height:100%;object-fit:contain;transition:transform .8s var(--ease)}
+@media (hover:hover){.prod:hover .ph img{transform:scale(1.04) translateY(-4px)}}
+.tag{position:absolute;left:12px;top:12px;background:#fff;color:var(--tinta);font:700 .78rem/1 "Hanken Grotesk";padding:7px 11px;border-radius:999px;box-shadow:0 4px 12px -6px rgba(22,28,40,.3)}
+.prod .info{padding:16px 18px 18px;display:flex;flex-direction:column;gap:3px;flex:1}
+.prod h3{font:700 1.06rem/1.25 "Hanken Grotesk"}
+.prod .med{font-size:.9rem;color:var(--gris);margin:0;font-variant-numeric:tabular-nums}
+.prod .row{margin-top:auto;padding-top:14px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.prod .row strong{font:800 1.3rem/1 "Hanken Grotesk";letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.add{min-height:42px;padding:0 16px;border-radius:999px;border:0;background:var(--marino);color:#fff;font-weight:700;font-size:.88rem;cursor:pointer;transition:transform 160ms var(--ease),background-color .2s ease}
+.add:active{transform:scale(.96)}
+.add.ok{background:#2f7a55}
+.alt{background:none;border:0;padding:8px 0 0;font-weight:600;font-size:.86rem;color:var(--gris);text-decoration:underline;text-underline-offset:3px;cursor:pointer;align-self:flex-start}
+
+/* 4 a medida */
+#medida{background:var(--niebla);height:100dvh;min-height:680px}
+#medida .wrap{height:100%;display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,430px);gap:clamp(16px,3vw,48px);padding-top:92px;padding-bottom:22px}
+#medida .left{display:flex;flex-direction:column;min-height:0}
+#medida h2{font-size:clamp(1.2rem,2.2vw,2rem)}
+#medida .left>p{color:var(--gris);margin:12px 0 0;max-width:46ch}
+.stage{flex:1;min-height:200px;position:relative;cursor:grab;touch-action:pan-y}
+.stage:active{cursor:grabbing}
+.stage .drag{position:absolute;left:0;bottom:6px;font-size:.86rem;color:var(--gris);display:flex;align-items:center;gap:8px}
+.stage .drag svg{width:18px;height:18px}
+.panel{background:var(--papel);border-radius:26px;display:flex;flex-direction:column;min-height:0;box-shadow:0 30px 60px -44px rgba(22,28,40,.5)}
+.panel .scroll{overflow-y:auto;padding:22px 22px 8px;display:flex;flex-direction:column;gap:20px;overscroll-behavior:contain}
+.panel h4{margin:0 0 10px;font:700 1rem "Hanken Grotesk";display:flex;justify-content:space-between;gap:10px}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{border:0;background:var(--niebla);border-radius:12px;padding:10px 14px;font-weight:600;font-size:.9rem;cursor:pointer;transition:background-color .2s ease,color .2s ease,transform 160ms var(--ease)}
+.seg button:active{transform:scale(.97)}
+.seg button[aria-pressed=true]{background:var(--marino);color:#fff}
+.range{display:grid;gap:12px}
+.range label{display:grid;gap:6px;font-size:.92rem;color:var(--gris)}
+.range label span{display:flex;justify-content:space-between}
+.range label b{color:var(--tinta);font-variant-numeric:tabular-nums}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;cursor:pointer;margin:0}
+input[type=range]::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:linear-gradient(90deg,var(--marino) var(--v,50%),#cfd4dc var(--v,50%))}
+input[type=range]::-moz-range-track{height:4px;border-radius:2px;background:#cfd4dc}
+input[type=range]::-moz-range-progress{height:4px;border-radius:2px;background:var(--marino)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:#fff;border:6px solid var(--marino);margin-top:-10px;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:#fff;border:6px solid var(--marino)}
+.sw{display:flex;flex-wrap:wrap;gap:8px}
+.sw button{display:flex;align-items:center;gap:9px;border:0;background:var(--blanco);border-radius:999px;padding:6px 14px 6px 6px;font-size:.88rem;font-weight:600;cursor:pointer;box-shadow:inset 0 0 0 1.5px #d6dae1;transition:box-shadow .2s ease,transform 160ms var(--ease)}
+.sw button:active{transform:scale(.97)}
+.sw button i{width:28px;height:28px;border-radius:50%;flex:none;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
+.sw button[aria-pressed=true]{box-shadow:inset 0 0 0 2px var(--marino)}
+.qty{display:flex;align-items:center;justify-content:space-between;background:var(--blanco);border-radius:16px;padding:6px 6px 6px 16px;font-size:.92rem}
+.qty div{display:flex;align-items:center;gap:4px}
+.qty button{width:38px;height:38px;border-radius:50%;border:0;background:#fff;font:700 1.15rem "Hanken Grotesk";cursor:pointer;transition:transform 140ms var(--ease)}
+.qty button:active{transform:scale(.9)}
+.qty b{min-width:24px;text-align:center;font-variant-numeric:tabular-nums}
+.hide{display:none!important}
+.foot{padding:14px 22px 20px;border-top:1px solid var(--niebla);display:grid;gap:10px}
+.ticket{display:flex;justify-content:space-between;align-items:end;gap:12px}
+.ticket small{display:block;font-size:.84rem;color:var(--gris);line-height:1.35}
+.ticket strong{font:800 1.8rem/1 "Hanken Grotesk";letter-spacing:-.02em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.foot .two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.foot .btn{min-height:50px;padding:0 12px;font-size:.92rem}
+
+/* 5 cómo trabajamos */
+#como{background:var(--marino);color:var(--hueso);padding:clamp(96px,13vh,140px) 0}
+#como h2{font-size:clamp(1.3rem,2.6vw,2.3rem);max-width:20ch}
+.pasos{list-style:none;margin:44px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;counter-reset:p}
+.pasos li{background:var(--marino2);border-radius:22px;padding:22px;counter-increment:p}
+.pasos li::before{content:counter(p);display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--miel);color:var(--tinta);font-weight:800;margin-bottom:18px}
+.pasos b{display:block;font-size:1.08rem;margin-bottom:6px}
+.pasos span{color:var(--hueso2);font-size:.95rem}
+.envio{margin-top:44px;display:flex;flex-wrap:wrap;align-items:center;gap:14px;background:var(--marino2);border-radius:22px;padding:18px 22px}
+.envio label{font-weight:700}
+.envio select{min-height:46px;border-radius:12px;border:0;padding:0 14px;background:#fff;color:var(--tinta);font-weight:600}
+.envio output{color:var(--hueso2)}
+
+/* 6 cierre */
+#fin{padding:clamp(96px,13vh,150px) 0;background:var(--blanco)}
+#fin .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:40px;align-items:end}
+#fin h2{font-size:clamp(1.4rem,3vw,2.8rem)}
+#fin p{font-size:1.1rem;max-width:42ch;margin:20px 0 30px;color:var(--gris)}
+#fin ul{list-style:none;margin:0;padding:0}
+#fin li{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-top:1.5px solid var(--niebla);font-weight:600}
+#fin li span{font-weight:400;color:var(--gris);text-align:right}
+footer{background:var(--marino);color:var(--hueso2);padding:24px var(--gut);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.86rem}
+
+/* carrito */
+.drawer{position:fixed;inset:0;z-index:40;pointer-events:none}
+.drawer .veil{position:absolute;inset:0;background:rgba(22,28,40,.4);opacity:0;transition:opacity .3s ease}
+.drawer aside{position:absolute;top:0;right:0;bottom:0;width:min(420px,100%);background:#fff;transform:translateX(100%);transition:transform .45s cubic-bezier(.32,.72,0,1);display:flex;flex-direction:column}
+.drawer.open{pointer-events:auto}
+.drawer.open .veil{opacity:1}
+.drawer.open aside{transform:none}
+.drawer header{display:flex;justify-content:space-between;align-items:center;padding:20px 22px;border-bottom:1px solid var(--niebla)}
+.drawer header b{font:400 1rem "Lexend Mega";text-transform:uppercase;letter-spacing:-.02em}
+.x{width:40px;height:40px;border-radius:50%;border:0;background:var(--niebla);cursor:pointer;font-size:1.2rem}
+.lines{flex:1;overflow-y:auto;padding:8px 22px}
+.line{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--niebla)}
+.line img{width:64px;height:64px;border-radius:12px;background:var(--blanco);object-fit:contain}
+.line b{display:block;font-size:.95rem}
+.line small{color:var(--gris);font-size:.82rem}
+.line .q{display:flex;align-items:center;gap:6px;margin-top:6px}
+.line .q button{width:28px;height:28px;border-radius:50%;border:0;background:var(--niebla);cursor:pointer;font-weight:700}
+.line strong{font-variant-numeric:tabular-nums}
+.empty{color:var(--gris);padding:30px 0;text-align:center}
+.drawer .bottom{padding:16px 22px calc(18px + env(safe-area-inset-bottom));border-top:1px solid var(--niebla);display:grid;gap:12px}
+.drawer select{min-height:46px;border-radius:12px;border:1.5px solid var(--niebla);padding:0 12px;background:#fff;font-weight:600;width:100%}
+.drawer .tot{display:flex;justify-content:space-between;align-items:baseline}
+.drawer .tot strong{font:800 1.6rem/1 "Hanken Grotesk";font-variant-numeric:tabular-nums}
+.drawer .btn{width:100%}
+.toast{position:fixed;left:50%;bottom:24px;z-index:50;transform:translate(-50%,20px);opacity:0;background:var(--tinta);color:#fff;padding:12px 18px;border-radius:999px;font-weight:600;font-size:.92rem;transition:opacity .25s ease,transform .35s var(--ease);pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+.rv{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.shot .rv{opacity:1;transform:none;transition:none}
+.shot #s1 h1 span i{animation:none;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{transform:none;transition:opacity .5s ease}#s1 h1 span i{animation:none;transform:none}.step{transform:none}}
+
+@media (max-width:1100px) and (min-width:901px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:900px){
+  .navlink{display:none}
+  #s1 .wrap{grid-template-columns:1fr;align-content:end;padding-top:0;padding-bottom:70px;min-height:100dvh}
+  #s1 .anchor{order:-1;height:44dvh;margin-top:80px}
+  #s1 p{margin:16px 0 24px}
+  .facts{margin-top:22px}
+  #s2 .wrap{grid-template-columns:1fr;grid-template-rows:1fr auto;align-items:end;padding-bottom:84px}
+  #s2 .anchor{order:-1;height:48dvh;align-self:start;margin-top:70px}
+  .steps{min-height:200px}
+  .grid{grid-template-columns:1fr 1fr;gap:10px}
+  .prod .info{padding:12px 12px 14px}
+  .prod h3{font-size:.95rem}
+  .prod .med{font-size:.8rem}
+  .prod .row{flex-direction:column;align-items:stretch;gap:8px}
+  .prod .row strong{font-size:1.1rem}
+  .add{min-height:40px}
+  #medida{height:100dvh;min-height:0}
+  #medida .wrap{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr);gap:8px;padding:74px 0 0}
+  #medida .left{padding:0 var(--gut);height:35dvh}
+  #medida .left>p{display:none}
+  #medida h2{font-size:1rem}
+  .panel{border-radius:24px 24px 0 0}
+  .panel .scroll{padding:16px var(--gut) 8px}
+  .foot{padding:10px var(--gut) calc(12px + env(safe-area-inset-bottom))}
+  .ticket small{display:none}
+  .ticket strong{font-size:1.3rem}
+  .ticket{align-items:center}
+  .foot .btn{min-height:46px;font-size:.86rem}
+  .pasos{grid-template-columns:1fr 1fr}
+  #fin .wrap{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<canvas id="gl" aria-hidden="true"></canvas>
+<div class="cotas" aria-hidden="true"><span class="cota" id="cW"></span><span class="cota" id="cD"></span><span class="cota" id="cH"></span></div>
+
+<header class="nav">
+  <a class="logo" href="#s1"><i>AM</i><div><b>Alejandro Muebles</b><span>Muebles de madera a medida</span></div></a>
+  <div class="navr"><a class="navlink" href="#tienda">Tienda</a><a class="navlink" href="#medida">A medida</a><button type="button" class="cartbtn" id="openCart">Pedido <b id="cnt">0</b></button></div>
+</header>
+
+<main>
+<section id="s1">
+  <div class="wrap">
+    <div>
+      <h1><span><i>Muebles de madera</i></span><span><i>hechos a medida</i></span></h1>
+      <p class="rv">Aparadores, cristaleros, racks, mesas y dormitorio. Los fabricamos en nuestro taller de Canelones y los enviamos a todo el país.</p>
+      <div class="ctas rv"><a class="btn btn--marino" href="#tienda">Ver la tienda</a><a class="btn btn--line" href="#medida">Diseñar a medida</a></div>
+      <div class="facts rv"><span>Taller en Canelones</span><span>Envíos a todo el país</span><span>Álamo, pino y eucalipto</span></div>
+    </div>
+    <div class="anchor" data-anchor="s1"></div>
+  </div>
+</section>
+
+<section id="s2">
+  <div class="sticky">
+    <div class="wrap">
+      <div class="steps" aria-live="polite">
+        <div class="step on"><small>1 de 3</small><h2>Abrilo y miralo por dentro</h2><p>Puertas, cajones y estantes pensados para lo que vas a guardar.</p></div>
+        <div class="step"><small>2 de 3</small><h2>Elegís la madera</h2><p>Álamo, pino o eucalipto. Natural, nogal o laqueado blanco.</p></div>
+        <div class="step"><small>3 de 3</small><h2>Lo hacemos a tu medida</h2><p>Lo fabricamos en Canelones y te lo llevamos a cualquier punto del país.</p></div>
+      </div>
+      <div class="anchor" data-anchor="s2"></div>
+    </div>
+    <div class="track" aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i></div>
+  </div>
+</section>
+
+<section id="tienda">
+  <div class="wrap">
+    <div class="head"><div><h2 class="rv">Tienda</h2><p class="rv">Nuestros modelos en medidas estándar. Sumalos al pedido y lo mandás por WhatsApp en un toque.</p></div></div>
+    <div class="chips" id="chips" role="group" aria-label="Filtrar la tienda"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section id="medida">
+  <div class="wrap">
+    <div class="left">
+      <h2>Diseñalo a tu medida</h2>
+      <p>Elegí el mueble, mové las medidas y la madera, y miralo en 3D antes de pedirlo.</p>
+      <div class="stage" id="stage" data-anchor="medida"><span class="drag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h16M4 12l4-4M4 12l4 4M20 12l-4-4M20 12l-4 4"/></svg>Arrastrá para girarlo</span></div>
+    </div>
+    <div class="panel">
+      <div class="scroll">
+        <div><h4>Mueble</h4><div class="seg" id="tipo"></div></div>
+        <div><h4>Medidas</h4><div class="range" id="medidas"></div></div>
+        <div id="boxP"><h4 id="lblP">Puertas</h4><div class="qty"><span id="hintP">Al frente</span><div><button type="button" data-k="puertas" data-d="-1" aria-label="Menos">−</button><b id="vP">3</b><button type="button" data-k="puertas" data-d="1" aria-label="Más">+</button></div></div></div>
+        <div id="boxC"><h4>Cajones</h4><div class="qty"><span id="hintC">Arriba</span><div><button type="button" data-k="cajones" data-d="-1" aria-label="Menos">−</button><b id="vC">3</b><button type="button" data-k="cajones" data-d="1" aria-label="Más">+</button></div></div></div>
+        <div><h4>Madera</h4><div class="sw" id="madera"></div></div>
+        <div><h4>Terminación</h4><div class="sw" id="term"></div></div>
+        <div id="boxPatas"><h4>Patas</h4><div class="seg" id="patas"></div></div>
+      </div>
+      <div class="foot">
+        <div class="ticket"><small id="sum">Aparador</small><strong id="tot">$ 0</strong></div>
+        <div class="two"><button type="button" class="btn btn--line" id="addMedida">Sumar al pedido</button><a class="btn btn--marino" id="goMedida" href="#" target="_blank" rel="noopener">Pedir por WhatsApp</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="como">
+  <div class="wrap">
+    <h2 class="rv">Así trabajamos</h2>
+    <ol class="pasos rv">
+      <li><b>Nos escribís</b><span>Con el pedido de la tienda o las medidas de lo que necesitás.</span></li>
+      <li><b>Te confirmamos</b><span>Precio, madera, terminación y fecha de entrega, todo por WhatsApp.</span></li>
+      <li><b>Lo fabricamos</b><span>En nuestro taller de Canelones, a mano y a tu medida.</span></li>
+      <li><b>Te lo llevamos</b><span>Enviamos a todo el país, bien embalado.</span></li>
+    </ol>
+    <div class="envio rv"><label for="dep">¿Dónde lo recibís?</label><select id="dep"></select><output id="depOut">Elegí tu departamento y te pasamos el envío.</output></div>
+  </div>
+</section>
+
+<section id="fin">
+  <div class="wrap">
+    <div>
+      <h2 class="rv">¿Tenés una idea? La hacemos mueble</h2>
+      <p class="rv">Mandanos una foto del lugar y las medidas. Te respondemos con el diseño y el precio.</p>
+      <div class="ctas rv"><a class="btn btn--marino" id="goFin" href="https://wa.me/59898830824" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.6 0l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.4Z"/></svg>Escribinos al 098 830 824</a><a class="btn btn--line" href="https://instagram.com/alejandro_muebles" target="_blank" rel="noopener">@alejandro_muebles</a></div>
+    </div>
+    <ul class="rv">
+      <li>Taller<span>José Enrique Rodó 56, Canelones</span></li>
+      <li>Envíos<span>A todo el país</span></li>
+      <li>Maderas<span>Álamo, pino y eucalipto</span></li>
+      <li>Fabricación<span>A medida</span></li>
+    </ul>
+  </div>
+</section>
+</main>
+<footer><span>Alejandro Muebles · Canelones · 098 830 824</span><span>Vista previa hecha por NIMBRA</span></footer>
+
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="veil" data-close></div>
+  <aside role="dialog" aria-label="Tu pedido">
+    <header><b>Tu pedido</b><button type="button" class="x" data-close aria-label="Cerrar">×</button></header>
+    <div class="lines" id="lines"></div>
+    <div class="bottom">
+      <select id="dep2" aria-label="Departamento de entrega"></select>
+      <div class="tot"><span>Total</span><strong id="ctot">$ 0</strong></div>
+      <a class="btn btn--marino" id="goCart" href="#" target="_blank" rel="noopener">Enviar pedido por WhatsApp</a>
+    </div>
+  </aside>
+</div>
+<div class="toast" id="toast">Sumado al pedido</div>
+
+<script>
+if(new URLSearchParams(location.search).has('shot'))document.documentElement.classList.add('shot');
+window.AM={
+  wa:'59898830824',
+  maderas:[{id:'alamo',n:'Álamo'},{id:'pino',n:'Pino'},{id:'euc',n:'Eucalipto'}],
+  terms:[{id:'blanco',n:'Laqueado blanco',c:'#f1efea'},{id:'nat',n:'Natural'},{id:'nog',n:'Nogal',c:'#5e3b24'},{id:'negro',n:'Laqueado negro',c:'#23232a'}],
+  woodHex:{alamo:'#e2c79c',pino:'#dcb06a',euc:'#c98a55'},
+  tipos:[
+    {id:'aparador',n:'Aparador',d:{W:[90,200,120],H:[70,100,90],D:[30,50,35]},p:3,c:3,patas:true},
+    {id:'cristalero',n:'Cristalero',d:{W:[80,180,100],H:[160,210,190],D:[35,50,40]},p:2,c:0,patas:true},
+    {id:'rack',n:'Rack TV',d:{W:[120,240,160],H:[40,70,50],D:[30,50,40]},p:2,c:2,patas:true},
+    {id:'luz',n:'Mesa de luz',d:{W:[35,60,45],H:[45,70,55],D:[30,45,35]},p:0,c:2,patas:true},
+    {id:'mesa',n:'Mesa de comedor',d:{W:[120,240,160],H:[74,78,76],D:[70,110,90]},p:0,c:0,patas:true},
+    {id:'escritorio',n:'Escritorio',d:{W:[90,180,140],H:[72,78,75],D:[50,80,70]},p:0,c:0,patas:true}
+  ],
+  patas:[{id:'madera',n:'Madera'},{id:'hierro',n:'Hierro'}],
+  tienda:[
+    {id:'ap-alamo',cat:'aparadores',n:'Aparador Álamo',med:'1,20 × 0,90 × 0,35 m',p:18900,tag:'Más pedido',cfg:{tipo:'aparador',W:120,H:90,D:35,puertas:3,cajones:3,madera:'alamo',term:'blanco',patas:'madera'}},
+    {id:'ap-euc',cat:'aparadores',n:'Aparador Eucalipto',med:'1,50 × 0,90 × 0,40 m',p:23900,cfg:{tipo:'aparador',W:150,H:90,D:40,puertas:3,cajones:3,madera:'euc',term:'nat',patas:'madera'}},
+    {id:'cri',cat:'aparadores',n:'Cristalero',med:'1,00 × 1,90 × 0,40 m',p:29900,cfg:{tipo:'cristalero',W:100,H:190,D:40,puertas:2,cajones:0,madera:'alamo',term:'blanco',patas:'madera'}},
+    {id:'rack',cat:'living',n:'Rack TV',med:'1,60 × 0,50 × 0,40 m',p:14900,cfg:{tipo:'rack',W:160,H:50,D:40,puertas:2,cajones:2,madera:'pino',term:'nog',patas:'hierro'}},
+    {id:'mesa',cat:'comedor',n:'Mesa de comedor',med:'1,60 × 0,90 m, alto 0,76 m',p:21900,tag:'Eucalipto',cfg:{tipo:'mesa',W:160,H:76,D:90,madera:'euc',term:'nat',patas:'madera'}},
+    {id:'luz',cat:'dormitorio',n:'Mesa de luz',med:'0,45 × 0,55 × 0,35 m',p:5900,cfg:{tipo:'luz',W:45,H:55,D:35,puertas:0,cajones:2,madera:'alamo',term:'blanco',patas:'madera'}},
+    {id:'esc',cat:'living',n:'Escritorio hierro y álamo',med:'1,40 × 0,80 m, alto 0,75 m',p:12900,cfg:{tipo:'escritorio',W:140,H:75,D:80,madera:'alamo',term:'nat',patas:'hierro'}},
+    {id:'rack-b',cat:'living',n:'Rack blanco',med:'1,80 × 0,50 × 0,40 m',p:16900,cfg:{tipo:'rack',W:180,H:50,D:40,puertas:2,cajones:2,madera:'alamo',term:'blanco',patas:'madera'}}
+  ],
+  cats:[{id:'todos',n:'Todos'},{id:'aparadores',n:'Aparadores'},{id:'comedor',n:'Comedor'},{id:'living',n:'Living'},{id:'dormitorio',n:'Dormitorio'}],
+  deps:['Montevideo','Canelones','Maldonado','Colonia','San José','Florida','Lavalleja','Rocha','Soriano','Flores','Durazno','Treinta y Tres','Cerro Largo','Rivera','Tacuarembó','Paysandú','Salto','Artigas','Río Negro'],
+  S:{tipo:'aparador',W:140,H:90,D:40,puertas:3,cajones:3,madera:'euc',term:'nat',patas:'madera'},
+  thumbs:{}
+};
+(function(){
+  const A=window.AM,S=A.S,$=q=>document.querySelector(q),fmt=n=>'$ '+n.toLocaleString('es-UY');
+  const m=cm=>(cm/100).toFixed(2).replace('.',',')+' m';
+  const T=()=>A.tipos.find(t=>t.id===S.tipo);
+  const calm=document.documentElement.classList.contains('shot')||matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const cart=[];let dep='';
+  function price(){
+    const W=S.W/100,H=S.H/100,D=S.D/100,k={alamo:1,pino:.9,euc:1.15}[S.madera]*(S.term==='blanco'||S.term==='negro'?1.08:1);let p;
+    if(S.tipo==='mesa'||S.tipo==='escritorio')p=(S.tipo==='mesa'?8000:5000)+W*D*(S.tipo==='mesa'?9500:7000)+(S.patas==='hierro'?1500:0);
+    else p=4000+W*H*(S.tipo==='cristalero'?11000:12500)+W*D*6000+S.puertas*900+S.cajones*1300;
+    return Math.round(p*k/100)*100;
+  }
+  function tween(el,to){const from=+(el.dataset.v||to);el.dataset.v=to;if(calm||from===to){el.textContent=fmt(to);return}const t0=performance.now();const f=t=>{const q=Math.min(1,(t-t0)/420),e=1-Math.pow(1-q,3);el.textContent=fmt(Math.round((from+(to-from)*e)/100)*100);if(q<1)requestAnimationFrame(f)};requestAnimationFrame(f)}
+  const fill=i=>i.style.setProperty('--v',((i.value-i.min)/(i.max-i.min)*100)+'%');
+  const woodGrad=id=>`linear-gradient(135deg,${A.woodHex[id]} 0 50%,color-mix(in srgb,${A.woodHex[id]} 75%,#5a3418) 50%)`;
+  function seg(el,items,cur,on){el.innerHTML=items.map(i=>`<button type="button" data-v="${i.id}" aria-pressed="${i.id===cur}">${i.n}</button>`).join('');el.querySelectorAll('button').forEach(b=>b.onclick=()=>on(b.dataset.v))}
+  function sw(el,items,cur,col,on){el.innerHTML=items.map(i=>`<button type="button" data-v="${i.id}" aria-pressed="${i.id===cur}"><i style="background:${col(i)}"></i>${i.n}</button>`).join('');el.querySelectorAll('button').forEach(b=>b.onclick=()=>on(b.dataset.v))}
+  function desc(s){const t=A.tipos.find(x=>x.id===s.tipo),mad=A.maderas.find(x=>x.id===s.madera).n,te=A.terms.find(x=>x.id===s.term).n.toLowerCase();
+    const med=(s.tipo==='mesa'||s.tipo==='escritorio')?`${m(s.W)} × ${m(s.D)}, alto ${m(s.H)}`:`${m(s.W)} × ${m(s.H)} × ${m(s.D)}`;
+    const parts=[`${t.n} de ${med}`,`${mad}, ${te}`];if(s.puertas)parts.push(`${s.puertas} puerta${s.puertas>1?'s':''}`);if(s.cajones)parts.push(`${s.cajones} cajon${s.cajones>1?'es':''}`);parts.push('patas de '+s.patas);return parts}
+  function render(){
+    const t=T();
+    seg($('#tipo'),A.tipos,S.tipo,v=>{S.tipo=v;const n=T();['W','H','D'].forEach(k=>S[k]=n.d[k][2]);S.puertas=n.p;S.cajones=n.c;render()});
+    const flat=S.tipo==='mesa'||S.tipo==='escritorio';
+    $('#medidas').innerHTML=['W','H','D'].map(k=>{const [a,b]=t.d[k];const lab={W:'Ancho',H:'Alto',D:flat?'Fondo':'Profundidad'}[k];
+      return `<label><span>${lab}<b id="v${k}">${m(S[k])}</b></span><input type="range" min="${a}" max="${b}" step="5" value="${S[k]}" data-k="${k}" aria-label="${lab} en centímetros"></label>`}).join('');
+    $('#medidas').querySelectorAll('input').forEach(i=>{fill(i);i.oninput=()=>{S[i.dataset.k]=+i.value;fill(i);$('#v'+i.dataset.k).textContent=m(S[i.dataset.k]);update(true)}});
+    $('#boxP').classList.toggle('hide',flat||S.tipo==='luz');$('#boxC').classList.toggle('hide',flat||S.tipo==='cristalero');
+    $('#lblP').textContent=S.tipo==='cristalero'?'Puertas de vidrio':'Puertas';
+    $('#hintC').textContent=S.tipo==='luz'?'Uno arriba del otro':'En la fila de arriba';
+    sw($('#madera'),A.maderas,S.madera,i=>woodGrad(i.id),v=>{S.madera=v;render()});
+    sw($('#term'),A.terms,S.term,i=>i.c||A.woodHex[S.madera],v=>{S.term=v;render()});
+    seg($('#patas'),A.patas,S.patas,v=>{S.patas=v;render()});
+    update(false);
+  }
+  function update(fromSlider){
+    $('#vP').textContent=S.puertas;$('#vC').textContent=S.cajones;
+    $('#sum').textContent=desc(S).join(', ');tween($('#tot'),price());
+    const l=['Hola Alejandro! Quiero este mueble a medida:',...desc(S).map(x=>'• '+x)];if(dep)l.push('• Envío a '+dep);l.push('Precio en la web: '+fmt(price()));
+    $('#goMedida').href='https://wa.me/'+A.wa+'?text='+encodeURIComponent(l.join('\n'));
+    window.mueble3d&&window.mueble3d(fromSlider);
+  }
+  document.querySelectorAll('[data-k][data-d]').forEach(b=>b.onclick=()=>{const k=b.dataset.k;const max=k==='puertas'?(S.tipo==='cristalero'?3:4):(S.tipo==='luz'?3:4);const min=k==='puertas'?(S.tipo==='cristalero'?1:0):0;S[k]=Math.max(min,Math.min(max,S[k]+ +b.dataset.d));update(false)});
+  // tienda
+  let catSel='todos';
+  function tienda(){
+    $('#chips').innerHTML=A.cats.map(c=>`<button type="button" data-c="${c.id}" aria-pressed="${c.id===catSel}">${c.n}</button>`).join('');
+    $('#chips').querySelectorAll('button').forEach(b=>b.onclick=()=>{catSel=b.dataset.c;tienda()});
+    if(!$('#grid').children.length){
+      $('#grid').innerHTML=A.tienda.map(it=>`<article class="prod" data-id="${it.id}"><div class="ph"><img alt="${it.n}" data-thumb="${it.id}">${it.tag?`<span class="tag">${it.tag}</span>`:''}</div>
+        <div class="info"><h3>${it.n}</h3><p class="med">${it.med}</p><div class="row"><strong>${fmt(it.p)}</strong><button type="button" class="add" data-add="${it.id}">Agregar</button></div>
+        <button type="button" class="alt" data-cfg="${it.id}">Cambiar medidas</button></div></article>`).join('');
+      $('#grid').querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>{const it=A.tienda.find(x=>x.id===b.dataset.add);addCart({key:it.id,n:it.n,d:it.med,p:it.p,img:it.id});b.textContent='Agregado';b.classList.add('ok');setTimeout(()=>{b.textContent='Agregar';b.classList.remove('ok')},1400)});
+      $('#grid').querySelectorAll('[data-cfg]').forEach(b=>b.onclick=()=>{const it=A.tienda.find(x=>x.id===b.dataset.cfg);Object.assign(S,it.cfg);render();document.getElementById('medida').scrollIntoView({behavior:calm?'auto':'smooth'})});
+    }
+    $('#grid').querySelectorAll('.prod').forEach(el=>{const it=A.tienda.find(x=>x.id===el.dataset.id);el.hidden=!(catSel==='todos'||it.cat===catSel)});
+  }
+  window.setThumb=(id,url)=>{A.thumbs[id]=url;document.querySelectorAll(`img[data-thumb="${id}"]`).forEach(i=>i.src=url);drawCart()};
+  // carrito
+  function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),1600)}
+  function addCart(x){const f=cart.find(c=>c.key===x.key);if(f)f.q++;else cart.push({...x,q:1});drawCart();toast('Sumado al pedido');const b=$('#cnt');b.classList.remove('bump');void b.offsetWidth;b.classList.add('bump');setTimeout(()=>b.classList.remove('bump'),350)}
+  function drawCart(){
+    $('#cnt').textContent=cart.reduce((a,c)=>a+c.q,0);
+    $('#lines').innerHTML=cart.length?cart.map((c,i)=>`<div class="line"><img alt="" src="${A.thumbs[c.img]||''}"><div><b>${c.n}</b><small>${c.d}</small><div class="q"><button type="button" data-q="${i}" data-d="-1" aria-label="Uno menos">−</button>${c.q}<button type="button" data-q="${i}" data-d="1" aria-label="Uno más">+</button></div></div><strong>${fmt(c.p*c.q)}</strong></div>`).join(''):'<p class="empty">Todavía no sumaste muebles. Elegí de la tienda o diseñá uno a medida.</p>';
+    $('#lines').querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{const c=cart[+b.dataset.q];c.q+= +b.dataset.d;if(c.q<=0)cart.splice(+b.dataset.q,1);drawCart()});
+    const tot=cart.reduce((a,c)=>a+c.p*c.q,0);$('#ctot').textContent=fmt(tot);
+    const l=['Hola Alejandro! Quiero hacer este pedido:',...cart.map(c=>`• ${c.q} × ${c.n} (${c.d}): ${fmt(c.p*c.q)}`)];if(dep)l.push('• Envío a '+dep);l.push('Total en la web: '+fmt(tot));
+    $('#goCart').href='https://wa.me/'+A.wa+'?text='+encodeURIComponent(l.join('\n'));
+  }
+  const drawer=$('#drawer');
+  const openC=()=>{drawer.classList.add('open');drawer.setAttribute('aria-hidden','false');$('.x').focus()};
+  const closeC=()=>{drawer.classList.remove('open');drawer.setAttribute('aria-hidden','true')};
+  $('#openCart').onclick=openC;drawer.querySelectorAll('[data-close]').forEach(e=>e.onclick=closeC);addEventListener('keydown',e=>{if(e.key==='Escape')closeC()});
+  $('#addMedida').onclick=()=>{const key='medida-'+JSON.stringify(S);addCart({key,n:T().n+' a medida',d:desc(S).slice(0,2).join(', '),p:price(),img:'medida'});window.thumbMedida&&window.thumbMedida()};
+  // envío
+  const opts='<option value="">¿Dónde lo recibís?</option>'+A.deps.map(d=>`<option>${d}</option>`).join('');
+  $('#dep').innerHTML=opts;$('#dep2').innerHTML=opts;
+  const setDep=v=>{dep=v;$('#dep').value=v;$('#dep2').value=v;$('#depOut').textContent=v?(v==='Canelones'?'Lo coordinamos con vos: estamos en Canelones.':'Enviamos a '+v+'. Te pasamos el costo por WhatsApp.'):'Elegí tu departamento y te pasamos el envío.';drawCart();update(true)};
+  $('#dep').onchange=e=>setDep(e.target.value);$('#dep2').onchange=e=>setDep(e.target.value);
+  $('#goFin').href='https://wa.me/'+A.wa+'?text='+encodeURIComponent('Hola Alejandro! Quiero consultar por un mueble.');
+  if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});document.querySelectorAll('.rv').forEach(el=>io.observe(el))}
+  const dk=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)document.body.classList.toggle('dark',e.target.id==='s2'||e.target.id==='como')}),{rootMargin:'-30px 0px -90% 0px'});
+  document.querySelectorAll('main section').forEach(s=>dk.observe(s));
+  tienda();drawCart();render();
+})();
+</script>
+
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+const canvas=document.getElementById('gl');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const shot=document.documentElement.classList.contains('shot');
+let renderer;
+try{renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true,powerPreference:'high-performance',preserveDrawingBuffer:true})}
+catch(e){document.documentElement.classList.add('no-gl');canvas.remove();throw e}
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1;
+renderer.outputColorSpace=THREE.SRGBColorSpace;
+const scene=new THREE.Scene();
+const pmrem=new THREE.PMREMGenerator(renderer);
+scene.environment=pmrem.fromScene(new RoomEnvironment(),0.04).texture;
+const FOV=30,camera=new THREE.PerspectiveCamera(FOV,1,.1,100);
+const CAM=new THREE.Vector3(0,1.5,6.4),LOOK=new THREE.Vector3(0,.55,0);camera.position.copy(CAM);camera.lookAt(LOOK);
+const key=new THREE.DirectionalLight(0xfff4e6,2.1);key.position.set(4,6,5);scene.add(key);
+const rim=new THREE.DirectionalLight(0xcfe0ff,1.1);rim.position.set(-5,3,-4);scene.add(rim);
+const amb=new THREE.AmbientLight(0xffffff,.45);scene.add(amb);
+const A=window.AM,S=A.S;
+
+/* madera */
+function rnd(s){return()=>{s=(s*16807)%2147483647;return(s-1)/2147483646}}
+function woodTexture(hex,seed,dark){
+  const cv=document.createElement('canvas');cv.width=1024;cv.height=512;const g=cv.getContext('2d');const r=rnd(seed);
+  const base=new THREE.Color(hex);g.fillStyle='#'+base.getHexString();g.fillRect(0,0,1024,512);
+  for(let k=0;k<70;k++){const y=r()*512,amp=3+r()*9,ph=r()*6,fr=.003+r()*.008;g.strokeStyle=`rgba(${dark?'20,10,4':'110,62,24'},${.08+r()*.16})`;g.lineWidth=.8+r()*2.4;g.beginPath();for(let x=0;x<=1024;x+=16){const yy=y+Math.sin(x*fr+ph)*amp+Math.sin(x*.02+ph)*1.2;x?g.lineTo(x,yy):g.moveTo(x,yy)}g.stroke()}
+  for(let k=0;k<5;k++){const cx=r()*1024,cy=r()*512;const gr=g.createRadialGradient(cx,cy,0,cx,cy,40+r()*60);gr.addColorStop(0,`rgba(90,50,20,${.1+r()*.12})`);gr.addColorStop(1,'rgba(90,50,20,0)');g.fillStyle=gr;g.fillRect(0,0,1024,512)}
+  const t=new THREE.CanvasTexture(cv);t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=8;t.wrapS=t.wrapT=THREE.RepeatWrapping;return t;
+}
+const texCache={};
+function woodMat(){
+  const tm=S.term;
+  if(tm==='blanco'||tm==='negro')return new THREE.MeshPhysicalMaterial({color:A.terms.find(t=>t.id===tm).c,roughness:.38,clearcoat:.6,clearcoatRoughness:.35});
+  const hex=tm==='nog'?'#6a4128':A.woodHex[S.madera];const k=S.madera+tm;
+  texCache[k]=texCache[k]||woodTexture(hex,{alamo:3,pino:11,euc:7}[S.madera],tm==='nog');
+  return new THREE.MeshStandardMaterial({map:texCache[k],roughness:.55});
+}
+function topMat(){ // la tapa de mesas laqueadas queda en madera natural
+  if(S.tipo==='mesa'||S.tipo==='escritorio'){if(S.term==='blanco'||S.term==='negro'){const k=S.madera+'nat';texCache[k]=texCache[k]||woodTexture(A.woodHex[S.madera],5,false);return new THREE.MeshStandardMaterial({map:texCache[k],roughness:.5})}}
+  return null;
+}
+const ironM=new THREE.MeshStandardMaterial({color:0x1d1e21,metalness:.55,roughness:.5});
+const handleM=new THREE.MeshStandardMaterial({color:0x2a2a2e,metalness:.8,roughness:.3});
+const glassM=new THREE.MeshPhysicalMaterial({color:0xdfe9f2,metalness:0,roughness:.05,transparent:true,opacity:.22,envMapIntensity:1.4,depthWrite:false});
+const innerM=new THREE.MeshStandardMaterial({color:0xd9cdbb,roughness:.8});
+function box(w,h,d,mat){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat);return m}
+
+/* constructor de muebles */
+function build(s,matBody,matTop){
+  const g=new THREE.Group(),doors=[],drawers=[],W=s.W/100,H=s.H/100,D=s.D/100,t=.02;
+  const flat=s.tipo==='mesa'||s.tipo==='escritorio';
+  if(flat){
+    const th=.04, tm=matTop||matBody;const top=box(W,th,D,tm);top.position.y=H-th/2;g.add(top);
+    if(s.patas==='hierro'){const tt=.04;[-1,1].forEach(sx=>{const x=sx*(W/2-.08);[[x,-D/2+.05],[x,D/2-.05]].forEach(([a,b])=>{const l=box(tt,H-th,tt,ironM);l.position.set(a,(H-th)/2,b);g.add(l)});
+      const bt=box(tt,tt,D-.1,ironM);bt.position.set(x,tt/2,0);g.add(bt);const tp=box(tt,tt,D-.1,ironM);tp.position.set(x,H-th-tt/2,0);g.add(tp)});
+      const st=box(W-.16,tt,tt,ironM);st.position.set(0,H-th-tt/2,-D/2+.05);g.add(st);}
+    else{const lw=.065;[[-1,-1],[1,-1],[-1,1],[1,1]].forEach(([a,b])=>{const l=new THREE.Mesh(new THREE.CylinderGeometry(lw*.42,lw*.32,H-th,24),matBody);l.position.set(a*(W/2-.07),(H-th)/2,b*(D/2-.07));g.add(l)});
+      const ap1=box(W-.14,.08,.022,matBody);ap1.position.set(0,H-th-.04,D/2-.07);g.add(ap1);const ap2=ap1.clone();ap2.position.z=-(D/2-.07);g.add(ap2);
+      const ap3=box(.022,.08,D-.14,matBody);ap3.position.set(W/2-.07,H-th-.04,0);g.add(ap3);const ap4=ap3.clone();ap4.position.x=-(W/2-.07);g.add(ap4);}
+    return {g,doors,drawers,W,H,D};
+  }
+  const lh=s.tipo==='cristalero'?.1:.12, cH=H-lh;
+  // patas
+  if(s.patas==='hierro'){const tt=.03;[[-1,-1],[1,-1],[-1,1],[1,1]].forEach(([a,b])=>{const l=box(tt,lh,tt,ironM);l.position.set(a*(W/2-.03),lh/2,b*(D/2-.03));g.add(l)});}
+  else{[[-1,-1],[1,-1],[-1,1],[1,1]].forEach(([a,b])=>{const l=new THREE.Mesh(new THREE.CylinderGeometry(.022,.014,lh,16),matBody);l.position.set(a*(W/2-.045),lh/2,b*(D/2-.045));l.rotation.z=a*.12;l.rotation.x=-b*.12;g.add(l)})}
+  // cajón del mueble
+  const side=box(t,cH,D,matBody);side.position.set(-W/2+t/2,lh+cH/2,0);g.add(side);const side2=side.clone();side2.position.x=W/2-t/2;g.add(side2);
+  const top=box(W+.012,.028,D+.012,matTop||matBody);top.position.set(0,H-.014,0);g.add(top);
+  const bot=box(W-2*t,t,D,matBody);bot.position.set(0,lh+t/2,0);g.add(bot);
+  const back=box(W-2*t,cH-.03,.008,innerM);back.position.set(0,lh+cH/2,-D/2+.006);g.add(back);
+  const fz=D/2+.009;
+  // filas del frente
+  const rows=[];const innerW=W-2*t,startY=lh+t;let avail=H-.028-startY;
+  if(s.tipo==='cristalero'){const low=Math.min(.85,avail*.45);rows.push({h:low,n:Math.max(1,s.puertas),kind:'door'});rows.push({h:.012,kind:'shelf'});rows.push({h:avail-low-.012,n:Math.max(1,s.puertas),kind:'glass'})}
+  else if(s.tipo==='luz'){const n=Math.max(1,s.cajones);for(let i=0;i<n;i++)rows.push({h:avail/n,n:1,kind:'drawer'})}
+  else{const dh=s.cajones?Math.min(.17,avail*.32):0;if(s.puertas||!s.cajones)rows.push({h:avail-dh,n:s.puertas,kind:s.puertas?'door':'open'});if(s.cajones)rows.push({h:dh,n:s.cajones,kind:'drawer'})}
+  let y=startY;
+  rows.forEach(r=>{
+    if(r.kind==='shelf'){const sh=box(innerW,r.h,D-.02,matBody);sh.position.set(0,y+r.h/2,0);g.add(sh);y+=r.h;return}
+    if(r.kind==='open'){const sh=box(innerW,.018,D-.03,matBody);sh.position.set(0,y+r.h*.5,0);g.add(sh);y+=r.h;return}
+    // estante interior
+    if(r.kind!=='drawer'){const sh=box(innerW,.016,D-.04,matBody);sh.position.set(0,y+r.h*.5,-.01);g.add(sh)}
+    const n=Math.max(1,r.n),w=innerW/n;
+    // separadores
+    for(let i=1;i<n;i++){const dv=box(.014,r.h,.02,matBody);dv.position.set(-innerW/2+w*i,y+r.h/2,fz-.012);g.add(dv)}
+    for(let i=0;i<n;i++){
+      const x0=-innerW/2+w*i;
+      if(r.kind==='drawer'){
+        const dg=new THREE.Group();dg.position.set(x0+w/2,y+r.h/2,0);
+        const front=box(w-.006,r.h-.006,.018,matBody);front.position.z=fz;dg.add(front);
+        const boxIn=box(w-.04,r.h*.7,D-.06,innerM);boxIn.position.set(0,-r.h*.1,0);dg.add(boxIn);
+        const hd=box(Math.min(.12,w*.4),.012,.016,handleM);hd.position.set(0,r.h*.18,fz+.016);dg.add(hd);
+        dg.userData.home=0;g.add(dg);drawers.push(dg);
+      }else{
+        const left=(i%2===0)||n===1; // bisagra
+        const pivot=new THREE.Group();pivot.position.set(left?x0:x0+w,y+r.h/2,fz-.009);
+        const pw=w-.006,ph=r.h-.006;
+        let panel;
+        if(r.kind==='glass'){panel=new THREE.Group();const fr=.04;
+          [[0,ph/2-fr/2,pw,fr],[0,-ph/2+fr/2,pw,fr],[-pw/2+fr/2,0,fr,ph],[pw/2-fr/2,0,fr,ph]].forEach(([a,b,ww,hh])=>{const p=box(ww,hh,.018,matBody);p.position.set(a,b,0);panel.add(p)});
+          const gl=box(pw-fr*2,ph-fr*2,.006,glassM);panel.add(gl);
+          // estantes con cosas
+          for(let k=1;k<3;k++){const sh=box(innerW/n-.01,.014,D-.06,matBody);sh.position.set(0,-r.h/2+r.h*k/3,-D/2+.03);}
+        }else panel=box(pw,ph,.018,matBody);
+        panel.position.x=left?pw/2+.003:-pw/2-.003;pivot.add(panel);
+        const hd=box(.012,Math.min(.14,ph*.35),.016,handleM);hd.position.set(left?pw-.04:-pw+.04,0,.016);pivot.add(hd);
+        pivot.userData.dir=left?-1:1;g.add(pivot);doors.push(pivot);
+      }
+    }
+    if(r.kind==='glass'){for(let k=1;k<3;k++){const sh=box(innerW,.014,D-.05,matBody);sh.position.set(0,y+r.h*k/3,-.01);g.add(sh)}
+      // objetos en el cristalero
+      const cm=new THREE.MeshStandardMaterial({color:0xeeeeea,roughness:.25});
+      for(let k=0;k<5;k++){const c=new THREE.Mesh(new THREE.CylinderGeometry(.03,.025,.09,20),cm);c.position.set(-innerW/2+.08+k*(innerW-.16)/4,y+r.h/3+.055,-.02);g.add(c)}}
+    y+=r.h;
+  });
+  return {g,doors,drawers,W,H,D};
+}
+
+/* escena principal */
+const root=new THREE.Group();scene.add(root);const spinG=new THREE.Group();root.add(spinG);
+let M=null;
+const shadowTex=(()=>{const c=document.createElement('canvas');c.width=c.height=256;const g=c.getContext('2d');const gr=g.createRadialGradient(128,128,0,128,128,128);gr.addColorStop(0,'rgba(0,0,0,.5)');gr.addColorStop(.55,'rgba(0,0,0,.2)');gr.addColorStop(1,'rgba(0,0,0,0)');g.fillStyle=gr;g.fillRect(0,0,256,256);return new THREE.CanvasTexture(c)})();
+const shadowM=new THREE.MeshBasicMaterial({map:shadowTex,transparent:true,depthWrite:false});
+const cotaM=new THREE.LineBasicMaterial({color:0x161c28,transparent:true,opacity:0});
+function rebuild(){
+  if(M){spinG.remove(M.g);M.g.traverse(o=>{if(o.isMesh){o.geometry.dispose()}})}
+  const body=woodMat(),top=topMat();const r=build(S,body,top);
+  const sh=new THREE.Mesh(new THREE.PlaneGeometry(r.W+.7,r.D+.7),shadowM);sh.rotation.x=-Math.PI/2;sh.position.y=.002;r.g.add(sh);
+  // cotas
+  const cot=new THREE.Group(),W=r.W,H=r.H,D=r.D,o=.16;
+  const P=[[[-W/2,0,D/2+o],[W/2,0,D/2+o]],[[W/2+o,0,-D/2],[W/2+o,0,D/2]],[[W/2+o,0,D/2],[W/2+o,H,D/2]]];
+  P.forEach(p=>{cot.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(p.map(v=>new THREE.Vector3(...v))),cotaM))});
+  cot.userData.mid=P.map(p=>new THREE.Vector3(...p[0]).add(new THREE.Vector3(...p[1])).multiplyScalar(.5));r.g.add(cot);r.cot=cot;
+  spinG.add(r.g);M=r;
+}
+let pop=0;
+window.mueble3d=(fromSlider)=>{const k=JSON.stringify(S);if(k!==window.__k){window.__k=k;rebuild();if(!fromSlider)pop=1}};
+window.mueble3d(true);
+
+/* miniaturas de la tienda: render del mismo motor */
+(function thumbs(){
+  const tr=new THREE.WebGLRenderer({antialias:true,alpha:true,preserveDrawingBuffer:true});tr.setSize(480,480);tr.setPixelRatio(1);
+  tr.toneMapping=THREE.ACESFilmicToneMapping;tr.outputColorSpace=THREE.SRGBColorSpace;
+  const sc=new THREE.Scene();sc.environment=new THREE.PMREMGenerator(tr).fromScene(new RoomEnvironment(),0.04).texture;
+  const k2=new THREE.DirectionalLight(0xfff4e6,2.1);k2.position.set(4,6,5);sc.add(k2);sc.add(new THREE.AmbientLight(0xffffff,.5));
+  const cam=new THREE.PerspectiveCamera(28,1,.1,100);
+  const save={...S};
+  const make=(cfg,id)=>{const sv={...S};Object.assign(S,cfg);const r=build(S,woodMat(),topMat());const sh=new THREE.Mesh(new THREE.PlaneGeometry(r.W+.6,r.D+.6),shadowM);sh.rotation.x=-Math.PI/2;sh.position.y=.002;r.g.add(sh);
+    r.g.rotation.y=-.55;sc.add(r.g);const size=Math.max(r.W*.95+r.D*.4,r.H*1.15);const d=size/(2*Math.tan(14*Math.PI/180))*1.08;
+    cam.position.set(0,r.H*.55+d*.22,d);cam.lookAt(0,r.H*.45,0);tr.render(sc,cam);const url=tr.domElement.toDataURL('image/png');sc.remove(r.g);Object.assign(S,sv);return url};
+  const queue=A.tienda.map(it=>[it.cfg,it.id]);
+  const step=()=>{const q=queue.shift();if(!q)return;window.setThumb(q[1],make(q[0],q[1]));setTimeout(step,30)};
+  setTimeout(step,200);
+  window.thumbMedida=()=>{const s={...S};window.setThumb('medida',make(s,'medida'));Object.assign(S,s)};
+})();
+
+/* posición según la sección */
+const anchors={s1:document.querySelector('[data-anchor=s1]'),s2:document.querySelector('[data-anchor=s2]'),medida:document.getElementById('stage')};
+const secs=[...document.querySelectorAll('main section')];const s2=document.getElementById('s2');
+const steps=[...document.querySelectorAll('.step')],bars=[...document.querySelectorAll('.track b')];
+let W=innerWidth,Hh=innerHeight;
+function size(){W=innerWidth;Hh=innerHeight;renderer.setSize(W,Hh,false);camera.aspect=W/Hh;camera.updateProjectionMatrix()}
+addEventListener('resize',size);size();
+const dist=CAM.distanceTo(LOOK),right=new THREE.Vector3(),up=new THREE.Vector3();
+camera.updateMatrixWorld();right.setFromMatrixColumn(camera.matrixWorld,0);up.setFromMatrixColumn(camera.matrixWorld,1);
+function anchorState(id){const el=anchors[id];if(!el)return null;const r=el.getBoundingClientRect();if(r.bottom<-Hh*.6||r.top>Hh*1.6)return null;
+  const hh=Math.tan(FOV*Math.PI/360)*dist,hw=hh*camera.aspect;const cx=(r.left+r.width/2)/W,cy=(r.top+r.height*(id==='medida'?.46:.55))/Hh;
+  return {x:(cx-.5)*2*hw,y:(.5-cy)*2*hh,aw:r.width/W*2*hw,ah:r.height/Hh*2*hh}}
+function fit(st,id){if(!M)return 1;const pw=M.W*.88+M.D*.5,ph=M.H+.12;return Math.min(id==='medida'?1.35:1.7,st.aw*(id==='medida'?.82:id==='s1'?.84:.95)/pw,st.ah*(id==='medida'?.74:.86)/ph)}
+let active='s1',cur={x:0,y:0,s:shot?1:0,cota:0},rot=-.55,drag=0,dragV=0,dragging=false,lastX=0;
+const stage=anchors.medida;
+stage.addEventListener('pointerdown',e=>{dragging=true;lastX=e.clientX;stage.setPointerCapture(e.pointerId)});
+stage.addEventListener('pointermove',e=>{if(!dragging)return;const dx=e.clientX-lastX;lastX=e.clientX;drag+=dx*.01;dragV=dx*.01});
+const endD=()=>dragging=false;stage.addEventListener('pointerup',endD);stage.addEventListener('pointercancel',endD);
+let mx=0,my=0;addEventListener('pointermove',e=>{mx=e.clientX/W-.5;my=e.clientY/Hh-.5},{passive:true});
+const sm=x=>x<=0?0:x>=1?1:x*x*(3-2*x),map=(v,a,b)=>(v-a)/(b-a),wrap=a=>Math.atan2(Math.sin(a),Math.cos(a));
+const clock=new THREE.Clock(),proj=new THREE.Vector3();
+const cotaEls=[document.getElementById('cW'),document.getElementById('cD'),document.getElementById('cH')];
+let openK=0;
+function frame(){
+  const dt=Math.min(clock.getDelta(),.05),t=clock.elapsedTime;
+  const mid=Hh*.5;for(const s of secs){const r=s.getBoundingClientRect();if(r.top<=mid&&r.bottom>mid){active=s.id;break}}
+  const r2=s2.getBoundingClientRect();const p=Math.max(-1,Math.min(2,-r2.top/(r2.height-Hh)));
+  const on=['s1','s2','medida'].includes(active);
+  const id=on?active:'medida';const st=anchorState(id)||anchorState('s1');
+  const target={x:st?st.x:cur.x,y:st?st.y:cur.y,s:on&&st?fit(st,id):0,cota:active==='medida'?1:0};
+  const k=shot?1:1-Math.pow(.0009,dt),kp=shot?1:1-Math.pow(.00002,dt);
+  cur.x+=(target.x-cur.x)*(active==='medida'?kp:k);cur.y+=(target.y-cur.y)*(active==='medida'?kp:k);cur.s+=(target.s-cur.s)*k;cur.cota+=(target.cota-cur.cota)*k*1.4;
+  root.position.copy(LOOK).addScaledVector(right,cur.x).addScaledVector(up,cur.y);root.position.y-=(M?M.H*.5:0)*cur.s;
+  if(pop>0)pop=Math.max(0,pop-dt*2.2);
+  root.scale.setScalar(Math.max(cur.s*(1+Math.sin(pop*Math.PI)*.04),.0001));root.visible=cur.s>.01;
+  let rT;
+  if(active==='s1'){rot+=dt*(shot?0:reduce?.06:.2);rT=rot}
+  else if(active==='s2'){rT=-.7+Math.max(0,Math.min(1,p))*.9}
+  else{if(!dragging){drag+=dragV;dragV*=Math.pow(.02,dt)}rT=-.55+drag}
+  if(active!=='s1'){rot=rT+wrap(rot-rT);rot+=(rT-rot)*k*.8}
+  spinG.rotation.y=rot+(active==='s1'?mx*.25:0);root.rotation.x=(active==='medida'?.02:.05)+(active==='s1'?my*.05:0);
+  // abrir puertas y cajones con el scroll
+  const inProc=active==='s2'||(p>0&&p<1);
+  let oT=0;if(inProc&&!shot)oT=p<.62?sm(map(p,.04,.3)):1-sm(map(p,.62,.85));
+  openK+=(oT-openK)*k;
+  if(M){M.doors.forEach(d=>{d.rotation.y=d.userData.dir*openK*1.35});M.drawers.forEach((d,i)=>{d.position.z=openK*(.18+.05*(i%2))*Math.min(1,M.D/.4)});
+    cotaM.opacity=cur.cota*.85;M.cot.visible=cur.cota>.02}
+  if(inProc){const si=p<.4?0:p<.66?1:2;steps.forEach((e,i)=>e.classList.toggle('on',i===si));bars.forEach((b,i)=>b.style.transform=`scaleX(${Math.max(0,Math.min(1,(p-[0,.4,.66][i])/([.4,.26,.34][i])))})`)}
+  // en el paso 2 la madera va cambiando sola
+  if(active==='s2'&&!shot){const want=p<.4?null:p<.53?'nat':p<.66?'nog':'blanco';if(want&&want!==window.__tt){window.__tt=want;const save=S.term;S.term=want;rebuild();window.__k=JSON.stringify(S);S.term=save}}
+  else if(window.__tt){window.__tt=null;window.__k='';window.mueble3d(true)}
+  renderer.render(scene,camera);
+  if(M&&cur.cota>.02){const vals=[S.W,S.D,S.H].map(v=>(v/100).toFixed(2).replace('.',',')+' m');
+    M.cot.userData.mid.forEach((v,i)=>{proj.copy(v).applyMatrix4(M.g.matrixWorld).project(camera);const el=cotaEls[i];el.textContent=vals[i];el.style.transform=`translate(${(proj.x*.5+.5)*W}px,${(-proj.y*.5+.5)*Hh}px) translate(-50%,-50%)`;el.style.opacity=cur.cota>.6?1:0})}
+  else cotaEls.forEach(e=>e.style.opacity=0);
+  requestAnimationFrame(frame);
+}
+frame();
+</script>
+</body>
+</html>
