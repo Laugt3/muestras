@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Limoba Hogar · Muebles en hierro y madera a medida</title>
+<meta name="description" content="Limoba Hogar: Barbacoas, pérgolas, muebles y locales comerciales. Diseñamos y construimos en Uruguay. Diseñá tu mueble en 3D y pedí presupuesto por WhatsApp.">
+<meta name="theme-color" content="#171a12">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@150,400..800&family=Familjen+Grotesk:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --acero:#171a12;--acero2:#20241a;--acero3:#2a2f22;
+  --cemento:#dcdcd2;--cemento2:#eaeae2;--tinta:#17191b;--gris:#5d6166;
+  --brasa:#bcd94a;--brasa2:#cde65e;--hueso:#eeede9;--hueso2:rgba(238,237,233,.66);
+  --ease:cubic-bezier(.23,1,.32,1);--gut:clamp(16px,4.4vw,64px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--acero);color:var(--hueso);font:400 17px/1.6 "Familjen Grotesk",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+button,input{font:inherit;color:inherit}
+h1,h2,h3{font-family:"Anybody",sans-serif;font-weight:700;text-transform:uppercase;margin:0;line-height:1.14;letter-spacing:0;font-stretch:150%;}
+:focus-visible{outline:2px solid var(--brasa);outline-offset:3px;border-radius:6px}
+
+#gl{position:fixed;inset:0;width:100vw;height:100vh;z-index:2;pointer-events:none}
+.cotas{position:fixed;inset:0;z-index:3;pointer-events:none}
+.cota{position:absolute;left:0;top:0;transform:translate(-50%,-50%);font:700 13px/1 "Familjen Grotesk";color:var(--tinta);background:#fff;padding:6px 9px;border-radius:999px;white-space:nowrap;box-shadow:0 6px 16px -8px rgba(23,25,27,.5);font-variant-numeric:tabular-nums;opacity:0;transition:opacity .3s ease}
+.fallback{display:none}
+.no-gl .fallback{display:block}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:16px var(--gut);pointer-events:none;transition:color .4s ease}
+.nav>*{pointer-events:auto}
+.logo{display:flex;flex-direction:column;text-decoration:none;line-height:1}
+.logo b{font:700 19px/1 "Anybody";letter-spacing:.12em;font-stretch:150%;}
+.logo span{font-size:12px;margin-top:6px;opacity:.7;letter-spacing:.02em}
+body.light .nav{color:var(--tinta)}
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;border-radius:999px;font:700 .98rem/1 "Familjen Grotesk";text-decoration:none;border:0;cursor:pointer;transition:transform 160ms var(--ease),background-color .2s ease,color .2s ease}
+.pill:active{transform:scale(.97)}
+.pill--brasa{background:var(--brasa);color:var(--tinta)}
+@media (hover:hover){.pill--brasa:hover{background:var(--brasa2)}}
+.pill--line{box-shadow:inset 0 0 0 1.5px currentColor;background:transparent}
+.pill svg{width:20px;height:20px;flex:none}
+.nav .pill{min-height:44px;padding:0 20px;font-size:.92rem}
+
+section{position:relative}
+.wrap{max-width:1360px;margin:0 auto;padding:0 var(--gut)}
+
+/* 1 portada */
+#s1{min-height:100dvh;display:grid;align-items:center;background:radial-gradient(900px 640px at 70% 60%,#2e3523 0%,var(--acero) 70%);overflow:hidden}
+#s1 .wrap{width:100%;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);align-items:center;gap:20px;padding-top:110px;padding-bottom:110px}
+#s1 h1{font-size:clamp(1.5rem,3.2vw,3rem)}
+#s1 h1 span{display:block;overflow:hidden}
+#s1 h1 span i{display:block;font-style:normal;transform:translateY(105%);animation:up .95s var(--ease) forwards}
+#s1 h1 span:nth-child(2) i{animation-delay:.08s}
+#s1 h1 span:nth-child(3) i{animation-delay:.16s}
+@keyframes up{to{transform:none}}
+#s1 p{max-width:40ch;color:var(--hueso2);font-size:clamp(1.02rem,1.3vw,1.15rem);margin:26px 0 34px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.anchor{height:min(70vh,640px)}
+.hint{position:absolute;left:var(--gut);bottom:26px;z-index:3;display:flex;align-items:center;gap:10px;font-size:.88rem;color:var(--hueso2)}
+.hint i{width:24px;height:38px;border-radius:13px;border:1.5px solid var(--hueso2);position:relative}
+.hint i:after{content:"";position:absolute;left:50%;top:8px;width:4px;height:8px;border-radius:2px;background:var(--brasa);transform:translateX(-50%);animation:wheel 1.8s var(--ease) infinite}
+@keyframes wheel{to{transform:translate(-50%,12px);opacity:0}}
+
+/* 2 cómo se hace */
+#s2{height:330vh;background:linear-gradient(180deg,var(--acero) 0%,color-mix(in srgb,var(--acero) 75%,#000) 50%,var(--acero) 100%)}
+#s2 .sticky{position:sticky;top:0;height:100dvh;overflow:hidden}
+#s2 .wrap{height:100%;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;gap:20px}
+.steps{position:relative;min-height:300px}
+.step{position:absolute;inset:0 0 auto 0;opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .6s var(--ease)}
+.step.on{opacity:1;transform:none}
+.step small{display:block;font-size:.95rem;color:var(--brasa);font-weight:700;margin-bottom:16px;font-variant-numeric:tabular-nums}
+.step h2{font-size:clamp(1.4rem,2.6vw,2.4rem)}
+.step p{color:var(--hueso2);max-width:38ch;margin:20px 0 0;font-size:1.08rem}
+.track{position:absolute;left:var(--gut);bottom:34px;display:flex;gap:8px}
+.track i{width:46px;height:3px;border-radius:2px;background:rgba(238,237,233,.18);overflow:hidden;position:relative}
+.track i b{position:absolute;inset:0;background:var(--brasa);transform-origin:left;transform:scaleX(0)}
+
+/* 3 diseñá el tuyo */
+#s3{background:var(--cemento);color:var(--tinta);height:100dvh;min-height:680px}
+#s3 .wrap{height:100%;display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,440px);gap:clamp(16px,3vw,48px);padding-top:96px;padding-bottom:24px}
+#s3 .left{display:flex;flex-direction:column;min-height:0}
+#s3 h2{font-size:clamp(1.25rem,2.2vw,2rem)}
+#s3 .left>p{color:var(--gris);margin:12px 0 0;max-width:46ch}
+.stage{flex:1;min-height:200px;position:relative;cursor:grab;touch-action:pan-y}
+.stage:active{cursor:grabbing}
+.stage .drag{position:absolute;left:0;bottom:6px;font-size:.86rem;color:var(--gris);display:flex;align-items:center;gap:8px}
+.stage .drag svg{width:18px;height:18px}
+.panel{background:var(--cemento2);border-radius:26px;display:flex;flex-direction:column;min-height:0;box-shadow:0 30px 60px -40px rgba(23,25,27,.45)}
+.panel .scroll{overflow-y:auto;padding:24px 24px 8px;display:flex;flex-direction:column;gap:22px;overscroll-behavior:contain}
+.panel h4{margin:0 0 10px;font:700 1rem "Familjen Grotesk";display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.panel h4 output{font:600 .95rem "Familjen Grotesk";color:var(--gris);font-variant-numeric:tabular-nums}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:#dfdfdb;padding:5px;border-radius:16px}
+.seg button{border:0;background:transparent;border-radius:12px;padding:11px 6px;font-weight:600;font-size:.92rem;cursor:pointer;transition:background-color .2s ease,color .2s ease,transform 160ms var(--ease)}
+.seg button:active{transform:scale(.97)}
+.seg button[aria-pressed=true]{background:var(--tinta);color:#fff}
+.range{display:grid;gap:14px}
+.range label{display:grid;gap:8px;font-size:.92rem;color:var(--gris)}
+.range label span{display:flex;justify-content:space-between}
+.range label b{color:var(--tinta);font-variant-numeric:tabular-nums}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;cursor:pointer;margin:0}
+input[type=range]::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:linear-gradient(90deg,var(--tinta) var(--v,50%),#c6c6c1 var(--v,50%))}
+input[type=range]::-moz-range-track{height:4px;border-radius:2px;background:#c6c6c1}
+input[type=range]::-moz-range-progress{height:4px;border-radius:2px;background:var(--tinta)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--brasa);border:3px solid var(--cemento2);margin-top:-10px;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--brasa);border:3px solid var(--cemento2)}
+.sw{display:flex;flex-wrap:wrap;gap:10px}
+.sw button{display:flex;align-items:center;gap:9px;border:0;background:#fff;border-radius:999px;padding:6px 14px 6px 6px;font-size:.9rem;font-weight:600;cursor:pointer;box-shadow:inset 0 0 0 1.5px #d6d6d1;transition:box-shadow .2s ease,transform 160ms var(--ease)}
+.sw button:active{transform:scale(.97)}
+.sw button i{width:28px;height:28px;border-radius:50%;flex:none;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
+.sw button[aria-pressed=true]{box-shadow:inset 0 0 0 2px var(--tinta)}
+.qty{display:flex;align-items:center;justify-content:space-between;background:#fff;border-radius:16px;padding:6px 6px 6px 16px}
+.qty div{display:flex;align-items:center;gap:4px}
+.qty button{width:40px;height:40px;border-radius:50%;border:0;background:#ececea;font:700 1.2rem "Familjen Grotesk";cursor:pointer;transition:transform 140ms var(--ease)}
+.qty button:active{transform:scale(.9)}
+.qty b{min-width:26px;text-align:center;font-variant-numeric:tabular-nums}
+.field input{width:100%;height:48px;border-radius:14px;border:1.5px solid #d6d6d1;background:#fff;padding:0 14px;font-size:1rem}
+.field input:focus{outline:none;border-color:var(--tinta)}
+.hide{display:none!important}
+.foot{padding:16px 24px 22px;border-top:1px solid #d8d8d3;display:grid;gap:12px}
+.ticket{display:flex;justify-content:space-between;align-items:end;gap:12px}
+.ticket small{display:block;font-size:.84rem;color:var(--gris);line-height:1.35}
+.ticket strong{font:800 1.9rem/1 "Familjen Grotesk";letter-spacing:-.02em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.foot .pill{width:100%;min-height:54px;background:var(--tinta);color:#fff}
+@media (hover:hover){.foot .pill:hover{background:#000}}
+.note{font-size:.8rem;color:var(--gris);text-align:center;margin:-2px 0 0}
+
+/* catálogo */
+#cat{background:var(--hueso);color:var(--tinta);padding:clamp(96px,13vh,150px) 0 clamp(80px,10vh,120px)}
+#cat .head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:28px}
+#cat h2{font-size:clamp(1.3rem,2.6vw,2.3rem)}
+#cat .head p{color:var(--gris);max-width:40ch;margin:12px 0 0}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 calc(var(--gut)*-1) 26px;padding:2px var(--gut)}
+.chips::-webkit-scrollbar{display:none}
+.chips button{flex:none;border:0;border-radius:999px;padding:11px 18px;font-weight:600;font-size:.94rem;background:#dfdeda;cursor:pointer;transition:background-color .2s ease,color .2s ease,transform 160ms var(--ease)}
+.chips button:active{transform:scale(.97)}
+.chips button[aria-pressed=true]{background:var(--tinta);color:#fff}
+.chips button span{opacity:.55;margin-left:6px;font-variant-numeric:tabular-nums}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.item{background:#fff;border-radius:22px;overflow:hidden;display:flex;flex-direction:column}
+.item[hidden]{display:none}
+.item .ph{position:relative;aspect-ratio:4/3.4;overflow:hidden;background:#d9d8d4}
+.item .ph img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+@media (hover:hover){.item:hover .ph img{transform:scale(1.04)}}
+.badge{position:absolute;left:12px;top:12px;background:var(--brasa);color:var(--tinta);font:700 .82rem/1 "Familjen Grotesk";padding:8px 12px;border-radius:999px}
+.item .info{padding:18px 20px 20px;display:flex;flex-direction:column;gap:4px;flex:1}
+.item h3{font:700 1.12rem/1.25 "Familjen Grotesk";text-transform:none;letter-spacing:0}
+.item .med{font-size:.95rem;color:var(--tinta);font-variant-numeric:tabular-nums;margin:0}
+.item .mat{font-size:.9rem;color:var(--gris);margin:0}
+.item .pr{margin-top:auto;padding-top:14px;display:flex;align-items:baseline;gap:10px}
+.item .pr b{font:800 1.45rem/1 "Familjen Grotesk";letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.item .pr s{color:var(--gris);font-size:.95rem}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.acts .pill{min-height:46px;padding:0 12px;font-size:.9rem}
+.pill--dark{background:var(--tinta);color:#fff}
+@media (hover:hover){.pill--dark:hover{background:#000}}
+.pill--soft{background:#ececea;color:var(--tinta)}
+@media (hover:hover){.pill--soft:hover{background:#e2e2df}}
+.catnote{margin:26px 0 0;color:var(--gris);font-size:.95rem;text-align:center}
+.catnote a{color:var(--tinta);font-weight:700}
+.navlink{font-weight:600;font-size:.95rem;text-decoration:none;margin-right:18px;opacity:.85}
+.navr{display:flex;align-items:center}
+
+/* 4 proyectos */
+.proj{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:clamp(20px,4vw,56px);align-items:end}
+.proj figure{margin:0;background:var(--acero2);border-radius:22px;overflow:hidden;aspect-ratio:4/3;clip-path:inset(100% 0 0 0);transition:clip-path 1.1s cubic-bezier(.77,0,.175,1)}
+.proj.in figure{clip-path:inset(0 0 0 0)}
+.proj figure img{width:100%;height:100%;object-fit:cover}
+.proj h2{font-size:clamp(1.3rem,2.4vw,2.2rem)}
+.proj p{color:var(--hueso2);margin:18px 0 26px;max-width:36ch}
+.shot .proj figure{clip-path:none}
+/* 4 trabajos */
+#s4{background:var(--acero);padding:clamp(96px,13vh,150px) 0 clamp(80px,10vh,120px)}
+#s4 .head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+#s4 h2{font-size:clamp(1.3rem,2.6vw,2.3rem);max-width:18ch}
+#s4 .head p{color:var(--hueso2);max-width:36ch;margin:0}
+.mosaic{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-areas:"coc coc coc bar" "coc coc coc bar" "vit com mes abi";gap:14px}
+.mosaic figure{margin:0;position:relative;overflow:hidden;border-radius:18px;background:var(--acero2)}
+.mosaic img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 1.4s var(--ease)}
+.mosaic figure.in img{transform:none}
+.mosaic figure{clip-path:inset(100% 0 0 0);transition:clip-path 1s cubic-bezier(.77,0,.175,1)}
+.mosaic figure.in{clip-path:inset(0 0 0 0)}
+.mosaic figcaption{position:absolute;left:0;right:0;bottom:0;padding:44px 18px 16px;background:linear-gradient(180deg,transparent,rgba(12,14,16,.82));font-size:.9rem;color:var(--hueso2);line-height:1.4}
+.mosaic figcaption b{display:block;color:#fff;font-size:1rem;font-weight:700}
+.g-coc{grid-area:coc;aspect-ratio:auto}
+.g-bar{grid-area:bar}
+.g-vit{grid-area:vit;aspect-ratio:3/4}.g-com{grid-area:com;aspect-ratio:3/4}.g-mes{grid-area:mes;aspect-ratio:3/4}.g-abi{grid-area:abi;aspect-ratio:3/4}
+#s4 .more{margin-top:34px;display:flex;justify-content:center}
+
+/* 5 cierre */
+#s5{background:var(--brasa);color:var(--tinta);padding:clamp(96px,14vh,160px) 0}
+#s5 .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:40px;align-items:end}
+#s5 h2{font-size:clamp(1.5rem,3.4vw,3.1rem)}
+#s5 p{font-size:1.12rem;max-width:42ch;margin:22px 0 32px;color:rgba(23,25,27,.8)}
+#s5 .pill--dark{background:var(--tinta);color:#fff}
+#s5 ul{list-style:none;margin:0;padding:0;display:grid;gap:0}
+#s5 li{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-top:1.5px solid rgba(23,25,27,.22);font-weight:600}
+#s5 li span{font-weight:400;color:rgba(23,25,27,.75);text-align:right}
+footer{background:var(--acero);color:var(--hueso2);padding:26px var(--gut);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.86rem}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.shot .rv{opacity:1;transform:none;transition:none}
+.shot #s1 h1 span i{animation:none;transform:none}
+.shot .mosaic figure{clip-path:none}.shot .mosaic img{transform:none}
+@media (prefers-reduced-motion:reduce){
+  .rv{transform:none;transition:opacity .5s ease}
+  #s1 h1 span i{animation:none;transform:none}
+  .hint i:after{animation:none}
+  .mosaic figure{clip-path:none;transition:none}.mosaic img{transform:none}
+  .step{transform:none}
+}
+
+@media (max-width:1100px) and (min-width:901px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.navlink{display:none}}
+@media (max-width:900px){
+  #s1 .wrap{grid-template-columns:1fr;align-content:end;padding-top:0;padding-bottom:96px;min-height:100dvh}
+  #s1 .anchor{order:-1;height:46dvh;margin-top:84px}
+  #s1 p{margin:18px 0 26px}
+  .hint{display:none}
+  #s2 .wrap{grid-template-columns:1fr;grid-template-rows:1fr auto;align-items:end;padding-bottom:84px}
+  #s2 .anchor{order:-1;height:50dvh;align-self:start;margin-top:70px}
+  .steps{min-height:220px}
+  #s3{height:100dvh;min-height:0}
+  #s3 .wrap{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr);gap:10px;padding-top:76px;padding-bottom:0;padding-left:0;padding-right:0}
+  #s3 .left{padding:0 var(--gut);height:36dvh}
+  #s3 .left>p{display:none}
+  #s3 h2{font-size:1.05rem}
+  .stage .drag{bottom:2px}
+  .panel{border-radius:24px 24px 0 0}
+  .panel .scroll{padding:18px var(--gut) 8px}
+  .foot{padding:12px var(--gut) calc(14px + env(safe-area-inset-bottom))}
+  .foot{grid-template-columns:auto minmax(0,1fr);align-items:center;gap:12px}
+  .ticket small,.note{display:none}
+  .ticket strong{font-size:1.35rem}
+  .foot .pill{min-height:50px;font-size:.92rem;padding:0 14px}
+  .foot .pill .lg{display:none}
+  .mosaic{grid-template-columns:1fr 1fr;grid-template-areas:"coc coc" "bar vit" "com mes" "abi abi";gap:10px}
+  .g-coc{aspect-ratio:4/3}.g-bar{aspect-ratio:3/4}.g-abi{aspect-ratio:4/3}
+  #s5 .wrap{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr;gap:12px}
+  .item{flex-direction:row}
+  .item .ph{aspect-ratio:auto;width:38%;flex:none;min-height:100%}
+  .item .info{padding:14px 14px 14px 16px}
+  .item h3{font-size:1rem}
+  .item .med,.item .mat{font-size:.86rem}
+  .item .pr{padding-top:8px}
+  .item .pr b{font-size:1.2rem}
+  .acts{grid-template-columns:1fr;gap:6px;margin-top:10px}
+  .acts .pill{min-height:40px;font-size:.84rem}
+  .badge{left:8px;top:8px;padding:6px 9px;font-size:.74rem}
+  .proj{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<canvas id="gl" aria-hidden="true"></canvas>
+<div class="cotas" aria-hidden="true"><span class="cota" id="cL"></span><span class="cota" id="cW"></span><span class="cota" id="cH"></span></div>
+
+<header class="nav">
+  <a class="logo" href="#s1"><b>LIMOBA</b><span>Hogar</span></a>
+  <div class="navr"><a class="pill pill--brasa" href="#s3">Diseñá el tuyo</a></div>
+</header>
+
+<main>
+<section id="s1">
+  <div class="wrap">
+    <div class="ui">
+      <h1><span><i>Espacios en</i></span><span><i>hierro y madera</i></span><span><i>a tu medida</i></span></h1>
+      <p class="rv">Barbacoas, pérgolas, muebles y locales comerciales. Diseñamos y construimos en Uruguay.</p>
+      <div class="ctas rv"><a class="pill pill--brasa" href="#s3">Diseñá el tuyo en 3D</a><a class="pill pill--line" href="#s2">Cómo se hace</a></div>
+      
+    </div>
+    <div class="anchor" data-anchor="s1"></div>
+  </div>
+  <div class="hint" aria-hidden="true"><i></i>Bajá y mirá cómo se hace</div>
+</section>
+
+<section id="s2">
+  <div class="sticky">
+    <div class="wrap">
+      <div class="steps" aria-live="polite">
+        <div class="step on"><small>1 de 3</small><h2>Primero, el hierro</h2><p>Caño estructural cortado, soldado y escuadrado en el taller. Antes de la madera está la precisión.</p></div>
+        <div class="step"><small>2 de 3</small><h2>Después, la madera</h2><p>Tapa maciza en listones, lijada y terminada con el tono que elijas.</p></div>
+        <div class="step"><small>3 de 3</small><h2>Hecho para durar</h2><p>Sale del taller armado y probado, y lo llevamos a cualquier punto del país.</p></div>
+      </div>
+      <div class="anchor" data-anchor="s2"></div>
+    </div>
+    <div class="track" aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i></div>
+  </div>
+</section>
+
+<section id="s3">
+  <div class="wrap">
+    <div class="left">
+      <h2>Diseñá el tuyo</h2>
+      <p>Elegí el mueble, mové las medidas y mirá cómo queda. Nos mandás el diseño por WhatsApp y te pasamos el presupuesto sin costo.</p>
+      <div class="stage" id="stage" data-anchor="s3"><span class="drag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h16M4 12l4-4M4 12l4 4M20 12l-4-4M20 12l-4 4"/></svg>Arrastrá para girarlo</span>
+        
+      </div>
+    </div>
+    <div class="panel">
+      <div class="scroll">
+        <div><h4>Mueble</h4><div class="seg" id="tipo"></div></div>
+        <div id="baseBox"><h4>Base</h4><div class="seg" id="base"></div></div>
+        <div><h4>Medidas</h4><div class="range" id="medidas"></div></div>
+        <div id="banqBox"><h4>Banquetas</h4><div class="qty"><span>Mismo diseño que la barra</span><div><button type="button" data-d="-1" aria-label="Una banqueta menos">−</button><b id="banq">4</b><button type="button" data-d="1" aria-label="Una banqueta más">+</button></div></div></div>
+        <div id="estBox"><h4>Estantes</h4><div class="qty"><span>Repartidos parejo</span><div><button type="button" data-e="-1" aria-label="Un estante menos">−</button><b id="est">5</b><button type="button" data-e="1" aria-label="Un estante más">+</button></div></div></div>
+        <div><h4>Madera</h4><div class="sw" id="madera"></div></div>
+        <div><h4>Tono</h4><div class="sw" id="tono"></div></div>
+        <div><h4>Hierro</h4><div class="sw" id="hierro"></div></div>
+        <div class="field"><h4>¿Dónde lo entregamos?</h4><input id="zona" placeholder="Barrio o ciudad" aria-label="Barrio o ciudad de entrega"></div>
+      </div>
+      <div class="foot">
+        <div class="ticket"><small id="sum">Barra de 1,40 × 0,60 m</small><strong id="tot">$ 0</strong></div>
+        <a class="pill" id="go" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.6 0l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.4Z"/></svg><span>Pedir <span class="lg">presupuesto </span>por WhatsApp</span></a>
+        <p class="note">Precio estimado. El presupuesto final te lo confirmamos por WhatsApp.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="s5">
+  <div class="wrap">
+    <div>
+      <h2 class="rv">Contanos qué mueble te falta</h2>
+      <p class="rv">Mandanos las medidas y una foto del lugar. Te respondemos con el diseño y el presupuesto, sin costo.</p>
+      <div class="ctas rv"><a class="pill pill--dark" id="go3" href="https://wa.me/59892307833" target="_blank" rel="noopener">Escribinos al 092 307 833</a></div>
+    </div>
+    <ul class="rv">
+      <li>Taller<span>Uruguay</span></li>
+      <li>Entregas<span>Obras y muebles a medida</span></li>
+      <li>Diseños<span>Personalizados, a medida</span></li>
+      <li>Presupuesto<span>Sin costo</span></li>
+    </ul>
+  </div>
+</section>
+</main>
+<footer><span>Limoba Hogar · Uruguay · 092 307 833</span><span>Vista previa hecha por NIMBRA</span></footer>
+
+<script>
+const IMG=n=>window.IM?IM[n]:'img2/'+n+'.jpg';
+document.querySelectorAll('img[data-im]').forEach(i=>i.src=IMG(i.dataset.im));
+if(new URLSearchParams(location.search).has('shot'))document.documentElement.classList.add('shot');
+
+window.VH={
+  wa:'59892307833',
+  tipos:[
+    {id:'mesa',n:'Mesa',full:'Mesa de comedor',dims:{L:[120,260,160],W:[70,110,90],H:[72,80,76]},bases:['recta','marco','x'],base:'marco'},
+    {id:'barra',n:'Barra',full:'Barra',dims:{L:[100,200,140],W:[45,75,60],H:[95,110,105]},bases:['recta','marco','x'],base:'recta'},
+    {id:'est',n:'Estantería',full:'Estantería',dims:{L:[80,200,120],W:[30,50,40],H:[150,220,190]}}
+  ],
+  baseN:{recta:'Recta',marco:'Marco',x:'En X'},
+  dimN:{L:'Largo',W:'Ancho',H:'Alto'},
+  maderas:[{id:'euc',n:'Eucaliptus clear'},{id:'pino',n:'Pino'}],
+  tonos:[{id:'nat',n:'Natural'},{id:'miel',n:'Miel'},{id:'nog',n:'Nogal'}],
+  hierros:[{id:'negro',n:'Negro mate',c:'#1e1f21'},{id:'grafito',n:'Grafito',c:'#55595e'},{id:'blanco',n:'Blanco',c:'#e7e6e2'}],
+  woodHex:{euc:{nat:'#c98a55',miel:'#b56c2f',nog:'#6b3d22'},pino:{nat:'#dcb06a',miel:'#c98c3c',nog:'#77492b'}},
+  catalogo:[
+    {id:'barra',cat:'barras',n:'Barra con 4 banquetas',img:'barra',med:'1,40 × 0,60 m, alto 1,05 m',mat:'Eucaliptus clear y hierro negro',p:29900,antes:32700,preset:{tipo:'barra',base:'recta',L:140,W:60,H:105,banq:4,madera:'euc',tono:'nat',hierro:'negro'}},
+    {id:'comedor',cat:'mesas',n:'Mesa de comedor',img:'comedor',med:'1,60 × 0,90 m, alto 0,76 m',mat:'Eucaliptus clear, base de marco',p:26500,preset:{tipo:'mesa',base:'marco',L:160,W:90,H:76,madera:'euc',tono:'nat',hierro:'negro'}},
+    {id:'maciza',cat:'mesas',n:'Mesa maciza',img:'mesau',med:'1,40 × 0,80 m, alto 0,76 m',mat:'Tapa de listones, base recta',p:21800,preset:{tipo:'mesa',base:'recta',L:140,W:80,H:76,madera:'euc',tono:'miel',hierro:'negro'}},
+    {id:'vitrina',cat:'guardado',n:'Vitrina de 2 puertas',img:'vitrina',med:'1,00 × 0,40 m, alto 1,80 m',mat:'Puertas de vidrio y frentes de madera',p:34900},
+    {id:'cristalero',cat:'guardado',n:'Cristalero de 3 puertas',img:'cristalero',med:'1,60 × 0,45 m, alto 1,90 m',mat:'Vidrio arriba, frentes de pino abajo',p:46500,antes:49900},
+    {id:'abierto',cat:'guardado',n:'Mueble abierto',img:'abierto',med:'1,80 × 0,45 m, alto 1,90 m',mat:'Barral, estantes y cajonera',p:27000,preset:{tipo:'est',L:180,W:45,H:190,est:4,madera:'pino',tono:'nog',hierro:'negro'}}
+  ],
+  cats:[{id:'todos',n:'Todos'},{id:'ofertas',n:'Ofertas'},{id:'mesas',n:'Mesas'},{id:'barras',n:'Barras'},{id:'guardado',n:'Guardado'}],
+  S:{tipo:'barra',base:'marco',L:180,W:60,H:105,banq:4,est:5,madera:'euc',tono:'miel',hierro:'negro'}
+};
+(function(){
+  const V=window.VH,S=V.S,$=q=>document.querySelector(q),fmt=n=>'$ '+n.toLocaleString('es-UY');
+  const m=cm=>(cm/100).toFixed(2).replace('.',',')+' m';
+  const T=()=>V.tipos.find(t=>t.id===S.tipo);
+  const calm=document.documentElement.classList.contains('shot')||matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function price(){
+    const L=S.L/100,W=S.W/100,H=S.H/100,k=S.madera==='pino'?.88:1;let p;
+    if(S.tipo==='mesa')p=(9500+L*W*11000)*k+(S.base==='x'?2500:S.base==='marco'?1200:0);
+    else if(S.tipo==='barra')p=(9000+L*W*12000)*k+(S.base==='x'?2500:S.base==='marco'?1200:0)+S.banq*3400;
+    else p=7000+L*H*4200+S.est*1600*k;
+    return Math.round(p/100)*100;
+  }
+  function tween(el,to){const from=+(el.dataset.v||to);el.dataset.v=to;if(calm||from===to){el.textContent=fmt(to);return}const t0=performance.now();const f=t=>{const q=Math.min(1,(t-t0)/420),e=1-Math.pow(1-q,3);el.textContent=fmt(Math.round((from+(to-from)*e)/100)*100);if(q<1)requestAnimationFrame(f)};requestAnimationFrame(f)}
+  function seg(el,items,cur,on){el.innerHTML=items.map(i=>`<button type="button" data-v="${i.id}" aria-pressed="${i.id===cur}">${i.n}</button>`).join('');el.querySelectorAll('button').forEach(b=>b.onclick=()=>on(b.dataset.v))}
+  function sw(el,items,cur,col,on){el.innerHTML=items.map(i=>`<button type="button" data-v="${i.id}" aria-pressed="${i.id===cur}"><i style="background:${col(i)}"></i>${i.n}</button>`).join('');el.querySelectorAll('button').forEach(b=>b.onclick=()=>on(b.dataset.v))}
+  function sliders(){
+    const t=T();$('#medidas').innerHTML=['L','W','H'].map(k=>{const [a,b]=t.dims[k];const lab=k==='W'&&S.tipo==='est'?'Profundidad':V.dimN[k];
+      return `<label><span>${lab}<b id="v${k}">${m(S[k])}</b></span><input type="range" min="${a}" max="${b}" step="5" value="${S[k]}" data-k="${k}" aria-label="${lab} en centímetros"></label>`}).join('');
+    $('#medidas').querySelectorAll('input').forEach(i=>{fill(i);i.oninput=()=>{S[i.dataset.k]=+i.value;fill(i);$('#v'+i.dataset.k).textContent=m(S[i.dataset.k]);update(true)}});
+  }
+  const fill=i=>i.style.setProperty('--v',((i.value-i.min)/(i.max-i.min)*100)+'%');
+  function render(){
+    const t=T();
+    seg($('#tipo'),V.tipos,S.tipo,v=>{S.tipo=v;const n=T();['L','W','H'].forEach(k=>S[k]=n.dims[k][2]);if(n.base)S.base=n.base;render()});
+    $('#baseBox').classList.toggle('hide',!t.bases);
+    if(t.bases)seg($('#base'),t.bases.map(b=>({id:b,n:V.baseN[b]})),S.base,v=>{S.base=v;render()});
+    $('#banqBox').classList.toggle('hide',S.tipo!=='barra');
+    $('#estBox').classList.toggle('hide',S.tipo!=='est');
+    sliders();
+    sw($('#madera'),V.maderas,S.madera,i=>`linear-gradient(90deg,${V.woodHex[i.id].nat} 0 33%,${V.woodHex[i.id].miel} 33% 66%,${V.woodHex[i.id].nog} 66%)`,v=>{S.madera=v;render()});
+    sw($('#tono'),V.tonos,S.tono,i=>V.woodHex[S.madera][i.id],v=>{S.tono=v;render()});
+    sw($('#hierro'),V.hierros,S.hierro,i=>i.c,v=>{S.hierro=v;render()});
+    update(false);
+  }
+  function summary(){
+    const t=T();
+    if(S.tipo==='est')return `${t.full} de ${m(S.L)} × ${m(S.W)}, alto ${m(S.H)}, ${S.est} estantes`;
+    return `${t.full} de ${m(S.L)} × ${m(S.W)}, alto ${m(S.H)}${S.tipo==='barra'&&S.banq?`, ${S.banq} banqueta${S.banq>1?'s':''}`:''}`;
+  }
+  function update(fromSlider){
+    $('#banq').textContent=S.banq;$('#est').textContent=S.est;
+    $('#sum').textContent=summary();tween($('#tot'),price());
+    const t=T(),mad=V.maderas.find(x=>x.id===S.madera).n.toLowerCase(),ton=V.tonos.find(x=>x.id===S.tono).n.toLowerCase(),hie=V.hierros.find(x=>x.id===S.hierro).n.toLowerCase(),zona=$('#zona').value.trim();
+    const l=['Hola Limoba! Quiero presupuesto para:',`• ${t.full} de ${m(S.L)} × ${m(S.W)}, alto ${m(S.H)}`];
+    if(t.bases)l.push(`• Base ${V.baseN[S.base].toLowerCase()} en hierro ${hie}`);else l.push(`• Estructura en hierro ${hie}, ${S.est} estantes`);
+    l.push(`• Madera: ${mad}, tono ${ton}`);
+    if(S.tipo==='barra'&&S.banq)l.push(`• ${S.banq} banqueta${S.banq>1?'s':''} al tono`);
+    if(zona)l.push(`• Entrega en ${zona}`);
+    l.push(`Precio estimado en la web: ${fmt(price())}`);
+    $('#go').href=V.wa?'https://wa.me/'+V.wa+'?text='+encodeURIComponent(l.join('\n')):'https://ig.me/m/limoba__';
+    window.mueble3d&&window.mueble3d(fromSlider);
+  }
+  document.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{S.banq=Math.max(0,Math.min(6,S.banq+ +b.dataset.d));update(false)});
+  document.querySelectorAll('[data-e]').forEach(b=>b.onclick=()=>{S.est=Math.max(3,Math.min(7,S.est+ +b.dataset.e));update(false)});
+  $('#zona').oninput=()=>update(true);
+  if(V.wa)document.getElementById('go3').href='https://wa.me/'+V.wa+'?text='+encodeURIComponent('Hola Limoba! Quiero consultar por un mueble a medida.');
+  // aparición
+  if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+    document.querySelectorAll('.rv,.mosaic figure,.proj').forEach((el,i)=>{if(el.tagName==='FIGURE')el.style.transitionDelay=(i%3)*70+'ms';io.observe(el)})}
+  // tema del nav
+  const light=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)document.body.classList.toggle('light',e.target.id==='s3'||e.target.id==='s5'||e.target.id==='cat')}),{rootMargin:'-30px 0px -90% 0px'});
+  document.querySelectorAll('main section').forEach(s=>light.observe(s));
+  render();
+})();
+</script>
+
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+const canvas=document.getElementById('gl');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const shot=document.documentElement.classList.contains('shot');
+let renderer;
+try{ renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true,powerPreference:'high-performance',preserveDrawingBuffer:true}); }
+catch(e){ document.documentElement.classList.add('no-gl'); canvas.remove(); throw e; }
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=.98;
+renderer.outputColorSpace=THREE.SRGBColorSpace;
+const scene=new THREE.Scene();
+const pmrem=new THREE.PMREMGenerator(renderer);
+scene.environment=pmrem.fromScene(new RoomEnvironment(),0.04).texture;
+const FOV=30, camera=new THREE.PerspectiveCamera(FOV,1,.1,100);
+const CAM=new THREE.Vector3(0,1.55,6.4), LOOK=new THREE.Vector3(0,.55,0);
+camera.position.copy(CAM); camera.lookAt(LOOK);
+const key=new THREE.DirectionalLight(0xffe2c2,2.2); key.position.set(4,6,5); scene.add(key);
+const rim=new THREE.DirectionalLight(0xbfd6ff,1.6); rim.position.set(-5,3,-4); scene.add(rim);
+const amb=new THREE.AmbientLight(0xffffff,.35); scene.add(amb);
+
+const V=window.VH,S=V.S;
+
+/* ---------- materiales ---------- */
+const ironM=new THREE.MeshStandardMaterial({color:0x1e1f21,metalness:.55,roughness:.5,envMapIntensity:1.1});
+const woodM=new THREE.MeshStandardMaterial({roughness:.58,metalness:0});
+const woodEdge=new THREE.MeshStandardMaterial({roughness:.6,metalness:0});
+const woodCv=document.createElement('canvas'); woodCv.width=1024; woodCv.height=512;
+const woodTex=new THREE.CanvasTexture(woodCv); woodTex.colorSpace=THREE.SRGBColorSpace; woodTex.anisotropy=8; woodTex.wrapS=woodTex.wrapT=THREE.RepeatWrapping;
+woodM.map=woodTex; woodEdge.map=woodTex;
+function rnd(s){return()=>{s=(s*16807)%2147483647;return(s-1)/2147483646}}
+function drawWood(){
+  const g=woodCv.getContext('2d'), base=new THREE.Color(V.woodHex[S.madera][S.tono]), r=rnd(S.madera==='pino'?11:7);
+  const strips=8, h=512/strips, pino=S.madera==='pino';
+  for(let i=0;i<strips;i++){
+    const c=base.clone(); const hsl={}; c.getHSL(hsl); c.setHSL(hsl.h+(r()-.5)*.035,hsl.s*(.85+r()*.35),hsl.l*(.72+r()*.42));
+    g.fillStyle='#'+c.getHexString(); g.fillRect(0,i*h,1024,h);
+    // vetas
+    const lines=pino?14:26;
+    for(let k=0;k<lines;k++){
+      const y=i*h+r()*h, amp=pino?6+r()*10:1+r()*3, ph=r()*6, fr=.004+r()*.01;
+      g.strokeStyle=`rgba(${pino?'120,58,14':'88,36,12'},${pino?.22+r()*.26:.14+r()*.2})`; g.lineWidth=pino?1.4+r()*3.4:.9+r()*2;
+      g.beginPath(); for(let x=0;x<=1024;x+=16){const yy=y+Math.sin(x*fr+ph)*amp; x?g.lineTo(x,yy):g.moveTo(x,yy)} g.stroke();
+    }
+    // juntas de listones cortos (finger joint)
+    if(!pino){let x=r()*300; while(x<1024){g.fillStyle='rgba(60,30,10,.18)';g.fillRect(x,i*h,2,h);x+=180+r()*360}}
+    g.fillStyle='rgba(40,20,5,.22)'; g.fillRect(0,i*h,1024,1.5);
+  }
+  woodTex.needsUpdate=true;
+}
+
+/* ---------- pieza de caño ---------- */
+const Y=new THREE.Vector3(0,1,0);
+const geoCache={};
+function boxGeo(a,b){const k=a+'x'+b; return geoCache[k]||(geoCache[k]=new THREE.BoxGeometry(a,1,b).translate(0,.5,0))}
+function tube(arr,a,b,t=.04,t2=t){
+  const A=new THREE.Vector3(...a),B=new THREE.Vector3(...b),d=B.clone().sub(A),len=d.length();
+  const mesh=new THREE.Mesh(boxGeo(t,t2),ironM); mesh.position.copy(A); mesh.quaternion.setFromUnitVectors(Y,d.normalize());
+  mesh.userData={len,B,g:1,done:true}; mesh.scale.y=len; arr.push(mesh); return mesh;
+}
+function slab(w,h,d,rep){
+  const g=new THREE.BoxGeometry(w,h,d); const uv=g.attributes.uv;
+  for(let i=0;i<uv.count;i++){uv.setXY(i,uv.getX(i)*rep[0],uv.getY(i)*rep[1])}
+  return new THREE.Mesh(g,[woodEdge,woodEdge,woodM,woodM,woodEdge,woodEdge]);
+}
+
+function radialTex(stops){const c=document.createElement('canvas');c.width=c.height=256;const g=c.getContext('2d');const gr=g.createRadialGradient(128,128,0,128,128,128);stops.forEach(s=>gr.addColorStop(...s));g.fillStyle=gr;g.fillRect(0,0,256,256);const t=new THREE.CanvasTexture(c);return t}
+/* ---------- el mueble ---------- */
+const root=new THREE.Group(); scene.add(root);       // posición en pantalla
+const spinG=new THREE.Group(); root.add(spinG);       // giro
+let M=null;                                           // {g,frame,wood,stools,cotas}
+const sparks=makeSparks(); spinG.add(sparks.points);
+const glowTex=radialTex([[0,'rgba(255,240,210,1)'],[.18,'rgba(255,190,110,.85)'],[.45,'rgba(255,130,40,.25)'],[1,'rgba(255,120,30,0)']]);
+const glows=[...Array(10)].map(()=>{const m=new THREE.Sprite(new THREE.SpriteMaterial({map:glowTex,transparent:true,opacity:0,depthWrite:false,blending:THREE.AdditiveBlending}));m.userData.life=0;spinG.add(m);return m});
+let glowI=0;
+const torch=new THREE.Group();
+const halo=new THREE.Sprite(new THREE.SpriteMaterial({map:glowTex,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending})); halo.scale.setScalar(.42);
+torch.add(halo); torch.visible=false; spinG.add(torch);
+const torchL=new THREE.PointLight(0xff9a3c,0,3.5,1.6); torch.add(torchL);
+
+function build(){
+  if(M){spinG.remove(M.g);M.g.traverse(o=>{if(o.isMesh&&o.geometry&&!Object.values(geoCache).includes(o.geometry))o.geometry.dispose()})}
+  const L=S.L/100,W=S.W/100,H=S.H/100,g=new THREE.Group(),frame=[],woodG=new THREE.Group(),stoolG=new THREE.Group();
+  const t=.04, i=.03;
+  if(S.tipo==='est'){
+    const x=L/2-t/2,z=W/2-t/2;
+    [[-x,-z],[x,-z],[-x,z],[x,z]].forEach(([a,b])=>tube(frame,[a,0,b],[a,H,b],t));
+    const n=S.est;
+    for(let k=0;k<n;k++){
+      const y=.06+(H-.09)*(k/(n-1));
+      [-x,x].forEach(a=>tube(frame,[a,y,-z+t/2],[a,y,z-t/2],.03));
+      [-z,z].forEach(b=>tube(frame,[-x+t/2,y,b],[x-t/2,y,b],.03));
+      const sh=slab(L-t*2+.01,.028,W-t*2+.01,[L/1.2,1]); sh.position.set(0,y+.03,0); woodG.add(sh);
+    }
+  }else{
+    const th=S.tipo==='barra'?.045:.04, h0=H-th, x=L/2-i-t/2, z=W/2-i-t/2;
+    if(S.base==='recta'){
+      [[-x,-z],[x,-z],[-x,z],[x,z]].forEach(([a,b])=>tube(frame,[a,0,b],[a,h0,b],t));
+      [-z,z].forEach(b=>tube(frame,[-x+t/2,h0-t,b],[x-t/2,h0-t,b],t));
+      [-x,x].forEach(a=>tube(frame,[a,h0-t,-z+t/2],[a,h0-t,z-t/2],t));
+      if(S.tipo==='barra'){
+        [-z,z].forEach(b=>tube(frame,[-x+t/2,.2,b],[x-t/2,.2,b],t));
+        [-x,x].forEach(a=>tube(frame,[a,.2,-z+t/2],[a,.2,z-t/2],t));
+      }
+    }else if(S.base==='marco'){
+      const xe=L/2-.09;
+      [-xe,xe].forEach(a=>{
+        tube(frame,[a,0,-z],[a,h0,-z],t,t*1.6); tube(frame,[a,0,z],[a,h0,z],t,t*1.6);
+        tube(frame,[a,t/2,-z+t/2],[a,t/2,z-t/2],t,t*1.6); tube(frame,[a,h0-t,-z+t/2],[a,h0-t,z-t/2],t,t*1.6);
+      });
+      [-z,z].forEach(b=>tube(frame,[-xe+t/2,h0-t,b],[xe-t/2,h0-t,b],t));
+      if(S.tipo==='barra')tube(frame,[-xe+t/2,.22,z-.02],[xe-t/2,.22,z-.02],t);
+    }else{
+      const xe=L/2-.13, zz=W/2-.06;
+      [-xe,xe].forEach(a=>{
+        tube(frame,[a,0,-zz],[a,h0-t,zz],.075,.045); tube(frame,[a,0,zz],[a,h0-t,-zz],.075,.045);
+        tube(frame,[a,h0-t,-z],[a,h0-t,z],t,.075);
+      });
+      tube(frame,[-xe,h0-t*1.5,0],[xe,h0-t*1.5,0],.06,t);
+      if(S.tipo==='barra')tube(frame,[-xe,.24,0],[xe,.24,0],t);
+    }
+    const top=slab(L,th,W,[L/1.4,W/.9]); top.position.y=h0+th/2; woodG.add(top);
+    if(S.tipo==='barra'&&S.base==='recta'){const f=slab(L-2*i-t*2,.035,.07,[L/1.4,.15]); f.position.set(0,.2+t/2+.02,z); woodG.add(f)}
+    if(S.tipo==='barra'&&S.banq){
+      const n=S.banq, front=Math.ceil(n/2), back=n-front, sh=Math.min(.75,H-.3);
+      const row=(cnt,zs)=>{for(let k=0;k<cnt;k++){const xs=cnt===1?0:(-L/2+.3+(L-.6)*k/(cnt-1));stoolG.add(stool(xs,zs,sh))}};
+      row(front,W/2+.1); row(back,-W/2-.1);
+    }
+  }
+  g.add(...frame,woodG,stoolG);
+  // sombra / luz de piso
+  const fw=L+.9, fd=W+(S.tipo==='barra'?1.1:.8);
+  const sh=new THREE.Mesh(new THREE.PlaneGeometry(fw,fd),shadowM); sh.rotation.x=-Math.PI/2; sh.position.y=.002; g.add(sh);
+  const gl=new THREE.Mesh(new THREE.PlaneGeometry(fw*1.5,fd*1.7),floorGlowM); gl.rotation.x=-Math.PI/2; gl.position.y=.001; g.add(gl);
+  // cotas
+  const cot=new THREE.Group(), lm=cotaM;
+  const off=S.tipo==='barra'&&S.banq?.62:.2;
+  const yTop=S.tipo==='est'?H:H;
+  const pL=[[-L/2,0,W/2+off],[L/2,0,W/2+off]], pW=[[L/2+.18,0,-W/2],[L/2+.18,0,W/2]], pH=[[L/2+.18,0,W/2+.0],[L/2+.18,yTop,W/2+.0]];
+  [pL,pW,pH].forEach(p=>{const ge=new THREE.BufferGeometry().setFromPoints(p.map(v=>new THREE.Vector3(...v)));cot.add(new THREE.Line(ge,lm));
+    const d=new THREE.Vector3(...p[1]).sub(new THREE.Vector3(...p[0])).normalize(), n=Math.abs(d.y)>.5?new THREE.Vector3(.05,0,0):new THREE.Vector3(0,.05,0);
+    p.forEach(v=>{const a=new THREE.Vector3(...v);cot.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([a.clone().sub(n),a.clone().add(n)]),lm))})});
+  cot.userData.mid=[pL,pW,pH].map(p=>new THREE.Vector3(...p[0]).add(new THREE.Vector3(...p[1])).multiplyScalar(.5));
+  g.add(cot);
+  // orden de soldado: de abajo hacia arriba
+  frame.sort((a,b)=>Math.min(a.position.y,a.userData.B.y)-Math.min(b.position.y,b.userData.B.y)||a.position.x-b.position.x);
+  spinG.add(g);
+  M={g,frame,wood:woodG,stools:stoolG,cot,L,W,H,shadow:sh,glow:gl};
+}
+function stool(x,z,h){
+  const g=new THREE.Group(), s=.34, t=.028, e=s/2-t/2, th=.045, arr=[];
+  [[-e,-e],[e,-e],[-e,e],[e,e]].forEach(([a,b])=>tube(arr,[a,0,b],[a,h-th,b],t));
+  [h-th-t,.24].forEach(y=>{[-e,e].forEach(b=>tube(arr,[-e+t/2,y,b],[e-t/2,y,b],t));[-e,e].forEach(a=>tube(arr,[a,y,-e+t/2],[a,y,e-t/2],t))});
+  g.add(...arr); const seat=slab(s+.03,th,s+.03,[.3,.4]); seat.position.y=h-th/2; g.add(seat);
+  g.position.set(x,0,z); g.userData.home=new THREE.Vector3(x,0,z); return g;
+}
+const shadowM=new THREE.MeshBasicMaterial({map:radialTex([[0,'rgba(0,0,0,.55)'],[.55,'rgba(0,0,0,.22)'],[1,'rgba(0,0,0,0)']]),transparent:true,depthWrite:false});
+const floorGlowM=new THREE.MeshBasicMaterial({map:radialTex([[0,'rgba(255,170,90,.32)'],[.5,'rgba(255,150,70,.10)'],[1,'rgba(255,150,70,0)']]),transparent:true,depthWrite:false,blending:THREE.AdditiveBlending});
+const cotaM=new THREE.LineBasicMaterial({color:0x17191b,transparent:true,opacity:0});
+
+/* ---------- chispas ---------- */
+function makeSparks(){
+  const N=420,pos=new Float32Array(N*3),vel=new Float32Array(N*3),life=new Float32Array(N);
+  const geo=new THREE.BufferGeometry(); geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
+  const mat=new THREE.PointsMaterial({map:radialTex([[0,'rgba(255,255,255,1)'],[.35,'rgba(255,255,255,.8)'],[1,'rgba(255,255,255,0)']]),color:0xffb35c,size:.05,transparent:true,opacity:1,depthWrite:false,blending:THREE.AdditiveBlending});
+  const points=new THREE.Points(geo,mat); points.frustumCulled=false;
+  let next=0;
+  return {points,burst(p,n=36){for(let k=0;k<n;k++){const j=next++%N;pos.set([p.x,p.y,p.z],j*3);const a=Math.random()*Math.PI*2,u=Math.random();vel.set([Math.cos(a)*(.6+u*1.6),.6+Math.random()*1.8,Math.sin(a)*(.6+u*1.6)],j*3);life[j]=.35+Math.random()*.45}},
+    step(dt){for(let j=0;j<N;j++){if(life[j]<=0){pos[j*3+1]=-99;continue}life[j]-=dt;vel[j*3+1]-=6*dt;for(let a=0;a<3;a++)pos[j*3+a]+=vel[j*3+a]*dt;if(pos[j*3+1]<0){pos[j*3+1]=0;vel[j*3+1]*=-.3}}geo.attributes.position.needsUpdate=true}};
+}
+function weld(local){
+  if(shot)return;
+  sparks.burst(local);
+  const gm=glows[glowI++%glows.length]; gm.position.copy(local); gm.userData.life=1;
+}
+
+/* ---------- cambios desde el panel ---------- */
+let pop=0;
+window.mueble3d=(fromSlider)=>{
+  const k=JSON.stringify([S.tipo,S.base,S.L,S.W,S.H,S.banq,S.est]);
+  if(k!==window.__k){window.__k=k;build();if(!fromSlider)pop=1}
+  drawWood();
+  ironM.color.set(V.hierros.find(h=>h.id===S.hierro).c);
+  ironM.roughness=S.hierro==='blanco'?.45:.5; ironM.metalness=S.hierro==='blanco'?.2:.55;
+};
+window.mueble3d(true);
+
+/* ---------- dónde va el mueble ---------- */
+const anchors={s1:document.querySelector('[data-anchor=s1]'),s2:document.querySelector('[data-anchor=s2]'),s3:document.getElementById('stage')};
+const secs=[...document.querySelectorAll('main section')];
+const s2=document.getElementById('s2');
+const steps=[...document.querySelectorAll('.step')], bars=[...document.querySelectorAll('.track b')];
+let W=innerWidth,Hh=innerHeight;
+function size(){W=innerWidth;Hh=innerHeight;renderer.setSize(W,Hh,false);camera.aspect=W/Hh;camera.updateProjectionMatrix()}
+addEventListener('resize',size); size();
+const dist=CAM.distanceTo(LOOK), right=new THREE.Vector3(), up=new THREE.Vector3();
+function anchorState(id){
+  const el=anchors[id]; if(!el)return null; const r=el.getBoundingClientRect();
+  if(r.bottom<-Hh*.6||r.top>Hh*1.6)return null;
+  const hh=Math.tan(FOV*Math.PI/360)*dist, hw=hh*camera.aspect;
+  const cx=(r.left+r.width/2)/W, cy=(r.top+r.height*(id==='s3'?.44:.56))/Hh;
+  const aw=r.width/W*2*hw, ah=r.height/Hh*2*hh;
+  return {x:(cx-.5)*2*hw, y:(.5-cy)*2*hh, aw, ah};
+}
+function fit(st){
+  if(!M)return 1;
+  const pw=M.L*.86+M.W*.5+(S.tipo==='barra'&&S.banq?.5:0), ph=M.H+.15;
+  return Math.min(active==='s3'?1.2:1.6, st.aw*(active==='s3'?.86:1.02)/pw, st.ah*(active==='s3'?.74:.88)/ph);
+}
+camera.updateMatrixWorld(); right.setFromMatrixColumn(camera.matrixWorld,0); up.setFromMatrixColumn(camera.matrixWorld,1);
+
+let active='s1', cur={x:0,y:0,s:shot?1:0,dark:1,cota:0}, rot=-.6, drag=0, dragV=0, dragging=false, lastX=0;
+const stage=anchors.s3;
+stage.addEventListener('pointerdown',e=>{dragging=true;lastX=e.clientX;stage.setPointerCapture(e.pointerId)});
+stage.addEventListener('pointermove',e=>{if(!dragging)return;const dx=e.clientX-lastX;lastX=e.clientX;drag+=dx*.01;dragV=dx*.01});
+const endDrag=()=>dragging=false; stage.addEventListener('pointerup',endDrag); stage.addEventListener('pointercancel',endDrag);
+let mx=0,my=0; addEventListener('pointermove',e=>{mx=e.clientX/W-.5;my=e.clientY/Hh-.5},{passive:true});
+
+const sm=x=>x<=0?0:x>=1?1:x*x*(3-2*x), map=(v,a,b)=>(v-a)/(b-a);
+const wrap=a=>Math.atan2(Math.sin(a),Math.cos(a));
+const clock=new THREE.Clock(); let tPrev=0;
+const tmp=new THREE.Vector3(), proj=new THREE.Vector3();
+const cotaEls=[document.getElementById('cL'),document.getElementById('cW'),document.getElementById('cH')];
+
+function frame(){
+  const dt=Math.min(clock.getDelta(),.05), t=clock.elapsedTime;
+  // sección activa por la línea del medio
+  const mid=Hh*.5; for(const s of secs){const r=s.getBoundingClientRect(); if(r.top<=mid&&r.bottom>mid){active=s.id;break}}
+  const r2=s2.getBoundingClientRect(); const p=Math.max(-1,Math.min(2,-r2.top/(r2.height-Hh)));
+  // destino
+  const off=!['s1','s2','s3'].includes(active);
+  let st=anchorState(active)||anchorState(active==='cat'?'s2':off?'s3':'s1');
+  let target={x:st?st.x:cur.x,y:st?st.y:cur.y,s:off?0:(st?fit(st):1),dark:active==='s3'?0:1,cota:active==='s3'?1:0};
+  if(active==='s3'&&st){target.x=st.x;target.y=st.y}
+  const k=shot?1:1-Math.pow(.0009,dt), kp=shot?1:1-Math.pow(.00002,dt);
+  cur.x+=(target.x-cur.x)*(active==='s3'?kp:k); cur.y+=(target.y-cur.y)*(active==='s3'?kp:k);
+  cur.s+=(target.s-cur.s)*k; cur.dark+=(target.dark-cur.dark)*k; cur.cota+=(target.cota-cur.cota)*k*1.4;
+  root.position.copy(LOOK).addScaledVector(right,cur.x).addScaledVector(up,cur.y);
+  root.position.y-=(M?M.H*.5:0)*cur.s;
+  if(pop>0)pop=Math.max(0,pop-dt*2.2);
+  const s=Math.max(cur.s*(1+Math.sin(pop*Math.PI)*.04),.0001); root.scale.setScalar(s); root.visible=cur.s>.01;
+
+  // giro
+  let rT;
+  if(active==='s1'){ rot+=dt*(shot?0:reduce?.08:.22); rT=rot }
+  else if(active==='s2'){ rT=-.75+Math.max(0,Math.min(1,p))*1.25 }
+  else { if(!dragging){drag+=dragV;dragV*=Math.pow(.02,dt)} rT=-.55+drag }
+  if(active!=='s1'){ rot=rT+wrap(rot-rT); rot+=(rT-rot)*k*.8 }
+  spinG.rotation.y=rot+(active==='s1'?mx*.25:0);
+  root.rotation.x=(active==='s3'?.02:.06)+(active==='s1'?my*.06:0);
+
+  // armado con el scroll
+  if(M){
+    const N=M.frame.length;
+    let lift=0, stoolK=1;
+    const inProc=active==='s2'||(p>0&&p<1);
+    if(inProc&&!shot){
+      const ret=sm(map(p,0,.1)), b=map(p,.13,.47);
+      M.frame.forEach((f,ii)=>{const u=f.userData;let g=p<.12?1-ret:Math.max(0,Math.min(1,b*N-ii));
+        if(g>=.999&&!u.done&&p>=.12){u.done=true;tmp.copy(u.B).applyMatrix4(M.g.matrix);weld(tmp)}
+        if(g<.95)u.done=false; u.g=g});
+      lift=p<.5?sm(map(p,0,.08)):1-sm(map(p,.52,.72));
+      stoolK=p<.5?1-sm(map(p,0,.07)):sm(map(p,.76,.92));
+      const si=p<.48?0:p<.74?1:2; steps.forEach((e,i)=>e.classList.toggle('on',i===si));
+      bars.forEach((b2,i)=>b2.style.transform=`scaleX(${Math.max(0,Math.min(1,(p-[0,.48,.74][i])/([.48,.26,.26][i])))})`);
+    }else{ M.frame.forEach(f=>{f.userData.g=1;f.userData.done=true}) }
+    M.frame.forEach(f=>{f.visible=f.userData.g>.002;f.scale.y=f.userData.len*Math.max(f.userData.g,.001)});
+    const hot=(inProc&&p>=.12&&!shot)?M.frame.find(f=>f.userData.g>.001&&f.userData.g<.999):null;
+    torch.visible=!!hot;
+    if(hot){const u=hot.userData;torch.position.copy(hot.position).lerp(u.B,u.g);const fl=.75+Math.random()*.5;torch.scale.setScalar(fl);torchL.intensity=6*fl;sparks.burst(torch.position,3)}
+    else torchL.intensity=0;
+    M.wood.position.y=lift*2.6; M.wood.visible=lift<.99;
+    M.stools.children.forEach((c,i)=>{const h=c.userData.home;c.position.set(h.x+(h.z>0?1:-1)*0*(1-stoolK),0,h.z+Math.sign(h.z)*(1-stoolK)*1.2);c.scale.setScalar(Math.max(stoolK,.001));c.visible=stoolK>.01});
+    shadowM.opacity=1-cur.dark*.6; floorGlowM.opacity=cur.dark;
+    cotaM.opacity=cur.cota*.85; M.cot.visible=cur.cota>.02;
+  }
+  // chispas y brillos
+  sparks.step(dt);
+  glows.forEach(gm=>{const u=gm.userData;if(u.life>0){u.life=Math.max(0,u.life-dt*1.6)}gm.material.opacity=u.life;gm.scale.setScalar(.12+u.life*.22);gm.visible=u.life>0});
+  key.intensity=2.2-cur.dark*.3; amb.intensity=.35+(1-cur.dark)*.25; rim.intensity=1.2+cur.dark*.9;
+
+  renderer.render(scene,camera);
+
+  // etiquetas de cotas
+  if(M&&cur.cota>.02){
+    const vals=[S.L,S.W,S.H].map(v=>(v/100).toFixed(2).replace('.',',')+' m');
+    M.cot.userData.mid.forEach((v,i)=>{proj.copy(v).applyMatrix4(M.g.matrixWorld).project(camera);
+      const el=cotaEls[i]; el.textContent=vals[i]; el.style.transform=`translate(${(proj.x*.5+.5)*W}px,${(-proj.y*.5+.5)*Hh}px) translate(-50%,-50%)`; el.style.opacity=cur.cota>.6?1:0});
+  }else cotaEls.forEach(e=>e.style.opacity=0);
+  requestAnimationFrame(frame);
+}
+frame();
+</script>
+</body>
+</html>
