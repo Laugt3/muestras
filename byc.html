@@ -88,7 +88,7 @@ section{position:relative;min-height:100dvh;padding:clamp(96px,12vh,140px) var(-
 #s3 h2{font-size:clamp(2.8rem,6.4vw,5.6rem);font-weight:900}
 #s3 .intro p{font-size:1.1rem;color:var(--mute2);margin-top:16px;max-width:30ch}
 .stage-space{height:min(56vh,520px)}
-.ticket{margin-top:6px;display:inline-flex;flex-direction:column;gap:2px;padding:14px 18px;border-radius:18px;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);border:1px solid rgba(43,21,18,.08);min-width:260px}
+.ticket{margin-top:0;display:flex;flex-direction:column;gap:2px;padding:14px 18px;border-radius:18px;background:rgba(255,255,255,.7);border:1px solid rgba(43,21,18,.08);background:#fff7f2}
 .ticket small{color:var(--mute2);font-size:.85rem}
 .ticket strong{font:900 2.6rem/1 "Gabarito";letter-spacing:-.03em;font-variant-numeric:tabular-nums}
 .ticket s{font:600 1rem "Instrument Sans";color:var(--mute2);margin-right:8px}
@@ -215,7 +215,6 @@ footer{position:relative;z-index:3;background:var(--choc);color:var(--mute);padd
       <h2 class="rv">Armá tu torta</h2>
       <p class="rv">Escribí el nombre y miralo en el topper. Elegí colores, porciones y lo que la acompaña.</p>
       <div class="stage-space" aria-hidden="true"></div>
-      <div class="ticket rv"><small id="sumTxt">Torta de 25 porciones</small><strong><s id="old"></s><span id="tot">$ 0</span></strong><span class="promo-on" id="promoOn">Promo de octubre</span></div>
       <img class="fallback" data-im="mesa" alt="Mesa dulce de Byc" style="margin-top:20px;border-radius:24px;max-width:360px">
     </div>
     <div class="panel ui rv">
@@ -232,6 +231,7 @@ footer{position:relative;z-index:3;background:var(--choc);color:var(--mute);padd
         <div class="row"><span>Galletitas decoradas<small>con glasé</small></span><div class="qty"><button type="button" data-k="gal" data-d="-1" aria-label="Menos galletitas">−</button><b id="o_gal">0</b><button type="button" data-k="gal" data-d="1" aria-label="Más galletitas">+</button></div></div>
       </div>
       <div><h4>Entrega</h4><div class="chips" id="ship"></div></div>
+      <div class="ticket"><small id="sumTxt">Torta de 25 porciones</small><strong><s id="old"></s><span id="tot">$ 0</span></strong><span class="promo-on" id="promoOn">Promo de octubre</span></div>
       <a class="btn btn--rasp" id="go" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.6 0l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.4Z"/></svg>Reservar por WhatsApp</a>
       <p class="small">Precios de referencia. Te confirmamos fecha y precio por WhatsApp.</p>
     </div>
@@ -433,7 +433,8 @@ const STATES={
 };
 let target=STATES.s1(), cur={...target};
 const secs=[...document.querySelectorAll('main section')];
-const sio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting) target=STATES[e.target.id]()}),{threshold:.45});
+let active='s1';
+const sio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){active=e.target.id;target=STATES[active]()}}),{rootMargin:'-50% 0px -50% 0px',threshold:0});
 secs.forEach(s=>sio.observe(s));
 let mx=0,my=0; addEventListener('pointermove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5},{passive:true});
 let lastY=scrollY,vel=0;
@@ -443,17 +444,19 @@ addEventListener('resize',size); size();
 const shot=document.documentElement.classList.contains('shot');
 if(shot){cur={...target};tiers.forEach(t=>t.userData.cur=t.userData.target);Object.values(pools).flat().forEach(o=>o.userData.cur=o.userData.target)}
 
-const clock=new THREE.Clock(); let spin=0;
+const clock=new THREE.Clock(); let spin=0, stillK=0;
 function frame(){
   const dt=Math.min(clock.getDelta(),.05),t=clock.elapsedTime;
   const y=scrollY; vel+=((y-lastY)-vel)*.1; lastY=y;
   const k=1-Math.pow(.002,dt);
   for(const p of ['x','y','s','ry','bg','ex']) cur[p]+=(target[p]-cur[p])*k;
-  spin+=dt*((reduce||shot)?0:.38)+Math.min(Math.abs(vel)*.0015,.06);
-  root.position.set(cur.x+mx*.2,cur.y+(shot?0:Math.sin(t*1.1)*.06)-my*.12,0);
+  const still=active==='s3'; stillK+=((still?1:0)-stillK)*k; const mv=1-stillK;
+  spin+=(dt*((reduce||shot)?0:.38)+Math.min(Math.abs(vel)*.0015,.06))*mv;
+  if(still){const goal=Math.round(spin/(Math.PI*2))*Math.PI*2+.55;spin+=(goal-spin)*k*.6}
+  root.position.set(cur.x+mx*.2*mv,cur.y+((shot?0:Math.sin(t*1.1)*.06)-my*.12)*mv,0);
   root.scale.setScalar(Math.max(cur.s,.0001)); root.visible=cur.s>.01;
-  cakeG.rotation.y=spin+cur.ry+mx*.35+(shot?.5:0);
-  root.rotation.x=.08+my*.08;
+  cakeG.rotation.y=spin+cur.ry+mx*.35*mv+(shot?.5:0);
+  root.rotation.x=.08+my*.08*mv;
   // pisos que crecen y se apilan
   let yAcc=.0;
   tiers.forEach(tr=>{const u=tr.userData;u.cur+=(u.target-u.cur)*(shot?1:1-Math.pow(.004,dt));const s=Math.max(u.cur,.0001);
@@ -467,7 +470,7 @@ function frame(){
 
   // acompañamientos
   extras.visible=cur.ex>.02;
-  Object.values(pools).flat().forEach((o,i)=>{const u=o.userData;u.cur+=(u.target*cur.ex-u.cur)*(shot?1:1-Math.pow(.003,dt));o.scale.setScalar(Math.max(u.cur*1.15,.0001));o.rotation.y=t*.3+i});
+  Object.values(pools).flat().forEach((o,i)=>{const u=o.userData;u.cur+=(u.target*cur.ex-u.cur)*(shot?1:1-Math.pow(.003,dt));o.scale.setScalar(Math.max(u.cur*1.15,.0001));o.rotation.y=i*1.7+t*.3*mv});
   extras.rotation.y=cakeG.rotation.y*.25;
   // confites de la portada
   fl.visible=cur.bg>.01;
