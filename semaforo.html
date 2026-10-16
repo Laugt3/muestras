@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Semáforo Automóviles · Autos usados en Rivera</title>
+<meta name="description" content="Semáforo Automóviles: autos y pickups usados en Rivera, dos locales sobre Manuel Oribe. Mirá el stock, simulá la cuota y sabé al instante si estás para financiar.">
+<meta name="theme-color" content="#121212">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,600;1,700;1,800&family=Geologica:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>if(/shot/.test(location.search))document.documentElement.classList.add('shot')</script>
+<style>
+:root{--asfalto:#121212;--asfalto2:#1b1b1b;--muro:#222120;--linea:rgba(243,239,232,.12);--hueso:#f3efe8;--gris:#a8a29a;--rojo:#e3241b;--rojo2:#ff3a2f;--ambar:#f4b23a;--verde:#22c06a;--led:#ffcf7a;--r:999px}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+html.shot{scroll-behavior:auto}
+body{margin:0;background:var(--asfalto);color:var(--hueso);font:400 16px/1.55 "Geologica",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:"Kanit",sans-serif;font-style:italic;font-weight:800;text-transform:uppercase;margin:0;line-height:.95;letter-spacing:-.005em}
+p{margin:0}a{color:inherit}button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--ambar);outline-offset:3px;border-radius:6px}
+.wrap{padding:0 clamp(16px,4vw,64px)}
+
+/* barra */
+.top{position:fixed;inset:0 0 auto;z-index:30;display:flex;justify-content:space-between;align-items:center;padding:14px clamp(16px,4vw,64px);background:linear-gradient(var(--asfalto),rgba(18,18,18,0));}
+.marca{display:flex;align-items:center;gap:12px;text-decoration:none}
+.marca svg{width:22px;height:46px}
+.marca b{font:800 italic 24px/1 "Kanit";color:var(--rojo);letter-spacing:-.01em}
+.marca span{display:block;font:600 10px/1 "Geologica";letter-spacing:.32em;color:var(--hueso);margin-top:3px}
+.navr{display:flex;gap:6px;align-items:center}
+.navr a{text-decoration:none;font-size:15px;font-weight:500;padding:9px 14px;border-radius:var(--r);color:var(--gris);transition:color .2s,background .2s}
+.navr a:hover{color:var(--hueso);background:rgba(243,239,232,.06)}
+.navr a.wa{background:var(--rojo);color:#fff;font-weight:600}
+.navr a.wa:hover{background:var(--rojo2)}
+
+/* portada: la pared del local con tiras de luz */
+#portada{position:relative;min-height:100svh;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:clamp(20px,4vw,60px);padding:110px clamp(16px,4vw,64px) 60px;overflow:hidden;
+  background:radial-gradient(120% 70% at 70% 30%,#2a2724 0%,var(--asfalto) 62%)}
+#portada::before{content:"";position:absolute;inset:0;background:
+  linear-gradient(90deg,transparent calc(50% - 1px),rgba(255,207,122,.0) 50%,transparent calc(50% + 1px));pointer-events:none}
+.panelLed{position:absolute;inset:84px auto 64px clamp(16px,4vw,64px);right:clamp(16px,4vw,64px);border:1.5px solid rgba(255,207,122,.55);border-radius:4px;box-shadow:0 0 22px rgba(255,190,90,.35),inset 0 0 22px rgba(255,190,90,.18);pointer-events:none;opacity:.9}
+.panelLed::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:40%;background:linear-gradient(transparent,rgba(255,190,90,.06))}
+.ptxt{position:relative;z-index:2}
+.ptxt small{display:inline-flex;align-items:center;gap:10px;font-size:14px;color:var(--gris)}
+.ptxt small i{width:8px;height:8px;border-radius:50%;background:var(--verde);box-shadow:0 0 10px var(--verde)}
+.ptxt h1{font-size:clamp(3rem,7.4vw,7.6rem);margin-top:18px}
+.ptxt h1 em{display:block;color:var(--rojo);font-style:italic}
+.ptxt h1 span{display:block;overflow:hidden;padding-right:.08em}
+.ptxt h1 span>i{display:block;font-style:italic;transform:translateY(105%);animation:sube 1s cubic-bezier(.2,.8,.2,1) forwards}
+.ptxt h1 span:nth-child(2)>i{animation-delay:.12s}
+@keyframes sube{to{transform:none}}
+.ptxt p{margin-top:22px;max-width:470px;color:#cfc9bf;font-size:clamp(16px,1.3vw,18px)}
+.ctas{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:var(--r);font-weight:600;text-decoration:none;border:1px solid transparent;transition:background .2s,transform .15s,border-color .2s}
+.btn:active{transform:scale(.97)}
+.btn--rojo{background:var(--rojo);color:#fff}.btn--rojo:hover{background:var(--rojo2)}
+.btn--linea{border-color:rgba(243,239,232,.35)}.btn--linea:hover{border-color:var(--hueso)}
+.locales{display:flex;gap:22px;margin-top:34px;flex-wrap:wrap;font-size:14px;color:var(--gris)}
+.locales b{display:block;color:var(--hueso);font-weight:500;font-size:15px}
+
+/* el semáforo */
+.sem{position:relative;z-index:2;justify-self:center;display:flex;flex-direction:column;align-items:center}
+.caja{width:clamp(150px,15vw,210px);padding:22px 0;border-radius:34px;background:linear-gradient(160deg,#2b2b2b,#141414);box-shadow:0 30px 80px -20px #000,inset 0 2px 0 rgba(255,255,255,.08),inset 0 -2px 0 rgba(0,0,0,.6);display:grid;gap:18px;justify-items:center;border:1px solid #303030}
+.luz{position:relative;width:72%;aspect-ratio:1;border-radius:50%;background:#0c0c0c;box-shadow:inset 0 6px 14px #000}
+.luz::before{content:"";position:absolute;inset:-14% -12% auto;height:42%;border-radius:50% 50% 0 0;background:linear-gradient(#1e1e1e,#151515);box-shadow:0 4px 8px rgba(0,0,0,.5)}
+.luz i{position:absolute;inset:7%;border-radius:50%;opacity:.13;transition:opacity .35s,box-shadow .35s}
+.luz.r i{background:radial-gradient(circle at 40% 35%,#ff8a80,var(--rojo) 55%,#7a0d08)}
+.luz.a i{background:radial-gradient(circle at 40% 35%,#ffe2a1,var(--ambar) 55%,#7a4c06)}
+.luz.v i{background:radial-gradient(circle at 40% 35%,#a8ffd0,var(--verde) 55%,#065f2f)}
+.luz.on i{opacity:1}
+.luz.r.on i{box-shadow:0 0 40px 8px rgba(227,36,27,.55)}
+.luz.a.on i{box-shadow:0 0 40px 8px rgba(244,178,58,.5)}
+.luz.v.on i{box-shadow:0 0 40px 8px rgba(34,192,106,.5)}
+.poste{width:16px;height:clamp(40px,8vh,90px);background:linear-gradient(90deg,#1a1a1a,#333,#1a1a1a)}
+.semTxt{margin-top:18px;text-align:center;font:700 italic 20px/1.1 "Kanit";text-transform:uppercase;color:var(--verde);min-height:1.2em}
+
+/* secciones */
+section{position:relative}
+.cab{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.cab h2{font-size:clamp(2.4rem,5vw,4.6rem)}
+.cab p{color:var(--gris);max-width:430px}
+
+/* stock */
+#stock{padding-top:clamp(80px,12vh,130px);padding-bottom:40px}
+.filtros{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:34px 0 18px}
+.seg{display:inline-flex;max-width:100%;overflow-x:auto;scrollbar-width:none;background:var(--asfalto2);border:1px solid var(--linea);border-radius:var(--r);padding:4px}
+.seg button{border:0;background:transparent;padding:9px 16px;border-radius:var(--r);font-size:14.5px;font-weight:500;color:var(--gris);transition:background .2s,color .2s}
+.seg button[aria-pressed=true]{background:var(--hueso);color:var(--asfalto)}
+.anio{display:flex;align-items:center;gap:12px;font-size:14.5px;color:var(--gris);margin-left:auto}
+.anio input{accent-color:var(--rojo);width:160px}
+.anio b{color:var(--hueso);font-weight:600;min-width:40px}
+.cuenta{font-size:14px;color:var(--gris)}
+.tablero{list-style:none;margin:0;padding:0;border-top:1px solid var(--linea)}
+.auto{display:grid;grid-template-columns:180px minmax(0,1.5fr) repeat(3,minmax(0,.6fr)) 170px;align-items:center;gap:20px;padding:14px 0;border-bottom:1px solid var(--linea);transition:background .25s}
+.auto:hover{background:linear-gradient(90deg,rgba(255,207,122,.05),transparent 70%)}
+.auto .sil{height:72px;display:flex;align-items:center}
+.auto .sil svg{width:100%;height:100%}
+.auto h3{font-size:clamp(1.25rem,1.8vw,1.7rem);line-height:1}
+.auto h3 small{display:block;font:500 13px/1.4 "Geologica";font-style:normal;text-transform:none;color:var(--gris);margin-top:6px;letter-spacing:0}
+.dato{font-size:14px;color:var(--gris)}
+.dato b{display:block;color:var(--hueso);font-size:16px;font-weight:500}
+.ver{justify-self:end;border:1px solid rgba(243,239,232,.3);background:transparent;border-radius:var(--r);padding:10px 18px;font-weight:600;font-size:14.5px;transition:background .2s,color .2s,border-color .2s}
+.ver:hover{background:var(--hueso);color:var(--asfalto);border-color:var(--hueso)}
+.nota{margin-top:18px;font-size:13.5px;color:#7d776f}
+
+/* simulador + semáforo de financiación */
+#financiar{padding:clamp(80px,12vh,130px) 0;background:linear-gradient(var(--asfalto),#171615)}
+.fgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(20px,3vw,40px);margin-top:40px}
+.tarj{background:var(--asfalto2);border:1px solid var(--linea);border-radius:24px;padding:clamp(20px,2.6vw,34px)}
+.tarj h3{font-size:1.6rem}
+.sel{margin-top:18px;display:grid;gap:6px;font-size:14px;color:var(--gris)}
+.sel select{font:inherit;color:var(--hueso);background:var(--asfalto);border:1px solid var(--linea);border-radius:14px;padding:13px 14px;appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--hueso) 50%),linear-gradient(135deg,var(--hueso) 50%,transparent 50%);background-position:calc(100% - 20px) 52%,calc(100% - 15px) 52%;background-size:5px 5px;background-repeat:no-repeat}
+.rango{margin-top:20px}
+.rango label{display:flex;justify-content:space-between;font-size:14px;color:var(--gris)}
+.rango label b{color:var(--hueso);font-weight:600}
+.rango input{width:100%;accent-color:var(--rojo);margin-top:10px}
+.cuota{margin-top:26px;display:flex;justify-content:space-between;align-items:flex-end;gap:14px;border-top:1px solid var(--linea);padding-top:20px}
+.cuota small{color:var(--gris);font-size:14px;display:block}
+.cuota strong{font:800 italic clamp(2.4rem,4vw,3.4rem)/1 "Kanit";color:var(--hueso)}
+.promo{display:inline-block;margin-top:14px;font-size:13.5px;color:var(--asfalto);background:var(--ambar);border-radius:var(--r);padding:6px 12px;font-weight:600}
+.req{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:10px}
+.req label{display:flex;align-items:center;gap:14px;padding:12px 14px;border:1px solid var(--linea);border-radius:14px;cursor:pointer;transition:border-color .2s,background .2s}
+.req label:hover{border-color:rgba(243,239,232,.3)}
+.req input{appearance:none;width:44px;height:26px;border-radius:var(--r);background:#2c2c2c;position:relative;flex:none;transition:background .25s}
+.req input::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#8b857d;transition:transform .25s cubic-bezier(.3,1.4,.5,1),background .25s}
+.req input:checked{background:var(--verde)}
+.req input:checked::after{transform:translateX(18px);background:#fff}
+.req input.inv:checked{background:var(--rojo)}
+.req span{font-size:15px}
+.req small{display:block;color:var(--gris);font-size:13px}
+.veredicto{display:flex;gap:18px;align-items:center;margin-top:22px;padding:16px;border-radius:18px;background:var(--asfalto)}
+.mini{display:grid;gap:6px;padding:8px;background:#0e0e0e;border-radius:14px;flex:none}
+.mini i{width:22px;height:22px;border-radius:50%;opacity:.15;transition:opacity .3s,box-shadow .3s}
+.mini i:nth-child(1){background:var(--rojo)}.mini i:nth-child(2){background:var(--ambar)}.mini i:nth-child(3){background:var(--verde)}
+.mini i.on{opacity:1}
+.mini i:nth-child(1).on{box-shadow:0 0 14px var(--rojo)}.mini i:nth-child(2).on{box-shadow:0 0 14px var(--ambar)}.mini i:nth-child(3).on{box-shadow:0 0 14px var(--verde)}
+.veredicto b{display:block;font:700 italic 1.25rem/1.1 "Kanit";text-transform:uppercase}
+.veredicto p{color:var(--gris);font-size:14.5px;margin-top:4px}
+.enviar{margin-top:20px;width:100%;justify-content:center}
+
+/* locales */
+#locales{padding:clamp(70px,10vh,110px) 0 50px}
+.lgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--linea);border:1px solid var(--linea);border-radius:22px;overflow:hidden;margin-top:36px}
+.lgrid div{background:var(--asfalto);padding:24px}
+.lgrid b{display:block;font:700 italic 1.3rem/1.1 "Kanit";text-transform:uppercase}
+.lgrid span{color:var(--gris);font-size:15px;display:block;margin-top:8px}
+.lgrid a{display:inline-block;margin-top:12px;color:var(--ambar);font-weight:600;text-decoration:none}
+footer{padding:30px clamp(16px,4vw,64px);color:#7d776f;font-size:13.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid var(--linea)}
+
+@media (max-width:900px){
+  .navr a:not(.wa){display:none}
+  #portada{grid-template-columns:1fr;padding-top:96px;text-align:left}
+  .sem{order:-1;flex-direction:row;gap:18px;justify-self:start}
+  .caja{width:96px;padding:12px 0;gap:10px;border-radius:22px}
+  .poste{display:none}
+  .semTxt{margin-top:0;text-align:left;font-size:17px;max-width:180px}
+  .panelLed{display:none}
+  .auto{grid-template-columns:84px 1fr auto;grid-template-areas:"s n v" "s d v";gap:4px 12px}
+  .auto .sil{grid-area:s;height:56px}.auto h3{grid-area:n}.auto .dd{grid-area:d;display:flex;gap:14px}.auto .ver{grid-area:v;padding:9px 14px}
+  .auto .dd{flex-wrap:wrap;gap:2px 12px}.auto .dato{font-size:13px;white-space:nowrap}.auto .dato .lb{display:none}.auto .dato b{font-size:14px;display:inline;font-weight:500}.auto .dato:last-child b{color:var(--ambar)}.auto h3{font-size:1.15rem}
+  .anio{margin-left:0;width:100%}
+  .fgrid,.lgrid{grid-template-columns:1fr}
+}
+@media (min-width:901px){.auto .dd{display:contents}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}}
+.shot .ptxt h1 span>i{animation:none;transform:none}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="marca" href="#portada" aria-label="Semáforo Automóviles, inicio">
+    <svg viewBox="0 0 22 46" aria-hidden="true"><rect x="1" y="1" width="20" height="44" rx="6" fill="#1d1d1d" stroke="#3a3a3a"/><circle cx="11" cy="10" r="5" fill="#e3241b"/><circle cx="11" cy="23" r="5" fill="#f4b23a"/><circle cx="11" cy="36" r="5" fill="#22c06a"/></svg>
+    <div><b>Semáforo</b><span>AUTOMÓVILES</span></div>
+  </a>
+  <nav class="navr" aria-label="Secciones"><a href="#stock">Stock</a><a href="#financiar">Financiación</a><a href="#locales">Locales</a><a class="wa" href="https://wa.me/59899825068" target="_blank" rel="noopener">WhatsApp</a></nav>
+</header>
+
+<main>
+<section id="portada">
+  <div class="panelLed" aria-hidden="true"></div>
+  <div class="ptxt">
+    <small><i></i>Rivera, dos locales sobre Manuel Oribe</small>
+    <h1><span><i>Confianza que</i></span><span><i><em>te lleva lejos</em></i></span></h1>
+    <p>Autos y pickups usados, revisados y listos para salir. Llevate tu auto hoy y pagá la primera cuota recién a los 90 días.</p>
+    <div class="ctas"><a class="btn btn--rojo" href="#stock">Ver el stock</a><a class="btn btn--linea" href="#financiar">¿Estoy para financiar?</a></div>
+    <div class="locales"><div><b>Manuel Oribe 1551</b>Rivera</div><div><b>Manuel Oribe 885</b>Rivera</div></div>
+  </div>
+  <div class="sem" aria-hidden="true">
+    <div class="caja" id="semHero"><div class="luz r"><i></i></div><div class="luz a"><i></i></div><div class="luz v"><i></i></div></div>
+    <div class="poste"></div>
+    <div class="semTxt" id="semHeroTxt"></div>
+  </div>
+</section>
+
+<section id="stock" class="wrap">
+  <div class="cab"><h2>Stock</h2><p>Filtrá por tipo, caja y año, y tocá un auto para ver cuánto te queda la cuota.</p></div>
+  <div class="filtros">
+    <div class="seg" id="tipos" role="group" aria-label="Filtrar por tipo"></div>
+    <div class="seg" id="cajas" role="group" aria-label="Filtrar por caja"></div>
+    <div class="anio"><span>Desde</span><input type="range" id="desde" min="2004" max="2026" value="2004" aria-label="Año mínimo"><b id="desdeV">2004</b></div>
+  </div>
+  <p class="cuenta" id="cuenta"></p>
+  <ul class="tablero" id="tablero"></ul>
+  <p class="nota">Modelos, años y kilómetros tomados de las publicaciones de Semáforo. Las fotos reales y los precios los cargan ustedes desde un panel; los precios de esta vista previa son de ejemplo.</p>
+</section>
+
+<section id="financiar">
+  <div class="wrap">
+    <div class="cab"><h2>Financiación</h2><p>Simulá la cuota y mirá el semáforo: en un minuto sabés si estás para financiar y nos llega la consulta con todo.</p></div>
+    <div class="fgrid">
+      <div class="tarj">
+        <h3>Simulá tu cuota</h3>
+        <label class="sel">Auto<select id="selAuto"></select></label>
+        <div class="rango"><label for="ent">Entrega <b id="entV"></b></label><input type="range" id="ent" min="0" max="70" step="5" value="30"></div>
+        <div class="rango"><label for="pla">Plazo <b id="plaV"></b></label><input type="range" id="pla" min="12" max="60" step="12" value="36"></div>
+        <div class="cuota"><div><small>Cuota estimada</small><small id="finan"></small></div><strong id="cuotaV"></strong></div>
+        <span class="promo">Primera cuota a los 90 días</span>
+      </div>
+      <div class="tarj">
+        <h3>¿Estoy para financiar?</h3>
+        <ul class="req" id="req">
+          <li><label><input type="checkbox" data-k="ant"><span>Más de 6 meses en mi trabajo<small>Antigüedad laboral</small></span></label></li>
+          <li><label><input type="checkbox" data-k="rec"><span>Tengo mis últimos 3 recibos de sueldo<small>Y la cédula al día</small></span></label></li>
+          <li><label><input type="checkbox" data-k="ing"><span>Cobro más de $ 25.000 líquidos<small>Ingresos mensuales</small></span></label></li>
+          <li><label><input type="checkbox" class="inv" data-k="clr"><span>Estoy en el Clearing<small>Marcalo solo si es tu caso</small></span></label></li>
+        </ul>
+        <div class="veredicto"><div class="mini" id="mini"><i></i><i></i><i></i></div><div><b id="verT"></b><p id="verP"></p></div></div>
+        <a class="btn btn--rojo enviar" id="enviar" href="https://wa.me/59899825068" target="_blank" rel="noopener">Quiero financiar este auto</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="locales" class="wrap">
+  <div class="cab"><h2>Vení a verlo</h2><p>Dos locales en Rivera. Escribinos antes y te tenemos el auto listo para la prueba.</p></div>
+  <div class="lgrid">
+    <div><b>Manuel Oribe 1551</b><span>Rivera</span><a href="https://maps.google.com/?q=Manuel+Oribe+1551+Rivera+Uruguay" target="_blank" rel="noopener">Cómo llegar</a></div>
+    <div><b>Manuel Oribe 885</b><span>Rivera</span><a href="https://maps.google.com/?q=Manuel+Oribe+885+Rivera+Uruguay" target="_blank" rel="noopener">Cómo llegar</a></div>
+    <div><b>WhatsApp</b><span>099 825 068 y 099 896 177</span><a href="https://wa.me/59899825068" target="_blank" rel="noopener">Escribinos</a></div>
+  </div>
+</section>
+</main>
+<footer><span>Semáforo Automóviles, Rivera.</span><span>Vista previa hecha por NIMBRA</span></footer>
+
+<script>
+(function(){
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+/* stock real (publicaciones de @semaforo_automoviles); precios de ejemplo en USD */
+const STOCK=[
+ ['RAM Rampage Rebel',2026,15000,'Automática','pickup',54900],
+ ['Fiat Strada Freedom',2026,4000,'Manual','pickup',23900],
+ ['VW Saveiro G8',2025,20000,'Manual','pickup',24900],
+ ['VW Nivus Highline',2025,0,'Automática','suv',29900],
+ ['Chevrolet Montana LT',2025,40000,'Manual','pickup',22900],
+ ['Hyundai HB20S Premium',2025,8200,'Manual','sedan',19900],
+ ['Renault Oroch Outsider',2023,70000,'Automática','pickup',27900],
+ ['Chevrolet Prisma Joy',2023,60000,'Manual','sedan',16500],
+ ['VW Nivus Highline',2022,70000,'Automática','suv',23900],
+ ['Fiat Strada Volcano',2022,40000,'Manual','pickup',21900],
+ ['VW Gol G8 Trendline',2022,95000,'Manual','hatch',14900],
+ ['Renault Oroch',2022,null,'Manual','pickup',20900],
+ ['VW Gol Sedán Trendline',2021,74000,'Manual','sedan',14500],
+ ['Chevrolet Onix LTZ',2019,80000,'Manual','hatch',15500],
+ ['Fiat Strada Trekking',2019,80000,'Manual','pickup',16900],
+ ['Chevrolet Onix Activ',2018,60000,'Manual','hatch',14500],
+ ['VW Saveiro Trendline',2018,null,'Manual','pickup',13900],
+ ['Peugeot 2008',2017,120000,'Manual','suv',15900],
+ ['Fiat Grand Siena Extra Full',2016,35000,'Automática','sedan',12900],
+ ['Chevrolet Onix LT',2016,89000,'Manual','hatch',11500],
+ ['VW Gol MSI',2015,null,'Manual','hatch',10500],
+ ['Nissan Versa',2015,120000,'Manual','sedan',10900],
+ ['VW Saveiro',2013,120000,'Manual','pickup',11900],
+ ['Hyundai Accent',2013,null,'Manual','sedan',9900],
+ ['Toyota Hilux SR 4x2',2004,412000,'Manual','pickup',14900],
+].map((r,i)=>({id:i,n:r[0],a:r[1],km:r[2],caja:r[3],t:r[4],p:r[5]}));
+const TIPOS=[['todo','Todo'],['pickup','Pickups'],['hatch','Hatch'],['sedan','Sedán'],['suv','SUV']];
+const CAJAS=[['todo','Todas'],['Manual','Manual'],['Automática','Automática']];
+const st={t:'todo',c:'todo',desde:2004,auto:9};
+const usd=n=>'USD '+n.toLocaleString('es-UY');
+const km=n=>n==null?'Consultar':n===0?'0 km':n.toLocaleString('es-UY')+' km';
+/* siluetas por tipo */
+const SIL={
+ pickup:'<path d="M8 50h12a10 10 0 0 1 20 0h76a10 10 0 0 1 20 0h12v-14l-8-4H96V18H58L44 32H16l-8 6z"/><path d="M60 22h32v10H52z" class="vid"/>',
+ hatch:'<path d="M10 50h14a10 10 0 0 1 20 0h70a10 10 0 0 1 20 0h12V36l-14-6-22-14H60L42 30l-26 6-6 6z"/><path d="M64 20h30l16 10H50z" class="vid"/>',
+ sedan:'<path d="M6 50h16a10 10 0 0 1 20 0h76a10 10 0 0 1 20 0h12V38l-16-6-24-14H62L44 30l-30 5-8 5z"/><path d="M66 22h30l18 10H52z" class="vid"/>',
+ suv:'<path d="M8 50h14a10 10 0 0 1 20 0h72a10 10 0 0 1 20 0h14V32l-10-4-20-14H54L40 28l-24 4-8 6z"/><path d="M58 18h36l16 10H46z" class="vid"/>'};
+const sil=(t,on)=>`<svg viewBox="0 0 160 62" aria-hidden="true"><g fill="${on?'#3a3633':'#2e2b29'}" stroke="rgba(243,239,232,.55)" stroke-width="1.2" stroke-linejoin="round">${SIL[t]}</g><g fill="#0e0e0e" stroke="rgba(243,239,232,.55)" stroke-width="1.2"><circle cx="30" cy="50" r="8.5"/><circle cx="126" cy="50" r="8.5"/></g><line x1="4" y1="59" x2="156" y2="59" stroke="rgba(255,207,122,.35)"/></svg>`;
+function seg(el,items,key){el.innerHTML=items.map(([v,l])=>`<button type="button" data-v="${v}" aria-pressed="${st[key]===v}">${l}</button>`).join('');
+ el.querySelectorAll('button').forEach(b=>b.onclick=()=>{st[key]=b.dataset.v;el.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));tablero()})}
+seg($('#tipos'),TIPOS,'t');seg($('#cajas'),CAJAS,'c');
+$('#desde').oninput=e=>{st.desde=+e.target.value;$('#desdeV').textContent=st.desde;tablero()};
+function tablero(){
+ const L=STOCK.filter(a=>(st.t==='todo'||a.t===st.t)&&(st.c==='todo'||a.caja===st.c)&&a.a>=st.desde);
+ $('#cuenta').textContent=L.length+(L.length===1?' auto':' autos')+' en los dos locales';
+ $('#tablero').innerHTML=L.map(a=>`<li class="auto"><div class="sil">${sil(a.t)}</div><h3>${a.n}<small>${{pickup:'Pickup',hatch:'Hatch',sedan:'Sedán',suv:'SUV'}[a.t]}, ${a.caja.toLowerCase()}</small></h3><div class="dd"><div class="dato"><span class="lb">Año</span><b>${a.a}</b></div><div class="dato"><span class="lb">Kilómetros</span><b>${km(a.km)}</b></div><div class="dato"><span class="lb">Precio</span><b>${usd(a.p)}</b></div></div><button type="button" class="ver" data-id="${a.id}">Ver cuota</button></li>`).join('')||'<li class="auto"><p class="dato">No hay autos con ese filtro. Probá con otro año.</p></li>';
+ $$('.ver').forEach(b=>b.onclick=()=>{st.auto=+b.dataset.id;$('#selAuto').value=st.auto;calc();document.getElementById('financiar').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})});
+}
+tablero();
+/* simulador (tasa y condiciones de ejemplo) */
+$('#selAuto').innerHTML=STOCK.map(a=>`<option value="${a.id}">${a.n} ${a.a}, ${usd(a.p)}</option>`).join('');
+function calc(){
+ const a=STOCK[st.auto],e=+$('#ent').value,n=+$('#pla').value,P=a.p*(1-e/100),i=.16/12,c=P*i/(1-Math.pow(1+i,-n));
+ $('#entV').textContent=e+' %, '+usd(Math.round(a.p*e/100));$('#plaV').textContent=n+' cuotas';
+ $('#cuotaV').textContent=usd(Math.round(c));$('#finan').textContent='Financiás '+usd(Math.round(P))+', tasa de ejemplo';
+ wa();
+}
+$('#selAuto').onchange=e=>{st.auto=+e.target.value;calc()};$('#ent').oninput=calc;$('#pla').oninput=calc;
+/* semáforo de requisitos */
+function luz(){
+ const v=k=>$(`#req input[data-k=${k}]`).checked;const ok=['ant','rec','ing'].filter(v).length;const clr=v('clr');
+ let s=clr?0:ok===3?2:1;
+ $$('#mini i').forEach((x,i)=>x.classList.toggle('on',i===s));
+ const T=[['Por ahora, en rojo','Con Clearing la financiación por banco se complica, pero escribinos igual: vemos opciones con entrega mayor.'],['Luz amarilla','Te falta algún requisito. Escribinos y vemos cómo lo resolvemos.'],['Luz verde','Cumplís los requisitos: mandanos la consulta y arrancamos el trámite hoy mismo.']][s];
+ $('#verT').textContent=T[0];$('#verT').style.color=['var(--rojo2)','var(--ambar)','var(--verde)'][s];$('#verP').textContent=T[1];st.luz=s;wa();
+}
+$$('#req input').forEach(x=>x.onchange=luz);
+function wa(){
+ const a=STOCK[st.auto];const e=+$('#ent').value,n=+$('#pla').value;
+ const r=k=>$(`#req input[data-k=${k}]`)?.checked;
+ const L=['QUIERO FINANCIAR','Auto: '+a.n+' '+a.a,'Entrega: '+e+' %, plazo: '+n+' cuotas','Cuota estimada: '+$('#cuotaV').textContent,
+  'Antigüedad +6 meses: '+(r('ant')?'sí':'no'),'3 recibos y cédula: '+(r('rec')?'sí':'no'),'Ingresos +$25.000: '+(r('ing')?'sí':'no'),'Clearing: '+(r('clr')?'sí':'no')];
+ $('#enviar').href='https://wa.me/59899825068?text='+encodeURIComponent(L.join('\n'));
+}
+$('#selAuto').value=st.auto;calc();luz();
+/* el semáforo de la portada: rojo, amarillo, verde y queda en verde */
+const luces=$$('#semHero .luz'),txt=$('#semHeroTxt');
+const fin=()=>{luces.forEach((l,i)=>l.classList.toggle('on',i===2));txt.textContent='Luz verde para tu próximo auto'};
+if(document.documentElement.classList.contains('shot')||matchMedia('(prefers-reduced-motion: reduce)').matches)fin();
+else{[0,1,2].forEach(i=>setTimeout(()=>{luces.forEach((l,k)=>l.classList.toggle('on',k===i))},300+i*650));setTimeout(fin,300+2*650+60)}
+})();
+</script>
+</body>
+</html>
