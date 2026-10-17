@@ -50,10 +50,10 @@ p{margin:0}a{color:inherit}button{font:inherit;color:inherit;cursor:pointer}img{
 #gl{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity 1.4s ease}
 .gl-ok #gl{opacity:1}
 .vela{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(5,5,8,.86) 0%,rgba(5,5,8,.5) 36%,rgba(5,5,8,0) 60%),linear-gradient(0deg,rgba(5,5,8,.95),rgba(5,5,8,0) 20%),linear-gradient(180deg,rgba(5,5,8,.7),rgba(5,5,8,0) 18%)}
-.fases{position:absolute;z-index:3;left:var(--g);top:53%;width:min(700px,50vw);height:0}
+.fases{position:absolute;z-index:3;left:var(--g);top:53%;width:min(840px,55vw);height:0}
 .fase{position:absolute;left:0;top:0;width:100%;transform:translateY(calc(-50% + 30px));opacity:0;filter:blur(8px);transition:opacity .5s ease,transform .8s var(--e),filter .5s ease;pointer-events:none}
 .fase.on{opacity:1;transform:translateY(-50%);filter:none;pointer-events:auto}
-.fase h1,.fase h2{font-size:clamp(2.9rem,5.5vw,6.1rem);margin-top:18px;font-weight:900}
+.fase h1,.fase h2{font-size:clamp(2.9rem,5vw,6rem);margin-top:18px;font-weight:900;white-space:nowrap}
 .fase h1 span,.fase h2 span{display:block}
 .fase .baj{margin-top:22px;max-width:470px;color:#d4cec5;font-size:clamp(16px,1.25vw,18.5px)}
 .fase .ctas{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
@@ -225,7 +225,7 @@ footer{padding:28px var(--g);color:var(--gris2);font-size:13.5px;display:flex;ju
   .fases{top:auto;bottom:max(6svh,34px);left:var(--g);right:var(--g);width:auto}
   .fase{top:auto;bottom:0;transform:translateY(30px)}
   .fase.on{transform:none}
-  .fase h1,.fase h2{font-size:clamp(2.5rem,11.5vw,3.6rem);margin-top:14px}
+  .fase h1,.fase h2{font-size:clamp(2.2rem,10.4vw,3.6rem);margin-top:14px;white-space:normal}
   .fase .baj{margin-top:14px;font-size:15.5px}
   .fase .ctas{margin-top:20px}.fase .ctas .btn{padding:13px 20px}
   .hint{margin-top:20px}
@@ -285,7 +285,7 @@ footer{padding:28px var(--g);color:var(--gris2);font-size:13.5px;display:flex;ju
       </div>
       <div class="fase" aria-hidden="true">
         <p class="kick"><i class="dot v"></i>Luz verde</p>
-        <h2><span>Llevátelo hoy</span><span class="verdeGlow">1.ª cuota a los 90 días</span></h2>
+        <h2><span>Llevátelo hoy</span><span class="verdeGlow">1.ª cuota a</span><span class="verdeGlow">los 90 días</span></h2>
         <div class="ctas"><a class="btn btn--verde" href="#llegaron">Ver el stock</a><a class="btn btn--linea" href="#financiar">¿Estoy para financiar?</a></div>
       </div>
     </div>
