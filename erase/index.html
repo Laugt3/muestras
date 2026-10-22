@@ -4,97 +4,262 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Érase una vez · Salón de fiestas en Carrasco y Malvín</title>
-<meta name="description" content="Recorré las dos casas de Érase una vez antes de venir: salón, juegos, jardín y todo lo que hay para tu fiesta en Carrasco y Malvín.">
-<meta name="theme-color" content="#10292A">
+<meta name="description" content="Dos casas para festejar en Carrasco y Malvín: pelotero, palestra, sala gamer, inflables, jardín y salón. Recorrelas antes de venir y consultá tu fecha.">
+<meta name="theme-color" content="#0E2627">
+<meta property="og:title" content="Érase una vez · Salón de fiestas en Carrasco y Malvín">
+<meta property="og:description" content="Recorré las dos casas antes de venir y consultá tu fecha.">
+<meta property="og:image" content="https://laugt3.github.io/muestras/erase/fotos/hero.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@500;600;700;800;900&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="video" href="videos/l-pelotero.mp4" type="video/mp4">
 <style>
 :root{
-  --noche:#10292A;--noche2:#163536;--noche3:#1E4446;--papel:#FFF6EE;--papel2:#F3E7DA;
+  --noche:#0E2627;--noche2:#143334;--noche3:#1C4244;--papel:#FFF6EE;--papel2:#F3E7DA;
   --coral:#E0573F;--coral2:#EA6B54;--menta:#8CCBB6;--menta2:#BFE3D6;--mostaza:#EDB64B;--rosa:#F4A9B8;
   --suave:#B9CBC6;--apagado:#86A19C;--linea:rgba(255,246,238,.12);--linea2:rgba(255,246,238,.24);
-  --ease:cubic-bezier(.2,.8,.2,1);--rebote:cubic-bezier(.34,1.4,.5,1);
+  --ease:cubic-bezier(.16,1,.3,1);--rebote:cubic-bezier(.34,1.4,.5,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%}
 body{background:var(--noche);color:var(--papel);font:400 17px/1.55 "Onest",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-img{display:block;max-width:100%}
+img,video{display:block;max-width:100%}
 a{color:inherit}
 button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
 :focus-visible{outline:2px solid var(--mostaza);outline-offset:3px;border-radius:6px}
-.wrap{width:min(1240px,100% - 48px);margin-inline:auto}
-h1,h2,h3,.d{font-family:"Gabarito",sans-serif;letter-spacing:-.02em;line-height:.98}
+.wrap{width:min(1280px,100% - 48px);margin-inline:auto}
+h1,h2,h3,.d{font-family:"Gabarito",sans-serif;letter-spacing:-.025em;line-height:.96}
+.oculto{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 
-/* logo hecho con letra, con los colores del cartel */
 .logo{display:inline-flex;align-items:center;gap:7px;text-decoration:none;font-family:"Gabarito";font-weight:700;font-size:23px;letter-spacing:-.01em;white-space:nowrap}
 .logo .e{color:var(--menta)}.logo .v{color:var(--coral)}
 .logo .u{font-size:10px;font-weight:800;letter-spacing:.04em;background:var(--papel);color:var(--noche);border-radius:999px;padding:4px 7px 3px;line-height:1}
 
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 24px;border-radius:14px;font:600 16px "Onest";text-decoration:none;transition:transform .18s var(--ease),background .2s,border-color .2s,color .2s;border:1.5px solid transparent;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:56px;padding:0 26px;border-radius:14px;font:600 16px "Onest";text-decoration:none;transition:transform .2s var(--ease),background .2s,border-color .2s,color .2s;border:1.5px solid transparent;white-space:nowrap;background:transparent}
 .btn:active{transform:scale(.97)}
 .btn svg{width:20px;height:20px;flex:none}
-.btn.c{background:var(--coral);color:#fff}
+.btn.c{background:var(--coral);color:#fff;box-shadow:0 14px 34px -14px rgba(224,87,63,.7)}
 .btn.c:hover{background:var(--coral2)}
 .btn.l{border-color:var(--linea2);color:var(--papel)}
-.btn.l:hover{border-color:var(--papel)}
-.btn.p{background:var(--papel);color:var(--noche)}
-.btn.p:hover{background:#fff}
+.btn.l:hover{border-color:var(--papel);background:rgba(255,246,238,.06)}
 
-/* barra: a todo el ancho, con la guirnalda que se completa al bajar */
-.top{position:fixed;inset:0 0 auto;z-index:40;transition:background .35s,box-shadow .35s}
-.top.s{background:rgba(16,41,42,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+/* barra */
+.top{position:fixed;inset:0 0 auto;z-index:40;transition:background .4s,backdrop-filter .4s}
+.top.s{background:rgba(14,38,39,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 .top .wrap{height:74px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.top nav{display:flex;gap:28px;font-size:15px;color:var(--suave)}
+.top nav{display:flex;gap:30px;font-size:15px;color:var(--suave)}
 .top nav a{text-decoration:none;transition:color .2s}
 .top nav a:hover{color:var(--papel)}
 .top .btn{height:44px;padding:0 18px;font-size:15px}
-.hilo{position:absolute;left:0;right:0;bottom:-10px;height:14px;pointer-events:none;overflow:hidden}
-.hilo svg{width:100%;height:14px;display:block}
-.hilo .tapa{position:absolute;inset:0;background:transparent;transform-origin:right;transform:scaleX(var(--falta,1));transition:transform .1s linear}
+.progreso{position:absolute;left:0;bottom:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--coral),var(--mostaza),var(--menta),var(--rosa))}
 
-/* portada: dos puertas */
-.portada{position:relative;min-height:100svh;padding:130px 0 70px;display:grid;align-items:center;overflow:hidden;isolation:isolate}
-.luces{position:absolute;inset:0;z-index:-1;pointer-events:none}
-.luces i{position:absolute;width:var(--t);height:var(--t);border-radius:50%;background:radial-gradient(circle,rgba(255,214,150,.9),rgba(255,190,110,.25) 40%,transparent 70%);opacity:.5;animation:titila var(--d) ease-in-out infinite alternate}
-@keyframes titila{from{opacity:.18;transform:scale(.8)}to{opacity:.75;transform:scale(1.05)}}
-.guirnalda{position:absolute;top:58px;left:-2%;width:104%;height:120px;z-index:0;pointer-events:none}
+/* luces y guirnalda */
+.luces{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.luces i{position:absolute;width:var(--t);height:var(--t);border-radius:50%;background:radial-gradient(circle,rgba(255,214,150,.95),rgba(255,190,110,.25) 40%,transparent 70%);animation:titila var(--d) ease-in-out infinite alternate}
+@keyframes titila{from{opacity:.15;transform:scale(.8)}to{opacity:.8;transform:scale(1.05)}}
+.guirnalda{position:absolute;left:-2%;width:104%;pointer-events:none;z-index:1}
 .guirnalda g.f{transform-box:fill-box;transform-origin:50% 0;animation:mece 3.6s ease-in-out infinite alternate}
-@keyframes mece{from{transform:rotate(-5deg)}to{transform:rotate(5deg)}}
-.pg{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center;position:relative;z-index:1}
-.pt h1{font-size:clamp(42px,5vw,84px);font-weight:800}
-.pt h1 span{display:block}
-.pt h1 .co{color:var(--mostaza)}
-.pt p{font-size:clamp(17px,1.5vw,20px);color:var(--suave);margin:26px 0 0;max-width:30em}
-.pt .pista{display:flex;align-items:center;gap:12px;margin-top:34px;color:var(--papel);font-weight:500}
-.pt .pista:before{content:"";width:34px;height:2px;background:var(--mostaza)}
-.puertas{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@keyframes mece{from{transform:rotate(-6deg)}to{transform:rotate(6deg)}}
+
+/* 1. portada */
+.portada{position:relative;min-height:100dvh;padding:110px 0 56px;display:grid;align-items:center;overflow:hidden}
+.portada .guirnalda{top:66px;height:110px}
+.pg{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.pt h1{font-size:clamp(46px,5.6vw,90px);font-weight:800}
+.pt h1 .l{display:block;overflow:hidden;padding-bottom:.06em}
+.pt h1 .l>span{display:block;transform:translateY(105%);animation:sube 1.1s var(--ease) forwards}
+.pt h1 .l:nth-child(2)>span{animation-delay:.1s}.pt h1 .l:nth-child(3)>span{animation-delay:.2s}.pt h1 .l:nth-child(4)>span{animation-delay:.3s}
+@keyframes sube{to{transform:none}}
+.pt p{font-size:clamp(17px,1.45vw,20px);color:var(--suave);margin:26px 0 34px;max-width:27em;opacity:0;animation:entra 1s var(--ease) .55s forwards}
+.pt .acc{display:flex;gap:12px;flex-wrap:wrap;opacity:0;animation:entra 1s var(--ease) .7s forwards}
+@keyframes entra{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.ventanas{position:relative;height:min(76vh,720px)}
+.ven{position:absolute;overflow:hidden;background:var(--noche3);border-radius:999px 999px 26px 26px;box-shadow:0 50px 90px -40px rgba(0,0,0,.9),0 0 0 6px var(--noche2),0 0 0 7px var(--linea2);opacity:0;animation:entra 1.3s var(--ease) forwards}
+.ven video,.ven img{width:100%;height:100%;object-fit:cover}
+.ven.a{right:12%;top:0;width:58%;height:100%;animation-delay:.25s}
+.ven.b{left:0;bottom:6%;width:33%;height:54%;animation-delay:.5s}
+.ven.c{right:0;bottom:-2%;width:26%;height:42%;animation-delay:.65s}
+.ven.b,.ven.c{transform:translateY(var(--py,0px))}
+.sello{position:absolute;left:3%;top:6%;z-index:3;width:126px;height:126px;border-radius:50%;background:var(--mostaza);color:var(--noche);display:grid;place-items:center;text-align:center;font-family:"Gabarito";font-weight:800;line-height:1;animation:gira 22s linear infinite;box-shadow:0 18px 40px -16px rgba(0,0,0,.7)}
+.sello b{display:block;font-size:34px}
+.sello span{display:block;font-size:12px;font-weight:700;margin-top:4px;line-height:1.2}
+.sello .estr{font-size:13px;letter-spacing:.1em}
+@keyframes gira{to{transform:rotate(360deg)}}
+
+/* 2. texto que se ilumina */
+.manif{padding:150px 0 140px;position:relative}
+.manif p.grande{font-family:"Gabarito";font-weight:700;font-size:clamp(30px,4.4vw,68px);line-height:1.06;letter-spacing:-.02em;max-width:24ch}
+.manif p.grande span{opacity:.16;transition:opacity .25s}
+.manif p.grande span.on{opacity:1}
+.manif .chicos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:80px}
+.mini{position:relative;aspect-ratio:4/5;border-radius:22px;overflow:hidden;background:var(--noche3)}
+.mini:nth-child(2){transform:translateY(46px)}
+.mini video{width:100%;height:100%;object-fit:cover}
+.mini b{position:absolute;left:18px;bottom:16px;font-family:"Gabarito";font-weight:800;font-size:24px;text-shadow:0 2px 18px rgba(0,0,0,.6)}
+.mini:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(8,22,22,.7));pointer-events:none}
+.mini b{z-index:1}
+
+/* 3. puertas */
+.casas{padding:120px 0 140px;position:relative}
+.casas h2{font-size:clamp(42px,5.6vw,88px);font-weight:800;max-width:13ch}
+.casas>.wrap>p{color:var(--suave);margin-top:20px;max-width:30em;font-size:18px}
+.puertas{display:grid;grid-template-columns:repeat(2,minmax(0,440px));justify-content:center;gap:clamp(30px,6vw,110px);margin-top:64px}
 .puerta{position:relative;text-align:left;display:block}
-.arco{position:relative;aspect-ratio:3/4.3;border-radius:999px 999px 18px 18px;overflow:hidden;background:#000;box-shadow:0 40px 80px -36px rgba(0,0,0,.85),0 0 0 6px var(--noche2),0 0 0 7px var(--linea2);perspective:900px}
-.arco img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.18);transition:transform 1.4s var(--ease),filter 1s;filter:brightness(.7) saturate(1.05)}
-.hoja{position:absolute;top:0;bottom:0;width:50%;transition:transform 1.1s var(--ease);transform-style:preserve-3d;backface-visibility:hidden}
+.arco{position:relative;aspect-ratio:4/5;border-radius:999px 999px 24px 24px;overflow:hidden;background:#071514;box-shadow:0 50px 90px -40px rgba(0,0,0,.9),0 0 0 7px var(--noche2),0 0 0 8px var(--linea2);perspective:1100px}
+.arco video,.arco img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.15);filter:brightness(.75);transition:transform 1.4s var(--ease),filter 1s}
+.hoja{position:absolute;top:0;bottom:0;width:50%;z-index:2;transition:transform 1.15s var(--ease);transform-style:preserve-3d;backface-visibility:hidden}
 .hoja.iz{left:0;transform-origin:left center;border-radius:999px 0 0 0/999px 0 0 0}
 .hoja.de{right:0;transform-origin:right center;border-radius:0 999px 0 0/0 999px 0 0}
-.hoja:before{content:"";position:absolute;inset:14px 14px 22px;border-radius:inherit;border:2px solid rgba(255,255,255,.22)}
-.hoja.iz:before{right:8px}.hoja.de:before{left:8px}
-.hoja:after{content:"";position:absolute;top:56%;width:12px;height:12px;border-radius:50%;background:var(--mostaza);box-shadow:0 2px 0 rgba(0,0,0,.25)}
-.hoja.iz:after{right:12px}.hoja.de:after{left:12px}
-.arco:after{content:"";position:absolute;left:50%;top:6%;bottom:0;width:3px;margin-left:-1.5px;background:linear-gradient(180deg,transparent,#FFE3A8 30%,#FFD27A 70%,transparent);box-shadow:0 0 18px 6px rgba(255,205,120,.55);animation:rendija 2.4s ease-in-out infinite alternate;z-index:1;pointer-events:none;transition:opacity .4s}
-@keyframes rendija{from{opacity:.45}to{opacity:1}}
-.puerta:hover .arco:after,.puerta.abre .arco:after{opacity:0}
+.hoja:before{content:"";position:absolute;inset:18px 18px 26px;border-radius:inherit;border:2px solid rgba(255,255,255,.22)}
+.hoja.iz:before{right:10px}.hoja.de:before{left:10px}
+.hoja:after{content:"";position:absolute;top:56%;width:14px;height:14px;border-radius:50%;background:var(--mostaza);box-shadow:0 2px 0 rgba(0,0,0,.25)}
+.hoja.iz:after{right:14px}.hoja.de:after{left:14px}
 .puerta[data-casa=carrasco] .hoja{background:linear-gradient(160deg,#E86A52,#C9462E)}
 .puerta[data-casa=malvin] .hoja{background:linear-gradient(160deg,#9BD3BF,#5EA58C)}
-.puerta:hover .hoja.iz,.puerta:focus-visible .hoja.iz{transform:rotateY(-24deg)}
-.puerta:hover .hoja.de,.puerta:focus-visible .hoja.de{transform:rotateY(24deg)}
-.puerta:hover .arco img{transform:scale(1.1);filter:brightness(.9)}
+.arco:after{content:"";position:absolute;left:50%;top:6%;bottom:0;width:3px;margin-left:-1.5px;z-index:3;background:linear-gradient(180deg,transparent,#FFE3A8 30%,#FFD27A 70%,transparent);box-shadow:0 0 22px 8px rgba(255,205,120,.55);animation:rendija 2.4s ease-in-out infinite alternate;pointer-events:none;transition:opacity .4s}
+@keyframes rendija{from{opacity:.45}to{opacity:1}}
+.puerta:hover .hoja.iz,.puerta:focus-visible .hoja.iz{transform:rotateY(-38deg)}
+.puerta:hover .hoja.de,.puerta:focus-visible .hoja.de{transform:rotateY(38deg)}
+.puerta:hover .arco video,.puerta:hover .arco img{transform:scale(1.06);filter:brightness(.95)}
+.puerta:hover .arco:after,.puerta.abre .arco:after{opacity:0}
 .puerta.abre .hoja.iz{transform:rotateY(-108deg)}
 .puerta.abre .hoja.de{transform:rotateY(108deg)}
-.puerta.abre .arco img{transform:scale(1);filter:brightness(1)}
-.cartel{margin-top:18px}
-.cartel b{display:block;font-family:"Gabarito";font-weight:800;font-size:clamp(24px,2.3vw,32px);letter-spacing:-.02em}
-.cartel span{display:block;color:var(--suave);font-size:15px;margin-top:2px}
-.cartel em{font-style:normal;color:var(--mostaza);font-weight:600}
-.puerta .entra{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);background:var(--papel);color:var(--noche);font-weight:600;font-size:14px;padding:9px 16px;border-radius:12px;white-space:nowrap;box-shadow:0 10px 24px -10px rgba(0,0,0,.6);transition:transform .3s var(--rebote)}
-.puerta:hover .entra{transform:translateX(-50%) translateY(-4px)}
+.puerta.abre .arco video,.puerta.abre .arco img{transform:scale(1);filter:brightness(1)}
+.puerta .entra{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:4;background:var(--papel);color:var(--noche);font-weight:600;font-size:15px;padding:11px 18px;border-radius:12px;white-space:nowrap;box-shadow:0 12px 28px -10px rgba(0,0,0,.6);transition:transform .35s var(--rebote)}
+.puerta:hover .entra{transform:translateX(-50%) translateY(-5px)}
+.cartel{margin-top:22px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
+.cartel b{display:block;font-family:"Gabarito";font-weight:800;font-size:clamp(28px,2.8vw,40px);letter-spacing:-.02em}
+.cartel span{display:block;color:var(--suave);font-size:15px;margin-top:3px}
+.cartel em{font-style:normal;color:var(--mostaza);font-weight:700;font-size:15px;text-align:right;white-space:nowrap}
+.cartel em small{display:block;color:var(--apagado);font-weight:400;font-size:13px}
+
+/* 4. paseo horizontal */
+.paseo{position:relative;height:var(--alto,400vh)}
+.paseo .pin{position:sticky;top:0;height:100dvh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.paseo .cabp{position:absolute;top:96px;left:0;right:0;z-index:2}
+.paseo .cabp .wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:20px}
+.paseo h2{font-size:clamp(34px,4vw,60px);font-weight:800}
+.paseo .casa{display:flex;gap:6px;background:var(--noche2);padding:5px;border-radius:14px}
+.paseo .casa span{padding:8px 14px;border-radius:10px;font-weight:600;font-size:14px;color:var(--apagado);transition:background .3s,color .3s}
+.paseo .casa span.on{background:var(--papel);color:var(--noche)}
+.pista{display:flex;align-items:center;gap:28px;padding:110px 0 0 max(24px,calc((100vw - 1280px)/2));will-change:transform}
+.esp{flex:none;position:relative;width:clamp(260px,26vw,360px)}
+.esp.ancho{width:clamp(320px,42vw,620px)}
+.esp .m{position:relative;aspect-ratio:9/14;border-radius:24px;overflow:hidden;background:var(--noche3);box-shadow:0 40px 70px -40px rgba(0,0,0,.9)}
+.esp.ancho .m{aspect-ratio:4/3}
+.esp:nth-child(odd) .m{transform:translateY(-22px)}
+.esp video,.esp img{width:100%;height:100%;object-fit:cover}
+.esp h3{font-size:28px;font-weight:800;margin-top:18px}
+.esp p{color:var(--suave);font-size:15px;margin-top:6px;max-width:26em}
+.esp.sep{width:clamp(240px,24vw,340px);align-self:center}
+.esp.sep h3{font-size:clamp(40px,4.4vw,64px)}
+.esp.sep p{font-size:17px}
+.esp.sep .btn{margin-top:22px}
+.esp.fin{width:clamp(280px,30vw,420px);align-self:center}
+
+/* 5. pared de videos */
+.pared{padding:150px 0 120px}
+.cabeza h2{font-size:clamp(42px,5.6vw,88px);font-weight:800;max-width:14ch}
+.cabeza p{color:var(--suave);margin-top:18px;max-width:30em;font-size:18px}
+.mosaico{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(150px,14vw,210px);gap:14px;margin-top:56px}
+.tile{position:relative;border-radius:20px;overflow:hidden;background:var(--noche3);text-align:left;grid-row:span 2;transform:translateY(var(--py,0px))}
+.tile.alta{grid-row:span 3}
+.tile.ancha{grid-column:span 2;grid-row:span 2}
+.tile video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.tile:hover video{transform:scale(1.05)}
+.tile:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(8,22,22,.8))}
+.tile .tt{position:absolute;left:16px;right:16px;bottom:14px;z-index:1;display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
+.tile b{font-family:"Gabarito";font-weight:800;font-size:clamp(18px,1.6vw,23px);letter-spacing:-.01em;line-height:1.05}
+.tile i{flex:none;width:42px;height:42px;border-radius:12px;background:var(--papel);color:var(--noche);display:grid;place-items:center;transition:transform .3s var(--rebote)}
+.tile:hover i{transform:scale(1.1)}
+.tile i svg{width:16px;height:16px;margin-left:2px}
+
+/* 6. fiestas apiladas */
+.fiestas{position:relative}
+.fiestas .intro{padding:60px 0 70px}
+.carta{position:sticky;top:0;height:100dvh;overflow:hidden;transform-origin:50% 0}
+.carta .fondo{position:absolute;inset:0}
+.carta video{width:100%;height:100%;object-fit:cover}
+.carta:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(9,24,24,.92) 0%,rgba(9,24,24,.62) 42%,rgba(9,24,24,.05) 75%)}
+.carta .sombra{position:absolute;inset:0;z-index:3;background:#081616;opacity:0;pointer-events:none}
+.carta .wrap{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center}
+.carta .tag{display:inline-flex;align-self:flex-start;padding:8px 14px;border-radius:12px;background:var(--c);color:var(--noche);font-weight:700;font-size:15px;transform:rotate(-2deg)}
+.carta h3{font-size:clamp(46px,6.4vw,104px);font-weight:800;max-width:11ch;margin-top:22px}
+.carta p{color:var(--papel2);font-size:clamp(17px,1.4vw,20px);max-width:28em;margin-top:22px}
+.carta ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:26px;max-width:36em}
+.carta li{padding:9px 14px;border-radius:12px;background:rgba(255,246,238,.1);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid var(--linea);font-size:15px}
+.carta .acc{display:flex;gap:10px;flex-wrap:wrap;margin-top:32px}
+
+/* 7. pasos */
+.pasos{padding:150px 0 120px;position:relative}
+.pasos h2{font-size:clamp(40px,5vw,76px);font-weight:800;max-width:14ch}
+.linea{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:80px}
+.linea svg.hilo{position:absolute;left:0;top:-36px;width:100%;height:60px;overflow:visible}
+.paso{position:relative}
+.paso .n{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-family:"Gabarito";font-weight:800;font-size:28px;color:var(--noche);background:var(--c)}
+.paso h3{font-size:clamp(24px,2.2vw,32px);font-weight:800;margin-top:26px}
+.paso p{color:var(--suave);margin-top:10px;max-width:22em}
+
+/* 8. consulta */
+.consulta{padding:20px 0 130px}
+.hoja2{position:relative;border-radius:32px;overflow:hidden;color:var(--noche);background:repeating-linear-gradient(90deg,#E4F2EC 0 46px,#D3EADF 46px 92px);padding:96px 64px 64px}
+.hoja2 .guirnalda{top:0;height:76px}
+.cg{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;position:relative}
+.cg>*,.dos>*{min-width:0}
+.cg h2{font-size:clamp(42px,5vw,80px);font-weight:800;max-width:10ch}
+.cg>div>p{color:#3E5A55;margin-top:18px;max-width:24em;font-size:18px}
+.datos{list-style:none;margin-top:30px;display:grid;gap:12px;font-size:16px}
+.datos a{text-decoration:none;font-weight:600}
+.datos a:hover{text-decoration:underline}
+.form{background:var(--papel);border-radius:22px;padding:30px;box-shadow:0 30px 60px -36px rgba(14,38,39,.55)}
+.q{padding:16px 0;border-bottom:1px solid #E7DCD0}
+.q:first-child{padding-top:0}
+.q>span{display:block;font-weight:600;margin-bottom:10px}
+.ch{display:flex;flex-wrap:wrap;gap:8px}
+.ch button{padding:10px 14px;border-radius:12px;border:1.5px solid #DCCFC1;font-size:15px;font-weight:500;transition:background .2s,border-color .2s,color .2s}
+.ch button:hover{border-color:var(--noche)}
+.ch button[aria-pressed=true]{background:var(--noche);border-color:var(--noche);color:var(--papel)}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.campo{display:block}
+.campo>span{display:block;font-weight:600;margin-bottom:8px}
+.campo input{width:100%;min-width:0;height:50px;border-radius:12px;border:1.5px solid #CDBFB0;background:#fff;padding:0 14px;font:500 16px "Onest";color:var(--noche)}
+.campo input::placeholder{color:#7C6F63}
+.campo input:focus{outline:none;border-color:var(--noche)}
+.paso2{display:flex;align-items:center;height:50px;border-radius:12px;border:1.5px solid #CDBFB0;background:#fff;overflow:hidden}
+.paso2 button{width:50px;height:100%;font-size:22px;font-weight:600;color:var(--noche)}
+.paso2 button:hover{background:#F3EBE2}
+.paso2 output{flex:1;text-align:center;font-weight:600}
+.frase{margin:22px 0 18px;padding:16px 18px;border-radius:14px;background:#F6EEE4;color:#2F4643;font-size:16px;line-height:1.5}
+.form .acc{display:flex;gap:10px;flex-wrap:wrap}
+.form .btn{flex:1}
+.form .btn.l{border-color:#CDBFB0;color:var(--noche)}
+.form .btn.l:hover{border-color:var(--noche);background:transparent}
+
+/* 9. pie */
+footer{padding:90px 0 120px;position:relative;overflow:hidden}
+.marca{font-family:"Gabarito";font-weight:800;font-size:clamp(64px,13vw,230px);letter-spacing:-.04em;line-height:.85;white-space:nowrap}
+.marca .e{color:var(--menta)}.marca .v{color:var(--coral)}
+.marca .u{display:inline-block;font-size:.18em;vertical-align:.9em;background:var(--papel);color:var(--noche);border-radius:999px;padding:.3em .6em .25em;letter-spacing:.04em;margin:0 .15em}
+.mapas{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:70px}
+.mapa2 iframe{width:100%;height:260px;border:0;border-radius:20px;filter:grayscale(.3) contrast(1.05)}
+.mapa2 h4{font-family:"Gabarito";font-weight:800;font-size:26px;margin-top:16px}
+.mapa2 p{color:var(--suave);font-size:15px}
+.mapa2 a{color:var(--papel);font-weight:600}
+.firma{margin-top:56px;color:var(--apagado);font-size:13px}
+
+.fija{position:fixed;left:12px;right:12px;bottom:12px;z-index:30;display:none;transition:transform .45s var(--ease),opacity .3s}
+.fija .btn{width:100%;height:56px}
+.fija.oculta{transform:translateY(130%);opacity:0}
+
+.rv{opacity:0;transform:translateY(30px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+
+/* video a pantalla completa con sonido */
+.cine{border:0;padding:0;background:transparent;margin:auto;max-height:96vh;overflow:visible}
+.cine::backdrop{background:rgba(5,15,14,.9);backdrop-filter:blur(8px)}
+.cine video{width:min(420px,92vw);max-height:86vh;aspect-ratio:9/16;object-fit:cover;border-radius:26px;background:#000;box-shadow:0 40px 80px -30px rgba(0,0,0,.9)}
+.cine.hz video{width:min(1000px,94vw);aspect-ratio:16/9}
+.cine .x{position:fixed;top:16px;right:16px;width:50px;height:50px;border-radius:14px;background:var(--papel);color:var(--noche);font-size:28px;line-height:1}
+.cine p{text-align:center;margin-top:14px;font-weight:600}
 
 /* recorrido a pantalla completa */
 .tour{position:fixed;inset:0;z-index:80;background:#071514;display:none;overflow:hidden;touch-action:none}
@@ -148,138 +313,66 @@ h1,h2,h3,.d{font-family:"Gabarito",sans-serif;letter-spacing:-.02em;line-height:
 .ayuda{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;background:rgba(7,21,20,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:12px 18px;border-radius:14px;font-size:15px;pointer-events:none;transition:opacity .6s}
 .ayuda.fuera{opacity:0}
 .final{position:absolute;inset:0;z-index:4;display:none;place-items:center;background:rgba(7,21,20,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);text-align:center;padding:24px}
-.final.on{display:grid;animation:aparece .5s var(--ease)}
-@keyframes aparece{from{opacity:0}}
+.final.on{display:grid;animation:aparece2 .5s var(--ease)}
+@keyframes aparece2{from{opacity:0}}
 .final h3{font-size:clamp(36px,5vw,64px);font-weight:800;max-width:14ch;margin:0 auto}
 .final p{color:var(--suave);margin:14px auto 26px;max-width:28em}
 .final .acc{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 
-/* qué festejás */
-.fiestas{padding:140px 0 120px;position:relative}
-.cab{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap}
-.cab h2{font-size:clamp(40px,5.4vw,80px);font-weight:800;max-width:12ch}
-.cab p{color:var(--suave);max-width:26em}
-.stickers{display:flex;flex-wrap:wrap;gap:10px;margin:44px 0 54px}
-.stickers button{padding:14px 20px;border-radius:14px;font-family:"Gabarito";font-weight:700;font-size:19px;letter-spacing:-.01em;background:var(--noche2);border:1.5px solid var(--linea2);transition:transform .3s var(--rebote),background .2s,color .2s,border-color .2s}
-.stickers button:hover{transform:rotate(-2deg) translateY(-2px)}
-.stickers button[aria-selected=true]{background:var(--c);border-color:var(--c);color:var(--noche);transform:rotate(-2deg)}
-.fg{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.mazo{position:relative;aspect-ratio:1/1;max-width:560px;width:100%;justify-self:center}
-.mazo figure{position:absolute;width:56%;aspect-ratio:3/4;border-radius:16px;overflow:hidden;background:var(--noche3);box-shadow:0 30px 60px -24px rgba(0,0,0,.8);border:7px solid var(--papel);transition:transform .8s var(--rebote),opacity .4s}
-.mazo figure img{width:100%;height:100%;object-fit:cover}
-.mazo figure:nth-child(1){left:2%;top:12%;transform:rotate(-9deg)}
-.mazo figure:nth-child(2){left:22%;top:2%;transform:rotate(3deg);z-index:2}
-.mazo figure:nth-child(3){left:42%;top:16%;transform:rotate(11deg);z-index:1}
-.mazo.baraja figure{transform:rotate(0) translateY(30px) scale(.9);opacity:0}
-.ftx h3{font-size:clamp(34px,3.8vw,56px);font-weight:800}
-.ftx>p{color:var(--suave);margin:18px 0 24px;font-size:18px;max-width:30em}
-.trae{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
-.trae li{padding:9px 14px;border-radius:12px;background:var(--noche2);border:1px solid var(--linea);font-size:15px}
-.ftx .acc{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
 
-/* videos */
-.videos{padding:40px 0 130px}
-.tira{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 24px 10px;margin-top:40px;scrollbar-width:none;scroll-padding-inline:24px}
-.tira::-webkit-scrollbar{display:none}
-.vid{flex:0 0 clamp(200px,19vw,250px);scroll-snap-align:start;text-align:left}
-.vid .mar{position:relative;aspect-ratio:9/16;border-radius:20px;overflow:hidden;background:var(--noche3)}
-.vid img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
-.vid:hover img{transform:scale(1.05)}
-.vid .mar:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(7,21,20,.75))}
-.vid .play{position:absolute;left:14px;bottom:14px;z-index:1;width:46px;height:46px;border-radius:14px;background:var(--papel);display:grid;place-items:center;color:var(--noche);transition:transform .3s var(--rebote)}
-.vid:hover .play{transform:scale(1.08)}
-.vid .play svg{width:18px;height:18px;margin-left:2px}
-.vid b{display:block;margin-top:12px;font-weight:600;font-size:16px}
-.vid span{color:var(--apagado);font-size:14px}
-.reel{border:0;padding:0;background:transparent;margin:auto;max-height:94vh;overflow:visible}
-.reel::backdrop{background:rgba(5,15,14,.88);backdrop-filter:blur(6px)}
-.reel .tel{width:min(380px,92vw);height:min(760px,86vh);border-radius:34px;overflow:hidden;background:#000;border:8px solid #0b0b0b;box-shadow:0 40px 80px -30px rgba(0,0,0,.9)}
-.reel iframe{width:100%;height:100%;border:0;background:#fff}
-.reel .x{position:fixed;top:16px;right:16px;width:48px;height:48px;border-radius:14px;background:var(--papel);color:var(--noche);font-size:26px;line-height:1}
-.reel .ig{display:block;text-align:center;margin-top:14px;color:var(--suave);font-size:14px}
-
-/* consulta: las rayas del cartel */
-.consulta{padding:0 0 120px}
-.hoja2{position:relative;border-radius:30px;overflow:hidden;color:var(--noche);background:repeating-linear-gradient(90deg,#E4F2EC 0 46px,#D3EADF 46px 92px);padding:72px 64px}
-.hoja2 .gu{position:absolute;top:0;left:0;right:0;height:70px;pointer-events:none}
-.cg{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;position:relative}
-.cg>*,.dos>*{min-width:0}
-.campo input{min-width:0}
-.cg h2{font-size:clamp(40px,5vw,74px);font-weight:800;max-width:10ch}
-.cg>div>p{color:#3E5A55;margin-top:18px;max-width:24em;font-size:18px}
-.datos{list-style:none;margin-top:30px;display:grid;gap:12px;font-size:16px}
-.datos a{text-decoration:none;font-weight:600}
-.datos a:hover{text-decoration:underline}
-.form{background:var(--papel);border-radius:22px;padding:30px;box-shadow:0 30px 60px -36px rgba(16,41,42,.55)}
-.q{padding:16px 0;border-bottom:1px solid #E7DCD0}
-.q:first-child{padding-top:0}
-.q>span{display:block;font-weight:600;margin-bottom:10px}
-.ch{display:flex;flex-wrap:wrap;gap:8px}
-.ch button{padding:10px 14px;border-radius:12px;border:1.5px solid #DCCFC1;font-size:15px;font-weight:500;transition:background .2s,border-color .2s,color .2s}
-.ch button:hover{border-color:var(--noche)}
-.ch button[aria-pressed=true]{background:var(--noche);border-color:var(--noche);color:var(--papel)}
-.dos{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.campo{display:block}
-.campo>span{display:block;font-weight:600;margin-bottom:8px}
-.campo input{width:100%;height:50px;border-radius:12px;border:1.5px solid #DCCFC1;background:#fff;padding:0 14px;font:500 16px "Onest";color:var(--noche)}
-.campo input:focus{outline:none;border-color:var(--noche)}
-.paso{display:flex;align-items:center;height:50px;border-radius:12px;border:1.5px solid #DCCFC1;background:#fff;overflow:hidden}
-.paso button{width:50px;height:100%;font-size:22px;font-weight:600;color:var(--noche)}
-.paso button:hover{background:#F3EBE2}
-.paso output{flex:1;text-align:center;font-weight:600}
-.frase{margin:22px 0 18px;padding:16px 18px;border-radius:14px;background:#F6EEE4;color:#2F4643;font-size:16px;line-height:1.5}
-.form .acc{display:flex;gap:10px;flex-wrap:wrap}
-.form .btn{flex:1}
-.form .btn.l{border-color:#CDBFB0;color:var(--noche)}
-.form .btn.l:hover{border-color:var(--noche)}
-
-footer{padding:56px 0 110px;border-top:1px solid var(--linea)}
-.pie{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px}
-.pie h4{font-family:"Gabarito";font-weight:800;font-size:22px;letter-spacing:-.01em}
-.pie p{color:var(--suave);font-size:15px;margin-top:6px}
-.pie a{color:var(--papel);font-weight:500;text-decoration:none}
-.pie a:hover{text-decoration:underline}
-.firma{margin-top:44px;color:var(--apagado);font-size:13px}
-
-.fija{position:fixed;left:12px;right:12px;bottom:12px;z-index:30;display:none;transition:transform .45s var(--ease),opacity .3s}
-.fija.oculta{transform:translateY(120%);opacity:0}
-.fija .btn{width:100%;height:56px;box-shadow:0 16px 40px -12px rgba(0,0,0,.7)}
-
-.rv{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
-.rv.in{opacity:1;transform:none}
-html.shot .rv{opacity:1;transform:none}
+@media (max-width:960px){.tinfo .fila{flex-direction:column;align-items:stretch;gap:14px}.sig{justify-content:space-between}.tinfo h2{font-size:40px}.tinfo p{font-size:15px}.tbar{padding:14px}.tcasa button{padding:8px 11px}.punto .nota{max-width:200px}}
 
 @media (max-width:960px){
   .top nav{display:none}
-  .portada{padding:110px 0 54px}
-  .pg{grid-template-columns:1fr;gap:40px}
-  .guirnalda{top:64px;height:90px}
-  .puertas{gap:14px}
-  .cartel b{font-size:22px}
+  .wrap{width:calc(100% - 36px)}
+  .portada{padding:0;align-items:end;min-height:100dvh}
+  .portada .guirnalda{top:70px;height:80px;z-index:3}
+  .pg{grid-template-columns:1fr;gap:0}
+  .ventanas{position:absolute;inset:0;height:auto;z-index:0}
+  .ven.a{inset:0;width:auto;height:auto;border-radius:0;box-shadow:none}
+  .ven.a:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,38,39,.55) 0%,rgba(14,38,39,.1) 30%,rgba(14,38,39,.85) 66%,var(--noche) 100%)}
+  .ven.b,.ven.c,.sello{display:none}
+  .pt{position:relative;z-index:2;padding:0 0 38px}
+  .pt h1{font-size:clamp(40px,11.5vw,60px)}
+  .pt p{margin:18px 0 24px;color:var(--papel2)}
+  .pt .acc .btn{flex:1}
+  .manif{padding:100px 0 90px}
+  .manif .chicos{grid-template-columns:1fr 1fr;gap:12px;margin-top:50px}
+  .manif .chicos .mini:nth-child(3){display:none}
+  .mini:nth-child(2){transform:translateY(30px)}
+  .casas{padding:80px 0 100px}
+  .puertas{grid-template-columns:1fr 1fr;gap:14px;margin-top:40px}
+  .cartel{flex-direction:column;align-items:flex-start;gap:6px}
+  .cartel em{text-align:left}
+  .cartel b{font-size:24px}
   .cartel span{font-size:13px}
-  .puerta .entra{font-size:13px;padding:8px 12px;bottom:14px}
-  .fiestas{padding:100px 0 90px}
-  .stickers{margin:30px 0 36px;flex-wrap:nowrap;overflow-x:auto;margin-inline:-24px;padding:4px 24px 8px;scrollbar-width:none}
-  .stickers::-webkit-scrollbar{display:none}
-  .stickers button{flex:none;font-size:17px;padding:12px 16px}
-  .fg{grid-template-columns:1fr;gap:30px}
-  .mazo{max-width:400px}
-  .hoja2{padding:44px 20px 24px;border-radius:24px}
+  .puerta .entra{font-size:13px;padding:8px 12px;bottom:16px}
+  .paseo .cabp{top:84px}
+  .paseo .cabp .wrap{flex-direction:column;align-items:flex-start;gap:12px}
+  .pista{gap:16px;padding-top:150px}
+  .esp{width:68vw}.esp.ancho{width:82vw}.esp.sep{width:74vw}
+  .esp h3{font-size:24px}
+  .pared{padding:100px 0 80px}
+  .mosaico{grid-template-columns:1fr 1fr;grid-auto-rows:44vw;gap:10px}
+  .tile.ancha{grid-column:span 2;grid-row:span 1}
+  .tile.alta{grid-row:span 2}
+  .tile{transform:none!important}
+  .carta:before{background:linear-gradient(180deg,rgba(9,24,24,.15) 0%,rgba(9,24,24,.55) 40%,rgba(9,24,24,.94) 78%)}
+  .carta .wrap{justify-content:flex-end;padding-bottom:36px}
+  .carta h3{font-size:clamp(40px,12vw,64px)}
+  .carta .acc .btn{flex:1}
+  .pasos{padding:100px 0 80px}
+  .linea{grid-template-columns:1fr;gap:34px;margin-top:50px}
+  .linea svg.hilo{display:none}
+  .hoja2{padding:70px 18px 20px;border-radius:24px}
   .cg{grid-template-columns:1fr;gap:30px}
   .form{padding:22px 16px}
-  .pie{grid-template-columns:1fr;gap:28px}
+  .mapas{grid-template-columns:1fr}
   .fija{display:block}
-  .tinfo .fila{flex-direction:column;align-items:stretch;gap:14px}
-  .sig{justify-content:space-between}
-  .tinfo h2{font-size:40px}
-  .tinfo p{font-size:15px}
-  .tbar{padding:14px}
-  .tcasa button{padding:8px 11px}
-  .punto .nota{max-width:200px}
 }
 @media (prefers-reduced-motion:reduce){
-  *,*:before,*:after{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
-  .rv{opacity:1;transform:none}
+  /* solo se apagan los adornos que se mueven solos; lo que responde al scroll sigue */
+  .guirnalda g.f,.luces i,.sello,.arco:after{animation:none!important}
 }
 </style>
 </head>
@@ -288,62 +381,117 @@ html.shot .rv{opacity:1;transform:none}
 <header class="top" id="top">
   <div class="wrap">
     <a class="logo" href="#" aria-label="Érase una vez, inicio"><span class="e">érase</span><span class="u">UNA</span><span class="v">vez…</span></a>
-    <nav aria-label="Secciones"><a href="#portada">Recorrido</a><a href="#fiestas">Fiestas</a><a href="#videos">Videos</a><a href="#consulta">Consultar</a></nav>
+    <nav aria-label="Secciones"><a href="#casas">Las casas</a><a href="#paseo">Recorrido</a><a href="#videos">Videos</a><a href="#fiestas">Fiestas</a></nav>
     <a class="btn c" href="#consulta">Consultar fecha</a>
   </div>
+  <div class="progreso" id="progreso"></div>
 </header>
 
 <main>
+  <!-- 1 -->
   <section class="portada" id="portada">
     <div class="luces" id="luces" aria-hidden="true"></div>
-    <svg class="guirnalda" id="guirnalda" viewBox="0 0 1400 120" preserveAspectRatio="none" aria-hidden="true"></svg>
+    <svg class="guirnalda" data-n="22" viewBox="0 0 1400 110" preserveAspectRatio="none" aria-hidden="true"></svg>
     <div class="wrap pg">
       <div class="pt">
-        <h1><span>Elegí una puerta</span><span>y entrá a la fiesta.</span></h1>
-        <p>Dos casas para festejar en Montevideo, una en Carrasco y otra en Malvín. Recorrelas desde acá, espacio por espacio, antes de venir a conocerlas.</p>
-        <div class="pista">Tocá una puerta para entrar</div>
+        <h1><span class="l"><span>Érase una vez</span></span><span class="l"><span>una fiesta que</span></span><span class="l"><span>nadie quería que</span></span><span class="l"><span>terminara.</span></span></h1>
+        <p>Dos casas en Carrasco y Malvín para cumpleaños, matinés, 15 y eventos. Entrá y recorrelas.</p>
+        <div class="acc"><a class="btn c" href="#consulta">Consultar fecha</a><a class="btn l" href="#casas">Recorrer las casas</a></div>
       </div>
-      <div class="puertas">
-        <button class="puerta" data-casa="carrasco" type="button" aria-label="Entrar a recorrer Érase una vez Carrasco">
-          <div class="arco"><img src="fotos/ca-salon.webp" alt="" width="1600" height="1200"><span class="hoja iz"></span><span class="hoja de"></span><span class="entra">Entrar a Carrasco</span></div>
-          <div class="cartel"><b>Carrasco</b><span>Av. Italia 6829</span><span><em>4,4 ★</em> en Google, 229 reseñas</span></div>
-        </button>
-        <button class="puerta" data-casa="malvin" type="button" aria-label="Entrar a recorrer Érase una vez Malvín">
-          <div class="arco"><img src="fotos/hero.webp" alt="" width="1600" height="1200"><span class="hoja iz"></span><span class="hoja de"></span><span class="entra">Entrar a Malvín</span></div>
-          <div class="cartel"><b>Malvín</b><span>Santiago de Anca 1687</span><span><em>4,3 ★</em> en Google, 573 reseñas</span></div>
-        </button>
+      <div class="ventanas" aria-hidden="true">
+        <div class="ven a"><video src="videos/l-pelotero.mp4" poster="videos/p-pelotero.webp" muted loop playsinline autoplay preload="auto"></video></div>
+        <div class="ven b"><video data-src="videos/l-pista.mp4" poster="videos/p-pista.webp" muted loop playsinline preload="none"></video></div>
+        <div class="ven c"><video data-src="videos/l-manu.mp4" poster="videos/p-manu.webp" muted loop playsinline preload="none"></video></div>
+        <div class="sello"><div><span class="estr">★★★★</span><b>+800</b><span>reseñas en<br>Google</span></div></div>
       </div>
     </div>
   </section>
 
-  <section class="fiestas" id="fiestas">
+  <!-- 2 -->
+  <section class="manif">
     <div class="wrap">
-      <div class="cab rv"><h2>¿Qué festejás?</h2><p>Cada fiesta pide otra cosa. Elegí la tuya y mirá cómo se vive acá.</p></div>
-      <div class="stickers rv" role="tablist" aria-label="Tipo de fiesta" id="stickers"></div>
-      <div class="fg rv">
-        <div class="mazo" id="mazo" aria-hidden="true"><figure><img alt=""></figure><figure><img alt=""></figure><figure><img alt=""></figure></div>
-        <div class="ftx" role="tabpanel" id="ftx" aria-live="polite">
-          <h3 id="fT"></h3>
-          <p id="fD"></p>
-          <ul class="trae" id="fL"></ul>
-          <div class="acc">
-            <a class="btn c" href="#consulta" id="fC">Consultar fecha</a>
-            <button class="btn l" type="button" id="fV"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>Ver una fiesta así</button>
-          </div>
-        </div>
+      <p class="grande" id="ilumina">Acá los chicos trepan, se tiran al pelotero, saltan y bailan hasta que los vienen a buscar. Los grandes charlan tranquilos, comen rico y se llevan la mejor foto del año.</p>
+      <div class="chicos">
+        <div class="mini rv"><video data-src="videos/l-palestra.mp4" poster="videos/p-palestra.webp" muted loop playsinline preload="none"></video><b>Trepan</b></div>
+        <div class="mini rv"><video data-src="videos/l-inflable.mp4" poster="videos/p-inflable.webp" muted loop playsinline preload="none"></video><b>Saltan</b></div>
+        <div class="mini rv"><video data-src="videos/l-pista.mp4" poster="videos/p-pista.webp" muted loop playsinline preload="none"></video><b>Bailan</b></div>
       </div>
     </div>
   </section>
 
-  <section class="videos" id="videos">
-    <div class="wrap cab rv"><h2>Fiestas de verdad</h2><p>Así se vivieron algunas de las últimas, contadas por las familias y los decoradores que trabajan con nosotros.</p></div>
-    <div class="tira" id="tira"></div>
+  <!-- 3 -->
+  <section class="casas" id="casas">
+    <div class="wrap">
+      <h2 class="rv">Elegí una puerta y pasá.</h2>
+      <p class="rv">Cada casa tiene lo suyo. Tocá una y recorrela espacio por espacio, como si ya estuvieras adentro.</p>
+      <div class="puertas">
+        <button class="puerta rv" data-casa="carrasco" type="button" aria-label="Recorrer Érase una vez Carrasco">
+          <div class="arco"><video data-src="videos/l-safari.mp4" poster="videos/p-safari.webp" muted loop playsinline preload="none"></video><span class="hoja iz"></span><span class="hoja de"></span><span class="entra">Recorrer Carrasco</span></div>
+          <div class="cartel"><div><b>Carrasco</b><span>Av. Italia 6829</span></div><em>4,4 ★<small>229 reseñas</small></em></div>
+        </button>
+        <button class="puerta rv" data-casa="malvin" type="button" aria-label="Recorrer Érase una vez Malvín">
+          <div class="arco"><video data-src="videos/l-pelotero.mp4" poster="videos/p-pelotero.webp" muted loop playsinline preload="none"></video><span class="hoja iz"></span><span class="hoja de"></span><span class="entra">Recorrer Malvín</span></div>
+          <div class="cartel"><div><b>Malvín</b><span>Santiago de Anca 1687</span></div><em>4,3 ★<small>573 reseñas</small></em></div>
+        </button>
+      </div>
+    </div>
   </section>
 
+  <!-- 4 -->
+  <section class="paseo" id="paseo" aria-label="Paseo por los espacios">
+    <div class="pin">
+      <div class="cabp"><div class="wrap"><h2>Pasá, está abierto.</h2><div class="casa" aria-hidden="true"><span data-c="malvin" class="on">Malvín</span><span data-c="carrasco">Carrasco</span></div></div></div>
+      <div class="pista" id="pista">
+        <div class="esp" data-c="malvin"><div class="m"><video data-src="videos/l-pelotero.mp4" poster="videos/p-pelotero.webp" muted loop playsinline preload="none"></video></div><h3>El pelotero</h3><p>Pelotas de colores hasta la cintura y un tobogán para tirarse.</p></div>
+        <div class="esp" data-c="malvin"><div class="m"><video data-src="videos/l-palestra.mp4" poster="videos/p-palestra.webp" muted loop playsinline preload="none"></video></div><h3>La palestra</h3><p>Una pared para trepar, con agarres de colores.</p></div>
+        <div class="esp" data-c="malvin"><div class="m"><video data-src="videos/l-inflable.mp4" poster="videos/p-inflable.webp" muted loop playsinline preload="none"></video></div><h3>Saltar y colgarse</h3><p>Cama elástica, telas, metegol y un inflable con tobogán.</p></div>
+        <div class="esp" data-c="malvin"><div class="m"><video data-src="videos/l-comic.mp4" poster="videos/p-comic.webp" muted loop playsinline preload="none"></video></div><h3>La sala gamer</h3><p>Arcade, consolas y cómic en las paredes, con luz de neón.</p></div>
+        <div class="esp" data-c="malvin"><div class="m"><video data-src="videos/l-arcade.mp4" poster="videos/p-arcade.webp" muted loop playsinline preload="none"></video></div><h3>Hockey y ping pong</h3><p>Bajo los arcos de ladrillo, para chicos y grandes.</p></div>
+        <div class="esp ancho" data-c="malvin"><div class="m"><video data-src="videos/l-ambiente.mp4" poster="videos/p-ambiente.webp" muted loop playsinline preload="none"></video></div><h3>El salón</h3><p>Techo de madera, ventanales y un ambiente amplio para que todos estén juntos.</p></div>
+        <div class="esp ancho" data-c="malvin"><div class="m"><img src="fotos/hero.webp" alt="Jardín de Malvín de noche con guirnaldas de luces" loading="lazy"></div><h3>El jardín de noche</h3><p>Guirnaldas de luces entre las plantas y un deck con sillones.</p></div>
+        <div class="esp sep" data-c="carrasco"><h3>Y en Carrasco</h3><p>Luz natural, una cancha de verdad y una barra para los grandes.</p></div>
+        <div class="esp ancho" data-c="carrasco"><div class="m"><img src="fotos/ca-salon.webp" alt="Salón de Carrasco con mesas armadas" loading="lazy"></div><h3>El salón</h3><p>Ventanales al jardín y mesas que se adaptan a cada deco.</p></div>
+        <div class="esp" data-c="carrasco"><div class="m"><video data-src="videos/l-safari.mp4" poster="videos/p-safari.webp" muted loop playsinline preload="none"></video></div><h3>Vestido para la fiesta</h3><p>Así quedó el salón para un cumple Safari.</p></div>
+        <div class="esp ancho" data-c="carrasco"><div class="m"><img src="fotos/ca-living.webp" alt="Living con sillones y ping pong en Carrasco" loading="lazy"></div><h3>Living y juegos</h3><p>Sillones para los grandes y colchonetas y ping pong para los chicos.</p></div>
+        <div class="esp ancho" data-c="carrasco"><div class="m"><img src="fotos/cancha.webp" alt="Cancha de fútbol y casita de juegos en Carrasco" loading="lazy"></div><h3>La cancha</h3><p>Pasto sintético, arcos y una casita para los que prefieren otra cosa.</p></div>
+        <div class="esp ancho" data-c="carrasco"><div class="m"><img src="fotos/ca-barra.webp" alt="Barra de madera en Carrasco" loading="lazy"></div><h3>La barra</h3><p>Madera, banquetas altas y la mesa de la torta cerca.</p></div>
+        <div class="esp fin" data-c="carrasco"><h3>¿Querés verla con más detalle?</h3><p>Entrá al recorrido completo y tocá cada rincón.</p><button class="btn c" type="button" data-tour="carrasco">Recorrer Carrasco</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="pared" id="videos">
+    <div class="wrap">
+      <div class="cabeza rv"><h2>Así se vive una fiesta acá.</h2><p>Fiestas de verdad, filmadas por las familias y los decoradores. Tocá cualquiera para verla con sonido.</p></div>
+      <div class="mosaico" id="mosaico"></div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="fiestas" id="fiestas">
+    <div class="wrap intro"><div class="cabeza rv"><h2>¿Qué festejás?</h2><p>Cada fiesta pide otra cosa. Bajá y encontrá la tuya.</p></div></div>
+    <div id="cartas"></div>
+  </section>
+
+  <!-- 7 -->
+  <section class="pasos">
+    <div class="wrap">
+      <h2 class="rv">Reservar es más fácil de lo que pensás.</h2>
+      <div class="linea">
+        <svg class="hilo" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><path id="hiloP" d="M40 40 C 300 0, 500 70, 640 36 S 1000 0, 1160 40" fill="none" stroke="rgba(255,246,238,.35)" stroke-width="2" stroke-dasharray="1400" stroke-dashoffset="1400"/></svg>
+        <div class="paso rv" style="--c:var(--mostaza)"><div class="n">1</div><h3>Consultás la fecha</h3><p>Nos contás qué festejás, cuándo y para cuántos. Te respondemos por WhatsApp con lo que hay libre.</p></div>
+        <div class="paso rv" style="--c:var(--menta)"><div class="n">2</div><h3>Venís a conocerla</h3><p>Coordinamos una visita a la casa que elijas para que la veas en persona.</p></div>
+        <div class="paso rv" style="--c:var(--rosa)"><div class="n">3</div><h3>Reservás y la armamos</h3><p>Elegís la propuesta, reservás tu fecha y empezamos a preparar tu fiesta.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 -->
   <section class="consulta" id="consulta">
     <div class="wrap">
       <div class="hoja2 rv">
-        <svg class="gu" id="guirnalda2" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true"></svg>
+        <svg class="guirnalda" data-n="18" data-claro="1" viewBox="0 0 1200 76" preserveAspectRatio="none" aria-hidden="true"></svg>
         <div class="cg">
           <div>
             <h2>Contanos tu fiesta</h2>
@@ -359,12 +507,12 @@ html.shot .rv{opacity:1;transform:none}
             <div class="q"><span>¿En qué casa?</span><div class="ch" id="qC"></div></div>
             <div class="q dos">
               <label class="campo"><span>Fecha</span><input type="date" id="qD"></label>
-              <div class="campo"><span>Invitados</span><div class="paso"><button type="button" id="menos" aria-label="Menos invitados">−</button><output id="qI">40</output><button type="button" id="mas" aria-label="Más invitados">+</button></div></div>
+              <div class="campo"><span>Invitados</span><div class="paso2"><button type="button" id="menos" aria-label="Menos invitados">−</button><output id="qI">40</output><button type="button" id="mas" aria-label="Más invitados">+</button></div></div>
             </div>
             <div class="q" style="border:0;padding-bottom:0"><label class="campo"><span>Tu nombre</span><input type="text" id="qN" autocomplete="given-name" placeholder="Cómo te llamás"></label></div>
             <p class="frase" id="frase"></p>
             <div class="acc">
-              <a class="btn c" id="enviar" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3a.4.4 0 0 0 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>Consultar disponibilidad</a>
+              <a class="btn c" id="enviar" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3a.4.4 0 0 0 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>Consultar fecha</a>
               <a class="btn l" id="visita" href="#" target="_blank" rel="noopener">Quiero ir a conocerla</a>
             </div>
           </div>
@@ -376,10 +524,10 @@ html.shot .rv{opacity:1;transform:none}
 
 <footer>
   <div class="wrap">
-    <div class="pie">
-      <div><a class="logo" href="#" style="font-size:26px"><span class="e">érase</span><span class="u">UNA</span><span class="v">vez…</span></a><p>Salón de fiestas para cumpleaños, matinés, 15 y eventos.</p></div>
-      <div><h4>Carrasco</h4><p>Av. Italia 6829</p><p><a href="https://www.google.com/maps/search/?api=1&query=%C3%89rase%20una%20vez%20Carrasco%20Av.%20Italia%206829" target="_blank" rel="noopener">Cómo llegar</a></p></div>
-      <div><h4>Malvín</h4><p>Santiago de Anca 1687</p><p><a href="https://www.google.com/maps/search/?api=1&query=%C3%89rase%20una%20vez%20Santiago%20de%20Anca%201687" target="_blank" rel="noopener">Cómo llegar</a></p></div>
+    <div class="marca rv" aria-hidden="true"><span class="e">érase</span><span class="u">UNA</span><span class="v">vez…</span></div>
+    <div class="mapas">
+      <div class="mapa2"><iframe title="Mapa de Érase una vez Carrasco" loading="lazy" src="https://www.google.com/maps?q=Av.+Italia+6829,+Montevideo,+Uruguay&output=embed"></iframe><h4>Carrasco</h4><p>Av. Italia 6829 · <a href="https://www.google.com/maps/search/?api=1&query=%C3%89rase%20una%20vez%20Carrasco%20Av.%20Italia%206829" target="_blank" rel="noopener">Cómo llegar</a></p></div>
+      <div class="mapa2"><iframe title="Mapa de Érase una vez Malvín" loading="lazy" src="https://www.google.com/maps?q=Santiago+de+Anca+1687,+Montevideo,+Uruguay&output=embed"></iframe><h4>Malvín</h4><p>Santiago de Anca 1687 · <a href="https://www.google.com/maps/search/?api=1&query=%C3%89rase%20una%20vez%20Santiago%20de%20Anca%201687" target="_blank" rel="noopener">Cómo llegar</a></p></div>
     </div>
     <p class="firma">Vista previa hecha por NIMBRA</p>
   </div>
@@ -415,31 +563,65 @@ html.shot .rv{opacity:1;transform:none}
   </div>
 </div>
 
-<dialog class="reel" id="reel" aria-label="Video"><button class="x" type="button" id="reelX" aria-label="Cerrar video">×</button><div class="tel"><iframe id="reelF" title="Video de Instagram" allow="autoplay; encrypted-media" loading="lazy"></iframe></div><a class="ig" id="reelA" href="#" target="_blank" rel="noopener">Abrir en Instagram</a></dialog>
+
+
+<dialog class="cine" id="cine" aria-label="Video"><button class="x" type="button" id="cineX" aria-label="Cerrar video">×</button><video id="cineV" controls playsinline preload="none"></video><p id="cineT"></p></dialog>
 
 <script>
 if(location.search.includes('shot'))document.documentElement.classList.add('shot');
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const WA='https://wa.me/59899175488?text=';
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const movil=matchMedia('(max-width:960px)');
 
-/* ---------- guirnaldas con los colores del cartel ---------- */
-const BAN=['#E0573F','#8CCBB6','#173B3B','#EDB64B','#8CCBB6','#F4A9B8','#E0573F','#5EA58C','#EDB64B','#F4A9B8'];
-function guirnalda(svg,w,n,y0,caida,tam){const pts=[];let html=`<path d="M0 ${y0} Q ${w/2} ${y0+caida*2} ${w} ${y0}" fill="none" stroke="rgba(255,246,238,.35)" stroke-width="1.5"/>`;
-  for(let i=0;i<n;i++){const t=(i+.5)/n,x=t*w,y=y0+caida*2*2*t*(1-t);const c=BAN[i%BAN.length];
-    html+=`<g class="f" style="animation-delay:${(-i*.37).toFixed(2)}s"><path d="M${x-tam/2} ${y} L${x+tam/2} ${y} L${x} ${y+tam*1.25} Z" fill="${c}"/></g>`}
-  svg.innerHTML=html}
-guirnalda($('#guirnalda'),1400,22,8,26,34);
-guirnalda($('#guirnalda2'),1200,18,0,16,30);
-$('#guirnalda2').querySelector('path').setAttribute('stroke','rgba(16,41,42,.3)');
+/* guirnaldas con los colores del cartel */
+const BAN=['#E0573F','#8CCBB6','#1D4A49','#EDB64B','#8CCBB6','#F4A9B8','#E0573F','#5EA58C','#EDB64B','#F4A9B8'];
+$$('svg.guirnalda').forEach(svg=>{const [, , w, h]=svg.getAttribute('viewBox').split(' ').map(Number);const n=+svg.dataset.n;const claro=svg.dataset.claro;
+  const y0=6,caida=h*.22,tam=Math.min(34,w/n*.62);let html=`<path d="M0 ${y0} Q ${w/2} ${y0+caida*2} ${w} ${y0}" fill="none" stroke="${claro?'rgba(14,38,39,.3)':'rgba(255,246,238,.35)'}" stroke-width="1.5"/>`;
+  for(let i=0;i<n;i++){const t=(i+.5)/n,x=t*w,y=y0+caida*2*2*t*(1-t);html+=`<g class="f" style="animation-delay:${(-i*.37).toFixed(2)}s"><path d="M${x-tam/2} ${y} L${x+tam/2} ${y} L${x} ${y+tam*1.25} Z" fill="${BAN[i%BAN.length]}"/></g>`}
+  svg.innerHTML=html});
+{const L=$('#luces');for(let i=0;i<30;i++){const e=document.createElement('i');const t=6+Math.random()*16;
+  e.style.cssText=`left:${Math.random()*100}%;top:${8+Math.random()*84}%;--t:${t}px;--d:${(2+Math.random()*3).toFixed(1)}s;animation-delay:${(-Math.random()*4).toFixed(1)}s`;L.appendChild(e)}}
 
-/* lucecitas de fondo */
-{const L=$('#luces');for(let i=0;i<26;i++){const e=document.createElement('i');const t=6+Math.random()*16;
-  e.style.cssText=`left:${Math.random()*100}%;top:${10+Math.random()*80}%;--t:${t}px;--d:${(2+Math.random()*3).toFixed(1)}s;animation-delay:${(-Math.random()*4).toFixed(1)}s`;L.appendChild(e)}}
+/* videos: se cargan y se reproducen solo cuando están a la vista */
+const vio=new IntersectionObserver(es=>es.forEach(x=>{const v=x.target;if(x.isIntersecting){if(v.dataset.src&&!v.src){v.src=v.dataset.src}v.play().catch(()=>{})}else v.pause()}),{rootMargin:'200px 0px'});
+function miraVideos(root=document){root.querySelectorAll('video[muted],video[data-src]').forEach(v=>{v.muted=true;vio.observe(v)})}
 
-/* barra que se oscurece al bajar */
-addEventListener('scroll',()=>{$('#top').classList.toggle('s',scrollY>40);const c=$('#consulta').getBoundingClientRect();$('#fija').classList.toggle('oculta',scrollY<innerHeight*.8||(c.top<innerHeight&&c.bottom>0))},{passive:true});
+/* aparecer al bajar */
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});
 
+/* texto que se ilumina palabra por palabra */
+{const p=$('#ilumina');p.innerHTML=p.textContent.split(' ').map(w=>`<span>${w}</span>`).join(' ')}
+const palabras=$$('#ilumina span');
+
+</script>
+<script>
+const VIDEOS2={'DbtMtaTuGcz':'Una noche mágica','DbG18W0MH_F':'Así son las matinés','Db2c_2tRrmt':'Los 15 de Manuela','DefPx1wBGCS':'Pizza en el momento','DdrGmeVhJ4x':'Deco de Gansos para Alfonsina','DakuvK_Odtn':'El primer añito de Noah','Db37S1bN1YI':'La salita blanda','Dd6KzHJh5Y5':'Un cumple Safari','DZ40-dlOvp1':'El ambiente nuevo de Malvín','DaBblBUP2K0':'Recorré Malvín en video'};
+const MOS=[['fiesta','DbtMtaTuGcz','Una noche mágica','alta'],['matine','DbG18W0MH_F','Así son las matinés',''],['fuego','DefPx1wBGCS','Pizza en el momento',''],
+  ['ambiente','DZ40-dlOvp1','El ambiente nuevo de Malvín','ancha'],['manu','Db2c_2tRrmt','Los 15 de Manuela','alta'],['gansos','DdrGmeVhJ4x','Deco de Gansos para Alfonsina',''],
+  ['noah','DakuvK_Odtn','El primer añito de Noah',''],['salita','Db37S1bN1YI','La salita blanda',''],['safari','Dd6KzHJh5Y5','Un cumple Safari','']];
+{const M=$('#mosaico');MOS.forEach(([l,c,t,k],i)=>{const b=document.createElement('button');b.type='button';b.className='tile rv '+k;b.dataset.par=(i%3===1?'.06':i%3===2?'-.04':'0');
+  b.innerHTML=`<video data-src="videos/l-${l}.mp4" poster="videos/p-${l}.webp" muted loop playsinline preload="none"></video><span class="tt"><b>${t}</b><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg></i></span>`;
+  b.setAttribute('aria-label','Ver con sonido: '+t);b.addEventListener('click',()=>abreReel(c,t));M.appendChild(b)})}
+const cine=$('#cine'),cineV=$('#cineV');
+function abreReel(c,t){cineV.src='videos/f-'+c+'.mp4';cine.classList.toggle('hz',c==='DZ40-dlOvp1'&&false);$('#cineT').textContent=t||VIDEOS2[c]||'';cine.showModal();cineV.play().catch(()=>{})}
+$('#cineX').addEventListener('click',()=>cine.close());
+cine.addEventListener('close',()=>{cineV.pause();cineV.removeAttribute('src');cineV.load()});
+cine.addEventListener('click',e=>{if(e.target===cine)cine.close()});
+
+/* fiestas apiladas */
+const FI=[
+  {k:'cumple',n:'Cumple infantil',c:'#EDB64B',v:'inflable',full:'Dd6KzHJh5Y5',t:'Un cumple para correr, trepar y gritar',d:'Pelotero, palestra, cama elástica, inflable, sala gamer y cancha. Cada cumple con su temática, como el Safari, El Principito o los Gansos.',l:['Pelotero','Palestra','Inflable','Sala gamer','Cancha','Merienda'],q:'un cumple'},
+  {k:'anito',n:'Primer añito',c:'#F4A9B8',v:'salita',full:'Db37S1bN1YI',t:'Para los que recién empiezan',d:'La salita blanda está pensada para menores de 4 años: supermercado, cocinita, rincón del té, instrumentos, libros y hasta una heladerita.',l:['Salita blanda','Juego simbólico','Instrumentos y libros','Mesitas y sillitas'],q:'un primer añito'},
+  {k:'matine',n:'Matiné',c:'#8CCBB6',v:'matine',full:'DbG18W0MH_F',t:'Música, amigos y una noche que no se olvida',d:'Luces, pista y la música alta para que los más grandes bailen toda la noche, y los papás estén tranquilos.',l:['Pista','Luces','Música','Hockey y arcade'],q:'una matiné'},
+  {k:'quince',n:'15 años',c:'#E0573F',v:'manu',full:'Db2c_2tRrmt',t:'Una noche soñada',d:'Letras gigantes con luces, flores, cortina de luces y el salón entero para la cumpleañera, como los 15 de Manuela.',l:['Salón a medida','Cortina de luces','Letras con luces','Pista'],q:'unos 15 años'},
+  {k:'evento',n:'Eventos y adultos',c:'#BFE3D6',v:'fuego',full:'DefPx1wBGCS',t:'Buena comida y nada de qué preocuparse',d:'Con el catering de ATP: tenedor libre de pizza, tacos y quesadillas y degustación de calzone. El jardín con luces y la barra hacen el resto.',l:['Tenedor libre de pizza','Tacos y quesadillas','Calzone','Jardín con luces'],q:'un evento'}];
+{const C=$('#cartas');FI.forEach(f=>{const s=document.createElement('article');s.className='carta';s.style.setProperty('--c',f.c);
+  s.innerHTML=`<div class="fondo"><video data-src="videos/l-${f.v}.mp4" poster="videos/p-${f.v}.webp" muted loop playsinline preload="none"></video></div><div class="wrap"><span class="tag">${f.n}</span><h3>${f.t}</h3><p>${f.d}</p><ul>${f.l.map(x=>`<li>${x}</li>`).join('')}</ul>
+  <div class="acc"><a class="btn c" href="#consulta" data-f="${f.k}">Consultar para ${f.q}</a><button class="btn l" type="button" data-full="${f.full}"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>Ver una así</button></div></div><div class="sombra"></div>`;
+  s.querySelector('[data-f]').addEventListener('click',()=>elige('qF',f.k));s.querySelector('[data-full]').addEventListener('click',()=>abreReel(f.full));C.appendChild(s)})}
+</script>
+<script>
 /* ---------- el recorrido ---------- */
 const CASAS={
   carrasco:{n:'Carrasco',dir:'Av. Italia 6829',esp:[
@@ -508,38 +690,13 @@ addEventListener('resize',()=>{if(capa){const e=CASAS[casa].esp[idx];const m=med
 // las puertas se abren y te meten adentro
 $$('.puerta').forEach(p=>p.addEventListener('click',()=>{p.classList.add('abre');setTimeout(()=>abreTour(p.dataset.casa),reduce?0:750)}));
 
-/* ---------- qué festejás ---------- */
-const FI=[
-  {k:'cumple',n:'Cumple infantil',c:'#EDB64B',fotos:['toro.webp','r-DbqcpGFBCz0.webp','mv-gamer.webp'],t:'Un cumple para correr, competir y gritar',d:'Cancha, ping pong, sala gamer y toro mecánico para que nadie se quede quieto. Cada cumple con su temática: mirá cómo quedaron el Safari, El Principito y los Gansos.',l:['Cancha de fútbol','Sala gamer','Ping pong','Toro mecánico','Jardín','Merienda'],v:'Dd6KzHJh5Y5'},
-  {k:'anito',n:'Primer añito',c:'#F4A9B8',fotos:['r-Db37S1bN1YI.webp','r-DakuvK_Odtn.webp','e5.webp'],t:'Para los que recién empiezan',d:'Renovamos la salita blanda pensando en los más chiquitos: un espacio para menores de 4 años con supermercado, cocinita, rincón del té, instrumentos, libros y hasta una heladerita.',l:['Salita blanda','Juego simbólico','Instrumentos y libros','Mesitas y sillitas'],v:'Db37S1bN1YI'},
-  {k:'matine',n:'Matiné',c:'#8CCBB6',fotos:['luces.webp','e12.webp','r-DbG18W0MH_F.webp'],t:'Buena música, amigos y una noche que no se olvida',d:'Luces, pista y la música alta. Una matiné para que los más grandes bailen toda la noche y los papás estén tranquilos.',l:['Pista','Luces','Música','Ping pong','Sala gamer'],v:'DbG18W0MH_F'},
-  {k:'quince',n:'15 años',c:'#E0573F',fotos:['r-Db2c_2tRrmt.webp','e7.webp','e8.webp'],t:'Una noche soñada',d:'Luces cálidas, flores y el salón entero para la cumpleañera, como los 15 de Manuela en Carrasco.',l:['Salón a medida','Cortina de luces','Mesa principal','Jardín de noche'],v:'Db2c_2tRrmt'},
-  {k:'evento',n:'Eventos y adultos',c:'#BFE3D6',fotos:['r-DefPx1wBGCS.webp','hero.webp','ca-barra.webp'],t:'Buena comida y nada de qué preocuparse',d:'Con el catering de ATP: tenedor libre de pizza, tacos y quesadillas y degustación de calzone. Vos solo disfrutás; el jardín con luces y la barra hacen el resto.',l:['Tenedor libre de pizza','Tacos y quesadillas','Calzone','Barra','Jardín con luces'],v:'DefPx1wBGCS'}];
-let fiesta=0;
-{const S=$('#stickers');FI.forEach((f,i)=>{const b=document.createElement('button');b.type='button';b.role='tab';b.textContent=f.n;b.style.setProperty('--c',f.c);
-  b.setAttribute('aria-selected',i===0);b.setAttribute('aria-controls','ftx');b.addEventListener('click',()=>pintaFiesta(i));S.appendChild(b)})}
-function pintaFiesta(i,primera){fiesta=i;const f=FI[i];$$('#stickers button').forEach((b,j)=>b.setAttribute('aria-selected',j===i));
-  const mazo=$('#mazo');const pon=()=>{mazo.querySelectorAll('img').forEach((im,j)=>{im.src='fotos/'+f.fotos[j]});
-    $('#fT').textContent=f.t;$('#fD').textContent=f.d;$('#fL').innerHTML=f.l.map(x=>`<li>${x}</li>`).join('');$('#fC').textContent='Consultar fecha para '+(f.k==='evento'?'un evento':f.k==='quince'?'unos 15':f.k==='anito'?'un primer añito':f.k==='matine'?'una matiné':'un cumple');
-    mazo.classList.remove('baraja')};
-  if(primera||reduce){pon();return}mazo.classList.add('baraja');setTimeout(pon,380)}
-$('#fC').addEventListener('click',()=>elige('qF',FI[fiesta].k));
-$('#fV').addEventListener('click',()=>abreReel(FI[fiesta].v));
-pintaFiesta(0,true);
 
-/* ---------- videos ---------- */
-const VID=[['DaBblBUP2K0','Recorré Malvín','La casa entera, sector por sector'],['Db2c_2tRrmt','Los 15 de Manuela','Una noche en Carrasco'],['Dd6KzHJh5Y5','Un cumple Safari','En Carrasco'],['DbG18W0MH_F','Así son las matinés','Música, amigos y luces'],
-  ['Db37S1bN1YI','La salita blanda','Para menores de 4 años'],['DakuvK_Odtn','El primer añito de Noah','Sonrisas, juegos y amor'],['DZ40-dlOvp1','El ambiente nuevo','Malvín, cada día más lindo'],['DdrGmeVhJ4x','Deco de Gansos','Para Alfonsina'],['DefPx1wBGCS','Catering para eventos','Pizza, tacos y calzone'],['DbtMtaTuGcz','Una noche mágica','Gracias a los papás']];
-{const T=$('#tira');VID.forEach(([c,n,s])=>{const b=document.createElement('button');b.className='vid';b.type='button';
-  b.innerHTML=`<div class="mar"><img src="fotos/r-${c}.webp" alt="" loading="lazy"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg></span></div><b>${n}</b><span>${s}</span>`;
-  b.setAttribute('aria-label','Ver el video: '+n);b.addEventListener('click',()=>abreReel(c));T.appendChild(b)})}
-const reel=$('#reel');
-function abreReel(c){$('#reelF').src=`https://www.instagram.com/reel/${c}/embed/`;$('#reelA').href=`https://www.instagram.com/reel/${c}/`;reel.showModal()}
-$('#reelX').addEventListener('click',()=>reel.close());
-reel.addEventListener('close',()=>{$('#reelF').src='about:blank'});
-reel.addEventListener('click',e=>{if(e.target===reel)reel.close()});
+</script>
+<script>
+/* recorrer desde el paseo */
+$$('[data-tour]').forEach(b=>b.addEventListener('click',()=>abreTour(b.dataset.tour)));
 
-/* ---------- consulta ---------- */
+/* consulta */
 const sel={f:'cumple',c:'nose',i:40};
 function chips(id,ops,key){const box=$('#'+id);ops.forEach(([v,t])=>{const b=document.createElement('button');b.type='button';b.textContent=t;b.dataset.v=v;
   b.setAttribute('aria-pressed',sel[key]===v);b.addEventListener('click',()=>{sel[key]=v;box.querySelectorAll('button').forEach(o=>o.setAttribute('aria-pressed',o===b));arma()});box.appendChild(b)})}
@@ -551,7 +708,7 @@ $('#mas').addEventListener('click',()=>{sel.i=Math.min(300,sel.i+10);arma()});
 {const d=new Date();d.setDate(d.getDate()+1);$('#qD').min=d.toISOString().slice(0,10)}
 ['qD','qN'].forEach(id=>$('#'+id).addEventListener('input',arma));
 const QUE={cumple:'un cumple infantil',anito:'un primer añito',matine:'una matiné',quince:'unos 15 años',evento:'un evento'};
-function fechaLinda(v){if(!v)return'';const [y,m,d]=v.split('-').map(Number);const x=new Date(y,m-1,d);return x.toLocaleDateString('es-UY',{weekday:'long',day:'numeric',month:'long'})}
+function fechaLinda(v){if(!v)return'';const [y,m,d]=v.split('-').map(Number);return new Date(y,m-1,d).toLocaleDateString('es-UY',{weekday:'long',day:'numeric',month:'long'})}
 function arma(){$('#qI').textContent=sel.i;const n=$('#qN').value.trim();const f=fechaLinda($('#qD').value);
   const donde=sel.c==='nose'?'en Carrasco o Malvín (todavía no sé cuál)':'en '+(sel.c==='carrasco'?'Carrasco':'Malvín');
   const txt=`Hola! ${n?'Soy '+n+'. ':''}Quiero consultar por ${QUE[sel.f]} ${donde}${f?', el '+f:''}, para unas ${sel.i} personas. ¿Tienen disponibilidad?`;
@@ -560,9 +717,33 @@ function arma(){$('#qI').textContent=sel.i;const n=$('#qN').value.trim();const f
   $('#visita').href=WA+encodeURIComponent(`Hola! ${n?'Soy '+n+'. ':''}Me gustaría ir a conocer ${casaV} para ${QUE[sel.f]}. ¿Qué día puedo pasar?`)}
 arma();
 
-/* aparecer al bajar */
-const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});
+/* todo lo que se mueve con el scroll, en un solo bucle que corre solo si algo está a la vista */
+const paseo=$('#paseo'),pista=$('#pista'),casaTabs=$$('.paseo .casa span');
+function altoPaseo(){const ex=pista.scrollWidth-innerWidth+80;paseo.style.setProperty('--alto',(innerHeight+Math.max(0,ex))+'px')}
+const cartas=$$('.carta'),parallax=[...$$('.ven.b,.ven.c'),...$$('.tile')];
+let vivos=new Set();const vis=new IntersectionObserver(es=>es.forEach(x=>{x.isIntersecting?vivos.add(x.target):vivos.delete(x.target)}),{rootMargin:'100px 0px'});
+[paseo,$('#ilumina'),$('#fiestas'),$('.pasos'),$('#portada'),$('#videos')].forEach(e=>vis.observe(e));
+let ultimoY=-1;
+function cuadro(){requestAnimationFrame(cuadro);const y=scrollY;if(y===ultimoY)return;ultimoY=y;const H=innerHeight;
+  $('#top').classList.toggle('s',y>40);
+  $('#progreso').style.transform=`scaleX(${Math.min(1,y/(document.documentElement.scrollHeight-H))})`;
+  const c=$('#consulta').getBoundingClientRect();$('#fija').classList.toggle('oculta',y<H*.8||(c.top<H&&c.bottom>0)||tourAbierto());
+  if(vivos.has(paseo)){const r=paseo.getBoundingClientRect();const tot=paseo.offsetHeight-H;const p=Math.min(1,Math.max(0,-r.top/tot));const ex=pista.scrollWidth-innerWidth+80;
+    pista.style.transform=`translate3d(${-p*ex}px,0,0)`;
+    const mitad=innerWidth*.5;let actual='malvin';pista.querySelectorAll('.esp').forEach(e=>{const b=e.getBoundingClientRect();if(b.left<mitad)actual=e.dataset.c});casaTabs.forEach(t=>t.classList.toggle('on',t.dataset.c===actual))}
+  if(vivos.has($('#ilumina'))){palabras.forEach(s=>{const b=s.getBoundingClientRect();s.classList.toggle('on',b.top<H*.62)})}
+  if(vivos.has($('#portada'))||vivos.has($('#videos'))){parallax.forEach(e=>{const b=e.getBoundingClientRect();if(b.bottom<0||b.top>H)return;const k=+(e.dataset.par||(e.classList.contains('b')?.12:-.1));e.style.setProperty('--py',((b.top+b.height/2-H/2)*k).toFixed(1)+'px')})}
+  if(vivos.has($('#fiestas'))){cartas.forEach((cd,i)=>{const sig=cartas[i+1];if(!sig)return;const b=sig.getBoundingClientRect();const p=Math.min(1,Math.max(0,1-b.top/H));
+    cd.style.transform=`scale(${1-p*.08})`;cd.querySelector('.sombra').style.opacity=(p*.6).toFixed(3)})}
+  if(vivos.has($('.pasos'))){const b=$('.linea').getBoundingClientRect();const p=Math.min(1,Math.max(0,(H-b.top)/(H*.7)));$('#hiloP').style.strokeDashoffset=(1400*(1-p)).toFixed(0)}}
+function tourAbierto(){const t=$('#tour');return t&&t.classList.contains('on')}
+addEventListener('resize',()=>{altoPaseo();ultimoY=-1});
+addEventListener('load',()=>{altoPaseo();ultimoY=-1});
+altoPaseo();
 $$('.rv').forEach(el=>io.observe(el));
+miraVideos();
+requestAnimationFrame(cuadro);
+
 </script>
 </body>
 </html>
