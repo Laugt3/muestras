@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arte Eterno | Comunidad de tatuadores en Rosario</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,100..900&family=Host+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<style>
+/* Sistema: papel de stencil, tinta y el violeta del calco como único acento.
+   Formas: botones rectangulares radio 12 con ícono, píldoras solo para elegir opciones, fotos radio 4px. */
+:root{
+  --papel:#E3E1DB;
+  --papel-2:#D8D5CD;
+  --tinta:#17161C;
+  --tinta-2:#4A4752;
+  --gris:#706C78;
+  --violeta:#5135C4;
+  --violeta-suave:rgba(81,53,196,.12);
+  --linea:rgba(23,22,28,.16);
+  --ancha:"Anybody",system-ui,sans-serif;
+  --texto:"Host Grotesk",system-ui,sans-serif;
+  --salida:cubic-bezier(.23,1,.32,1);
+  --r:4px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--papel);color:var(--tinta);font-family:var(--texto);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+button,input,textarea{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--violeta);outline-offset:3px;border-radius:6px}
+.ancha{font-family:var(--ancha);font-stretch:150%;text-transform:uppercase;letter-spacing:.01em;font-weight:200;line-height:.95}
+.envoltura{max-width:1320px;margin:0 auto;padding-left:clamp(18px,4vw,56px);padding-right:clamp(18px,4vw,56px)}
+
+/* botones */
+.boton{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;cursor:pointer;text-decoration:none;font-weight:500;font-size:15px;padding:14px 20px;border-radius:12px;white-space:nowrap;transition:transform .16s var(--salida),background .2s,color .2s,box-shadow .2s}
+.boton i{font-size:19px}
+.boton:active{transform:scale(.97)}
+.boton.violeta{background:var(--violeta);color:#fff}
+.boton.violeta:hover{background:#4229AE}
+.boton.linea{background:transparent;box-shadow:inset 0 0 0 1px var(--tinta);color:var(--tinta)}
+.boton.linea:hover{background:var(--tinta);color:var(--papel)}
+
+/* aviso y barra: la línea de stencil se dibuja con el scroll */
+.aviso{background:var(--tinta);color:#BDB9C7;font-size:13px;text-align:center;padding:9px 16px}
+.aviso b{color:#fff;font-weight:500}
+.barra{position:sticky;top:0;z-index:30;background:rgba(227,225,219,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--linea)}
+.barra .envoltura{display:flex;align-items:center;justify-content:space-between;height:66px;gap:20px}
+.marca{font-family:var(--ancha);font-stretch:150%;font-weight:700;font-size:17px;letter-spacing:.02em;text-decoration:none;text-transform:uppercase}
+.barra nav{display:flex;gap:28px;font-size:15px}
+.barra nav a{text-decoration:none;color:var(--tinta-2);transition:color .2s}
+.barra nav a:hover{color:var(--tinta)}
+.tel{display:flex;align-items:center;gap:8px;text-decoration:none;font-family:var(--ancha);font-stretch:125%;font-size:15px;font-weight:500;letter-spacing:.02em}
+.tel i{font-size:20px;color:var(--violeta)}
+.trazo{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--violeta);transform-origin:0 50%;transform:scaleX(0)}
+@supports (animation-timeline: scroll()){
+  .trazo{animation:trazar linear both;animation-timeline:scroll(root)}
+  @keyframes trazar{to{transform:scaleX(1)}}
+}
+
+/* portada con la máquina en 3D */
+.portada{position:relative;min-height:calc(100dvh - 104px);display:grid;grid-template-columns:.92fr 1.08fr;align-items:center;overflow:hidden}
+.portada .texto{position:relative;z-index:3;padding:clamp(28px,6vh,72px) 0 clamp(28px,6vh,72px) max(clamp(18px,4vw,56px),calc((100vw - 1320px)/2 + 56px))}
+.portada h1{font-size:clamp(44px,6.4vw,104px)}
+.portada h1 .l{display:block;overflow:hidden;padding-bottom:.04em}
+.portada h1 .l span{display:block;transform:translateY(105%);animation:subir 1s var(--salida) forwards}
+.portada h1 .l:nth-child(2) span{animation-delay:.08s}
+.portada h1 .l:nth-child(3) span{animation-delay:.16s}
+@keyframes subir{to{transform:none}}
+.portada p{margin-top:26px;max-width:440px;font-size:clamp(17px,1.4vw,19px);color:var(--tinta-2);opacity:0;animation:aparecer .7s .5s forwards}
+.portada .acc{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap;opacity:0;animation:aparecer .7s .62s forwards}
+@keyframes aparecer{to{opacity:1}}
+.escena3d{position:relative;align-self:stretch;min-height:560px}
+.escena3d canvas{position:absolute;inset:0;width:100%!important;height:100%!important;display:block}
+.escena3d .respaldo{position:absolute;inset:6% 8%;object-fit:cover;width:84%;height:88%;border-radius:var(--r);display:none}
+.escena3d.sin3d .respaldo{display:block}
+.escena3d .pie-foto{position:absolute;right:max(clamp(18px,4vw,56px),calc((100vw - 1320px)/2 + 56px));bottom:22px;font-size:13px;color:var(--gris);z-index:2}
+
+/* historia */
+.historia{position:relative;min-height:660px;display:flex;align-items:center;overflow:hidden;color:#F1EFEA}
+.historia>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:20% 42%}
+.historia::after{content:"";position:absolute;inset:0;background:linear-gradient(270deg,rgba(23,22,28,.94) 0%,rgba(23,22,28,.78) 44%,rgba(23,22,28,.1) 80%)}
+.historia .envoltura{position:relative;z-index:2;width:100%;display:flex;justify-content:flex-end;padding-top:96px;padding-bottom:96px}
+.historia .bloque{max-width:560px}
+.historia h2{font-size:clamp(32px,4.2vw,62px)}
+.historia p{margin-top:26px;font-size:clamp(17px,1.5vw,20px);color:#D9D6E0}
+.historia .firma{margin-top:22px;font-size:14px;color:#A9A5B3}
+
+/* cabeceras */
+.cabeza{display:flex;flex-direction:column;gap:18px;margin-bottom:44px;max-width:760px}
+.cabeza h2{font-size:clamp(34px,5vw,74px)}
+.cabeza p{color:var(--tinta-2);max-width:560px}
+
+/* artistas */
+.artistas{padding-top:clamp(80px,10vw,140px);padding-bottom:clamp(40px,6vw,80px)}
+.lista{border-top:1px solid var(--tinta)}
+.fila-a{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) 220px;align-items:center;gap:24px;padding:22px 0;border-bottom:1px solid var(--linea)}
+.fila-a .nombre{font-family:var(--ancha);font-stretch:150%;text-transform:uppercase;font-weight:250;font-size:clamp(24px,3.1vw,44px);line-height:1;transition:transform .35s var(--salida),color .2s}
+.fila-a .estilos{display:flex;flex-wrap:wrap;gap:6px}
+.etq{font-size:13px;border:1px solid var(--linea);border-radius:99px;padding:4px 11px;color:var(--tinta-2);transition:background .2s,color .2s,border-color .2s}
+.fila-a .ig{font-size:14px;color:var(--gris);text-decoration:none;text-align:right}
+.fila-a a.ig:hover{color:var(--violeta)}
+.fila-a .mini{display:none}
+.fila-a.encaja .nombre{color:var(--violeta)}
+.fila-a.encaja .etq.si{background:var(--violeta);border-color:var(--violeta);color:#fff}
+@media (hover:hover) and (pointer:fine){.fila-a:hover .nombre{transform:translateX(14px)}}
+.flotante{position:fixed;left:0;top:0;width:260px;height:330px;border-radius:var(--r);overflow:hidden;pointer-events:none;z-index:40;opacity:0;transform:translate3d(-999px,-999px,0);transition:opacity .25s ease;box-shadow:0 30px 60px -20px rgba(23,22,28,.45)}
+.flotante img{width:100%;height:100%;object-fit:cover}
+.flotante .tipo{position:absolute;inset:0;display:none;align-items:center;justify-content:center;text-align:center;background:var(--tinta);color:var(--papel);font-family:var(--ancha);font-stretch:150%;text-transform:uppercase;font-size:18px;line-height:1.3;padding:20px}
+.flotante.on{opacity:1}
+
+/* armador */
+.armador{background:var(--papel-2);padding-top:clamp(80px,10vw,140px);padding-bottom:clamp(80px,10vw,140px);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+.mesa{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,64px);align-items:start}
+.vista{position:sticky;top:90px}
+.vista .foto{position:relative;aspect-ratio:4/5;border-radius:var(--r);overflow:hidden;background:var(--tinta)}
+.vista .foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .45s ease,filter .45s ease,transform .6s var(--salida)}
+.vista .foto img.sale{opacity:0;filter:blur(6px);transform:scale(1.03)}
+.vista .rotulo{display:flex;justify-content:space-between;gap:12px;margin-top:12px;font-size:14px;color:var(--gris)}
+.vista .rotulo b{color:var(--tinta);font-weight:500}
+.paso{padding:26px 0;border-top:1px solid var(--linea)}
+.paso:first-child{border-top:1px solid var(--tinta)}
+.paso h3{display:flex;align-items:baseline;gap:14px;font-size:19px;font-weight:600;margin-bottom:16px}
+.paso h3 i{font-style:normal;font-family:var(--ancha);font-stretch:150%;font-weight:300;font-size:15px;color:var(--violeta)}
+.paso h3 small{margin-left:auto;font-size:13px;font-weight:400;color:var(--gris)}
+.zonas{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.zona{display:flex;align-items:center;gap:10px;padding:6px 12px 6px 6px;border:1px solid var(--linea);border-radius:99px;background:transparent;cursor:pointer;text-align:left;font-size:14.5px;transition:border-color .2s,background .2s,transform .16s var(--salida)}
+.zona:active{transform:scale(.97)}
+.zona img{width:34px;height:34px;border-radius:50%;object-fit:cover;flex:none}
+.zona[aria-pressed=true]{border-color:var(--violeta);background:var(--violeta-suave);color:var(--violeta)}
+.valor{font-family:var(--ancha);font-stretch:150%;font-weight:200;font-size:52px;line-height:1}
+.valor small{font-size:18px;margin-left:6px}
+.cat{font-size:14px;color:var(--tinta-2);margin-top:6px;min-height:22px}
+.pista{position:relative;height:44px;margin-top:14px}
+.marcas{position:absolute;left:0;right:0;top:0;height:14px;background:repeating-linear-gradient(90deg,var(--tinta-2) 0 1px,transparent 1px 2.1276%);opacity:.45}
+.relleno{position:absolute;left:0;top:20px;height:6px;background:var(--violeta);border-radius:3px;pointer-events:none}
+.base{position:absolute;left:0;right:0;top:20px;height:6px;border-radius:3px;background:rgba(23,22,28,.12)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;background:transparent;position:absolute;left:0;top:9px;height:28px;margin:0;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:28px;background:transparent}
+input[type=range]::-moz-range-track{height:28px;background:transparent}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:var(--papel);border:2px solid var(--violeta);margin-top:1px;box-shadow:0 4px 10px rgba(81,53,196,.3)}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--papel);border:2px solid var(--violeta)}
+.escala{display:flex;justify-content:space-between;font-size:12px;color:var(--gris)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--linea);background:transparent;border-radius:99px;padding:8px 15px;font-size:14.5px;cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .16s var(--salida)}
+.chip:active{transform:scale(.97)}
+.chip[aria-pressed=true]{background:var(--tinta);border-color:var(--tinta);color:var(--papel)}
+.quien .chip.recomendado{border-color:var(--violeta);color:var(--violeta)}
+.quien .chip.recomendado[aria-pressed=true]{background:var(--violeta);color:#fff}
+.nota{font-size:13.5px;color:var(--gris);margin-top:12px}
+.campos{display:grid;grid-template-columns:1fr 1.6fr;gap:12px}
+.campos label span{display:block;font-size:13px;color:var(--tinta-2);margin-bottom:6px}
+.campos input,.campos textarea{width:100%;background:var(--papel);border:1px solid var(--linea);border-radius:12px;padding:12px 14px;resize:vertical}
+.campos textarea{min-height:86px}
+.campos input:focus,.campos textarea:focus{outline:none;border-color:var(--violeta)}
+.hoja{margin-top:14px;background:var(--papel);border-radius:var(--r);padding:26px;position:relative}
+.hoja::before{content:"";position:absolute;inset:10px;border:1px dashed rgba(81,53,196,.5);border-radius:2px;pointer-events:none}
+.hoja h4{font-family:var(--ancha);font-stretch:150%;text-transform:uppercase;font-weight:400;font-size:15px;letter-spacing:.02em;margin-bottom:12px;position:relative}
+.hoja dl{display:grid;grid-template-columns:110px 1fr;gap:8px 16px;font-size:15px;position:relative}
+.hoja dt{color:var(--gris)}
+.hoja dd{font-weight:500}
+.hoja dd.cambio{animation:marca .8s ease}
+@keyframes marca{from{color:var(--violeta)}}
+.hoja .acc{margin-top:20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;position:relative}
+.hoja .acc small{font-size:13px;color:var(--gris);max-width:260px}
+
+/* galería */
+.galeria{padding-top:clamp(80px,10vw,140px);padding-bottom:clamp(60px,8vw,100px)}
+.galeria .cabeza{max-width:1320px}
+.tira{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:max(clamp(18px,4vw,56px),calc((100vw - 1320px)/2 + 56px));padding:0 max(clamp(18px,4vw,56px),calc((100vw - 1320px)/2 + 56px)) 18px;scrollbar-width:thin;scrollbar-color:var(--tinta-2) transparent;cursor:grab}
+.tira.arrastrando{cursor:grabbing;scroll-snap-type:none}
+.tira figure{flex:none;scroll-snap-align:start;width:clamp(240px,26vw,370px)}
+.tira figure:nth-child(3n+2){width:clamp(260px,31vw,460px)}
+.tira figure .img{aspect-ratio:3/4;border-radius:var(--r);overflow:hidden;background:var(--tinta)}
+.tira figure:nth-child(3n+2) .img{aspect-ratio:4/5}
+.tira img{width:100%;height:100%;object-fit:cover;user-select:none;-webkit-user-drag:none;transition:transform .6s var(--salida)}
+@media (hover:hover){.tira figure:hover img{transform:scale(1.03)}}
+.tira figcaption{font-size:14px;color:var(--tinta-2);margin-top:10px}
+.tira figcaption b{font-weight:500;color:var(--tinta)}
+
+/* proceso */
+.proceso{padding-top:clamp(40px,6vw,80px);padding-bottom:clamp(80px,10vw,140px)}
+.proceso .grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(28px,5vw,80px);align-items:start}
+.proceso h2{font-size:clamp(34px,4.6vw,66px);position:sticky;top:110px}
+.tramo{position:relative;padding-left:52px}
+.tramo::before{content:"";position:absolute;left:15px;top:8px;bottom:8px;width:1px;background:var(--linea)}
+.avance{position:absolute;left:15px;top:8px;width:1px;background:var(--violeta);height:0;transition:height .6s var(--salida)}
+.etapa{position:relative;padding:0 0 46px}
+.etapa:last-child{padding-bottom:0}
+.etapa::before{content:attr(data-n);position:absolute;left:-52px;top:-2px;width:31px;height:31px;border-radius:50%;background:var(--papel);border:1px solid var(--tinta);display:grid;place-items:center;font-size:13px;font-weight:600;transition:background .3s,color .3s,border-color .3s}
+.etapa.hecha::before{background:var(--violeta);border-color:var(--violeta);color:#fff}
+.etapa h3{font-size:22px;font-weight:600;line-height:1.25}
+.etapa p{margin-top:8px;color:var(--tinta-2);max-width:520px}
+
+/* reseñas */
+.resenas{padding-top:clamp(64px,8vw,110px);padding-bottom:clamp(64px,8vw,110px)}
+.resenas .linea-top{border-top:1px solid var(--tinta);padding-top:clamp(48px,6vw,80px)}
+.nota-g{display:flex;align-items:baseline;gap:14px;margin-bottom:46px}
+.nota-g strong{font-family:var(--ancha);font-stretch:150%;font-weight:200;font-size:clamp(56px,7vw,96px);line-height:.9}
+.nota-g span{color:var(--tinta-2)}
+.citas{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:clamp(20px,3vw,44px)}
+.citas blockquote{font-size:clamp(17px,1.5vw,20px);line-height:1.45}
+.citas blockquote:first-child{font-size:clamp(22px,2.2vw,30px);line-height:1.3;font-weight:500}
+.citas cite{display:block;margin-top:14px;font-style:normal;font-size:14px;color:var(--gris);font-weight:400}
+
+/* cierre: el número como pieza tipográfica */
+.cierre{border-top:1px solid var(--linea);padding-top:clamp(72px,9vw,120px);padding-bottom:clamp(48px,6vw,80px)}
+.cierre .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,72px);align-items:end}
+.cierre .dice{font-size:18px;color:var(--tinta-2);max-width:460px}
+.numero{display:block;margin-top:18px;white-space:nowrap;font-family:var(--ancha);font-stretch:150%;font-weight:200;font-size:clamp(32px,5vw,82px);line-height:1;text-decoration:none;letter-spacing:-.01em;transition:color .2s}
+.numero:hover{color:var(--violeta)}
+.numero span{display:block;font-family:var(--texto);font-stretch:100%;font-size:15px;font-weight:500;letter-spacing:0;margin-top:14px;color:var(--violeta)}
+.direccion{margin-top:42px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.direccion strong{font-family:var(--ancha);font-stretch:150%;text-transform:uppercase;font-weight:300;font-size:clamp(20px,2vw,28px);margin-right:10px}
+.cierre figure img{border-radius:var(--r);aspect-ratio:4/5;object-fit:cover;width:100%}
+.cierre figcaption{font-size:13px;color:var(--gris);margin-top:10px}
+.cierre .extra{margin-top:56px;padding-top:22px;border-top:1px solid var(--linea);display:flex;gap:36px;flex-wrap:wrap;font-size:15px;color:var(--tinta-2)}
+.cierre .extra a{color:var(--tinta)}
+footer{background:var(--tinta);color:#8E8A98;font-size:13px}
+footer .envoltura{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:20px;padding-bottom:20px}
+footer b{color:var(--papel);font-weight:500}
+
+.revela{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s var(--salida)}
+.revela.si{opacity:1;transform:none}
+
+@media (max-width:1020px){
+  .portada{grid-template-columns:1fr;min-height:auto}
+  .portada .texto{order:2;padding:8px clamp(18px,4vw,56px) 48px}
+  .escena3d{order:1;min-height:0;height:min(58vh,520px)}
+  .escena3d .pie-foto{display:none}
+  .mesa{grid-template-columns:1fr}
+  .vista{position:relative;top:0}
+  .vista .foto{aspect-ratio:16/11}
+  .proceso .grid,.cierre .grid{grid-template-columns:1fr}
+  .proceso h2{position:relative;top:0}
+  .citas{grid-template-columns:1fr}
+  .barra nav{display:none}
+  .fila-a{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .fila-a .ig{display:none}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .portada h1{font-size:clamp(38px,11.4vw,56px)}
+  .tel b{display:none}
+  .fila-a{grid-template-columns:64px 1fr;gap:6px 14px;padding:16px 0}
+  .fila-a .mini{display:block;grid-row:span 2;width:64px;height:80px;border-radius:var(--r);overflow:hidden;background:var(--tinta)}
+  .fila-a .mini img{width:100%;height:100%;object-fit:cover}
+  .fila-a .mini span{display:grid;place-items:center;height:100%;color:var(--papel);font-family:var(--ancha);font-stretch:150%;font-size:20px}
+  .zonas{grid-template-columns:1fr 1fr}
+  .campos{grid-template-columns:1fr}
+  .hoja dl{grid-template-columns:86px 1fr}
+  .historia{min-height:600px;align-items:flex-end}
+  .historia>img{object-position:30% 30%}
+  .historia::after{background:linear-gradient(0deg,rgba(23,22,28,.96) 0%,rgba(23,22,28,.75) 55%,rgba(23,22,28,.15) 100%)}
+  .historia .envoltura{padding-bottom:48px}
+}
+@media (prefers-reduced-motion:reduce){
+  .portada h1 .l span,.portada p,.portada .acc{animation:none;transform:none;opacity:1}
+  .revela{opacity:1;transform:none;transition:none}
+  .flotante{display:none}
+}
+.shot *{animation-duration:0s!important;animation-delay:0s!important;transition:none!important}
+.shot .revela{opacity:1;transform:none}
+</style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+</head>
+<body>
+
+<div class="aviso">Vista previa hecha por <b>NIMBRA</b> para Arte Eterno</div>
+
+<header class="barra">
+  <div class="envoltura">
+    <a class="marca" href="#">Arte Eterno</a>
+    <nav aria-label="Secciones"><a href="#artistas">Artistas</a><a href="#consulta">Consulta</a><a href="#trabajos">Trabajos</a><a href="#proceso">Cómo se agenda</a></nav>
+    <a class="tel" href="https://wa.me/5493415909305" target="_blank" rel="noopener"><i class="ph ph-whatsapp-logo" aria-hidden="true"></i><b>341 590 9305</b></a>
+  </div>
+  <span class="trazo" aria-hidden="true"></span>
+</header>
+
+<main>
+<section class="portada">
+  <div class="texto">
+    <h1 class="ancha"><span class="l"><span>Que el arte</span></span><span class="l"><span>sea</span></span><span class="l"><span>eterno</span></span></h1>
+    <p>Comunidad de tatuadores en Rosario. Más de diez artistas en Paraguay 1592 y más de 20 años tatuando.</p>
+    <div class="acc">
+      <a class="boton violeta" href="#consulta"><i class="ph ph-pen-nib" aria-hidden="true"></i>Contar mi idea</a>
+      <a class="boton linea" href="#artistas">Ver los artistas</a>
+    </div>
+  </div>
+  <div class="escena3d" id="escena3d" aria-label="Máquina de tatuar dibujando un stencil de olas">
+    <img class="respaldo" src="img/tormenta.webp" alt="Pintura de olas japonesas de El Pelado">
+    <span class="pie-foto">El stencil, antes de la tinta.</span>
+  </div>
+</section>
+
+<section class="historia" aria-labelledby="t-historia">
+  <img src="img/a-pelado.webp" alt="Guillermo Serra, El Pelado, sentado en el estudio frente a una pared biomecánica" loading="lazy">
+  <div class="envoltura">
+    <div class="bloque">
+      <h2 class="ancha revela" id="t-historia">Un estudio hecho en familia</h2>
+      <p class="revela">Arte Eterno lo creó Guillermo Serra, El Pelado, junto a su familia. Son más de veinte años de estudio, nueve convenciones organizadas y workshops con artistas invitados. Acá se tatúa, se dibuja y se pinta, con litros de mate de por medio.</p>
+      <p class="firma revela">Más de 30 años de trayectoria detrás de cada pieza.</p>
+    </div>
+  </div>
+</section>
+
+<section class="envoltura artistas" id="artistas">
+  <div class="cabeza">
+    <h2 class="ancha revela">Elegí con quién</h2>
+    <p class="revela">Cada artista tiene su mano. Pasá por los nombres para ver su trabajo.</p>
+  </div>
+  <div class="lista" id="lista"></div>
+</section>
+
+<section class="armador" id="consulta">
+  <div class="envoltura">
+    <div class="cabeza">
+      <h2 class="ancha revela">Armá tu consulta</h2>
+      <p class="revela">Lo que el estudio siempre pregunta: zona, tamaño aproximado y referencia. Completalo acá y llega listo a su WhatsApp.</p>
+    </div>
+    <div class="mesa">
+      <div class="vista">
+        <div class="foto" id="fotoZona"><img src="img/z-brazo.webp" alt="Manga terminada de El Pelado"></div>
+        <div class="rotulo"><span id="rotZona"><b>Brazo</b></span><span id="rotAutor"></span></div>
+      </div>
+      <div class="pasos">
+        <div class="paso">
+          <h3><i>1</i>Dónde va</h3>
+          <div class="zonas" id="zonas"></div>
+        </div>
+        <div class="paso">
+          <h3><i>2</i>Tamaño aproximado</h3>
+          <div class="valor" id="cm">12<small>cm</small></div>
+          <div class="cat" id="cat"></div>
+          <div class="pista">
+            <div class="marcas" aria-hidden="true"></div>
+            <div class="base" aria-hidden="true"></div>
+            <div class="relleno" id="relleno"></div>
+            <input type="range" id="tam" min="3" max="50" value="12" aria-label="Tamaño aproximado en centímetros">
+          </div>
+          <div class="escala"><span>3 cm</span><span>25 cm</span><span>50 cm o más</span></div>
+        </div>
+        <div class="paso">
+          <h3><i>3</i>Estilo<small>podés elegir más de uno</small></h3>
+          <div class="chips" id="estilos"></div>
+        </div>
+        <div class="paso">
+          <h3><i>4</i>Con quién</h3>
+          <div class="chips quien" id="quien"></div>
+          <p class="nota" id="notaQuien">Elegí un estilo y te marcamos quién lo trabaja.</p>
+        </div>
+        <div class="paso">
+          <h3><i>5</i>Tu idea</h3>
+          <div class="campos">
+            <label><span>Tu nombre</span><input id="nombre" type="text" autocomplete="given-name" placeholder="Ej. Agustina"></label>
+            <label><span>Qué te imaginás</span><textarea id="idea" placeholder="Ej. una carpa koi entre olas, en negro y gris"></textarea></label>
+          </div>
+          <div class="hoja" aria-live="polite">
+            <h4>Tu consulta</h4>
+            <dl>
+              <dt>Zona</dt><dd id="hZona"></dd>
+              <dt>Tamaño</dt><dd id="hTam"></dd>
+              <dt>Estilo</dt><dd id="hEst"></dd>
+              <dt>Artista</dt><dd id="hArt"></dd>
+            </dl>
+            <div class="acc">
+              <a class="boton violeta" id="enviar" href="#" target="_blank" rel="noopener"><i class="ph ph-whatsapp-logo" aria-hidden="true"></i>Enviar consulta</a>
+              <small>La foto de referencia la mandás en el mismo chat.</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="galeria" id="trabajos">
+  <div class="envoltura cabeza">
+    <h2 class="ancha revela">Hecho en Arte Eterno</h2>
+  </div>
+  <div class="tira" id="tira">
+    <figure><div class="img"><img src="img/tormenta.webp" alt="Pintura de olas en blanco y negro" loading="lazy"></div><figcaption><b>Armando la tormenta</b>, pintura. El Pelado</figcaption></figure>
+    <figure><div class="img"><img src="img/g-manga.webp" alt="Manga en negro" loading="lazy"></div><figcaption><b>Manga para Carlos</b>. Martín Aguaisol</figcaption></figure>
+    <figure><div class="img"><img src="img/g-parches.webp" alt="Brazo con parches tradicionales a color" loading="lazy"></div><figcaption><b>Parches tradicionales</b>. Cone Oviedo</figcaption></figure>
+    <figure><div class="img"><img src="img/g-serpiente.webp" alt="Serpiente cicatrizada en el brazo" loading="lazy"></div><figcaption><b>Serpiente</b>, cicatrizada. El Pelado</figcaption></figure>
+    <figure><div class="img"><img src="img/g-pintura.webp" alt="Pintura de dragón tradicional de 50 por 70" loading="lazy"></div><figcaption><b>Pintura de 50×70</b>. Matías Tomás y Kenny Pixie</figcaption></figure>
+    <figure><div class="img"><img src="img/g-leon.webp" alt="León realista en negro y gris" loading="lazy"></div><figcaption><b>León</b>, black and grey. Martín Aguaisol</figcaption></figure>
+    <figure><div class="img"><img src="img/g-lamina.webp" alt="Lámina en tinta china" loading="lazy"></div><figcaption><b>Lámina en tinta china</b>. Matías Tomás y Franco</figcaption></figure>
+    <figure><div class="img"><img src="img/g-bng.webp" alt="Brazo en negro y grises" loading="lazy"></div><figcaption><b>Negro y grises</b>. Martín Aguaisol</figcaption></figure>
+    <figure><div class="img"><img src="img/g-fusion.webp" alt="Pintura en colaboración" loading="lazy"></div><figcaption><b>Pintura en fusión</b>. El Pelado y Matías Tomás</figcaption></figure>
+  </div>
+</section>
+
+<section class="envoltura proceso" id="proceso">
+  <div class="grid">
+    <h2 class="ancha">Cómo se agenda</h2>
+    <div class="tramo">
+      <span class="avance" id="avance"></span>
+      <div class="etapa" data-n="1"><h3>Contás tu idea</h3><p>Zona, tamaño aproximado y una referencia. Con eso alcanza para empezar.</p></div>
+      <div class="etapa" data-n="2"><h3>Te asesoran y la diseñan</h3><p>Aunque sea tu primer tatuaje. El artista adapta el diseño a tu piel y a la zona.</p></div>
+      <div class="etapa" data-n="3"><h3>Coordinan el turno</h3><p>Los proyectos grandes se dividen en sesiones. También se puede hacer una pieza entre dos artistas, fusionando estilos.</p></div>
+      <div class="etapa" data-n="4"><h3>La cuidás</h3><p>Curar bien la piel es lo que mantiene la tinta nítida y las líneas firmes con los años. El estudio te da su guía de cuidados.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="envoltura resenas">
+  <div class="linea-top">
+    <div class="nota-g revela"><strong>4,6</strong><span>253 reseñas en Google</span></div>
+    <div class="citas">
+      <blockquote class="revela">“Es MI lugar para tatuarme. La chica que te recibe, los tatuadores... todos con un excelente trato.”<cite>Vanesa Nallino</cite></blockquote>
+      <blockquote class="revela">“Es un lugar limpio, los materiales están bien esterilizados. Hace 10 años que me tatúo ahí y no lo cambio por nada.”<cite>Victoria Velazquez</cite></blockquote>
+      <blockquote class="revela">“Artistas grosos, muy grandes. Son obras de arte lo que ellos perpetúan en vos.”<cite>Ale Rios</cite></blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="envoltura cierre" id="estudio">
+  <div class="grid">
+    <div>
+      <p class="dice revela">¿Tenés una idea dando vueltas? Escribinos, aunque sea tu primer tatuaje.</p>
+      <a class="numero revela" href="https://wa.me/5493415909305" target="_blank" rel="noopener">341 590 9305<span>WhatsApp del estudio</span></a>
+      <div class="direccion revela">
+        <strong>Paraguay 1592, Rosario</strong>
+        <a class="boton linea" href="https://www.google.com/maps/search/?api=1&query=Arte+Eterno+Paraguay+1592+Rosario" target="_blank" rel="noopener"><i class="ph ph-map-pin" aria-hidden="true"></i>Cómo llegar</a>
+      </div>
+    </div>
+    <figure class="revela"><img src="img/s-equipo.webp" alt="Integrantes del estudio con una lámina dibujada" loading="lazy"><figcaption>Tattoo, dibujo y litros de mate.</figcaption></figure>
+  </div>
+  <div class="extra">
+    <span><i class="ph ph-instagram-logo" aria-hidden="true"></i> <a href="https://www.instagram.com/arte.eterno.tattoo/" target="_blank" rel="noopener">@arte.eterno.tattoo</a></span>
+    <span>Insumos para tatuadores en <a href="https://www.instagram.com/ae.tattooinsumos/" target="_blank" rel="noopener">@ae.tattooinsumos</a></span>
+    <span>¿Querés venir a tatuar con nosotros? También escribinos.</span>
+  </div>
+</section>
+</main>
+
+<footer><div class="envoltura"><span>Vista previa hecha por <b>NIMBRA</b> para Arte Eterno</span><span>Fotos y trabajos: Arte Eterno y sus artistas</span></div></footer>
+
+<div class="flotante" id="flotante" aria-hidden="true"><img alt=""><div class="tipo"></div></div>
+
+<script>
+const shot=/[?&]shot/.test(location.search); if(shot) document.documentElement.classList.add('shot');
+const WA='5493415909305';
+const ESTILOS=['Tradicional','Neotradicional','Japonés','Black and grey','Blackout','Fineline','Ornamental','Tribal','Dotwork','Surrealismo','Biomecánico','Color','Cover'];
+const ARTISTAS=[
+  {n:'El Pelado',ig:'pelado_arteeterno',img:'a-pelado',e:['Japonés','Biomecánico','Black and grey']},
+  {n:'Emi Soligo',ig:'soligo.emiliano',img:'a-emi',e:['Surrealismo','Black and grey']},
+  {n:'Kenny Pixie',ig:'kennypixie',img:'a-kenny',e:['Tradicional','Fineline','Color']},
+  {n:'Cone Oviedo',ig:'cone_oviedo_tattoo',img:'a-cone',e:['Neotradicional','Color','Ornamental']},
+  {n:'Martín Aguaisol',ig:'martin_aguaisol_tattoos',img:'a-martin',e:['Blackout','Black and grey','Japonés','Cover']},
+  {n:'Matías Tomás',ig:'matias.tomas.1312',img:'a-matias',e:['Tradicional','Japonés','Color']},
+  {n:'Santi La Barbera',ig:null,img:'a-santi',e:['Fineline','Black and grey']},
+  {n:'Franco',ig:'ffran.co_',img:'a-franco',e:['Japonés','Dotwork']},
+  {n:'Seba González',ig:null,img:null,e:['Tribal','Black and grey','Dotwork']}
+];
+const ZONAS=[
+  {k:'Brazo',img:'z-brazo',a:'Manga terminada. El Pelado'},
+  {k:'Antebrazo',img:'z-antebrazo',a:'Kitsune. Cone Oviedo'},
+  {k:'Mano',img:'z-mano',a:'Raijin y Fujin. Matías Tomás'},
+  {k:'Espalda',img:'z-espalda',a:'Espalda ornamental. Cone Oviedo'},
+  {k:'Pierna',img:'z-pierna',a:'Rodilla floral. Kenny Pixie'},
+  {k:'Pecho y hombro',img:'z-pecho',a:'Pecho y brazo, en 3 sesiones. El Pelado'}
+];
+const st={zona:'Brazo',cm:12,est:new Set(),art:null};
+
+/* lista de artistas */
+const lista=document.getElementById('lista');
+ARTISTAS.forEach(a=>{
+  const el=document.createElement('div');el.className='fila-a';el.dataset.n=a.n;
+  el.innerHTML=`<div class="mini">${a.img?`<img src="img/${a.img}.webp" alt="" loading="lazy">`:`<span>SG</span>`}</div><div class="nombre">${a.n}</div><div class="estilos">${a.e.map(x=>`<span class="etq" data-e="${x}">${x}</span>`).join('')}</div>${a.ig?`<a class="ig" href="https://www.instagram.com/${a.ig}/" target="_blank" rel="noopener">@${a.ig}</a>`:`<span class="ig"></span>`}`;
+  lista.appendChild(el);
+});
+
+/* imagen que sigue al cursor, con inercia */
+const fl=document.getElementById('flotante'),flImg=fl.querySelector('img'),flTipo=fl.querySelector('.tipo');
+if(matchMedia('(hover:hover) and (pointer:fine)').matches&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  let tx=0,ty=0,x=0,y=0,on=false,raf=0;
+  const loop=()=>{x+=(tx-x)*.16;y+=(ty-y)*.16;fl.style.transform=`translate3d(${x-130}px,${y-165}px,0) rotate(${(tx-x)*.03}deg)`;if(on||Math.abs(tx-x)>.5)raf=requestAnimationFrame(loop);else raf=0};
+  lista.querySelectorAll('.fila-a').forEach(f=>{
+    const a=ARTISTAS.find(z=>z.n===f.dataset.n);
+    f.addEventListener('pointerenter',e=>{if(a.img){flImg.src=`img/${a.img}.webp`;flImg.style.display='';flTipo.style.display='none'}else{flImg.style.display='none';flTipo.style.display='flex';flTipo.innerHTML=a.e.join('<br>')}
+      if(!on){x=tx=e.clientX;y=ty=e.clientY}on=true;fl.classList.add('on');if(!raf)raf=requestAnimationFrame(loop)});
+    f.addEventListener('pointermove',e=>{tx=e.clientX;ty=e.clientY});
+    f.addEventListener('pointerleave',()=>{on=false;fl.classList.remove('on')});
+  });
+}
+
+/* armador */
+const zonasEl=document.getElementById('zonas');
+ZONAS.forEach(z=>{const b=document.createElement('button');b.type='button';b.className='zona';b.innerHTML=`<img src="img/${z.img}.webp" alt="">${z.k}`;b.dataset.k=z.k;b.onclick=()=>{if(st.zona!==z.k){st.zona=z.k;cambiarFoto(z)}pintar()};zonasEl.appendChild(b)});
+const estEl=document.getElementById('estilos');
+ESTILOS.forEach(e=>{const b=document.createElement('button');b.type='button';b.className='chip';b.textContent=e;b.setAttribute('aria-pressed','false');b.onclick=()=>{st.est.has(e)?st.est.delete(e):st.est.add(e);pintar()};estEl.appendChild(b)});
+const quienEl=document.getElementById('quien');
+[...ARTISTAS.map(a=>a.n),'Que me asesoren'].forEach(n=>{const b=document.createElement('button');b.type='button';b.className='chip';b.textContent=n;b.dataset.n=n;b.setAttribute('aria-pressed','false');b.onclick=()=>{st.art=st.art===n?null:n;pintar()};quienEl.appendChild(b)});
+const foto=document.getElementById('fotoZona');
+function cambiarFoto(z){
+  const vieja=foto.querySelector('img:last-child');
+  const nueva=new Image();nueva.src=`img/${z.img}.webp`;nueva.alt=z.a;nueva.className='sale';foto.appendChild(nueva);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{nueva.classList.remove('sale');if(vieja){vieja.classList.add('sale');setTimeout(()=>vieja.remove(),500)}}));
+}
+const tam=document.getElementById('tam');tam.oninput=()=>{st.cm=+tam.value;pintar()};
+['nombre','idea'].forEach(id=>document.getElementById(id).oninput=pintar);
+function categoria(cm){return cm<=7?'Pieza chica':cm<=15?'Pieza mediana':cm<=30?'Pieza grande':'Proyecto: manga, espalda o pierna completa'}
+function marcar(id,t){const el=document.getElementById(id);if(el.textContent!==t){el.textContent=t;if(!shot){el.classList.remove('cambio');void el.offsetWidth;el.classList.add('cambio')}}}
+function pintar(){
+  zonasEl.querySelectorAll('.zona').forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===st.zona));
+  const z=ZONAS.find(x=>x.k===st.zona);
+  document.getElementById('rotZona').innerHTML=`<b>${z.k}</b>`;document.getElementById('rotAutor').textContent=z.a;
+  const cmTxt=st.cm>=50?'50+':String(st.cm);
+  document.getElementById('cm').innerHTML=`${cmTxt}<small>cm</small>`;
+  document.getElementById('cat').textContent=categoria(st.cm);
+  const pct=(st.cm-3)/47;document.getElementById('relleno').style.width=`calc(${pct*100}% + ${13-26*pct}px)`;
+  estEl.querySelectorAll('.chip').forEach(b=>b.setAttribute('aria-pressed',st.est.has(b.textContent)));
+  const reco=ARTISTAS.filter(a=>st.est.size&&a.e.some(e=>st.est.has(e))).map(a=>a.n);
+  quienEl.querySelectorAll('.chip').forEach(b=>{b.classList.toggle('recomendado',reco.includes(b.dataset.n));b.setAttribute('aria-pressed',st.art===b.dataset.n)});
+  document.getElementById('notaQuien').textContent=st.est.size?(reco.length?`Trabajan ese estilo: ${reco.join(', ')}.`:'Ese estilo lo charlan con vos en la consulta.'):'Elegí un estilo y te marcamos quién lo trabaja.';
+  lista.querySelectorAll('.fila-a').forEach(f=>{f.classList.toggle('encaja',reco.includes(f.dataset.n));f.querySelectorAll('.etq').forEach(t=>t.classList.toggle('si',st.est.has(t.dataset.e)))});
+  const estTxt=st.est.size?[...st.est].join(', '):'A definir';
+  const artTxt=st.art||'Que me asesoren';
+  marcar('hZona',st.zona);marcar('hTam',`${cmTxt} cm aprox., ${categoria(st.cm).toLowerCase()}`);marcar('hEst',estTxt);marcar('hArt',artTxt);
+  const nombre=document.getElementById('nombre').value.trim(),idea=document.getElementById('idea').value.trim();
+  const msg=`Hola Arte Eterno! ${nombre?`Soy ${nombre}. `:''}Quiero consultar por un tatuaje:\n• Zona: ${st.zona}\n• Tamaño aproximado: ${cmTxt} cm\n• Estilo: ${estTxt}\n• Artista: ${artTxt}${idea?`\n• Idea: ${idea}`:''}\nTe paso la referencia por acá.`;
+  document.getElementById('enviar').href=`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+}
+pintar();
+
+/* galería con arrastre */
+const tira=document.getElementById('tira');let ax=0,sl=0,drag=false;
+tira.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;drag=true;ax=e.clientX;sl=tira.scrollLeft;tira.classList.add('arrastrando');tira.setPointerCapture(e.pointerId)});
+tira.addEventListener('pointermove',e=>{if(drag)tira.scrollLeft=sl-(e.clientX-ax)});
+const soltar=()=>{drag=false;tira.classList.remove('arrastrando')};tira.addEventListener('pointerup',soltar);tira.addEventListener('pointercancel',soltar);
+
+/* revelados y línea del proceso */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('si');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.revela').forEach(el=>io.observe(el));
+const etapas=[...document.querySelectorAll('.etapa')],avance=document.getElementById('avance');
+const io2=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('hecha')});const ult=etapas.filter(x=>x.classList.contains('hecha')).pop();if(ult)avance.style.height=(ult.offsetTop+14)+'px'},{rootMargin:'0px 0px -35% 0px'});
+etapas.forEach(e=>io2.observe(e));
+if(shot){document.querySelectorAll('.revela').forEach(el=>el.classList.add('si'));etapas.forEach(e=>e.classList.add('hecha'));avance.style.height='calc(100% - 16px)'}
+</script>
+
+<script type="module">
+/* La máquina rotativa dibuja el stencil de olas sobre el papel. */
+import * as THREE from 'three';
+import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
+
+const cont=document.getElementById('escena3d');
+const shot=/[?&]shot/.test(location.search);
+const quieto=shot;const calmo=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let renderer;
+try{renderer=new THREE.WebGLRenderer({antialias:true,alpha:true,preserveDrawingBuffer:shot});}catch(e){cont.classList.add('sin3d');throw e}
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;
+cont.appendChild(renderer.domElement);
+
+const escena=new THREE.Scene();
+const pmrem=new THREE.PMREMGenerator(renderer);
+escena.environment=pmrem.fromScene(new RoomEnvironment(renderer),.04).texture;
+const camara=new THREE.PerspectiveCamera(30,1,.1,100);
+
+/* luz y sombra sobre el papel */
+const sol=new THREE.DirectionalLight(0xffffff,2.2);sol.position.set(-3.5,9,4.5);sol.castShadow=true;
+sol.shadow.mapSize.set(2048,2048);Object.assign(sol.shadow.camera,{left:-6,right:6,top:6,bottom:-6,near:1,far:30});sol.shadow.radius=6;sol.shadow.bias=-.0006;
+escena.add(sol,new THREE.AmbientLight(0xffffff,.35));
+const piso=new THREE.Mesh(new THREE.PlaneGeometry(40,40),new THREE.ShadowMaterial({opacity:.2}));piso.rotation.x=-Math.PI/2;piso.receiveShadow=true;escena.add(piso);
+
+/* stencil: base ondulada, tres remolinos y espuma, como el ornamento de su logo */
+const S=.6;const V=(x,z)=>new THREE.Vector3(x*S,.006,z*S);
+function remolino(cx,cz,r0,vueltas,a0,sentido,n=90){const p=[];for(let i=0;i<=n;i++){const t=i/n,a=a0+sentido*vueltas*Math.PI*2*t,r=r0*(1-.86*t);p.push(V(cx+r*Math.cos(a),cz+r*Math.sin(a)))}return p}
+const trazos=[];
+{const p=[];for(let i=0;i<=60;i++){const x=-2.9+5.8*i/60;p.push(V(x,1.05+.12*Math.sin(x*2.1)))}trazos.push(p)}
+trazos.push(remolino(-1.55,.2,.82,1.55,Math.PI*.5,-1));
+trazos.push(remolino(.35,-.42,1.02,1.7,Math.PI*.55,1));
+trazos.push(remolino(2.05,.28,.62,1.45,Math.PI*.5,-1));
+trazos.push([V(-.85,-.95),V(-.6,-1.25),V(-.25,-1.38)]);
+trazos.push([V(1.25,-1.15),V(1.5,-1.32),V(1.85,-1.3)]);
+trazos.push([V(-2.5,.35),V(-2.65,.0),V(-2.55,-.35)]);
+const hoja=new THREE.Mesh(new THREE.PlaneGeometry(4.3,2.75),new THREE.MeshStandardMaterial({color:0xB9B6AE,roughness:1,metalness:0}));hoja.rotation.x=-Math.PI/2;hoja.rotation.z=.05;hoja.position.set(.08,.001,-.02);hoja.receiveShadow=true;escena.add(hoja);
+const tinta=new THREE.MeshBasicMaterial({color:0x5135C4});
+const lineas=trazos.map(p=>{const c=new THREE.CatmullRomCurve3(p,false,'centripetal');const seg=Math.max(40,Math.round(c.getLength()*90));const g=new THREE.TubeGeometry(c,seg,.011,6,false);const m=new THREE.Mesh(g,tinta);m.userData={c,seg,len:c.getLength()};g.setDrawRange(0,0);escena.add(m);return m});
+const totalLen=lineas.reduce((s,l)=>s+l.userData.len,0);
+
+/* la máquina: puño moleteado, cuerpo grafito, anillo violeta, cartucho y aguja */
+function textoCuerpo(){const c=document.createElement('canvas');c.width=1024;c.height=256;const x=c.getContext('2d');x.fillStyle='#2a2830';x.fillRect(0,0,1024,256);x.fillStyle='rgba(227,225,219,.82)';x.font='300 64px Anybody, sans-serif';x.textAlign='center';x.textBaseline='middle';x.save();x.translate(512,128);x.rotate(-Math.PI/2);x.restore();x.fillText('ARTE ETERNO',512,128);const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=8;return t}
+function moleteado(){const c=document.createElement('canvas');c.width=c.height=256;const x=c.getContext('2d');x.fillStyle='#808080';x.fillRect(0,0,256,256);x.strokeStyle='#202020';x.lineWidth=3;for(let i=-256;i<512;i+=16){x.beginPath();x.moveTo(i,0);x.lineTo(i+256,256);x.stroke();x.beginPath();x.moveTo(i,256);x.lineTo(i+256,0);x.stroke()}const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(4,3);return t}
+const maquina=new THREE.Group();
+const metal=new THREE.MeshStandardMaterial({color:0xC9CBD2,metalness:1,roughness:.32,bumpMap:moleteado(),bumpScale:.035});
+const grafito=new THREE.MeshStandardMaterial({color:0xffffff,map:textoCuerpo(),metalness:.75,roughness:.35});
+const violeta=new THREE.MeshStandardMaterial({color:0x5135C4,metalness:.7,roughness:.28});
+const negro=new THREE.MeshStandardMaterial({color:0x18171c,metalness:.2,roughness:.6});
+const cristal=new THREE.MeshStandardMaterial({color:0xE9E6F2,metalness:0,roughness:.08,transparent:true,opacity:.55});
+const add=(geo,mat,y)=>{const m=new THREE.Mesh(geo,mat);m.position.y=y;m.castShadow=true;maquina.add(m);return m};
+add(new THREE.CylinderGeometry(.006,.006,.22,8),new THREE.MeshStandardMaterial({color:0xdddddd,metalness:1,roughness:.2}),.11);
+add(new THREE.CylinderGeometry(.11,.05,.36,32),cristal,.36);
+add(new THREE.CylinderGeometry(.13,.11,.12,32),violeta,.58);
+add(new THREE.CylinderGeometry(.215,.17,.12,48),metal,.7);
+add(new THREE.CylinderGeometry(.22,.22,.86,48),metal,1.19);
+add(new THREE.CylinderGeometry(.235,.235,.05,48),violeta,1.645);
+const cuerpo=add(new THREE.CylinderGeometry(.27,.27,1.25,64,1,true),grafito,2.3);cuerpo.rotation.y=Math.PI*.15;
+add(new THREE.CylinderGeometry(.27,.27,.01,64),grafito,1.675);
+add(new THREE.TorusGeometry(.272,.012,8,64),violeta,2.05).rotation.x=Math.PI/2;
+add(new THREE.CylinderGeometry(.2,.27,.16,48),negro,3.0);
+add(new THREE.CylinderGeometry(.075,.075,.22,24),metal,3.18);
+const cable=new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([new THREE.Vector3(0,3.26,0),new THREE.Vector3(0,3.7,.05),new THREE.Vector3(.35,4.15,.55),new THREE.Vector3(1.4,4.35,1.6),new THREE.Vector3(3.2,4.0,2.8),new THREE.Vector3(6,3.4,3.6)]),80,.055,10,false),negro);cable.castShadow=true;maquina.add(cable);
+maquina.rotation.order='YXZ';maquina.scale.setScalar(.62);
+const soporte=new THREE.Group();soporte.add(maquina);escena.add(soporte);
+maquina.rotation.set(-.42,0,.38);
+
+/* encuadre */
+const enfoque=new THREE.Vector3(.15,.55,-.15);
+function medir(){const w=cont.clientWidth,h=cont.clientHeight;renderer.setSize(w,h,false);camara.aspect=w/h;const ancho=w<700;camara.fov=ancho?30:24;camara.position.set(ancho?0:.35,ancho?8.4:8.6,ancho?6.2:6.8);camara.lookAt(enfoque);camara.updateProjectionMatrix()}
+medir();addEventListener('resize',medir);
+
+/* animación del dibujo */
+let mx=0,my=0;cont.addEventListener('pointermove',e=>{const r=cont.getBoundingClientRect();mx=(e.clientX-r.left)/r.width-.5;my=(e.clientY-r.top)/r.height-.5});
+const DUR=7.5;let t0=performance.now(),visible=true;
+new IntersectionObserver(es=>{visible=es[0].isIntersecting;if(visible)tick()},{threshold:0}).observe(cont);
+const punta=new THREE.Vector3(),objetivo=new THREE.Vector3(),levante={v:0};
+function estado(p){
+  // p de 0 a 1 sobre el largo total, con saltos entre trazos
+  let resto=p*totalLen;for(let i=0;i<lineas.length;i++){const l=lineas[i],L=l.userData.len;
+    if(resto<=L){const f=resto/L;return {i,f}}resto-=L}
+  return {i:lineas.length-1,f:1};
+}
+let anterior=performance.now();
+function tick(){
+  if(!visible)return;
+  const ahora=performance.now(),dt=Math.min(.05,(ahora-anterior)/1000);anterior=ahora;
+  const tt=(ahora-t0)/1000;
+  const p=quieto?1:Math.min(1,Math.max(0,(tt-.6)/DUR));
+  const {i,f}=estado(p);
+  lineas.forEach((l,k)=>{const n=l.userData.seg*6*6;l.geometry.setDrawRange(0,k<i?n:k===i?Math.floor(f*l.userData.seg)*36:0)});
+  const actual=lineas[i].userData.c;
+  if(p<1){objetivo.copy(actual.getPointAt(Math.min(1,f)));const borde=Math.min(f,1-f)*lineas[i].userData.len;levante.v+=(((borde<.04&&p>0)?.16:0)-levante.v)*Math.min(1,dt*14)}
+  else{objetivo.set(.95,0,-.35);levante.v+=(.55-levante.v)*Math.min(1,dt*2.2)}
+  if(tt<.6&&!quieto){objetivo.copy(lineas[0].userData.c.getPointAt(0));levante.v=1*(1-tt/.6)}
+  punta.lerp(objetivo,quieto?1:Math.min(1,dt*(p<1?18:2.5)));
+  const zumbido=(p>0&&p<1&&!quieto&&!calmo)?.006:0;
+  soporte.position.set(punta.x+(Math.random()-.5)*zumbido,punta.y+levante.v+(p>=1&&!quieto&&!calmo?Math.sin(tt*1.4)*.06:0),punta.z+(Math.random()-.5)*zumbido);
+  const giro=p>=1&&!quieto&&!calmo?Math.sin(tt*.5)*.12:0;
+  maquina.rotation.y+=((mx*.5+giro)-maquina.rotation.y)*Math.min(1,dt*3);
+  maquina.rotation.x+=((-.42+my*.18)-maquina.rotation.x)*Math.min(1,dt*3);
+  renderer.render(escena,camara);
+  if(!quieto)requestAnimationFrame(tick);
+}
+if(quieto){punta.set(.95,0,-.35);levante.v=.55}
+document.fonts.ready.then(()=>{maquina.children.forEach(m=>{if(m.material===grafito){grafito.map=textoCuerpo();grafito.needsUpdate=true}});tick()});
+tick();
+window.__listo3d=true;
+</script>
+</body>
+</html>
