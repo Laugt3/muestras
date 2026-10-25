@@ -416,7 +416,7 @@ EXTRAS.forEach(e=>{const b=document.createElement('button');b.type='button';b.cl
   b.onclick=()=>{st.ex.has(e.k)?st.ex.delete(e.k):st.ex.add(e.k);b.setAttribute('aria-pressed',st.ex.has(e.k));calc()};exEl.appendChild(b)});
 [['ascD','pisoD'],['ascH','pisoH']].forEach(([b,p])=>{const btn=document.getElementById(b);btn.onclick=()=>{st[b]=!st[b];btn.setAttribute('aria-pressed',st[b]);btn.textContent=st[b]?'Con ascensor':'Sin ascensor';calc()};document.getElementById(p).oninput=calc});
 ['fecha','nombre'].forEach(id=>document.getElementById(id).oninput=calc);
-const f=new Date();f.setDate(f.getDate()+21);document.getElementById('fecha').value=f.toISOString().slice(0,10);
+const f=new Date();f.setDate(f.getDate()+21);if(f.getDay()===0)f.setDate(f.getDate()+1);document.getElementById('fecha').value=f.toISOString().slice(0,10);
 
 // camión
 const NS='http://www.w3.org/2000/svg';
