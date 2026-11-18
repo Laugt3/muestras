@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diagnóstico gratis de tu negocio en 1 minuto · NIMBRA</title>
+<meta name="description" content="Respondé 7 preguntas y mirá qué le falta a tu negocio para vender más: web, respuesta a los mensajes, anuncios y marca. Gratis y sin dejar tus datos.">
+<link rel="canonical" href="https://nimbra.agency/diagnostico/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="¿Qué le falta a tu negocio para vender más?">
+<meta property="og:description" content="Diagnóstico gratis en 1 minuto: web, mensajes, anuncios y marca.">
+<meta property="og:url" content="https://nimbra.agency/diagnostico/">
+<meta property="og:image" content="https://nimbra.agency/og.png">
+<meta property="og:locale" content="es_419">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="https://nimbra.agency/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="https://nimbra.agency/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,200..900&family=Host+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Diagnóstico gratis de NIMBRA","url":"https://nimbra.agency/diagnostico/","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"NIMBRA","url":"https://nimbra.agency/"}}</script>
+<style>
+:root{--tinta:#12100E;--tinta2:#1A1714;--tinta3:#24201C;--papel:#FFF6F2;--naranja:#FF3B14;--naranja2:#FF5A36;--gris:#A2978E;--gris2:#6F665F;--linea:rgba(255,246,242,.11);--linea2:rgba(255,246,242,.2);--ok:#3ccf8e;--med:#ffb020}
+*{box-sizing:border-box;margin:0;padding:0}
+html{overflow-x:clip}
+body{background:var(--tinta);color:var(--papel);font-family:"Host Grotesk",system-ui,sans-serif;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100svh}
+a{color:inherit}
+.t{font-family:Archivo,sans-serif;font-variation-settings:"wdth" 125;font-weight:300;letter-spacing:-.01em;line-height:1.02}
+.top{display:flex;justify-content:space-between;align-items:center;padding:22px clamp(16px,4vw,48px)}
+.logo{font-family:Archivo;font-variation-settings:"wdth" 125;font-weight:800;font-size:20px;text-decoration:none;letter-spacing:.02em}
+.logo i{font-style:normal;color:var(--naranja)}
+.top small{color:var(--gris);font-size:14px}
+main{max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,48px) 60px}
+
+/* barra de progreso */
+.prog{height:3px;background:var(--linea);border-radius:3px;overflow:hidden;margin:6px 0 0}
+.prog b{display:block;height:100%;width:0;background:var(--naranja);transition:width .5s cubic-bezier(.2,.7,.2,1)}
+
+/* portada */
+.ini{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(24px,5vw,80px);align-items:center;min-height:calc(100svh - 120px);padding:30px 0}
+.ini h1{font-size:clamp(40px,6vw,86px)}
+.ini h1 b{font-weight:700;color:var(--naranja)}
+.ini p{color:var(--gris);font-size:clamp(17px,1.4vw,20px);margin-top:24px;max-width:38ch}
+.ini .acc{margin-top:34px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.ini .acc span{color:var(--gris2);font-size:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:4px;background:var(--naranja);color:#fff;font:600 16px "Host Grotesk";padding:16px 24px;cursor:pointer;text-decoration:none;transition:background .2s,transform .15s}
+.btn:hover{background:var(--naranja2)}
+.btn:active{transform:scale(.97)}
+.btn.sec{background:transparent;border:1px solid var(--linea2);color:var(--papel)}
+.btn.sec:hover{background:var(--tinta3)}
+.btn svg{width:19px;height:19px}
+
+/* reloj de muestra a la derecha */
+.muestra{position:relative;aspect-ratio:1;max-width:460px;justify-self:center;width:100%}
+.muestra svg{width:100%;height:100%;overflow:visible}
+.muestra .eti{position:absolute;font-size:14px;color:var(--gris);background:var(--tinta2);border:1px solid var(--linea);border-radius:6px;padding:8px 12px}
+.muestra .eti b{display:block;color:var(--papel);font-size:15px}
+
+/* preguntas */
+.q{display:none;padding:clamp(36px,7vh,80px) 0 20px;min-height:calc(100svh - 150px)}
+.q.on{display:block;animation:sube .5s cubic-bezier(.2,.7,.2,1)}
+@keyframes sube{from{opacity:0;transform:translateY(18px)}}
+.q .n{color:var(--gris);font-size:15px}
+.q h2{font-size:clamp(32px,4.4vw,60px);margin-top:12px;max-width:20ch}
+.q .ayuda{color:var(--gris);margin-top:14px;max-width:52ch}
+.ops{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:36px;max-width:820px}
+.ops button{text-align:left;background:var(--tinta2);border:1px solid var(--linea);color:var(--papel);border-radius:8px;padding:20px 20px 18px;font:500 17px "Host Grotesk";cursor:pointer;transition:border-color .2s,background .2s,transform .15s;display:flex;gap:14px;align-items:flex-start}
+.ops button:hover{border-color:var(--linea2);background:var(--tinta3)}
+.ops button:active{transform:scale(.985)}
+.ops button.sel{border-color:var(--naranja);background:rgba(255,59,20,.08)}
+.ops button small{display:block;color:var(--gris);font-size:14px;font-weight:400;margin-top:3px}
+.ops button .c{flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--linea2);margin-top:2px;position:relative}
+.ops button.sel .c{border-color:var(--naranja);background:var(--naranja)}
+.ops button.sel .c:after{content:"";position:absolute;left:6px;top:3px;width:6px;height:10px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.rango{margin-top:40px;max-width:720px}
+.rango output{font-family:Archivo;font-variation-settings:"wdth" 125;font-weight:700;font-size:clamp(56px,8vw,110px);color:var(--naranja);line-height:1}
+.rango output small{font-size:.32em;color:var(--gris);font-weight:400;margin-left:10px}
+input[type=range]{width:100%;margin-top:22px;appearance:none;height:4px;background:var(--linea2);border-radius:4px;outline:none}
+input[type=range]::-webkit-slider-thumb{appearance:none;width:30px;height:30px;border-radius:50%;background:var(--naranja);border:5px solid var(--tinta);box-shadow:0 0 0 1px var(--naranja);cursor:grab}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--naranja);border:5px solid var(--tinta);cursor:grab}
+.marcas{display:flex;justify-content:space-between;color:var(--gris2);font-size:13px;margin-top:10px}
+.nav{display:flex;gap:12px;margin-top:40px;align-items:center}
+.nav .atras{background:none;border:0;color:var(--gris);font:500 15px "Host Grotesk";cursor:pointer;padding:10px 4px}
+.nav .atras:hover{color:var(--papel)}
+
+/* resultado */
+.res{display:none;padding:40px 0}
+.res.on{display:block;animation:sube .6s cubic-bezier(.2,.7,.2,1)}
+.cab{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,4vw,60px);align-items:center}
+.anillo{width:clamp(180px,22vw,250px);aspect-ratio:1;position:relative}
+.anillo svg{width:100%;height:100%;transform:rotate(-90deg)}
+.anillo circle{fill:none;stroke-width:9}
+.anillo .fondo{stroke:var(--tinta3)}
+.anillo .val{stroke:var(--naranja);stroke-linecap:round;transition:stroke-dashoffset 1.4s cubic-bezier(.2,.7,.2,1)}
+.anillo div{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
+.anillo b{font-family:Archivo;font-variation-settings:"wdth" 125;font-weight:700;font-size:clamp(54px,6vw,76px);line-height:1;display:block}
+.anillo span{color:var(--gris);font-size:14px}
+.cab h2{font-size:clamp(32px,4.2vw,58px)}
+.cab p{color:var(--gris);margin-top:14px;max-width:48ch;font-size:18px}
+.plata{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--linea);border:1px solid var(--linea);border-radius:10px;overflow:hidden}
+.plata div{background:var(--tinta);padding:24px 22px}
+.plata b{font-family:Archivo;font-variation-settings:"wdth" 125;font-weight:600;font-size:clamp(30px,3.4vw,46px);display:block;line-height:1.05}
+.plata span{color:var(--gris);font-size:14.5px;display:block;margin-top:6px}
+.plata .rojo b{color:var(--naranja)}
+.nota{color:var(--gris2);font-size:13px;margin-top:10px}
+.areas{margin-top:56px}
+.areas h3,.recs h3{font-family:Archivo;font-variation-settings:"wdth" 125;font-weight:400;font-size:clamp(24px,2.4vw,32px)}
+.barra{display:grid;grid-template-columns:150px 1fr 54px;gap:18px;align-items:center;padding:16px 0;border-bottom:1px solid var(--linea)}
+.barra .tr{height:8px;background:var(--tinta3);border-radius:8px;overflow:hidden}
+.barra .tr i{display:block;height:100%;width:0;border-radius:8px;transition:width 1.2s cubic-bezier(.2,.7,.2,1)}
+.barra em{font-style:normal;text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+.recs{margin-top:56px}
+.rec{display:grid;grid-template-columns:64px 1fr auto;gap:22px;align-items:start;padding:26px 0;border-bottom:1px solid var(--linea)}
+.rec .num{font-family:Archivo;font-variation-settings:"wdth" 125;font-weight:200;font-size:46px;color:var(--naranja);line-height:.9}
+.rec h4{font-size:21px;font-weight:600;line-height:1.25}
+.rec p{color:var(--gris);margin-top:6px;max-width:60ch}
+.rec a{font-size:14.5px;color:var(--papel);white-space:nowrap;border-bottom:1px solid var(--linea2);text-decoration:none;padding-bottom:2px;margin-top:4px}
+.rec a:hover{border-color:var(--naranja)}
+.final{margin-top:64px;background:var(--naranja);color:#fff;border-radius:14px;padding:clamp(32px,5vw,60px);display:grid;grid-template-columns:1.4fr 1fr;gap:30px;align-items:end}
+.final h3{font-family:Archivo;font-variation-settings:"wdth" 125;font-weight:300;font-size:clamp(32px,4vw,54px);line-height:1.02}
+.final p{opacity:.9;margin-top:12px;max-width:44ch}
+.final .bs{display:flex;flex-direction:column;gap:10px}
+.final .btn{background:var(--tinta);color:var(--papel)}
+.final .btn:hover{background:#000}
+.final .btn.sec{background:transparent;border-color:rgba(255,255,255,.5);color:#fff}
+.final .btn.sec:hover{background:rgba(0,0,0,.12)}
+footer{max-width:1180px;margin:0 auto;padding:30px clamp(16px,4vw,48px) 40px;color:var(--gris2);font-size:13.5px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--linea)}
+footer a{text-decoration:none}footer a:hover{color:var(--papel)}
+
+@media (max-width:820px){
+  .ini{grid-template-columns:1fr;min-height:auto;padding-top:20px}
+  .muestra{max-width:320px}
+  .ops{grid-template-columns:1fr}
+  .cab{grid-template-columns:1fr;justify-items:start}
+  .plata{grid-template-columns:1fr}
+  .barra{grid-template-columns:110px 1fr 46px;gap:12px}
+  .rec{grid-template-columns:44px 1fr}
+  .rec a{grid-column:2}
+  .rec .num{font-size:34px}
+  .final{grid-template-columns:1fr}
+  .top small{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="top"><a class="logo" href="https://nimbra.agency/">NIMBRA<i>.</i></a><small>Diagnóstico gratis, sin dejar tus datos</small></div>
+<main>
+  <div class="prog" aria-hidden="true"><b id="prog"></b></div>
+
+  <section class="ini" id="ini">
+    <div>
+      <h1 class="t">¿Qué le falta a tu negocio para <b>vender más</b>?</h1>
+      <p>Siete preguntas, un minuto. Te mostramos cuántas consultas se te pueden estar enfriando y qué arreglar primero: web, mensajes, anuncios o marca.</p>
+      <div class="acc"><button class="btn" id="empezar">Hacer el diagnóstico</button><span>No pedimos mail ni teléfono</span></div>
+    </div>
+    <div class="muestra" aria-hidden="true">
+      <svg viewBox="0 0 200 200">
+        <circle cx="100" cy="100" r="78" fill="none" stroke="#24201C" stroke-width="10"/>
+        <circle id="demoRing" cx="100" cy="100" r="78" fill="none" stroke="#FF3B14" stroke-width="10" stroke-linecap="round" stroke-dasharray="490" stroke-dashoffset="490" transform="rotate(-90 100 100)"/>
+        <text id="demoNum" x="100" y="112" text-anchor="middle" fill="#FFF6F2" font-family="Archivo" font-size="44" font-weight="700" style="font-variation-settings:'wdth' 125">0</text>
+      </svg>
+      <div class="eti" style="left:-6%;top:12%"><b>Web</b>la tenés, pero no vende</div>
+      <div class="eti" style="right:-4%;top:46%"><b>Mensajes</b>contestás en horas</div>
+      <div class="eti" style="left:4%;bottom:6%"><b>Anuncios</b>sin saber si funcionan</div>
+    </div>
+  </section>
+
+  <div id="preguntas"></div>
+
+  <section class="res" id="res" aria-live="polite">
+    <div class="cab">
+      <div class="anillo"><svg viewBox="0 0 120 120"><circle class="fondo" cx="60" cy="60" r="52"/><circle class="val" id="ring" cx="60" cy="60" r="52" stroke-dasharray="326.7" stroke-dashoffset="326.7"/></svg><div><div><b id="puntaje">0</b><span>de 100</span></div></div></div>
+      <div><h2 class="t" id="resTit"></h2><p id="resTxt"></p></div>
+    </div>
+    <div class="plata">
+      <div class="rojo"><b id="frias">0</b><span>consultas por mes que se pueden estar enfriando</span></div>
+      <div class="rojo"><b id="perdida">0</b><span>en ventas que podrían no estar cerrándose</span></div>
+      <div><b id="ganar">0</b><span>clientes más por mes si se arregla lo primero</span></div>
+    </div>
+    <p class="nota">Estimación según tus respuestas: tiempo de respuesta, consultas por semana y valor de un cliente. No es una promesa, es una referencia para decidir qué arreglar primero.</p>
+    <div class="areas"><h3>Cómo está cada parte</h3><div id="barras"></div></div>
+    <div class="recs"><h3>Qué arreglar primero</h3><div id="recs"></div></div>
+    <div class="final">
+      <div><h3>¿Te lo resolvemos?</h3><p>Te mandamos una muestra hecha con lo tuyo para que veas cómo quedaría antes de arrancar. Te llega por WhatsApp con este diagnóstico.</p></div>
+      <div class="bs">
+        <a class="btn" id="wa" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.6-.3.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>Quiero que lo resuelvan</a>
+        <a class="btn sec" href="https://ig.me/m/nimbra.uy" target="_blank" rel="noopener">Prefiero por Instagram</a>
+        <button class="btn sec" id="otra">Hacerlo de nuevo</button>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><span>NIMBRA · Webs, anuncios, marca y asistentes de IA</span><span><a href="https://nimbra.agency/">nimbra.agency</a> · <a href="https://nimbra.agency/asistente-ia-whatsapp-instagram/">Asistente de IA</a> · <a href="https://nimbra.agency/anuncios-meta-ads/">Anuncios</a> · <a href="https://nimbra.agency/identidad-de-marca/">Marca</a></span></footer>
+
+<script>
+const WA='59891668114';
+const P=[
+ {id:'rubro',t:'¿A qué se dedica tu negocio?',a:'Así te damos ejemplos de tu rubro.',o:[
+   ['gastro','Gastronomía','Restaurante, catering, pastelería, viandas'],['eventos','Eventos','Salón, quinta, alquiler, organización'],
+   ['salud','Salud y estética','Consultorio, spa, veterinaria, gimnasio'],['tienda','Tienda o productos','Ropa, muebles, regalos, venta online'],
+   ['servicios','Servicios','Taller, mudanzas, estudio, academia'],['otro','Otro','Algo distinto a todo esto']]},
+ {id:'web',t:'¿Tenés página web propia?',a:'Un link de Instagram o un Linktree no cuenta como web.',o:[
+   ['si','Sí, y me trae clientes','Está al día y la gente me escribe desde ahí',100],['vieja','Sí, pero vieja o no la usa nadie','Existe, pero no vende',45],
+   ['link','Solo Linktree o catálogo de WhatsApp','Algo arma, pero no es mío',25],['no','No, solo Instagram o Facebook','Todo pasa por redes',5]]},
+ {id:'resp',t:'Cuando te escribe alguien nuevo, ¿cuánto tardás en contestar?',a:'Pensá en un día normal, también de noche y el fin de semana.',o:[
+   ['min','Minutos, siempre','Tengo a alguien o algo que contesta',100],['horas','Unas horas','Cuando me hago un rato',55],
+   ['dia','Al otro día, a veces','Depende de cuánto trabajo haya',25],['nunca','Algunos se me quedan sin contestar','Se me pasan entre tantos mensajes',5]]},
+ {id:'cons',t:'¿Cuántas consultas nuevas te llegan por semana?',a:'Sumá WhatsApp, Instagram, Facebook y llamadas.',r:[3,200,25,'consultas']},
+ {id:'ads',t:'¿Hacés publicidad paga en Instagram o Facebook?',a:'Incluye el botón «Promocionar».',o:[
+   ['bien','Sí, y sé cuánto me vuelve','Mido qué anuncio vende',100],['aciegas','Sí, pero no sé si funciona','Pongo plata y veo qué pasa',40],
+   ['prom','Solo «Promocionar» de vez en cuando','Sin una estrategia',25],['no','No hago','Todo es orgánico',10]]},
+ {id:'marca',t:'¿Tu marca se ve tan bien como lo que vendés?',a:'Logo, colores, fotos y cómo se ve tu perfil.',o:[
+   ['si','Sí, se ve profesional','Logo, colores y estilo propios',100],['mas','Más o menos','Tengo logo pero cada post es distinto',50],
+   ['no','No mucho','La hice yo o con una app',20],['nada','No tengo marca','Solo el nombre',5]]},
+ {id:'ticket',t:'¿Cuánto vale para vos un cliente nuevo?',a:'Lo que te deja una venta promedio, en dólares aproximados.',r:[10,1000,80,'USD']}
+];
+const $=s=>document.querySelector(s); const R={}; let paso=-1;
+const cont=$('#preguntas');
+P.forEach((p,i)=>{
+  const s=document.createElement('section'); s.className='q'; s.id='q'+i;
+  let h=`<div class="n">Pregunta ${i+1} de ${P.length}</div><h2 class="t">${p.t}</h2><p class="ayuda">${p.a}</p>`;
+  if(p.o){ h+='<div class="ops">'+p.o.map(o=>`<button type="button" data-v="${o[0]}"><span class="c"></span><span>${o[1]}<small>${o[2]}</small></span></button>`).join('')+'</div>'; }
+  else { const [mn,mx,df,u]=p.r; h+=`<div class="rango"><output id="o${i}">${df}<small>${u}</small></output><input type="range" min="${mn}" max="${mx}" value="${df}" step="${p.id==='ticket'?10:1}" aria-label="${p.t}"><div class="marcas"><span>${mn}</span><span>${mx}${p.id==='ticket'?'':'+'}</span></div></div>`; }
+  h+=`<div class="nav">${p.r?'<button class="btn sig" type="button">Seguir</button>':''}<button class="atras" type="button">Volver</button></div>`;
+  s.innerHTML=h; cont.appendChild(s);
+  if(p.o) s.querySelectorAll('.ops button').forEach(b=>b.onclick=()=>{s.querySelectorAll('.ops button').forEach(x=>x.classList.remove('sel')); b.classList.add('sel'); R[p.id]=b.dataset.v; setTimeout(()=>ir(i+1),260)});
+  else { const inp=s.querySelector('input'), out=s.querySelector('output'); R[p.id]=+inp.value;
+    inp.oninput=()=>{R[p.id]=+inp.value; out.innerHTML=inp.value+'<small>'+p.r[3]+'</small>'}; s.querySelector('.sig').onclick=()=>ir(i+1); }
+  s.querySelector('.atras').onclick=()=>ir(i-1);
+});
+function ir(n){
+  document.querySelectorAll('.q,.ini,.res').forEach(e=>{e.classList.remove('on'); if(e.classList.contains('ini')) e.style.display='none'});
+  if(n<0){ $('#ini').style.display=''; paso=-1; $('#prog').style.width='0'; return; }
+  paso=n; $('#prog').style.width=(Math.min(n,P.length)/P.length*100)+'%';
+  if(n>=P.length) return resultado();
+  $('#q'+n).classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+}
+$('#empezar').onclick=()=>ir(0);
+$('#otra').onclick=()=>{for(const k in R) if(typeof R[k]==='string') delete R[k]; document.querySelectorAll('.ops button').forEach(x=>x.classList.remove('sel')); ir(0)};
+
+const val=(id)=>{const p=P.find(x=>x.id===id); const o=p.o.find(x=>x[0]===R[id]); return o?o[3]:0};
+const fmt=n=>'USD '+Math.round(n).toLocaleString('es-UY');
+const EJ={gastro:'pedidos y encargos',eventos:'fechas y presupuestos',salud:'turnos',tienda:'pedidos',servicios:'presupuestos',otro:'consultas'};
+function resultado(){
+  const w=val('web'), r=val('resp'), a=val('ads'), m=val('marca');
+  const total=Math.round(w*.3+r*.3+a*.2+m*.2);
+  const perdida={min:.05,horas:.25,dia:.45,nunca:.6}[R.resp]||.3;
+  const consMes=R.cons*4.3, frias=Math.round(consMes*perdida);
+  const cierre=.2, plata=frias*cierre*R.ticket, ganar=Math.max(1,Math.round(frias*cierre*.6));
+  $('#res').classList.add('on'); $('#prog').style.width='100%'; scrollTo({top:0,behavior:'smooth'});
+  const areas=[['Web',w],['Mensajes',r],['Anuncios',a],['Marca',m]]; const orden=areas.slice().sort((x,y)=>x[1]-y[1]);
+  const tit= total>=75?'Vas bien. Hay detalles que te están costando ventas.': total>=45?'Tenés base, pero se te escapan clientes.':'Hay mucho para ganar, y rápido.';
+  $('#resTit').textContent=tit;
+  $('#resTxt').textContent=`Con ${R.cons} consultas por semana, lo que más pesa es ${orden[0][0]==='Mensajes'?'cómo se contestan los mensajes':'la parte de '+orden[0][0].toLowerCase()}. Abajo tenés qué arreglar primero, en orden.`;
+  anim('#puntaje',total,0); setTimeout(()=>{$('#ring').style.strokeDashoffset=326.7*(1-total/100)},60);
+  anim('#frias',frias,0); anim('#perdida',plata,1); anim('#ganar',ganar,0);
+  $('#barras').innerHTML=areas.map(([n,v])=>`<div class="barra"><span>${n}</span><div class="tr"><i style="background:${v>=75?'var(--ok)':v>=40?'var(--med)':'var(--naranja)'}" data-w="${v}"></i></div><em>${v}</em></div>`).join('');
+  setTimeout(()=>document.querySelectorAll('.barra i').forEach(i=>i.style.width=i.dataset.w+'%'),80);
+  const ex=EJ[R.rubro]||'consultas';
+  const RECS={
+    Mensajes:['Que nadie se quede sin respuesta',`Un asistente de IA que contesta al instante en WhatsApp e Instagram, de día y de noche, responde precios y deja ${ex} agendados. Lo que no sabe, te lo pasa.`,'https://nimbra.agency/asistente-ia-whatsapp-instagram/','Ver cómo funciona'],
+    Web:['Una web que trabaje por vos',`Que muestre lo que hacés como se merece y que el cliente pida ${ex} solo, con todo armado, y te llegue al WhatsApp.`,'https://nimbra.agency/#servicios','Ver ejemplos'],
+    Anuncios:['Anuncios que se miden',`Anuncios hechos para vender, publicados en Instagram y Facebook, y cada mes sabés cuál trajo ${ex} y cuál no.`,'https://nimbra.agency/anuncios-meta-ads/','Ver cómo trabajamos'],
+    Marca:['Una marca a la altura',`Logo, colores y estilo para que tu perfil se vea tan bien como lo que vendés, y la gente confíe antes de escribirte.`,'https://nimbra.agency/identidad-de-marca/','Ver marcas']
+  };
+  $('#recs').innerHTML=orden.slice(0,3).map(([n],i)=>{const r=RECS[n];return `<div class="rec"><div class="num">${i+1}</div><div><h4>${r[0]}</h4><p>${r[1]}</p></div><a href="${r[2]}">${r[3]}</a></div>`}).join('');
+  const txt=`Hola NIMBRA! Hice el diagnóstico: me dio ${total}/100. Rubro: ${P[0].o.find(o=>o[0]===R.rubro)?.[1]||''}. Lo más flojo: ${orden[0][0]} y ${orden[1][0]}. ${R.cons} consultas por semana. ¿Me ayudan?`;
+  $('#wa').href='https://wa.me/'+WA+'?text='+encodeURIComponent(txt);
+}
+function anim(sel,to,money){const el=$(sel),t0=performance.now(),d=1200;
+  const f=t=>{const k=Math.min(1,(t-t0)/d),e=1-Math.pow(1-k,3),v=to*e; el.textContent=money?fmt(v):Math.round(v); if(k<1) requestAnimationFrame(f)}; requestAnimationFrame(f)}
+
+/* anillo de muestra en la portada */
+(()=>{const r=document.getElementById('demoRing'),n=document.getElementById('demoNum');let v=0;const meta=58;
+ const f=()=>{v+= (meta-v)*.04; r.style.strokeDashoffset=490*(1-v/100); n.textContent=Math.round(v); if(Math.abs(meta-v)>.4) requestAnimationFrame(f); else n.textContent=meta};
+ setTimeout(()=>requestAnimationFrame(f),500)})();
+</script>
+</body>
+</html>
